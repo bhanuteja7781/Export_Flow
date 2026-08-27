@@ -1,0 +1,65 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ExportOutreachDataStoreSchema",
+  "description": "Schema definition for buyers, campaigns, delivery records, and system settings",
+  "definitions": {
+    "BuyerRecord": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Unique identifier" },
+        "buyer_name": { "type": "string", "description": "Extracted contact name" },
+        "company_name": { "type": "string", "description": "Target company name" },
+        "email": { "type": "string", "format": "email", "description": "Validated email address (PK/Unique)" },
+        "website": { "type": "string", "description": "Company URL or profile link" },
+        "country": { "type": "string", "description": "Inferred country" },
+        "source_platform": { "type": "string", "description": "Google, LinkedIn, Facebook, Directory, Website, Upload" },
+        "category": { "type": "string", "enum": ["unclassified", "business", "individual"], "default": "unclassified" },
+        "classification_reason": { "type": "string" },
+        "personalized_pitch": { "type": "string" },
+        "validation_status": { "type": "string", "enum": ["pending", "valid", "risky", "invalid"], "default": "pending" },
+        "validation_details": {
+          "type": "object",
+          "properties": {
+            "syntax_valid": { "type": "boolean" },
+            "mx_found": { "type": "boolean" },
+            "is_disposable": { "type": "boolean" },
+            "score": { "type": "number" },
+            "reason": { "type": "string" }
+          }
+        },
+        "discovered_at": { "type": "string", "format": "date-time" },
+        "last_contacted_at": { "type": ["string", "null"] }
+      },
+      "required": ["email", "discovered_at"]
+    },
+    "DeliveryRecord": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "campaign_id": { "type": "string" },
+        "recipient_email": { "type": "string" },
+        "recipient_name": { "type": "string" },
+        "recipient_company": { "type": "string" },
+        "subject": { "type": "string" },
+        "status": { "type": "string", "enum": ["QUEUED", "SENT", "FAILED"] },
+        "attachment_attached": { "type": "boolean" },
+        "error_message": { "type": ["string", "null"] },
+        "sent_at": { "type": "string", "format": "date-time" }
+      },
+      "required": ["recipient_email", "status", "sent_at"]
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "gmail_email": { "type": "string" },
+        "app_password": { "type": "string" },
+        "monitor_cc": { "type": "string" },
+        "gemini_api_key": { "type": "string" },
+        "default_subject": { "type": "string" },
+        "default_body": { "type": "string" },
+        "send_delay": { "type": "number" },
+        "daily_send_limit": { "type": "integer" }
+      }
+    }
+  }
+}

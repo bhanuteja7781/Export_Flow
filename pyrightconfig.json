@@ -1,0 +1,14 @@
+{
+  "pythonPlatform": "Windows",
+  "pythonVersion": "3.14",
+  "reportMissingTypeStubs": "none",
+  "extraPaths": [
+    "backend",
+    "backend/modules",
+    "C:\\Users\\bhanu\\AppData\\Local\\Python\\pythoncore-3.14-64\\Lib\\site-packages",
+    "C:\\Users\\bhanu\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages"
+  ],
+  "include": [
+    "backend"
+  ]
+}
