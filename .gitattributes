@@ -1,0 +1,6 @@
+# GitHub Linguist Language Configuration
+# Mark data files and vendored assets so GitHub highlights source code languages
+backend/data/* linguist-vendored
+backend/modules/verified_buyers_catalog.json linguist-vendored
+backend/assets/* linguist-vendored
+frontend/package-lock.json linguist-vendored
