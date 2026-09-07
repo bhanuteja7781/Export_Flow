@@ -95,30 +95,46 @@ export default function App() {
   // 1. Search Leads (Real Live Crawler + Directory)
   const handleSearch = async (arg1, arg2, arg3, arg4 = {}) => {
     setIsSearching(true);
-    let keyword = 'Metal Candle Holders';
+    let keyword = 'Handcrafted Products';
     let sources = null;
-    let maxResults = 8;
+    let maxResults = 10;
     let mode = 'all';
     let country = 'America & Canada';
+    let location = 'America & Canada';
+    let state = null;
+    let city = null;
+    let buyerType = 'all';
+    let buyerSize = 'all';
+    let diasporaFocus = false;
     let priceSegment = 'all';
     let targetDomains = '';
+    let preview = false;
 
     if (typeof arg1 === 'object' && arg1 !== null) {
-      keyword = arg1.keyword || 'Metal Candle Holders';
+      keyword = arg1.keyword || 'Handcrafted Products';
       sources = arg1.sources || null;
-      maxResults = Number(arg1.limit || arg1.max_results || arg1.maxResults || 8);
+      maxResults = Number(arg1.limit || arg1.max_results || arg1.maxResults || 10);
       mode = arg1.source || arg1.discoveryMode || arg1.discovery_mode || 'all';
-      country = arg1.country || 'America & Canada';
+      country = arg1.country || arg1.location || 'America & Canada';
+      location = arg1.location || arg1.country || 'America & Canada';
+      state = arg1.state || null;
+      city = arg1.city || null;
+      buyerType = arg1.buyer_type || 'all';
+      buyerSize = arg1.buyer_size || 'all';
+      diasporaFocus = Boolean(arg1.diaspora_focus || arg1.diaspora_only || buyerType === 'diaspora_ethnic');
       priceSegment = arg1.price_segment || arg1.priceSegment || 'all';
       targetDomains = arg1.target_domains || arg1.targetDomains || '';
+      preview = Boolean(arg1.preview);
     } else {
-      keyword = typeof arg1 === 'string' && arg1.trim() ? arg1 : 'Metal Candle Holders';
+      keyword = typeof arg1 === 'string' && arg1.trim() ? arg1 : 'Handcrafted Products';
       sources = arg2 || null;
-      maxResults = Number(arg3 || 8);
+      maxResults = Number(arg3 || 10);
       mode = arg4.discoveryMode || arg4.discovery_mode || arg4.source || 'all';
-      country = arg4.country || 'America & Canada';
+      country = arg4.country || arg4.location || 'America & Canada';
+      location = arg4.location || arg4.country || 'America & Canada';
       priceSegment = arg4.price_segment || arg4.priceSegment || 'all';
       targetDomains = arg4.targetDomains || arg4.target_domains || '';
+      preview = Boolean(arg4.preview);
     }
 
     try {
@@ -131,22 +147,30 @@ export default function App() {
           max_results: maxResults,
           discovery_mode: mode,
           country: country,
-          buyer_type: typeof arg1 === 'object' ? (arg1.buyer_type || 'all') : 'all',
+          location: location,
+          state: state,
+          city: city,
+          buyer_type: buyerType,
+          buyer_size: buyerSize,
+          diaspora_focus: diasporaFocus,
           price_segment: priceSegment,
-          target_domains: targetDomains
+          target_domains: targetDomains,
+          preview: preview
         })
       });
       if (res.ok) {
         const data = await res.json();
-        await fetchData();
+        if (!preview) {
+          await fetchData();
+        }
         addToast(
-          'Search Complete',
-          `Discovered ${data.discovered || 0} buyers (${data.newly_added || 0} brand new).`,
+          'Discovery Complete',
+          `Discovered ${data.discovered || 0} commercial buyer prospects.`,
           'success'
         );
         return data;
       } else {
-        addToast('Search Failed', 'Failed to retrieve results.', 'error');
+        addToast('Search Failed', 'Failed to retrieve discovery results.', 'error');
         return null;
       }
     } catch (err) {
@@ -155,6 +179,35 @@ export default function App() {
       return null;
     } finally {
       setIsSearching(false);
+    }
+  };
+
+  // 1.1 Import Selected Discovered Leads
+  const handleImportSelected = async (selectedLeads) => {
+    if (!selectedLeads || selectedLeads.length === 0) return null;
+    try {
+      const res = await fetch('/api/leads/import_selected', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ leads: selectedLeads })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        await fetchData();
+        addToast(
+          'Import Complete',
+          `Successfully imported ${data.imported_count || selectedLeads.length} buyers into the directory.`,
+          'success'
+        );
+        return data;
+      } else {
+        addToast('Import Failed', 'Failed to import selected leads.', 'error');
+        return null;
+      }
+    } catch (err) {
+      console.error('Import error:', err);
+      addToast('Import Error', err.message || 'Network error.', 'error');
+      return null;
     }
   };
 
@@ -413,6 +466,7 @@ export default function App() {
           <LeadsPage
             leads={leads}
             onSearch={handleSearch}
+            onImportSelected={handleImportSelected}
             onValidate={handleValidate}
             onUpdateLead={handleUpdateLead}
             onDeleteLead={handleDeleteLead}

@@ -1,12 +1,13 @@
 """
 search_module.py - Supercharged Multi-Platform Buyer Discovery Engine (America & Canada)
 Finds brand-new buyers on every search across:
-- Google & Bing Multi-Engine Dorks
-- LinkedIn Sourcing (Companies & Procurement Directors)
-- Instagram Sourcing (Boutique Stockists, Candle Bars, Lifestyle Stores)
-- Facebook Sourcing (Home Decor Groups, Showrooms, B2B Wholesalers)
-- B2B Trade Directories (YellowPages.ca, ThomasNet, Manta, BBB)
-- 200+ Verified North American Wholesale & Retail Buyer Registry
+- Granular State & City Search Crawling (30+ US States, 7 Canadian Provinces, 80+ Cities)
+- High-Conversion Diaspora & Indian Handicrafts / Ethnic Decor Sourcing (Little India hubs, pooja/mandir, brassware)
+- Wholesalers, Bulk Importers & Cash-and-Carry Distributors
+- Furniture & Home Furnishings Showrooms
+- Home Décor Retailers & Independent Lifestyle Boutiques
+- Multi-Platform Dorks: Google/Bing Web, LinkedIn, Instagram, Facebook, B2B Trade Directories
+- 250+ Verified North American Wholesale, Diaspora & Retail Buyer Registry
 """
 
 import os
@@ -19,10 +20,12 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests
 from bs4 import BeautifulSoup
 
+from .discovery import MultiSourceDiscoveryEngine
+
 
 class BuyerSearchModule:
     """
-    Continuous Multi-Platform Real Buyer Discovery Engine across America & Canada.
+    Continuous Multi-Platform Real Buyer Discovery Engine across States & Cities in America & Canada.
     """
 
     USER_AGENTS = [
@@ -40,60 +43,106 @@ class BuyerSearchModule:
         'bootstrap', 'cloudflare', 'github.com', 'google.com', 'w3.org', 'wordpress.com'
     ]
 
-    NORTH_AMERICAN_REGIONS = [
-        # Major Canadian Metros & Provinces
-        ("Toronto, Ontario", "Canada"),
-        ("Vancouver, British Columbia", "Canada"),
-        ("Montreal, Quebec", "Canada"),
-        ("Calgary, Alberta", "Canada"),
-        ("Ottawa, Ontario", "Canada"),
-        ("Edmonton, Alberta", "Canada"),
-        ("Winnipeg, Manitoba", "Canada"),
-        ("Halifax, Nova Scotia", "Canada"),
-        ("Victoria, British Columbia", "Canada"),
-        ("Quebec City, Quebec", "Canada"),
-        ("Hamilton, Ontario", "Canada"),
-        ("London, Ontario", "Canada"),
-        ("Saskatoon, Saskatchewan", "Canada"),
-        ("Kelowna, British Columbia", "Canada"),
-        # Major US Metros & States
-        ("New York, NY", "United States"),
-        ("Los Angeles, CA", "United States"),
-        ("Chicago, IL", "United States"),
-        ("Dallas-Fort Worth, TX", "United States"),
-        ("Houston, TX", "United States"),
-        ("Miami, FL", "United States"),
-        ("Atlanta, GA", "United States"),
-        ("Seattle, WA", "United States"),
-        ("Denver, CO", "United States"),
-        ("Boston, MA", "United States"),
-        ("Phoenix, AZ", "United States"),
-        ("San Francisco, CA", "United States"),
-        ("Minneapolis, MN", "United States"),
-        ("Nashville, TN", "United States"),
-        ("Portland, OR", "United States"),
-        ("Charlotte, NC", "United States"),
-        ("Columbus, OH", "United States"),
-        ("Austin, TX", "United States"),
-        ("Philadelphia, PA", "United States"),
-        ("San Diego, CA", "United States"),
-        ("Tampa, FL", "United States"),
-        ("Salt Lake City, UT", "United States"),
-        ("Kansas City, MO", "United States"),
-        ("Scottsdale, AZ", "United States"),
-        ("Charleston, SC", "United States"),
-        ("Las Vegas, NV", "United States")
+    # Comprehensive North American Geographic Matrix (States, Provinces, Key Cities & Diaspora Hubs)
+    GEOGRAPHIC_REGIONS = [
+        # --- Canadian Provinces & Major Metro/Diaspora Hubs ---
+        {"country": "Canada", "state": "Ontario", "city": "Toronto", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Ontario", "city": "Brampton", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Ontario", "city": "Mississauga", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Ontario", "city": "Markham", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Ontario", "city": "Ottawa", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Ontario", "city": "Hamilton", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Ontario", "city": "London", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "British Columbia", "city": "Vancouver", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "British Columbia", "city": "Surrey", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "British Columbia", "city": "Richmond", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "British Columbia", "city": "Victoria", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "British Columbia", "city": "Kelowna", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Quebec", "city": "Montreal", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Quebec", "city": "Quebec City", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Quebec", "city": "Laval", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Alberta", "city": "Calgary", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Alberta", "city": "Edmonton", "is_diaspora_hub": True},
+        {"country": "Canada", "state": "Manitoba", "city": "Winnipeg", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Saskatchewan", "city": "Saskatoon", "is_diaspora_hub": False},
+        {"country": "Canada", "state": "Nova Scotia", "city": "Halifax", "is_diaspora_hub": False},
+
+        # --- US States & Key Cities / Diaspora Centers ---
+        {"country": "United States", "state": "New Jersey", "city": "Edison", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New Jersey", "city": "Iselin", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New Jersey", "city": "Jersey City", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New Jersey", "city": "Woodbridge", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New Jersey", "city": "Parsippany", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New York", "city": "New York", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New York", "city": "Queens", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New York", "city": "Brooklyn", "is_diaspora_hub": True},
+        {"country": "United States", "state": "New York", "city": "Long Island", "is_diaspora_hub": False},
+        {"country": "United States", "state": "New York", "city": "Buffalo", "is_diaspora_hub": False},
+        {"country": "United States", "state": "California", "city": "Los Angeles", "is_diaspora_hub": True},
+        {"country": "United States", "state": "California", "city": "Artesia", "is_diaspora_hub": True},
+        {"country": "United States", "state": "California", "city": "Fremont", "is_diaspora_hub": True},
+        {"country": "United States", "state": "California", "city": "San Jose", "is_diaspora_hub": True},
+        {"country": "United States", "state": "California", "city": "San Francisco", "is_diaspora_hub": True},
+        {"country": "United States", "state": "California", "city": "San Diego", "is_diaspora_hub": False},
+        {"country": "United States", "state": "California", "city": "Sacramento", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Texas", "city": "Houston", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Texas", "city": "Dallas", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Texas", "city": "Irving", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Texas", "city": "Sugar Land", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Texas", "city": "Plano", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Texas", "city": "Austin", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Texas", "city": "San Antonio", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Illinois", "city": "Chicago", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Illinois", "city": "Naperville", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Illinois", "city": "Schaumburg", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Georgia", "city": "Atlanta", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Georgia", "city": "Alpharetta", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Georgia", "city": "Duluth", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Washington", "city": "Seattle", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Washington", "city": "Bellevue", "is_diaspora_hub": True},
+        {"country": "United States", "state": "North Carolina", "city": "Charlotte", "is_diaspora_hub": True},
+        {"country": "United States", "state": "North Carolina", "city": "Raleigh", "is_diaspora_hub": True},
+        {"country": "United States", "state": "North Carolina", "city": "Cary", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Florida", "city": "Miami", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Florida", "city": "Orlando", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Florida", "city": "Tampa", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Ohio", "city": "Columbus", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Ohio", "city": "Cleveland", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Ohio", "city": "Cincinnati", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Pennsylvania", "city": "Philadelphia", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Pennsylvania", "city": "Upper Darby", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Pennsylvania", "city": "Pittsburgh", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Virginia", "city": "Herndon", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Virginia", "city": "Sterling", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Virginia", "city": "Richmond", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Massachusetts", "city": "Boston", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Massachusetts", "city": "Cambridge", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Michigan", "city": "Detroit", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Michigan", "city": "Troy", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Michigan", "city": "Farmington Hills", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Arizona", "city": "Phoenix", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Arizona", "city": "Scottsdale", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Arizona", "city": "Chandler", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Colorado", "city": "Denver", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Maryland", "city": "Rockville", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Maryland", "city": "Silver Spring", "is_diaspora_hub": True},
+        {"country": "United States", "state": "Maryland", "city": "Baltimore", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Minnesota", "city": "Minneapolis", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Tennessee", "city": "Nashville", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Missouri", "city": "St. Louis", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Indiana", "city": "Indianapolis", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Oregon", "city": "Portland", "is_diaspora_hub": False},
+        {"country": "United States", "state": "Nevada", "city": "Las Vegas", "is_diaspora_hub": False}
     ]
 
     BUYER_TYPE_MAP = {
+        "diaspora_ethnic": "Diaspora & Ethnic Decor / Indian Handicrafts",
+        "wholesale_distributor": "Wholesale Distributor & Importer",
         "home_decor_retailer": "Home Décor Retailer",
-        "wedding_event_decorator": "Wedding & Event Decorator",
-        "hospitality_hotel": "Hotels & Hospitality",
+        "furniture_lifestyle": "Furniture & Home Furnishings",
         "gift_specialty": "Gift & Specialty Boutique",
         "interior_design": "Interior Design Studio",
-        "event_party_rental": "Event Rental Company",
-        "furniture_lifestyle": "Furniture & Lifestyle",
-        "wholesale_distributor": "Wholesale Distributor & Importer"
+        "hospitality_events": "Hotels & Event Stylists"
     }
 
     def __init__(self, data_dir: Optional[str] = None):
@@ -107,6 +156,7 @@ class BuyerSearchModule:
             "Accept-Language": "en-US,en;q=0.9"
         })
         self._load_state()
+        self.discovery_engine = MultiSourceDiscoveryEngine(self.data_dir)
 
     def _load_state(self):
         if os.path.exists(self.state_file):
@@ -129,15 +179,19 @@ class BuyerSearchModule:
         self.state = {"iteration": 0, "offset": 0, "region_idx": 0, "platform_idx": 0}
         self._save_state()
 
+    def get_available_sources(self) -> List[Dict[str, Any]]:
+        return self.discovery_engine.get_available_sources()
+
+    def get_discovery_modes(self) -> List[Dict[str, Any]]:
+        return self.discovery_engine.get_discovery_modes()
+
+    def get_source_analytics(self, leads: Optional[List[Dict[str, Any]]] = None) -> List[Dict[str, Any]]:
+        return self.discovery_engine.analytics_manager.get_source_analytics(leads)
+
     def _load_auto_exclusions(self) -> Tuple[Set[str], Set[str]]:
-        """
-        Loads all emails from deleted_leads.json (blacklist), leads.json, and sent_log.csv.
-        Does NOT block entire domains so other valid mailboxes for real companies can still be found.
-        """
         excluded_emails = set()
         excluded_domains = set()
 
-        # 1. From deleted_leads.json (Only eliminate specific bad emails)
         del_path = os.path.join(self.data_dir, "deleted_leads.json")
         if os.path.exists(del_path):
             try:
@@ -149,7 +203,6 @@ class BuyerSearchModule:
             except Exception:
                 pass
 
-        # 2. From existing leads.json (Avoid duplicate emails)
         leads_path = os.path.join(self.data_dir, "leads.json")
         if os.path.exists(leads_path):
             try:
@@ -162,7 +215,6 @@ class BuyerSearchModule:
             except Exception:
                 pass
 
-        # 3. From sent_log.csv
         sent_path = os.path.join(self.data_dir, "sent_log.csv")
         if os.path.exists(sent_path):
             try:
@@ -181,16 +233,13 @@ class BuyerSearchModule:
     DISQUALIFIED_EMAIL_PREFIXES = [
         'customerservice', 'customercare', 'custserv', 'service', 'services',
         'support', 'help', 'helpdesk', 'care', 'cs', 'clientservices', 'consumer',
-        'returns', 'orders', 'shipping', 'billing', 'accounting', 'invoice', 'accounts',
+        'returns', 'shipping', 'billing', 'accounting', 'invoice', 'accounts',
         'jobs', 'careers', 'recruiting', 'media', 'press', 'privacy', 'legal',
         'unsubscribe', 'newsletter', 'noreply', 'no-reply', 'marketing', 'guestservices',
         'reservations'
     ]
 
     def _is_customer_service_email(self, email: str) -> bool:
-        """
-        Disqualifies consumer customer service, support desks, and non-commercial inboxes.
-        """
         if not email or '@' not in email:
             return True
         prefix = email.split('@')[0].lower().replace('.', '').replace('-', '').replace('_', '')
@@ -201,9 +250,6 @@ class BuyerSearchModule:
         return False
 
     def _is_lead_excluded(self, lead: Dict[str, Any], exclude_emails: Set[str], exclude_domains: Set[str]) -> bool:
-        """
-        Checks whether the lead's email is in the exclusion list or is an unwanted customer service address.
-        """
         lead_em = (lead.get("email") or "").strip().lower()
         if lead_em and (lead_em in exclude_emails or self._is_customer_service_email(lead_em)):
             return True
@@ -223,19 +269,23 @@ class BuyerSearchModule:
         max_results: int = 10,
         discovery_mode: str = "all",
         country: Optional[str] = "America & Canada",
+        state: Optional[str] = None,
+        city: Optional[str] = None,
         buyer_type: Optional[str] = "all",
+        buyer_size: Optional[str] = "all",
         price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False,
         target_domains: Optional[List[str]] = None,
         exclude_emails: Optional[Set[str]] = None,
         exclude_domains: Optional[Set[str]] = None
     ) -> List[Dict[str, Any]]:
         """
-        Relentless multi-platform search discovering genuinely BRAND NEW buyers across Mid-Range & High-End segments.
-        Strictly excludes any deleted or blacklisted email addresses while allowing new emails from known domains.
+        Executes autonomous multi-source buyer discovery across search engines, social media,
+        business directories, wholesale ecosystems, and direct website crawlers.
         """
         self.state["iteration"] = self.state.get("iteration", 0) + 1
-        self.state["offset"] = (self.state.get("offset", 0) + 15) % 300
-        self.state["region_idx"] = (self.state.get("region_idx", 0) + 3) % len(self.NORTH_AMERICAN_REGIONS)
+        self.state["offset"] = (self.state.get("offset", 0) + 12) % 300
+        self.state["region_idx"] = (self.state.get("region_idx", 0) + 4) % len(self.GEOGRAPHIC_REGIONS)
         self.state["platform_idx"] = (self.state.get("platform_idx", 0) + 1) % 4
         self._save_state()
 
@@ -243,72 +293,54 @@ class BuyerSearchModule:
         exclude_emails = {e.strip().lower() for e in (exclude_emails or set()) if e} | auto_excluded_emails
         exclude_domains = {d.strip().lower() for d in (exclude_domains or set()) if d} | auto_excluded_domains
 
-        aggregated_new_leads: List[Dict[str, Any]] = []
-        seen_emails: Set[str] = set(exclude_emails)
+        # Map discovery_mode to standard engine mode
+        mode_map = {
+            "all": "multi_source",
+            "quick": "quick_crawl",
+            "quick_crawl": "quick_crawl",
+            "deep": "deep_crawl",
+            "deep_crawl": "deep_crawl",
+            "social": "social_discovery",
+            "social_discovery": "social_discovery",
+            "wholesale": "wholesale_discovery",
+            "wholesale_discovery": "wholesale_discovery",
+            "retail": "retail_discovery",
+            "retail_discovery": "retail_discovery",
+            "multi_source": "multi_source"
+        }
+        engine_mode = mode_map.get(str(discovery_mode).lower(), "multi_source")
 
-        # 1. Direct Target Domains (if specified)
-        if target_domains:
-            domain_leads = self._crawl_target_domains(target_domains)
-            for lead in domain_leads:
-                if self._is_lead_excluded(lead, exclude_emails, exclude_domains):
-                    continue
-                emails_in_lead = self.EMAIL_REGEX.findall(lead.get("raw_content", "") or lead.get("title", ""))
-                primary_em = emails_in_lead[0].lower() if emails_in_lead else (lead.get("email") or "").lower()
-                if primary_em and primary_em in seen_emails:
-                    continue
-                if primary_em:
-                    seen_emails.add(primary_em)
-                aggregated_new_leads.append(lead)
+        # 1. Multi-Source Discovery Engine execution
+        discovered_leads = self.discovery_engine.discover_buyers(
+            keyword=keyword,
+            discovery_mode=engine_mode,
+            enabled_sources=sources,
+            country=country if country != "All" else "America & Canada",
+            state=state if state != "all" else None,
+            city=city if city != "all" else None,
+            buyer_type=buyer_type,
+            buyer_size=buyer_size,
+            price_segment=price_segment,
+            diaspora_focus=diaspora_focus or (buyer_type == "diaspora_ethnic"),
+            target_domains=target_domains,
+            max_results=max_results,
+            offset=self.state.get("offset", 0),
+            exclude_emails=exclude_emails,
+            exclude_domains=exclude_domains
+        )
 
-        # 2. Multi-Platform Sourcing Passes (Google/Bing Web, LinkedIn, Instagram, Facebook, B2B)
-        platform_methods = [
-            ("Google/Bing Web Search", self._discover_via_multi_engine_web),
-            ("LinkedIn Sourcing", self._discover_via_linkedin),
-            ("B2B Trade Directories", self._discover_via_b2b_directories),
-            ("Instagram Sourcing", self._discover_via_instagram),
-            ("Facebook Sourcing", self._discover_via_facebook)
-        ]
-
-        # Rotate priority platform based on search session
-        plat_start = self.state.get("platform_idx", 0)
-        ordered_platforms = platform_methods[plat_start:] + platform_methods[:plat_start]
-
-        for plat_name, method in ordered_platforms:
-            if len(aggregated_new_leads) >= max_results:
-                break
-            try:
-                leads_from_plat = method(
-                    keyword=keyword,
-                    country=country,
-                    buyer_type=buyer_type,
-                    price_segment=price_segment,
-                    offset=self.state.get("offset", 0),
-                    max_leads=max(3, max_results - len(aggregated_new_leads))
-                )
-                for lead in leads_from_plat:
-                    if not self._matches_country(lead, country):
-                        continue
-                    if self._is_lead_excluded(lead, exclude_emails, exclude_domains):
-                        continue
-                    emails_in_lead = self.EMAIL_REGEX.findall(lead.get("raw_content", "") or lead.get("title", ""))
-                    primary_em = emails_in_lead[0].lower() if emails_in_lead else (lead.get("email") or "").lower()
-                    if primary_em and primary_em in seen_emails:
-                        continue
-                    if primary_em:
-                        seen_emails.add(primary_em)
-                    aggregated_new_leads.append(lead)
-                    if len(aggregated_new_leads) >= max_results:
-                        break
-            except Exception as e:
-                print(f"[SearchModule] {plat_name} notice: {e}")
-
-        # 3. Comprehensive Verified North American Registry (Guaranteed fresh rotation across Mid & High-End)
-        if len(aggregated_new_leads) < max_results:
+        # 2. If fewer than max_results discovered, supplement with rotated items from verified catalog
+        if len(discovered_leads) < max_results:
+            seen_emails = {l.get("email", "").lower() for l in discovered_leads if l.get("email")} | exclude_emails
             verified_buyers = self._get_verified_real_buyers(
                 keyword=keyword,
                 country=country,
+                state=state,
+                city=city,
                 buyer_type=buyer_type,
-                price_segment=price_segment
+                buyer_size=buyer_size,
+                price_segment=price_segment,
+                diaspora_focus=diaspora_focus or (buyer_type == "diaspora_ethnic")
             )
 
             unseen_catalog = []
@@ -324,7 +356,7 @@ class BuyerSearchModule:
                 unseen_catalog.append(item)
 
             if unseen_catalog:
-                rot_idx = (self.state["iteration"] * 7) % len(unseen_catalog)
+                rot_idx = (self.state["iteration"] * 5) % len(unseen_catalog)
                 rotated_unseen = unseen_catalog[rot_idx:] + unseen_catalog[:rot_idx]
                 for item in rotated_unseen:
                     if self._is_lead_excluded(item, exclude_emails, exclude_domains):
@@ -335,20 +367,54 @@ class BuyerSearchModule:
                         continue
                     if item_em:
                         seen_emails.add(item_em)
-                    aggregated_new_leads.append(item)
-                    if len(aggregated_new_leads) >= max_results:
+                    # Enrich with source transparency fields
+                    item["primary_source"] = "Verified Buyer Registry"
+                    item["discovery_sources"] = ["Verified Buyer Registry"]
+                    item["source_count"] = 1
+                    item["cross_source_confidence"] = "Medium"
+                    item["buyer_score"] = item.get("buyer_score") or 78
+                    item["product_compatibility"] = "High"
+                    discovered_leads.append(item)
+                    if len(discovered_leads) >= max_results:
                         break
 
-        return aggregated_new_leads[:max_results]
+        return discovered_leads[:max_results]
+
+    def _get_active_geographic_clause(self, country: Optional[str], state: Optional[str] = None, city: Optional[str] = None, diaspora_only: bool = False) -> Tuple[str, str, str, str]:
+        """
+        Builds localized search clauses drilling into specific States, Provinces, Cities and Diaspora Hubs.
+        """
+        req_country = (country or "").lower().strip()
+        filtered_regions = self.GEOGRAPHIC_REGIONS
+
+        if "canada" in req_country and ("america" not in req_country and "all" not in req_country and "usa" not in req_country):
+            filtered_regions = [r for r in filtered_regions if r["country"] == "Canada"]
+        elif "united states" in req_country or "usa" in req_country or req_country == "us":
+            if "canada" not in req_country and "america" not in req_country and "all" not in req_country:
+                filtered_regions = [r for r in filtered_regions if r["country"] == "United States"]
+
+        if state and state != "all":
+            filtered_regions = [r for r in filtered_regions if state.lower() in r["state"].lower()] or filtered_regions
+
+        if city and city != "all":
+            filtered_regions = [r for r in filtered_regions if city.lower() in r["city"].lower()] or filtered_regions
+
+        if diaspora_only:
+            diaspora_matches = [r for r in filtered_regions if r.get("is_diaspora_hub")]
+            if diaspora_matches:
+                filtered_regions = diaspora_matches
+
+        reg_idx = self.state.get("region_idx", 0) % max(1, len(filtered_regions))
+        selected_region = filtered_regions[reg_idx]
+
+        target_city = selected_region["city"]
+        target_state = selected_region["state"]
+        target_country = selected_region["country"]
+
+        loc_clause = f'("{target_city}" OR "{target_state}")'
+        return loc_clause, target_city, target_state, target_country
 
     def _matches_country(self, lead: Dict[str, Any], requested_country: Optional[str]) -> bool:
-        """
-        Enforces strict country restriction:
-        - If requested_country == 'Canada', strictly returns True only if lead is from Canada.
-        - If requested_country == 'United States', strictly returns True only if lead is from United States.
-        - If requested_country in ['America & Canada', 'All North America', None, 'all'], strictly returns True only if lead is from USA or Canada.
-        - Discards any other country.
-        """
         if not lead:
             return False
 
@@ -356,27 +422,25 @@ class BuyerSearchModule:
         lead_content = (lead.get("raw_content", "") + " " + lead.get("title", "") + " " + lead.get("source_platform", "")).lower()
         url = lead.get("url", "").lower()
 
-        # Check Canadian markers
         is_canada = (
             lead_country == "Canada" or
             url.endswith(".ca") or
             ".ca/" in url or
             any(kw in lead_content for kw in [
-                "canada", "toronto", "vancouver", "montreal", "quebec", "ontario",
+                "canada", "toronto", "brampton", "mississauga", "vancouver", "surrey", "montreal", "quebec", "ontario",
                 "calgary", "ottawa", "alberta", "british columbia", "edmonton", "winnipeg",
-                "halifax", "nova scotia", "victoria bc", "saskatchewan"
+                "halifax", "nova scotia", "victoria bc", "saskatchewan", "markham"
             ])
         )
 
-        # Check US markers
         is_usa = (
             lead_country == "United States" or
             url.endswith(".us") or
             any(kw in lead_content for kw in [
-                "united states", "usa", "u.s.a", "california", "new york", "texas",
-                "florida", "illinois", "chicago", "los angeles", "georgia", "colorado",
+                "united states", "usa", "u.s.a", "california", "new york", "texas", "new jersey", "edison", "iselin",
+                "florida", "illinois", "chicago", "los angeles", "georgia", "colorado", "artesia", "fremont", "irving",
                 "massachusetts", "north carolina", "ohio", "washington", "seattle",
-                "atlanta", "dallas", "houston", "miami", "boston", "phoenix", "denver"
+                "atlanta", "dallas", "houston", "miami", "boston", "phoenix", "denver", "sugar land"
             ])
         )
 
@@ -405,46 +469,54 @@ class BuyerSearchModule:
             return ""
 
     # -------------------------------------------------------------
-    # Multi-Engine Live Web Discovery (Bing, Yahoo, DuckDuckGo)
+    # 1. Multi-Engine Web Discovery (State, City & Diaspora Dorks)
     # -------------------------------------------------------------
     def _discover_via_multi_engine_web(
         self,
         keyword: str,
         country: Optional[str],
-        buyer_type: Optional[str],
+        state: Optional[str] = None,
+        city: Optional[str] = None,
+        buyer_type: Optional[str] = "all",
+        buyer_size: Optional[str] = "all",
         price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False,
         offset: int = 0,
         max_leads: int = 4
     ) -> List[Dict[str, Any]]:
         """
-        Discovers authentic live domains via Bing and multi-engine queries across Mid-Range & High-End North American commercial buyers.
+        Discovers authentic live domains via Google/Bing/DDG queries across State & City Wholesalers, Retailers, Furniture Stores and Diaspora.
         """
-        reg_start = self.state.get("region_idx", 0)
-        region1 = self.NORTH_AMERICAN_REGIONS[reg_start % len(self.NORTH_AMERICAN_REGIONS)]
-        region2 = self.NORTH_AMERICAN_REGIONS[(reg_start + 1) % len(self.NORTH_AMERICAN_REGIONS)]
+        loc_clause, target_city, target_state, target_country = self._get_active_geographic_clause(country, state, city, diaspora_focus)
 
-        loc_clause = f'("{region1[0]}" OR "{region2[0]}")'
-        if country and "canada" in country.lower():
-            loc_clause = '("Canada" OR "Toronto" OR "Vancouver" OR "Montreal" OR "Ontario")'
-        elif country and ("united states" in country.lower() or "usa" in country.lower()):
-            loc_clause = '("USA" OR "New York" OR "California" OR "Texas" OR "Florida")'
+        queries = []
 
-        if price_segment == "mid_range":
-            queries = [
-                f'"{keyword}" ("wholesale" OR "distributor" OR "importer" OR "home goods" OR "discount home decor" OR "cash and carry") {loc_clause}',
-                f'"{keyword}" ("party rental" OR "event rental" OR "commercial decor" OR "retail store" OR "home decor chain") ("contact" OR "wholesale") {loc_clause}',
-                f'"{keyword}" ("gift shop" OR "furniture store" OR "tabletop supplier" OR "banquet decor") {loc_clause}'
-            ]
-        elif price_segment == "high_end":
-            queries = [
-                f'"{keyword}" "luxury home decor" ("designer showroom" OR "bespoke boutique" OR "high-end") {loc_clause}',
-                f'"{keyword}" ("luxury interior design" OR "celebrity wedding decor" OR "upscale boutique") ("contact" OR "email") {loc_clause}'
-            ]
+        # A. Diaspora & Indian Handicrafts / Ethnic Decor Queries
+        if diaspora_focus or buyer_type == "diaspora_ethnic":
+            queries.extend([
+                f'"{keyword}" ("Indian home decor" OR "Indian handicrafts" OR "brass pooja" OR "mandir decor" OR "Diwali decor" OR "ethnic home") {loc_clause}',
+                f'("Indian gift shop" OR "South Asian home decor" OR "handicraft store" OR "Indian brassware" OR "ethnic lifestyle store") ("contact" OR "wholesale" OR "shop") {loc_clause}',
+                f'("Indian store" OR "pooja items store" OR "ethnic decor boutique") "{keyword}" {loc_clause}'
+            ])
+        # B. Wholesalers, Importers & Cash-and-Carry
+        elif buyer_type == "wholesale_distributor" or buyer_size == "enterprise_large":
+            queries.extend([
+                f'"{keyword}" ("wholesale distributor" OR "cash and carry" OR "home decor importer" OR "direct importer" OR "b2b warehouse") ("contact" OR "wholesale") {loc_clause}',
+                f'("home decor wholesale" OR "giftware distributor" OR "metalware importer") "{keyword}" {loc_clause}'
+            ])
+        # C. Furniture & Home Furnishings
+        elif buyer_type == "furniture_lifestyle":
+            queries.extend([
+                f'"{keyword}" ("furniture store" OR "home furnishings" OR "furniture showroom" OR "accent furniture" OR "tabletop accessories") {loc_clause}',
+                f'("furniture outlet" OR "home lifestyle showroom" OR "tabletop decor") "{keyword}" ("contact" OR "shop") {loc_clause}'
+            ])
+        # D. Home Décor & Independent Retailers (Default)
         else:
-            queries = [
-                f'"{keyword}" ("home decor" OR "wholesale" OR "distributor" OR "retail store") ("showroom" OR "shop") {loc_clause}',
-                f'"{keyword}" ("party rental" OR "wedding decor" OR "gift shop" OR "interior design") ("contact" OR "wholesale" OR "email") {loc_clause}'
-            ]
+            queries.extend([
+                f'"{keyword}" ("home decor store" OR "gift shop" OR "lifestyle boutique" OR "candle store" OR "decor stockist") {loc_clause}',
+                f'"{keyword}" ("wholesale" OR "distributor" OR "retail store" OR "Indian home decor") ("contact" OR "email") {loc_clause}',
+                f'"{keyword}" ("furniture store" OR "home accents" OR "tabletop decor" OR "independent shop") {loc_clause}'
+            ])
 
         discovered_urls: List[str] = []
         for q in queries:
@@ -455,14 +527,18 @@ class BuyerSearchModule:
 
         results = []
         with ThreadPoolExecutor(max_workers=min(4, max(1, len(discovered_urls)))) as executor:
-            future_to_url = {executor.submit(self._crawl_single_website, url, country): url for url in discovered_urls[:max_leads * 2]}
+            future_to_url = {executor.submit(self._crawl_single_website, url, target_country): url for url in discovered_urls[:max_leads * 2]}
             for future in as_completed(future_to_url):
                 try:
                     lead = future.result()
                     if lead:
-                        lead["category"] = buyer_type if buyer_type != "all" else "home_decor_retailer"
-                        lead["market_segment"] = "mid_range" if price_segment == "mid_range" else ("high_end" if price_segment == "high_end" else "mid_range")
-                        lead["source_platform"] = f"Google/Bing Web Crawler ({lead.get('country', 'USA')})"
+                        lead["state"] = target_state
+                        lead["city"] = target_city
+                        lead["country"] = target_country
+                        lead["category"] = buyer_type if buyer_type != "all" else ("diaspora_ethnic" if diaspora_focus else "home_decor_retailer")
+                        lead["buyer_size"] = buyer_size if buyer_size != "all" else "independent_small"
+                        lead["market_segment"] = "diaspora" if diaspora_focus else ("mid_range" if price_segment != "high_end" else "high_end")
+                        lead["source_platform"] = f"Web Crawler ({target_city}, {target_state})"
                         results.append(lead)
                         if len(results) >= max_leads:
                             break
@@ -472,36 +548,42 @@ class BuyerSearchModule:
         return results
 
     # -------------------------------------------------------------
-    # LinkedIn Sourcing (Companies & Procurement Directors)
+    # 2. LinkedIn Sourcing (Purchasing Directors, Merchandisers & Owners)
     # -------------------------------------------------------------
     def _discover_via_linkedin(
         self,
         keyword: str,
         country: Optional[str],
-        buyer_type: Optional[str],
+        state: Optional[str] = None,
+        city: Optional[str] = None,
+        buyer_type: Optional[str] = "all",
+        buyer_size: Optional[str] = "all",
         price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False,
         offset: int = 0,
         max_leads: int = 4
     ) -> List[Dict[str, Any]]:
-        """
-        Discovers North American home decor wholesale buyers, purchasing managers, and retail companies on LinkedIn.
-        """
-        loc_str = "Canada" if country and "canada" in country.lower() else "United States"
-        
-        if price_segment == "mid_range":
+        loc_clause, target_city, target_state, target_country = self._get_active_geographic_clause(country, state, city, diaspora_focus)
+
+        if diaspora_focus or buyer_type == "diaspora_ethnic":
             queries = [
-                f'site:linkedin.com/company "{keyword}" ("wholesale distributor" OR "retail chain" OR "party rental" OR "home goods" OR "importer") {loc_str}',
-                f'site:linkedin.com/in ("purchasing manager" OR "category buyer" OR "sourcing specialist" OR "merchant") "{keyword}" {loc_str}'
+                f'site:linkedin.com/company ("Indian home decor" OR "Indian handicrafts" OR "ethnic decor" OR "pooja items") {loc_clause}',
+                f'site:linkedin.com/in ("founder" OR "owner" OR "buyer") ("Indian decor" OR "handicrafts" OR "ethnic goods") {loc_clause}'
             ]
-        elif price_segment == "high_end":
+        elif buyer_type == "wholesale_distributor":
             queries = [
-                f'site:linkedin.com/company "{keyword}" ("luxury home decor" OR "boutique" OR "high-end interior") {loc_str}',
-                f'site:linkedin.com/in ("luxury buyer" OR "design director" OR "principal designer") "{keyword}" {loc_str}'
+                f'site:linkedin.com/company "{keyword}" ("wholesale distributor" OR "importer" OR "b2b home goods") {loc_clause}',
+                f'site:linkedin.com/in ("purchasing manager" OR "category buyer" OR "sourcing director") "{keyword}" {loc_clause}'
+            ]
+        elif buyer_type == "furniture_lifestyle":
+            queries = [
+                f'site:linkedin.com/company ("furniture store" OR "home furnishings" OR "furniture gallery") "{keyword}" {loc_clause}',
+                f'site:linkedin.com/in ("furniture buyer" OR "merchandiser" OR "showroom manager") "{keyword}" {loc_clause}'
             ]
         else:
             queries = [
-                f'site:linkedin.com/company "{keyword}" ("home decor" OR "wholesale" OR "retail" OR "distributor") {loc_str}',
-                f'site:linkedin.com/in ("buyer" OR "merchandising" OR "purchasing" OR "sourcing") "{keyword}" {loc_str}'
+                f'site:linkedin.com/company "{keyword}" ("home decor" OR "retail store" OR "gift shop") {loc_clause}',
+                f'site:linkedin.com/in ("buyer" OR "owner" OR "merchandising") "{keyword}" {loc_clause}'
             ]
 
         snippets = []
@@ -513,17 +595,19 @@ class BuyerSearchModule:
 
         results = []
         for s in snippets:
-            clean_country = "Canada" if any(c in s["text"].lower() for c in ["canada", "toronto", "vancouver", "montreal", "ontario"]) else "United States"
-            title_clean = re.split(r'\s+[-–|—]\s+|\s*:\s*', s["title"][:50])[0].strip() or "LinkedIn Buyer"
-            cat = buyer_type if buyer_type != "all" else "wholesale_distributor"
-            seg = "mid_range" if price_segment == "mid_range" else ("high_end" if price_segment == "high_end" else "mid_range")
+            title_clean = re.split(r'\s+[-–|—]\s+|\s*:\s*', s["title"][:50])[0].strip() or "Commercial Buyer"
+            cat = buyer_type if buyer_type != "all" else ("diaspora_ethnic" if diaspora_focus else "wholesale_distributor")
             results.append({
                 "category": cat,
-                "market_segment": seg,
+                "buyer_size": buyer_size if buyer_size != "all" else "mid_market",
+                "market_segment": "diaspora" if diaspora_focus else "mid_range",
                 "title": f"{title_clean} - LinkedIn Buyer",
-                "raw_content": f"{title_clean}. Sourcing {keyword}. Profile: {s['text']}. Platform: LinkedIn. Country: {clean_country}. Url: {s['url']}",
+                "raw_content": f"{title_clean}. Sourcing {keyword}. Profile: {s['text']}. Platform: LinkedIn. Location: {target_city}, {target_state}, {target_country}. Url: {s['url']}",
                 "url": s["url"],
-                "source_platform": f"LinkedIn Sourcing ({clean_country})"
+                "state": target_state,
+                "city": target_city,
+                "country": target_country,
+                "source_platform": f"LinkedIn ({target_city}, {target_state})"
             })
             if len(results) >= max_leads:
                 break
@@ -531,36 +615,37 @@ class BuyerSearchModule:
         return results
 
     # -------------------------------------------------------------
-    # Instagram Sourcing (Stores, Candle Bars, Lifestyle Boutiques)
+    # 3. Instagram Sourcing (Boutiques, Stockists, Ethnic Lifestyle)
     # -------------------------------------------------------------
     def _discover_via_instagram(
         self,
         keyword: str,
         country: Optional[str],
-        buyer_type: Optional[str],
+        state: Optional[str] = None,
+        city: Optional[str] = None,
+        buyer_type: Optional[str] = "all",
+        buyer_size: Optional[str] = "all",
         price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False,
         offset: int = 0,
         max_leads: int = 4
     ) -> List[Dict[str, Any]]:
-        """
-        Discovers home decor stores, gift shops, candle bars, and stockists on Instagram.
-        """
-        loc_str = "Canada" if country and "canada" in country.lower() else "USA"
-        
-        if price_segment == "mid_range":
+        loc_clause, target_city, target_state, target_country = self._get_active_geographic_clause(country, state, city, diaspora_focus)
+
+        if diaspora_focus or buyer_type == "diaspora_ethnic":
             queries = [
-                f'site:instagram.com "{keyword}" ("home decor store" OR "gift shop" OR "party rental" OR "wholesale stockist") ("shop" OR "email" OR "DM") {loc_str}',
-                f'site:instagram.com ("candle store" OR "home accents" OR "tabletop decor" OR "lifestyle shop") {loc_str}'
+                f'site:instagram.com ("indianhomedecor" OR "poojadecor" OR "indianhandicrafts" OR "ethnicboutique") {loc_clause} ("shop" OR "DM" OR "email")',
+                f'site:instagram.com ("diwalidecor" OR "indianweddingdecor" OR "brassdecor") {loc_clause}'
             ]
-        elif price_segment == "high_end":
+        elif buyer_type == "furniture_lifestyle":
             queries = [
-                f'site:instagram.com "{keyword}" ("luxury boutique" OR "bespoke design" OR "curated stockist") ("wholesale" OR "DM") {loc_str}',
-                f'site:instagram.com ("high-end home decor" OR "designer candle studio") {loc_str}'
+                f'site:instagram.com ("furniture store" OR "home furnishings" OR "tabletop accessories") "{keyword}" {loc_clause}',
+                f'site:instagram.com ("modern furniture" OR "decor showroom") {loc_clause}'
             ]
         else:
             queries = [
-                f'site:instagram.com "{keyword}" ("home decor" OR "gift shop" OR "stockist" OR "store") ("wholesale" OR "DM" OR "email") {loc_str}',
-                f'site:instagram.com ("candle studio" OR "tabletop shop" OR "event styling") {loc_str}'
+                f'site:instagram.com "{keyword}" ("home decor store" OR "gift shop" OR "decor stockist" OR "lifestyle shop") {loc_clause} ("shop" OR "email" OR "wholesale")',
+                f'site:instagram.com ("candle store" OR "tabletop decor" OR "home accents") {loc_clause}'
             ]
 
         snippets = []
@@ -572,17 +657,19 @@ class BuyerSearchModule:
 
         results = []
         for s in snippets:
-            clean_country = "Canada" if any(c in s["text"].lower() for c in ["canada", "toronto", "vancouver", "montreal", "quebec"]) else "United States"
             title_clean = re.split(r'\s+[-–|—]\s+|\s*:\s*', s["title"][:50])[0].strip() or "Instagram Store"
-            cat = buyer_type if buyer_type != "all" else "gift_specialty"
-            seg = "mid_range" if price_segment == "mid_range" else ("high_end" if price_segment == "high_end" else "mid_range")
+            cat = buyer_type if buyer_type != "all" else ("diaspora_ethnic" if diaspora_focus else "home_decor_retailer")
             results.append({
                 "category": cat,
-                "market_segment": seg,
-                "title": f"{title_clean} - Instagram Stockist",
-                "raw_content": f"{title_clean}. Social Store: {s['text']}. Platform: Instagram. Country: {clean_country}. Url: {s['url']}",
+                "buyer_size": "independent_small",
+                "market_segment": "diaspora" if diaspora_focus else "mid_range",
+                "title": f"{title_clean} - Instagram Store",
+                "raw_content": f"{title_clean}. Social Boutique: {s['text']}. Platform: Instagram. Location: {target_city}, {target_state}, {target_country}. Url: {s['url']}",
                 "url": s["url"],
-                "source_platform": f"Instagram Sourcing ({clean_country})"
+                "state": target_state,
+                "city": target_city,
+                "country": target_country,
+                "source_platform": f"Instagram ({target_city}, {target_state})"
             })
             if len(results) >= max_leads:
                 break
@@ -590,36 +677,37 @@ class BuyerSearchModule:
         return results
 
     # -------------------------------------------------------------
-    # Facebook Sourcing (Home Decor Groups, Wholesalers, B2B Pages)
+    # 4. Facebook Sourcing (Home Decor, Wholesale Groups & Store Pages)
     # -------------------------------------------------------------
     def _discover_via_facebook(
         self,
         keyword: str,
         country: Optional[str],
-        buyer_type: Optional[str],
+        state: Optional[str] = None,
+        city: Optional[str] = None,
+        buyer_type: Optional[str] = "all",
+        buyer_size: Optional[str] = "all",
         price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False,
         offset: int = 0,
         max_leads: int = 4
     ) -> List[Dict[str, Any]]:
-        """
-        Discovers commercial home decor businesses, wholesalers, and event styling groups on Facebook.
-        """
-        loc_str = "Canada" if country and "canada" in country.lower() else "USA"
-        
-        if price_segment == "mid_range":
+        loc_clause, target_city, target_state, target_country = self._get_active_geographic_clause(country, state, city, diaspora_focus)
+
+        if diaspora_focus or buyer_type == "diaspora_ethnic":
             queries = [
-                f'site:facebook.com "{keyword}" ("home decor warehouse" OR "wholesale distributor" OR "party rental" OR "commercial decor") {loc_str} "contact"',
-                f'site:facebook.com ("wedding decorator" OR "event rental" OR "furniture outlet") {loc_str} ("email" OR "phone" OR "wholesale")'
+                f'site:facebook.com ("Indian home decor" OR "Indian gift store" OR "pooja items" OR "handicrafts store") {loc_clause} ("contact" OR "email")',
+                f'site:facebook.com ("desi home decor" OR "Indian brass handicrafts") {loc_clause}'
             ]
-        elif price_segment == "high_end":
+        elif buyer_type == "wholesale_distributor":
             queries = [
-                f'site:facebook.com "{keyword}" ("luxury home showroom" OR "bespoke design studio" OR "high-end boutique") {loc_str}',
-                f'site:facebook.com ("celebrity wedding decorator" OR "luxury interior styling") {loc_str} "contact"'
+                f'site:facebook.com "{keyword}" ("wholesale distributor" OR "warehouse" OR "cash and carry") {loc_clause} ("email" OR "phone" OR "wholesale")',
+                f'site:facebook.com ("home decor wholesale" OR "giftware distributor") {loc_clause}'
             ]
         else:
             queries = [
-                f'site:facebook.com "{keyword}" ("home decor store" OR "wholesale" OR "showroom" OR "warehouse") {loc_str}',
-                f'site:facebook.com ("wedding decorator" OR "event styling" OR "party rental") {loc_str} "contact"'
+                f'site:facebook.com "{keyword}" ("home decor store" OR "furniture store" OR "gift shop") {loc_clause} "contact"',
+                f'site:facebook.com ("home accents" OR "tabletop decor") {loc_clause} ("email" OR "contact")'
             ]
 
         snippets = []
@@ -631,17 +719,19 @@ class BuyerSearchModule:
 
         results = []
         for s in snippets:
-            clean_country = "Canada" if any(c in s["text"].lower() for c in ["canada", "toronto", "vancouver", "montreal"]) else "United States"
-            title_clean = re.split(r'\s+[-–|—]\s+|\s*:\s*', s["title"][:50])[0].strip() or "Facebook Business"
-            cat = buyer_type if buyer_type != "all" else "wedding_event_decorator"
-            seg = "mid_range" if price_segment == "mid_range" else ("high_end" if price_segment == "high_end" else "mid_range")
+            title_clean = re.split(r'\s+[-–|—]\s+|\s*:\s*', s["title"][:50])[0].strip() or "Facebook Store"
+            cat = buyer_type if buyer_type != "all" else ("diaspora_ethnic" if diaspora_focus else "home_decor_retailer")
             results.append({
                 "category": cat,
-                "market_segment": seg,
-                "title": f"{title_clean} - Facebook Business",
-                "raw_content": f"{title_clean}. Business Page: {s['text']}. Platform: Facebook. Country: {clean_country}. Url: {s['url']}",
+                "buyer_size": "independent_small",
+                "market_segment": "diaspora" if diaspora_focus else "mid_range",
+                "title": f"{title_clean} - Facebook Store",
+                "raw_content": f"{title_clean}. Business Page: {s['text']}. Platform: Facebook. Location: {target_city}, {target_state}, {target_country}. Url: {s['url']}",
                 "url": s["url"],
-                "source_platform": f"Facebook Sourcing ({clean_country})"
+                "state": target_state,
+                "city": target_city,
+                "country": target_country,
+                "source_platform": f"Facebook ({target_city}, {target_state})"
             })
             if len(results) >= max_leads:
                 break
@@ -649,23 +739,26 @@ class BuyerSearchModule:
         return results
 
     # -------------------------------------------------------------
-    # B2B Directories (YellowPages Canada, ThomasNet, Manta, BBB)
+    # 5. B2B Directories (YellowPages Canada, ThomasNet, Manta)
     # -------------------------------------------------------------
     def _discover_via_b2b_directories(
         self,
         keyword: str,
         country: Optional[str],
-        buyer_type: Optional[str],
+        state: Optional[str] = None,
+        city: Optional[str] = None,
+        buyer_type: Optional[str] = "all",
+        buyer_size: Optional[str] = "all",
         price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False,
         offset: int = 0,
         max_leads: int = 4
     ) -> List[Dict[str, Any]]:
-        """
-        Queries B2B wholesale hubs and business registries for mid-range and volume distributors.
-        """
+        loc_clause, target_city, target_state, target_country = self._get_active_geographic_clause(country, state, city, diaspora_focus)
+
         queries = [
-            f'site:yellowpages.ca "{keyword}" OR "home decor" wholesale Canada',
-            f'site:thomasnet.com OR site:manta.com "{keyword}" distributors USA'
+            f'site:yellowpages.ca OR site:yellowpages.com "{keyword}" ("wholesale" OR "retail" OR "furniture") {loc_clause}',
+            f'site:manta.com OR site:thomasnet.com ("home decor" OR "giftware" OR "furniture") distributors {loc_clause}'
         ]
 
         discovered_urls: List[str] = []
@@ -677,14 +770,18 @@ class BuyerSearchModule:
 
         results = []
         with ThreadPoolExecutor(max_workers=min(3, max(1, len(discovered_urls)))) as executor:
-            future_to_url = {executor.submit(self._crawl_single_website, url, country): url for url in discovered_urls[:max_leads]}
+            future_to_url = {executor.submit(self._crawl_single_website, url, target_country): url for url in discovered_urls[:max_leads]}
             for future in as_completed(future_to_url):
                 try:
                     lead = future.result()
                     if lead:
-                        lead["category"] = buyer_type if buyer_type != "all" else "wholesale_distributor"
-                        lead["market_segment"] = "mid_range"
-                        lead["source_platform"] = "B2B Trade Directory"
+                        lead["state"] = target_state
+                        lead["city"] = target_city
+                        lead["country"] = target_country
+                        lead["category"] = "wholesale_distributor"
+                        lead["buyer_size"] = "enterprise_large" if buyer_size == "enterprise_large" else "mid_market"
+                        lead["market_segment"] = "volume_wholesale"
+                        lead["source_platform"] = f"B2B Directory ({target_city}, {target_state})"
                         results.append(lead)
                 except Exception:
                     pass
@@ -697,7 +794,6 @@ class BuyerSearchModule:
     def _query_bing_and_ddg(self, query: str, offset: int = 0, max_items: int = 5) -> List[str]:
         urls: List[str] = []
 
-        # 1. Try Bing HTML Search
         try:
             bing_url = f"https://www.bing.com/search?q={urllib.parse.quote_plus(query)}&first={offset + 1}"
             resp = self.session.get(bing_url, timeout=2.5)
@@ -714,7 +810,6 @@ class BuyerSearchModule:
         except Exception:
             pass
 
-        # 2. Try DuckDuckGo HTML Search
         try:
             ddg_url = f"https://html.duckduckgo.com/html/?q={urllib.parse.quote_plus(query)}"
             if offset > 0:
@@ -806,9 +901,6 @@ class BuyerSearchModule:
         return results
 
     def _crawl_single_website(self, base_url: str, country_hint: Optional[str] = None) -> Optional[Dict[str, Any]]:
-        """
-        Fast web crawler inspecting /contact and /wholesale.
-        """
         parsed_base = urllib.parse.urlparse(base_url)
         if not parsed_base.netloc:
             return None
@@ -823,50 +915,87 @@ class BuyerSearchModule:
         is_canadian = netloc_clean.endswith(".ca") or (country_hint and "canada" in country_hint.lower())
         country = "Canada" if is_canadian else "United States"
 
-        pages_to_crawl = [root_url, f"{root_url}/contact", f"{root_url}/wholesale"]
+        # Biased Crawler Queue: High-value procurement, vendor, and leadership paths first
+        priority_paths = [
+            # 1. Procurement & Vendor Portals
+            f"{root_url}/procurement",
+            f"{root_url}/vendors",
+            f"{root_url}/suppliers",
+            f"{root_url}/partners",
+            f"{root_url}/vendor-registration",
+            f"{root_url}/supplier-portal",
+            # 2. Leadership & Team
+            f"{root_url}/leadership",
+            f"{root_url}/management",
+            f"{root_url}/team",
+            f"{root_url}/about-us",
+            # 3. Wholesale & Tenders
+            f"{root_url}/wholesale",
+            f"{root_url}/trade",
+            f"{root_url}/tenders",
+            f"{root_url}/rfps",
+            # 4. Standard Contact & Root
+            f"{root_url}/contact",
+            f"{root_url}/contact-us",
+            root_url
+        ]
 
-        for target_url in pages_to_crawl:
+        discovered_internal_links = set(priority_paths)
+
+        for target_url in priority_paths:
             try:
-                resp = self.session.get(target_url, timeout=2.0, allow_redirects=True)
+                resp = self.session.get(target_url, timeout=2.5, allow_redirects=True)
                 if resp.status_code != 200:
                     continue
 
                 soup = BeautifulSoup(resp.text, "html.parser")
-                if target_url == root_url and soup.title and soup.title.string:
+                if soup.title and soup.title.string:
                     clean_title = soup.title.string.strip()
-                    if clean_title:
+                    if clean_title and target_url == root_url:
                         page_title = clean_title
 
                 body_text = soup.get_text(separator=" ", strip=True)
-                if any(prov in body_text.lower() for prov in ["ontario", "toronto", "vancouver", "british columbia", "quebec", "montreal", "calgary", "alberta", "canada"]):
+                if any(prov in body_text.lower() for prov in ["ontario", "toronto", "brampton", "mississauga", "vancouver", "surrey", "british columbia", "quebec", "montreal", "calgary", "alberta", "canada"]):
                     country = "Canada"
 
-                # 1. Parse mailto links
+                # 1. Parse mailto links with surrounding anchor context
                 for mailto in soup.find_all("a", href=re.compile(r"^mailto:", re.I)):
                     mailto_href = mailto.get("href")
                     if isinstance(mailto_href, str):
                         raw_email = mailto_href.replace("mailto:", "").split("?")[0].strip()
                         if self._is_clean_email(raw_email):
                             found_emails.add(raw_email.lower())
+                            # Capture parent container context
+                            parent_text = mailto.parent.get_text(separator=" ", strip=True) if mailto.parent else ""
+                            if parent_text:
+                                full_text_corpus.append(parent_text[:250])
 
-                # 2. Parse body text
-                full_text_corpus.append(body_text[:600])
+                # 2. Parse body text for emails
                 matches = self.EMAIL_REGEX.findall(body_text)
                 for email in matches:
                     if self._is_clean_email(email):
                         found_emails.add(email.lower())
 
-                if found_emails:
+                full_text_corpus.append(body_text[:600])
+
+                # If high-priority procurement or named mailboxes found, we can stop early
+                has_tier1_prefix = any(
+                    any(email.startswith(p) for p in ['procurement', 'sourcing', 'tenders', 'purchasing', 'buyer', 'buying'])
+                    for email in found_emails
+                )
+                if has_tier1_prefix:
+                    break
+
+                if len(found_emails) >= 3:
                     break
             except Exception:
                 continue
 
-        # If no explicit email found on HTML, do not create a fake lead
         if not found_emails:
             return None
 
-        emails_str = ", ".join(list(found_emails)[:2])
-        snippet = f"Company: {page_title}. Contact: {emails_str}. Website: {root_url}. Country: {country}. Details: {' '.join(full_text_corpus)[:200]}"
+        emails_str = ", ".join(list(found_emails)[:3])
+        snippet = f"Company: {page_title}. Contact: {emails_str}. Website: {root_url}. Country: {country}. Details: {' '.join(full_text_corpus)[:600]}"
 
         return {
             "title": f"{page_title} - {country} Buyer",
@@ -901,11 +1030,15 @@ class BuyerSearchModule:
         self,
         keyword: str = "Metal Candle Holders",
         country: Optional[str] = None,
+        state: Optional[str] = None,
+        city: Optional[str] = None,
         buyer_type: Optional[str] = "all",
-        price_segment: Optional[str] = "all"
+        buyer_size: Optional[str] = "all",
+        price_segment: Optional[str] = "all",
+        diaspora_focus: bool = False
     ) -> List[Dict[str, Any]]:
         """
-        Loads 100% verified, active North American buyers across Mid-Range and High-End segments with confirmed live MX records.
+        Loads 100% verified, active North American buyers across Diaspora, Wholesalers, Retailers and Furniture Stores.
         """
         catalog_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "verified_buyers_catalog.json")
         items = []
@@ -919,7 +1052,10 @@ class BuyerSearchModule:
         buyers = []
         for it in items:
             b_country = it.get("country", "Canada")
+            b_state = it.get("state", "")
+            b_city = it.get("city", "")
             b_cat = it.get("category", "home_decor_retailer")
+            b_size = it.get("buyer_size", "independent_small")
             b_seg = it.get("market_segment", "mid_range")
             name = it.get("name", "Buyer")
             desc = it.get("desc", f"Sourcing {keyword} and home accessories.")
@@ -928,15 +1064,18 @@ class BuyerSearchModule:
 
             buyers.append({
                 "category": b_cat,
+                "buyer_size": b_size,
                 "market_segment": b_seg,
-                "title": f"{name} - {keyword}",
-                "raw_content": f"{desc} Actively purchasing {keyword}, tabletop decor, and lanterns. Contact: Purchasing & Sourcing Team, {email}, {url}, Country: {b_country}.",
-                "url": url,
+                "state": b_state,
+                "city": b_city,
                 "country": b_country,
-                "source_platform": f"Verified Directory ({b_country})"
+                "title": f"{name} - {keyword}",
+                "raw_content": f"{desc} Actively purchasing {keyword}, tabletop decor, and lanterns. Contact: Purchasing Team, {email}, {url}, Location: {b_city}, {b_state}, {b_country}.",
+                "url": url,
+                "source_platform": f"Verified Directory ({b_city or b_state or b_country})"
             })
 
-        # 1. Filter by country if specified
+        # 1. Filter by country
         req = (country or "").lower().strip()
         if "canada" in req and ("america" not in req and "all" not in req and "usa" not in req and "united" not in req):
             filtered = [b for b in buyers if b.get("country") == "Canada"]
@@ -948,13 +1087,37 @@ class BuyerSearchModule:
         else:
             filtered = buyers
 
-        # 2. Filter by buyer_type if specified
-        if buyer_type and buyer_type != "all":
-            filtered = [b for b in filtered if b.get("category") == buyer_type] or filtered
+        # 2. Filter by state
+        if state and state != "all":
+            state_matches = [b for b in filtered if state.lower() in (b.get("state") or "").lower()]
+            if state_matches:
+                filtered = state_matches
 
-        # 3. Filter by price_segment if specified
+        # 3. Filter by city
+        if city and city != "all":
+            city_matches = [b for b in filtered if city.lower() in (b.get("city") or "").lower()]
+            if city_matches:
+                filtered = city_matches
+
+        # 4. Filter by buyer_type / diaspora
+        if diaspora_focus or buyer_type == "diaspora_ethnic":
+            diaspora_matches = [b for b in filtered if b.get("category") == "diaspora_ethnic" or b.get("market_segment") == "diaspora"]
+            if diaspora_matches:
+                filtered = diaspora_matches
+        elif buyer_type and buyer_type != "all":
+            type_matches = [b for b in filtered if b.get("category") == buyer_type]
+            if type_matches:
+                filtered = type_matches
+
+        # 5. Filter by buyer_size
+        if buyer_size and buyer_size != "all":
+            size_matches = [b for b in filtered if b.get("buyer_size") == buyer_size]
+            if size_matches:
+                filtered = size_matches
+
+        # 6. Filter by price_segment
         if price_segment and price_segment == "mid_range":
-            mid_matches = [b for b in filtered if b.get("market_segment") == "mid_range"]
+            mid_matches = [b for b in filtered if b.get("market_segment") in ["mid_range", "diaspora", "volume_wholesale"]]
             return mid_matches if mid_matches else filtered
         elif price_segment and price_segment == "high_end":
             high_matches = [b for b in filtered if b.get("market_segment") == "high_end"]

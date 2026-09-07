@@ -599,12 +599,25 @@ class LoggingModule:
         yesterday_ist_date = today_ist_date - datetime.timedelta(days=1)
 
         def get_lead_ist_date(lead):
-            ts = lead.get("last_contacted_at")
+            ts = lead.get("last_contacted_at") or lead.get("date") or lead.get("discovered_at")
             if not ts:
                 return None
             try:
-                dt = datetime.datetime.fromisoformat(ts.replace("Z", "+00:00"))
-                return dt.astimezone(ist_offset).date()
+                if isinstance(ts, (datetime.datetime, datetime.date)):
+                    return ts if isinstance(ts, datetime.date) else ts.date()
+                s = str(ts).strip()
+                if "T" in s or "Z" in s:
+                    dt = datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
+                    return dt.astimezone(ist_offset).date()
+                if "/" in s:
+                    parts = s.split("/")
+                    if len(parts) == 3:
+                        return datetime.date(int(parts[2]), int(parts[1]), int(parts[0]))
+                if "-" in s:
+                    parts = s.split("-")
+                    if len(parts) == 3 and len(parts[0]) == 4:
+                        return datetime.date(int(parts[0]), int(parts[1]), int(parts[2]))
+                return None
             except Exception:
                 return None
 

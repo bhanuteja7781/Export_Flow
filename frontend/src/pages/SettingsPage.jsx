@@ -193,7 +193,7 @@ export default function SettingsPage({ initialSettings = {}, onSaveSettings }) {
               <input
                 type="text"
                 className="input-field"
-                placeholder="e.g. Metal Candle Holders"
+                placeholder="e.g. yoga studio, singing bowls, candle holders..."
                 value={searchKeyword}
                 onChange={(e) => setSearchKeyword(e.target.value)}
               />

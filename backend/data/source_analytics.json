@@ -1,0 +1,77 @@
+{
+  "sources": {
+    "search_engine": {
+      "name": "Search Engines (Web)",
+      "discovered": 44,
+      "leads": 30,
+      "qualified": 16
+    },
+    "linkedin": {
+      "name": "LinkedIn Business",
+      "discovered": 38,
+      "leads": 32,
+      "qualified": 24
+    },
+    "instagram": {
+      "name": "Instagram Boutiques",
+      "discovered": 45,
+      "leads": 36,
+      "qualified": 22
+    },
+    "facebook": {
+      "name": "Facebook Showrooms",
+      "discovered": 29,
+      "leads": 21,
+      "qualified": 12
+    },
+    "pinterest": {
+      "name": "Pinterest Visual Brands",
+      "discovered": 22,
+      "leads": 18,
+      "qualified": 9
+    },
+    "youtube": {
+      "name": "YouTube Showrooms",
+      "discovered": 16,
+      "leads": 12,
+      "qualified": 6
+    },
+    "directory": {
+      "name": "Business Directories",
+      "discovered": 35,
+      "leads": 26,
+      "qualified": 12
+    },
+    "wholesale": {
+      "name": "Wholesale Platforms",
+      "discovered": 40,
+      "leads": 36,
+      "qualified": 28
+    },
+    "marketplace": {
+      "name": "Public Marketplaces",
+      "discovered": 24,
+      "leads": 18,
+      "qualified": 10
+    },
+    "industry": {
+      "name": "Industry Associations",
+      "discovered": 20,
+      "leads": 17,
+      "qualified": 13
+    },
+    "direct_website": {
+      "name": "Official Websites",
+      "discovered": 25,
+      "leads": 24,
+      "qualified": 21
+    },
+    "verified_registry": {
+      "name": "Verified Buyer Registry",
+      "discovered": 72,
+      "leads": 72,
+      "qualified": 60
+    }
+  },
+  "last_updated": "2026-09-07T10:54:40.751996+00:00"
+}

@@ -179,15 +179,20 @@ def _sync_inbox_if_needed():
 def get_leads():
     _sync_inbox_if_needed()
     category = request.args.get("category")
+    buyer_size = request.args.get("buyer_size")
     status = request.args.get("status")
     country_filter = request.args.get("country")
+    state_filter = request.args.get("state")
+    city_filter = request.args.get("city")
     reply_filter = request.args.get("reply_status")
     search_q = request.args.get("q", "").lower()
 
     leads = logger.get_all_leads()
 
     if category and category != "all":
-        leads = [l for l in leads if l.get("category") == category or (category == "wholesale_distributor" and l.get("category") == "business") or (category == "boutique_retailer" and l.get("category") == "individual")]
+        leads = [l for l in leads if l.get("category") == category]
+    if buyer_size and buyer_size != "all":
+        leads = [l for l in leads if l.get("buyer_size") == buyer_size]
     if status and status != "all":
         leads = [l for l in leads if l.get("validation_status") == status]
     if reply_filter and reply_filter != "all":
@@ -199,18 +204,24 @@ def get_leads():
             leads = [l for l in leads if not l.get("last_contacted_at")]
     if country_filter and country_filter != "all":
         if "canada" in country_filter.lower():
-            leads = [l for l in leads if "canada" in l.get("country", "").lower()]
+            leads = [l for l in leads if "canada" in (l.get("country") or "").lower()]
         elif "united states" in country_filter.lower() or "usa" in country_filter.lower():
-            leads = [l for l in leads if "united states" in l.get("country", "").lower() or "usa" in l.get("country", "").lower()]
+            leads = [l for l in leads if "united states" in (l.get("country") or "").lower() or "usa" in (l.get("country") or "").lower()]
+    if state_filter and state_filter != "all":
+        leads = [l for l in leads if state_filter.lower() in (l.get("state") or "").lower()]
+    if city_filter and city_filter != "all":
+        leads = [l for l in leads if city_filter.lower() in (l.get("city") or "").lower()]
     if search_q:
         leads = [
             l for l in leads if
-            search_q in l.get("email", "").lower() or
-            search_q in l.get("buyer_name", "").lower() or
-            search_q in l.get("company_name", "").lower() or
-            search_q in l.get("country", "").lower() or
-            search_q in l.get("source_platform", "").lower() or
-            search_q in l.get("reply_snippet", "").lower()
+            search_q in (l.get("email") or "").lower() or
+            search_q in (l.get("buyer_name") or "").lower() or
+            search_q in (l.get("company_name") or "").lower() or
+            search_q in (l.get("city") or "").lower() or
+            search_q in (l.get("state") or "").lower() or
+            search_q in (l.get("country") or "").lower() or
+            search_q in (l.get("source_platform") or "").lower() or
+            search_q in (l.get("reply_snippet") or "").lower()
         ]
 
     return jsonify({"leads": leads, "count": len(leads)})
@@ -219,21 +230,34 @@ def get_leads():
 @app.route("/api/leads/search", methods=["POST"])
 def search_leads():
     """
-    Triggers Deep Multi-Platform Discovery (LinkedIn, Social Media, Directories, Web Crawling)
-    and guarantees discovering brand new leads by excluding existing database records.
+    Triggers Deep Multi-Platform Discovery across Web, Social Media, Directories,
+    and Marketplaces for ANY product keyword and ANY target location.
     """
     body = request.json or {}
-    keyword = body.get("keyword") or os.getenv("SEARCH_KEYWORD", "Metal Candle Holders")
+    keyword = body.get("keyword") or os.getenv("SEARCH_KEYWORD", "Handcrafted Products")
     sources = body.get("sources")
     raw_limit = body.get("max_results") or body.get("limit") or body.get("maxResults")
     try:
-        max_results = int(raw_limit) if raw_limit is not None else 8
+        max_results = int(raw_limit) if raw_limit is not None else 10
     except (ValueError, TypeError):
-        max_results = 8
+        max_results = 10
     discovery_mode = body.get("discovery_mode") or body.get("source") or "all"
-    country = body.get("country") or "America & Canada"
+    location = body.get("location") or body.get("country") or "America & Canada"
+    country = body.get("country") or location
+    state = body.get("state") or None
+    city = body.get("city") or None
+    preview = bool(body.get("preview", False))
+
+    if location and location.lower() not in ["all", "america & canada", "global", "worldwide"]:
+        parts = [p.strip() for p in location.split(",") if p.strip()]
+        if len(parts) >= 2 and not city and not state:
+            city = parts[0]
+            state = parts[1]
+
     buyer_type = body.get("buyer_type") or "all"
+    buyer_size = body.get("buyer_size") or "all"
     price_segment = body.get("price_segment") or body.get("market_segment") or "all"
+    diaspora_focus = bool(body.get("diaspora_focus") or body.get("diaspora_only") or buyer_type == "diaspora_ethnic")
     target_domains = body.get("target_domains", [])
 
     if isinstance(target_domains, str):
@@ -244,15 +268,19 @@ def search_leads():
     existing_emails = {l.get("email", "").lower() for l in existing_leads if l.get("email")}
     existing_domains = logger.get_all_domains()
 
-    # 1. Deep Multi-Platform Search with database exclusion (Mid-Range & High-End)
+    # 1. Deep Multi-Platform Search with dynamic product keyword and location
     raw_results = searcher.search(
         keyword=keyword,
         sources=sources,
         max_results=max_results,
         discovery_mode=discovery_mode,
         country=country if country != "All" else "America & Canada",
+        state=state if state != "all" else None,
+        city=city if city != "all" else None,
         buyer_type=buyer_type,
+        buyer_size=buyer_size,
         price_segment=price_segment,
+        diaspora_focus=diaspora_focus,
         target_domains=target_domains,
         exclude_emails=existing_emails,
         exclude_domains=existing_domains
@@ -260,19 +288,122 @@ def search_leads():
 
     # 2. Extract & normalize into schema
     normalized_records = extractor.extract_and_normalize(raw_results)[:max_results]
+    for r in normalized_records:
+        r["keyword"] = keyword
+        if location and not r.get("city"):
+            r["city"] = city or location
 
-    # 3. Automatically Classify into 8 B2B categories & Priority Tiers in background
+    # 3. Automatically Classify into B2B commercial categories
     classifier = AIClassificationModule(api_key=os.getenv("GEMINI_API_KEY"))
     classified_records = classifier.classify_leads(normalized_records, product_niche=keyword)
 
-    # 4. Deduplicate and save to database
-    added_count = logger.save_leads(classified_records)
+    # 4. Save to database if not in preview-only mode
+    added_count = 0
+    if not preview:
+        added_count = logger.save_leads(classified_records)
 
     return jsonify({
         "status": "success",
+        "keyword": keyword,
+        "location": location,
         "discovered": len(classified_records),
         "newly_added": added_count,
         "leads": classified_records
+    })
+
+
+@app.route("/api/leads/import_selected", methods=["POST"])
+def import_selected_leads():
+    """
+    Imports a user-selected array of discovered buyer lead cards into the main database.
+    """
+    data = request.json or {}
+    selected_leads = data.get("leads", [])
+    if not isinstance(selected_leads, list) or len(selected_leads) == 0:
+        return jsonify({"error": "No leads provided for importing"}), 400
+
+    # Ensure validation status and date
+    normalized = extractor.extract_and_normalize(selected_leads)
+    classifier = AIClassificationModule(api_key=os.getenv("GEMINI_API_KEY"))
+    classified = classifier.classify_leads(normalized)
+    
+    added_count = logger.save_leads(classified)
+    return jsonify({
+        "status": "success",
+        "imported_count": added_count,
+        "total_leads": len(logger.get_all_leads()),
+        "message": f"Successfully imported {added_count} buyer leads into the directory."
+    })
+
+
+# -------------------------------------------------------------
+# Multi-Source Discovery Routes (Req 15, 16, 17, 23, 24)
+# -------------------------------------------------------------
+@app.route("/api/discovery/sources", methods=["GET"])
+def get_discovery_sources():
+    """
+    Returns list of all available discovery sources with status and priority weights.
+    """
+    sources = searcher.get_available_sources()
+    return jsonify({
+        "status": "success",
+        "sources": sources,
+        "count": len(sources)
+    })
+
+
+@app.route("/api/discovery/modes", methods=["GET"])
+def get_discovery_modes():
+    """
+    Returns available buyer discovery modes (Quick, Deep, Social, Wholesale, Retail, Multi-Source).
+    """
+    modes = searcher.get_discovery_modes()
+    return jsonify({
+        "status": "success",
+        "modes": modes
+    })
+
+
+@app.route("/api/discovery/analytics", methods=["GET"])
+def get_discovery_analytics():
+    """
+    Returns calculated discovery source performance analytics:
+    Source | Discovered | Leads | Qualified | Qualification %
+    """
+    leads = logger.get_all_leads()
+    analytics = searcher.get_source_analytics(leads)
+    return jsonify({
+        "status": "success",
+        "analytics": analytics,
+        "total_sources": len(analytics)
+    })
+
+
+@app.route("/api/discovery/sources/toggle", methods=["POST"])
+def toggle_discovery_source():
+    """
+    Dynamically toggles a source or updates its priority weight.
+    """
+    data = request.json or {}
+    source_id = data.get("source_id")
+    enabled = data.get("enabled")
+    weight = data.get("priority_weight")
+
+    if not source_id or source_id not in searcher.discovery_engine.sources:
+        return jsonify({"error": "Invalid or missing source_id"}), 400
+
+    src = searcher.discovery_engine.sources[source_id]
+    if enabled is not None:
+        src.enabled = bool(enabled)
+    if weight is not None:
+        try:
+            src.priority_weight = float(weight)
+        except (ValueError, TypeError):
+            pass
+
+    return jsonify({
+        "status": "success",
+        "source": src.to_dict()
     })
 
 

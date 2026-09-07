@@ -229,8 +229,36 @@ export default function CampaignPage({
     }
   }, [leads]);
 
+  const parseDateToTime = (dateStr, fallback = 0) => {
+    if (!dateStr) return fallback;
+    if (typeof dateStr === 'number') return dateStr;
+    const s = String(dateStr).trim();
+    if (s.includes('T') || s.includes('Z')) {
+      const t = new Date(s).getTime();
+      if (!isNaN(t)) return t;
+    }
+    const dt = new Date(s);
+    return isNaN(dt.getTime()) ? fallback : dt.getTime();
+  };
+
   // Live filtered list of eligible selected buyers (strictly excludes bounced/invalid)
-  const deliverableLeads = leads.filter(l => l.validation_status !== 'invalid' && l.reply_status !== 'bounced');
+  // Prioritizes unsent/new buyers at the very top of the list
+  const deliverableLeads = [...leads]
+    .filter(l => l.validation_status !== 'invalid' && l.reply_status !== 'bounced')
+    .sort((a, b) => {
+      const aSent = Boolean(a.last_contacted_at);
+      const bSent = Boolean(b.last_contacted_at);
+
+      // Unsent / New buyers appear at the top
+      if (!aSent && bSent) return -1;
+      if (aSent && !bSent) return 1;
+
+      // Within the same group, sort newest first
+      const timeA = parseDateToTime(a.discovered_at || a.date, 0);
+      const timeB = parseDateToTime(b.discovered_at || b.date, 0);
+      return timeB - timeA;
+    });
+
   const uncontactedLeads = deliverableLeads.filter(l => !l.last_contacted_at);
 
   const eligibleLeads = deliverableLeads.filter(l => {

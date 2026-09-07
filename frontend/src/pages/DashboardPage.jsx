@@ -3,14 +3,16 @@ import Header from '../components/Header';
 import { Play, Send, Mail, Users, ShieldCheck, TrendingUp } from 'lucide-react';
 
 const CATEGORY_MAP = {
-  'home_decor_retailer': 'Home Décor Retailer',
+  'diaspora_ethnic': '🪔 Diaspora & Indian Handicrafts',
+  'wholesale_distributor': '📦 Wholesale Distributor & Importer',
+  'furniture_lifestyle': '🛋️ Furniture & Furnishings',
+  'home_decor_retailer': '🏠 Home Décor Retailer',
+  'gift_specialty': '🎁 Gift & Specialty Store',
+  'interior_design': '📐 Interior Design Studio',
+  'hospitality_events': '🏨 Hotels & Event Stylists',
   'wedding_event_decorator': 'Wedding & Event Stylist',
   'hospitality_hotel': 'Hotel & Hospitality',
-  'gift_specialty': 'Gift & Specialty Store',
-  'interior_design': 'Interior Design Studio',
-  'event_party_rental': 'Event Rental Company',
-  'furniture_lifestyle': 'Furniture & Lifestyle',
-  'wholesale_distributor': 'Wholesale Distributor'
+  'event_party_rental': 'Event Rental Company'
 };
 
 export default function DashboardPage({
@@ -30,7 +32,7 @@ export default function DashboardPage({
       <Header
         breadcrumb="WORKSPACE / OVERVIEW"
         title="Overview"
-        subtitle="North American export outreach pipeline and live campaign status."
+        subtitle="Global export outreach pipeline and live campaign status."
       />
 
       {/* Metric Cards */}
@@ -80,7 +82,7 @@ export default function DashboardPage({
       {/* Recent Leads Table */}
       <div className="app-card">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-          <h3 className="card-heading">Recent Discovered Buyers (America & Canada)</h3>
+          <h3 className="card-heading">Recent Discovered Buyers</h3>
           {leads.length > 0 && (
             <button className="queue-btn-text" onClick={() => setActiveTab('leads')}>
               View All ({leads.length}) &rarr;
@@ -118,7 +120,9 @@ export default function DashboardPage({
                         </div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{lead.email}</div>
                       </td>
-                      <td style={{ padding: '10px 14px', fontSize: '11.5px' }}>{lead.country || 'USA'}</td>
+                      <td style={{ padding: '10px 14px', fontSize: '11.5px' }}>
+                        {lead.city && lead.state ? `${lead.city}, ${lead.state}` : (lead.country || 'Global')}
+                      </td>
                       <td style={{ padding: '10px 14px' }}>
                         <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)' }}>
                           {CATEGORY_MAP[lead.category] || 'Home Décor Retailer'}

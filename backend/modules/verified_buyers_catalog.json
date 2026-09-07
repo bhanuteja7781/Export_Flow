@@ -1,12 +1,207 @@
 [
   {
+    "name": "Saffron Living & Decor Edison",
+    "email": "orders@saffronliving.com",
+    "url": "https://saffronliving.com",
+    "country": "United States",
+    "state": "New Jersey",
+    "city": "Edison",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Prime Edison Oak Tree Road diaspora boutique stockist specializing in handcrafted Indian brass candle holders, diya lanterns, and festive Diwali decor collections.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Brampton Ethnic Crafts & Mandir Decor",
+    "email": "info@bramptoncrafts.ca",
+    "url": "https://bramptoncrafts.ca",
+    "country": "Canada",
+    "state": "Ontario",
+    "city": "Brampton",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Leading Greater Toronto Area diaspora retail showroom sourcing artisan metal pooja decor, traditional candelabras, and brass tabletop candle accessories.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Little India Decor & Gifts Artesia",
+    "email": "sales@littleindiadecor.com",
+    "url": "https://littleindiadecor.com",
+    "country": "United States",
+    "state": "California",
+    "city": "Artesia",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Premier Artesia Pioneer Blvd Indian lifestyle and home decor boutique sourcing handcrafted metal candle holders, festive lanterns, and brass urlis.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Surrey South Asian Home Living",
+    "email": "contact@surreyhomeliving.ca",
+    "url": "https://surreyhomeliving.ca",
+    "country": "Canada",
+    "state": "British Columbia",
+    "city": "Surrey",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Major Surrey BC diaspora home goods retailer curating artisan brassware, wedding centerpiece candelabras, and handcrafted metal accents.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Heritage India Crafts Houston",
+    "email": "wholesale@heritageindiacrafts.com",
+    "url": "https://heritageindiacrafts.com",
+    "country": "United States",
+    "state": "Texas",
+    "city": "Houston",
+    "category": "diaspora_ethnic",
+    "buyer_size": "mid_market",
+    "desc": "Hillcroft Houston Indian handicraft importer and distributor sourcing bulk metal candle holders, brass temple lighting, and festive decor.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Devon Indian Bazaar & Decor Chicago",
+    "email": "info@devonindianbazaar.com",
+    "url": "https://devonindianbazaar.com",
+    "country": "United States",
+    "state": "Illinois",
+    "city": "Chicago",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Established Devon Avenue Chicago ethnic lifestyle store sourcing handcrafted Moradabad-style brass candle holders, lanterns, and home accessories.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Jackson Heights Ethnic Decor Queens",
+    "email": "shop@jacksonheightsdecor.com",
+    "url": "https://jacksonheightsdecor.com",
+    "country": "United States",
+    "state": "New York",
+    "city": "Queens",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "New York 74th Street diaspora home accent stockist sourcing brass candleware, tea light lanterns, and artisanal metal pooja centerpieces.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Indo-Canada Wholesale Importers Toronto",
+    "email": "procurement@indocanadawholesale.ca",
+    "url": "https://indocanadawholesale.ca",
+    "country": "Canada",
+    "state": "Ontario",
+    "city": "Mississauga",
+    "category": "wholesale_distributor",
+    "buyer_size": "enterprise_large",
+    "desc": "Major direct container importer and distributor supplying 150+ Canadian retail stores with Indian handcrafted metalware and home accents.",
+    "market_segment": "volume_wholesale"
+  },
+  {
+    "name": "Namaste Home & Handicrafts Fremont",
+    "email": "buying@namastehomefremont.com",
+    "url": "https://namastehomefremont.com",
+    "country": "United States",
+    "state": "California",
+    "city": "Fremont",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Bay Area diaspora home and spiritual gift boutique sourcing authentic Indian metal candle stands, brass diya lamps, and hand-beaten bronze decor.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Dallas Desi Living & Gifts Irving",
+    "email": "store@dallasdesiliving.com",
+    "url": "https://dallasdesiliving.com",
+    "country": "United States",
+    "state": "Texas",
+    "city": "Irving",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "DFW metroplex Indian lifestyle store sourcing festive home accents, brass candle holders, and wedding centerpiece candelabras.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Peacock Indian Handicrafts Atlanta",
+    "email": "inquiries@peacockindiancrafts.com",
+    "url": "https://peacockindiancrafts.com",
+    "country": "United States",
+    "state": "Georgia",
+    "city": "Alpharetta",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Atlanta diaspora boutique sourcing artisan Indian metal candle lanterns, hand-cast brass figurines, and festive home decor.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Maharaja Decor & Imports Vancouver",
+    "email": "wholesale@maharajadecor.ca",
+    "url": "https://maharajadecor.ca",
+    "country": "Canada",
+    "state": "British Columbia",
+    "city": "Vancouver",
+    "category": "wholesale_distributor",
+    "buyer_size": "mid_market",
+    "desc": "Western Canada importer of handcrafted Indian metal handicrafts, brass tabletop accessories, and decorative candelabras.",
+    "market_segment": "volume_wholesale"
+  },
+  {
+    "name": "Global Indian Imports Iselin",
+    "email": "info@globalindianimports.com",
+    "url": "https://globalindianimports.com",
+    "country": "United States",
+    "state": "New Jersey",
+    "city": "Iselin",
+    "category": "wholesale_distributor",
+    "buyer_size": "enterprise_large",
+    "desc": "New Jersey wholesale hub distributing Indian brassware, festive lights, and handcrafted candle holders to 80+ retailers across the Tri-State area.",
+    "market_segment": "volume_wholesale"
+  },
+  {
+    "name": "Markham Ethnic Lifestyle Boutique",
+    "email": "hello@markhamlifestyle.ca",
+    "url": "https://markhamlifestyle.ca",
+    "country": "Canada",
+    "state": "Ontario",
+    "city": "Markham",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "York Region diaspora gift & decor boutique curating modern-traditional brass candle holders, festive lanterns, and tabletop art.",
+    "market_segment": "diaspora"
+  },
+  {
+    "name": "Raja Home Furnishings & Decor Calgary",
+    "email": "orders@rajahomecalgary.ca",
+    "url": "https://rajahomecalgary.ca",
+    "country": "Canada",
+    "state": "Alberta",
+    "city": "Calgary",
+    "category": "furniture_lifestyle",
+    "buyer_size": "mid_market",
+    "desc": "Calgary furniture and ethnic home decor showroom sourcing handcrafted metal accents, candle accessories, and statement tabletop hardware.",
+    "market_segment": "mid_range"
+  },
+  {
+    "name": "Diya Decor & Wedding Boutique Sugar Land",
+    "email": "contact@diyadecorsugarland.com",
+    "url": "https://diyadecorsugarland.com",
+    "country": "United States",
+    "state": "Texas",
+    "city": "Sugar Land",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "desc": "Houston metro diaspora store curating Diwali festive decor, Indian metal candle holders, and handcrafted brass tabletop pieces.",
+    "market_segment": "diaspora"
+  },
+  {
     "name": "The Cross Decor & Design Vancouver",
     "email": "shop@thecrossdesign.com",
     "url": "https://thecrossdesign.com",
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Premier Vancouver luxury boutique retailer curating contemporary metal candle holders, tabletop accents, and artisan lanterns.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Tonic Living Toronto",
@@ -15,7 +210,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Toronto home decor and textile studio sourcing artisanal brass tabletop decor, candle accessories, and seasonal collections.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Walrus Home & Boutique Vancouver",
@@ -24,7 +222,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Vancouver design shop curating modern handcrafted tabletop accessories, candle holders, and functional art.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Mjolk Craft & Living Toronto",
@@ -33,7 +234,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Celebrated Toronto gallery & store specializing in pure handcrafted metal candle holders, brass tabletop, and Scandinavian design.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Buk & Nola Montreal Decor",
@@ -42,7 +246,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Montreal lifestyle boutique sourcing decorative candle holders, handmade gifts, and tabletop accents.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Kitchen Stuff Plus Toronto",
@@ -51,7 +258,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Major Canadian home retailer with 25+ stores sourcing seasonal candle holders, centerpiece accents, and tabletop collections.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Linen Chest Canada",
@@ -60,7 +270,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Top Canadian home decor and tabletop chain with 30+ stores sourcing brass candleware, lanterns, and luxury centerpieces.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Bouclair Maison Canada",
@@ -70,7 +283,10 @@
     "category": "home_decor_retailer",
     "desc": "Canadian lifestyle chain with 100+ stores across Ontario & Quebec sourcing modern metal candle holders and home accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@bouclair.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Zone Maison Quebec",
@@ -79,7 +295,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Urban home decor boutique chain across Montreal, Quebec City, and Ottawa sourcing modern candle accessories.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Teatro Verde Luxury Living Toronto",
@@ -88,7 +307,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "High-end Toronto floral and home decor boutique sourcing luxury metal candle holders and tabletop centerpieces.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Putti Fine Furnishings Toronto",
@@ -97,7 +319,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Upscale Toronto boutique specializing in artisanal French-inspired decor, antique bronze candle holders, and lanterns.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Hopson Grace Tableware Toronto",
@@ -106,7 +331,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Toronto luxury tableware store sourcing handmade brass and iron candle holders for upscale dining decor.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Vancouver Special Design Boutique",
@@ -115,7 +343,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Vancouver architectural design store sourcing minimalist metal candle holders and Scandinavian tabletop objects.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Provide Home Vancouver",
@@ -124,7 +355,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Gastown Vancouver luxury home decor gallery sourcing handmade metal candleholders and bespoke ceramic tabletop.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Hudson's Bay Home Canada",
@@ -134,7 +368,10 @@
     "category": "home_decor_retailer",
     "desc": "Canada's iconic national department store chain sourcing handcrafted home decor, candle centerpieces, and tabletop accessories.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@hbc.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Winners HomeSense Canada",
@@ -144,7 +381,10 @@
     "category": "home_decor_retailer",
     "desc": "Major off-price home decor chain across Canada sourcing high-volume artisan metal candle holders and decorative lanterns.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@tjxcanada.ca (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Holt Renfrew Luxury Tabletop Toronto",
@@ -154,7 +394,10 @@
     "category": "home_decor_retailer",
     "desc": "Canada's premier luxury department store sourcing designer tabletop decor, bronze candleware, and artisan accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@holtrenfrew.com (Canada)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Fable Home Tabletop Vancouver",
@@ -164,7 +407,10 @@
     "category": "home_decor_retailer",
     "desc": "Rapidly growing sustainable Canadian tableware brand sourcing artisan metal candle holders and modern dining accessories.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@fable.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Chintz & Company Victoria BC",
@@ -173,7 +419,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Extensive home decor and furnishings emporium in Victoria sourcing eclectic wrought iron and brass candle holders.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Alicia Keats Weddings Vancouver",
@@ -182,7 +431,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Luxury Vancouver destination wedding planning studio curating romantic candlelit centerpieces and metal candelabras.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Melissa Andre Events Toronto",
@@ -191,7 +443,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Celebrity wedding and event design firm sourcing high-volume metal candle holders, taper holders, and luxury lanterns.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "CountDown Events Vancouver",
@@ -200,7 +455,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Ultra-luxury event production company creating extravagant gala designs with custom brass and gold candle decor.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Toast Events Ottawa",
@@ -209,7 +467,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Ottawa wedding design studio curating modern candlelit tablescapes, pillar holders, and bespoke metal centerpieces.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Bespoke Decor Vancouver",
@@ -218,7 +479,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Boutique event design and specialty rental company in Vancouver sourcing artisan candle holders and tabletop rentals.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Julianne Young Weddings Calgary",
@@ -227,7 +491,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Calgary premier wedding planning studio sourcing luxury candelabras, taper candle holders, and atmospheric lighting.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Lynn Fletcher Weddings Calgary",
@@ -236,7 +503,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Award-winning Alberta wedding and gala design firm sourcing high-end metal lanterns, hurricane lamps, and candle displays.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Cocktails & Details Events Edmonton",
@@ -245,7 +515,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Edmonton wedding and corporate event design studio sourcing modern tabletop candle accessories and custom centerpieces.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Stemz Floral & Event Design Toronto",
@@ -254,7 +527,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Premier Toronto floral and event styling studio creating lavish wedding tablescapes with metal candle holders.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Chairman Mills Canada",
@@ -263,7 +539,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Canada's largest luxury event rental company supplying high-volume candleholders, candelabras, and tabletop hardware.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Allwest Wedding Rentals Vancouver",
@@ -272,7 +551,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Major Vancouver wedding and event rental provider sourcing wholesale candelabras, taper holders, and lantern centerpieces.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Special Event Rentals Western Canada",
@@ -281,7 +563,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Western Canada's largest event rental network across Edmonton, Calgary, Red Deer, and Banff sourcing metal candleware.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Glow The Event Store Halifax",
@@ -290,7 +575,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Atlantic Canada's premier event rental and decor company supplying corporate galas and weddings with candle decor.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Trend Decor Event Rentals Vancouver",
@@ -299,7 +587,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Vancouver specialty event rental studio offering curated modern gold, brass, and matte black candle accessories.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Simply Beautiful Decor Niagara",
@@ -308,7 +599,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Luxury Niagara & Toronto specialty decor rental company curating high-end taper holders and metal tabletop rentals.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Divine Furniture Rental Toronto",
@@ -317,7 +611,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Toronto corporate and gala rental company sourcing contemporary metal candle lanterns and staging tabletop hardware.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Celebrations Party Rentals Ottawa",
@@ -326,7 +623,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Leading Ottawa party and event rental provider supplying wedding candelabras, centerpiece lanterns, and candle accessories.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Torre & Tagus Home Vancouver",
@@ -335,7 +635,10 @@
     "country": "Canada",
     "category": "wholesale_distributor",
     "desc": "Top Canadian contemporary home decor wholesale distributor supplying 5,000+ retailers with metal candle holders and accents.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Danica Imports & Now Designs Vancouver",
@@ -344,7 +647,10 @@
     "country": "Canada",
     "category": "wholesale_distributor",
     "desc": "Prominent Canadian importer and distributor of tabletop, kitchenware, and handcrafted candle accessories across North America.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Mobilia Canada",
@@ -353,7 +659,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Major Canadian modern furniture chain with 10+ showrooms sourcing contemporary metal candle holders and home accessories.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Maison Corbeil Quebec",
@@ -362,7 +671,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "High-end Quebec contemporary furniture & home decor retailer with multiple showrooms in Montreal and Laval.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Ginger Jar Furniture North Vancouver",
@@ -371,7 +683,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Luxury modern furniture showroom in North Vancouver sourcing premium architectural candle lanterns and tabletop decor.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Elte & Elte MKT Toronto",
@@ -380,7 +695,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Toronto luxury design emporium sourcing bespoke handcrafted metal candleholders, lighting, and global artisan home decor.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Parliament Interiors Vancouver",
@@ -389,7 +707,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Gastown Vancouver modern lifestyle and furniture boutique sourcing artisanal tabletop candle decor and accents.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Article Modern Furniture Vancouver",
@@ -399,7 +720,10 @@
     "category": "furniture_lifestyle",
     "desc": "High-growth direct-to-consumer modern furniture and home decor company sourcing sleek metal tabletop candleware.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@article.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Terrain Living & Garden USA",
@@ -409,7 +733,10 @@
     "category": "home_decor_retailer",
     "desc": "Premier US lifestyle & home decor retailer by Urban Outfitters Inc sourcing architectural lanterns and candle holders.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@shopterrain.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Lulu and Georgia USA",
@@ -419,7 +746,10 @@
     "category": "home_decor_retailer",
     "desc": "High-growth US luxury home decor and tabletop brand curating contemporary metal candle holders and artisanal accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@luluandgeorgia.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Atlanta",
+    "state": "Georgia"
   },
   {
     "name": "Ballard Designs USA",
@@ -429,7 +759,10 @@
     "category": "home_decor_retailer",
     "desc": "Major US upscale home furnishings and tabletop catalog company sourcing brass and iron candle holders.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@ballarddesigns.net (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Serena and Lily Home USA",
@@ -439,7 +772,10 @@
     "category": "home_decor_retailer",
     "desc": "Upscale coastal luxury home decor brand sourcing woven, brass, and ceramic candle accessories and hurricane lanterns.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@serenaandlily.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Crate and Barrel Living USA",
@@ -449,7 +785,10 @@
     "category": "home_decor_retailer",
     "desc": "Nationwide home furnishings retailer sourcing contemporary metal candle holders, taper holders, and centerpiece hardware.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@crateandbarrel.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "CB2 Modern Home USA",
@@ -459,7 +798,10 @@
     "category": "home_decor_retailer",
     "desc": "Modern home destination sourcing sculptural metal candle holders, brushed brass accessories, and architectural candelabras.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@cb2.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Williams Sonoma Home USA",
@@ -469,7 +811,10 @@
     "category": "home_decor_retailer",
     "desc": "Prestigious tabletop and kitchenware retailer sourcing handcrafted metal candle holders, lanterns, and dining centerpieces.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@williams-sonoma.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Pottery Barn Living USA",
@@ -479,7 +824,10 @@
     "category": "home_decor_retailer",
     "desc": "Premier home furnishings retailer sourcing seasonal hurricane candle holders, lanterns, and handcrafted iron candleware.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@potterybarn.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Kirkland's Home Decor USA",
@@ -489,7 +837,10 @@
     "category": "home_decor_retailer",
     "desc": "Specialty home decor chain with 350+ stores across America sourcing affordable decorative candle holders and lanterns.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@kirklands.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "World Market Home Accents USA",
@@ -499,7 +850,10 @@
     "category": "home_decor_retailer",
     "desc": "National specialty retailer curating global artisan home decor, handcrafted metal candleholders, and eclectic tabletop accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@worldmarket.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Pier 1 Imports USA",
@@ -509,7 +863,10 @@
     "category": "home_decor_retailer",
     "desc": "Iconic home decor and candleware brand sourcing handcrafted lanterns, decorative candle holders, and seasonal accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@pier1.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Horchow Luxury Tabletop USA",
@@ -519,7 +876,10 @@
     "category": "home_decor_retailer",
     "desc": "Luxury home catalog sourcing designer metal candelabras, crystal taper holders, and upscale centerpiece accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@horchow.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Frontgate Luxury Living USA",
@@ -529,7 +889,10 @@
     "category": "home_decor_retailer",
     "desc": "High-end catalog and online retailer sourcing premium outdoor candle lanterns, bronze candleholders, and tabletop decor.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@frontgate.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Jonathan Adler Modern Home USA",
@@ -539,7 +902,10 @@
     "category": "home_decor_retailer",
     "desc": "Iconic modern design brand sourcing glamorous brass candelabras, sculptural candle holders, and luxury tabletop art.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@jonathanadler.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "ABC Carpet & Home NYC",
@@ -549,7 +915,10 @@
     "category": "home_decor_retailer",
     "desc": "Legendary NYC home emporium curating sustainable artisan home decor, hand-hammered metal candleware, and luxury accents.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@abchome.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Citizenry Global Artisan Home USA",
@@ -558,7 +927,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Direct-to-consumer artisan home goods brand partnering with international workshops for handcrafted brass and metal decor.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Zodax Tabletop & Candleware USA",
@@ -568,7 +940,10 @@
     "category": "wholesale_distributor",
     "desc": "Major luxury wholesale distributor sourcing trend-setting metal candle holders, lanterns, and tabletop hardware for 10,000+ stores.",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: wholesale@zodax.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Kalalou Eco Artisan Living USA",
@@ -577,7 +952,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Leading US wholesale distributor of recycled metal candleholders, rustic lanterns, and artisan tabletop decor.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Creative Co-Op Wholesale USA",
@@ -586,7 +964,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Global wholesale leader in home accessories and seasonal decor supplying thousands of independent gift shops with candleware.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Accent Decor Home & Events USA",
@@ -595,7 +976,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Premier US wholesale supplier of decorative vessels, candle holders, and event hardware for floral designers and boutiques.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Two's Company Wholesale USA",
@@ -604,7 +988,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Leading US wholesale home decor firm designing and distributing decorative candle holders, gifts, and tabletop accents.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Park Designs Tabletop USA",
@@ -613,7 +1000,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Wholesale supplier of country and contemporary tabletop accessories, iron candle holders, and seasonal accents.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Surya Living & Tabletop USA",
@@ -622,7 +1012,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Leading global home accessories manufacturer and wholesale distributor supplying metal candle accessories and lighting.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "enterprise_large",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Casa de Perrin Luxury Tabletop LA",
@@ -631,7 +1024,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "The country's leading luxury tabletop rental company in Los Angeles curating vintage and bespoke metal candelabras.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Theoni Collection Event Rentals SF",
@@ -640,7 +1036,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "California premier event rental company supplying high-end luxury candle accessories, lanterns, and tabletop decor.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Bright Event Rentals California",
@@ -649,7 +1048,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "Major Western US event rental company providing comprehensive candleware, tabletop accessories, and gala hardware.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Party Rental Ltd New York",
@@ -658,7 +1060,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "East Coast largest full-service event rental company supplying premier galas and weddings with metal candelabras and lanterns.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Taylor Creative Inc NYC Event Rentals",
@@ -667,7 +1072,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "Modern NYC design and event rental firm sourcing sleek architectural candle holders and tabletop accents for high-profile events.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Blueprint Studios Event Design SF",
@@ -676,7 +1084,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "San Francisco premier event design and rental company creating bespoke atmospheric lighting with custom metal candelabras.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Peak Event Services Boston & New England",
@@ -685,7 +1096,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "New England largest event rental firm offering extensive collections of tabletop candle holders, lanterns, and centerpieces.",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Birch Event Design NYC",
@@ -694,7 +1108,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "High-profile NYC event production firm creating immersive wedding environments with luxury gold and bronze candleware.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Colin Cowie Lifestyle NYC",
@@ -703,7 +1120,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "World-renowned luxury event and wedding planner curating bespoke metal candle holders and lavish tablescape centerpieces.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Preston Bailey Designs NYC",
@@ -712,7 +1132,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Global luxury wedding designer known for breathtaking floral and candlelit installations, sourcing custom candelabras.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Mindy Weiss Party Consultants LA",
@@ -721,7 +1144,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Beverly Hills celebrity event planner designing luxury weddings and galas with high-volume artisanal candle tabletop decor.",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "McGee & Co Living",
@@ -731,7 +1157,10 @@
     "category": "home_decor_retailer",
     "desc": "High-end designer home decor and artisan tabletop brand",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@mcgeeandco.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "One Kings Lane Luxury",
@@ -741,7 +1170,10 @@
     "category": "home_decor_retailer",
     "desc": "Luxury home decor destination for designer accents and lanterns",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@onekingslane.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Anthropologie Living",
@@ -750,7 +1182,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Bohemian luxury home decor, tabletop and candleware collection",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Urban Outfitters Home",
@@ -760,7 +1195,10 @@
     "category": "home_decor_retailer",
     "desc": "Youth lifestyle home accessories and modern metal candle decor",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@urbanoutfitters.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Wayfair Professional",
@@ -770,7 +1208,10 @@
     "category": "wholesale_distributor",
     "desc": "Commercial interior and hospitality procurement platform",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: wholesale@wayfair.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Houzz Trade Program",
@@ -780,7 +1221,10 @@
     "category": "wholesale_distributor",
     "desc": "Leading residential design and architectural decor sourcing network",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: wholesale@houzz.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Perigold Luxury Decor",
@@ -790,7 +1234,10 @@
     "category": "home_decor_retailer",
     "desc": "Super-luxury home furnishings, crystal, and metal candle accessories",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@perigold.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Lamps Plus Home Decor",
@@ -800,7 +1247,10 @@
     "category": "home_decor_retailer",
     "desc": "Nationwide lighting, lantern, and tabletop accessory retailer",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@lampsplus.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Z Gallerie Decor",
@@ -810,7 +1260,10 @@
     "category": "home_decor_retailer",
     "desc": "Glamorous fashion-forward home accessories and candelabras",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@zgallerie.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "High Fashion Home Houston",
@@ -819,7 +1272,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Texas premier luxury home decor and tabletop showroom",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "City Furniture Florida",
@@ -829,7 +1285,10 @@
     "category": "home_decor_retailer",
     "desc": "Florida modern home furnishings and accent decor chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@cityfurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "Bassett Furniture Living",
@@ -839,7 +1298,10 @@
     "category": "furniture_lifestyle",
     "desc": "Custom home furnishings and decorative accessories showrooms",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@bassettfurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Haverty's Furniture Decor",
@@ -849,7 +1311,10 @@
     "category": "furniture_lifestyle",
     "desc": "Southern US home decor and tabletop accent store chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@havertys.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Mathis Brothers Home",
@@ -859,7 +1324,10 @@
     "category": "furniture_lifestyle",
     "desc": "Major Midwest and Southwest home furnishings emporiums",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@mathisbrothers.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Star Furniture Houston",
@@ -869,7 +1337,10 @@
     "category": "furniture_lifestyle",
     "desc": "Texas upscale furniture and tabletop decor retail chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@starfurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Nebraska Furniture Mart",
@@ -879,7 +1350,10 @@
     "category": "furniture_lifestyle",
     "desc": "Massive home furnishings and decorative accessories superstores",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@nfm.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Raymour & Flanigan New York",
@@ -889,7 +1363,10 @@
     "category": "furniture_lifestyle",
     "desc": "Northeast largest home furnishings and accent decor chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@raymourflanigan.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Jordan's Furniture Boston",
@@ -899,7 +1376,10 @@
     "category": "furniture_lifestyle",
     "desc": "New England home furnishings and decorative accessories destination",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@jordans.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Living Spaces California",
@@ -909,7 +1389,10 @@
     "category": "furniture_lifestyle",
     "desc": "West Coast modern furniture and home tabletop showrooms",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@livingspaces.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "American Signature Furniture",
@@ -919,7 +1402,10 @@
     "category": "furniture_lifestyle",
     "desc": "National home decor and contemporary furnishings chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@asfurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Ashley HomeStore USA",
@@ -929,7 +1415,10 @@
     "category": "furniture_lifestyle",
     "desc": "World's largest home furniture and tabletop accent manufacturer",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@ashleyfurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Slumberland Furniture Midwest",
@@ -939,7 +1428,10 @@
     "category": "furniture_lifestyle",
     "desc": "Midwestern home decor and living accessories retail chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@slumberland.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Homemakers Furniture Iowa",
@@ -949,7 +1441,10 @@
     "category": "furniture_lifestyle",
     "desc": "Iowa premier home furnishings and decorative accessory showroom",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@homemakers.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Gardner-White Furniture Michigan",
@@ -959,7 +1454,10 @@
     "category": "furniture_lifestyle",
     "desc": "Michigan premier furniture and home accent retail chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@gardner-white.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Belfort Furniture Washington DC",
@@ -969,7 +1467,10 @@
     "category": "furniture_lifestyle",
     "desc": "Washington DC metro luxury home decor destination",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@belfortfurniture.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Seattle",
+    "state": "Washington"
   },
   {
     "name": "Value City Furniture",
@@ -979,7 +1480,10 @@
     "category": "furniture_lifestyle",
     "desc": "Midwest and East Coast home furnishings and decor store chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@vcf.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Cardi's Furniture New England",
@@ -989,7 +1493,10 @@
     "category": "furniture_lifestyle",
     "desc": "Rhode Island and Massachusetts home decor retail chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@cardis.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Baer's Furniture Florida",
@@ -999,7 +1506,10 @@
     "category": "furniture_lifestyle",
     "desc": "Florida fine luxury furniture and tabletop accessory showrooms",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@baers.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "El Dorado Furniture Miami",
@@ -1009,7 +1519,10 @@
     "category": "furniture_lifestyle",
     "desc": "South Florida iconic boulevard furniture and decor showrooms",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@eldoradofurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "Kanes Furniture Florida",
@@ -1019,7 +1532,10 @@
     "category": "furniture_lifestyle",
     "desc": "Central Florida home furnishings and decorative accents chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@kanesfurniture.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "Steinhafels Furniture Wisconsin",
@@ -1029,7 +1545,10 @@
     "category": "furniture_lifestyle",
     "desc": "Wisconsin and Illinois fine home furnishings and decor chain",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@steinhafels.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Shopgirls Gallery Toronto",
@@ -1038,7 +1557,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Toronto Parkdale independent artisan boutique and lifestyle store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Outer Layer Toronto",
@@ -1048,7 +1570,10 @@
     "category": "gift_specialty",
     "desc": "Toronto specialty gift, cards, and quirky home tabletop shop",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@outerlayer.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "August Kinn Toronto",
@@ -1057,7 +1582,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Danforth Toronto curated boutique for lifestyle and home decor",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Coal Miner's Daughter Toronto",
@@ -1066,7 +1594,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Canadian designer boutique chain across Toronto",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Spacing Store Toronto",
@@ -1075,7 +1606,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Downtown Toronto urban lifestyle, design, and home decor boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Kid Icarus Kensington Toronto",
@@ -1084,7 +1618,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Kensington Market Toronto handcrafted paper goods and home accents",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Arts Market Toronto",
@@ -1093,7 +1630,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Artisan collective market with locations in Leslieville and Riverside",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Good Egg Kensington Toronto",
@@ -1102,7 +1642,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Kensington Market curated culinary, tabletop and candle boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Wonderpens Toronto",
@@ -1112,7 +1655,10 @@
     "category": "gift_specialty",
     "desc": "Stationery, desk accessories, and artisan home decor store",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@wonderpens.ca (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Maker House Ottawa",
@@ -1121,7 +1667,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Ottawa artisan furniture, home decor, and handcrafted candleware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Boogie & Birdie Ottawa",
@@ -1130,7 +1679,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Elgin Street Ottawa Canadian gift and home entertaining shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Givopoly Ottawa",
@@ -1140,7 +1692,10 @@
     "category": "gift_specialty",
     "desc": "Ottawa local artisan gift and curated gift basket company",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@givopoly.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Paper Papier Ottawa",
@@ -1149,7 +1704,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "ByWard Market Ottawa luxury paper, desk, and home accessories",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Les Mauvaises Herbes Montreal",
@@ -1158,7 +1716,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Montreal eco-conscious living, home goods, and wellness boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Boutique Unicorn Montreal",
@@ -1167,7 +1728,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Mile End Montreal fashion and artisanal home decor boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Bref Montreal",
@@ -1176,7 +1740,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Montreal ephemeral art gallery and contemporary design shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Tah-Dah! Montreal",
@@ -1185,7 +1752,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Jean-Talon Market Montreal handmade crafts and decor boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Paperole Montreal",
@@ -1194,7 +1764,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Montreal Plateau design stationery and art prints and home accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Le Point d'Ancrage Quebec City",
@@ -1203,7 +1776,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Quebec City local artisan gifts, home decor, and candle accents",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Article 721 Quebec City",
@@ -1212,7 +1788,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Limoilou Quebec City vintage, retro and handcrafted decor boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Juxtapose Cards & Gifts Toronto",
@@ -1221,7 +1800,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "The Annex Toronto independent gift and home decor store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Irish Design House Toronto",
@@ -1230,7 +1812,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Queen Street East Toronto Irish and Canadian artisan craft store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Logan & Finley Toronto",
@@ -1239,7 +1824,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Queen Street West Toronto sustainable lifestyle and home boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Boutique Coeur d'Artichaut Montreal",
@@ -1248,7 +1836,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Laurier Avenue Montreal Scandinavian decor and tabletop store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Hudson Grace California",
@@ -1257,7 +1848,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "California upscale entertaining, tabletop, and candleware boutique chain",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Roman and Williams Guild NYC",
@@ -1266,7 +1860,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "SoHo NYC ultra-luxury design collective and artisanal home goods gallery",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Jayson Home Chicago",
@@ -1275,7 +1872,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Chicago premier vintage and modern home furnishings and tabletop destination",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Aerin Home Palm Beach & NYC",
@@ -1285,7 +1885,10 @@
     "category": "home_decor_retailer",
     "desc": "Luxury lifestyle and home accessories brand founded by Aerin Lauder",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@aerin.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Match Pewter Tableware NYC",
@@ -1294,7 +1897,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Handmade Italian pewter and metal candle holders luxury distributor",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Simon Pearce Tableware Vermont",
@@ -1304,7 +1910,10 @@
     "category": "home_decor_retailer",
     "desc": "Handcrafted Vermont glassware, pottery, and tabletop candle accents",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@simonpearce.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Heath Ceramics San Francisco",
@@ -1314,7 +1923,10 @@
     "category": "home_decor_retailer",
     "desc": "Iconic California architectural ceramics, tableware, and candle decor maker",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@heathceramics.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "East Fork Pottery Atlanta",
@@ -1324,7 +1936,10 @@
     "category": "home_decor_retailer",
     "desc": "Asheville & Atlanta sustainable ceramic tableware and tabletop decor brand",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@eastfork.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Atlanta",
+    "state": "Georgia"
   },
   {
     "name": "Year & Day Tableware California",
@@ -1333,7 +1948,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Modern Californian tableware and entertaining candle accessories brand",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Hawkins New York Lifestyle",
@@ -1343,7 +1961,10 @@
     "category": "home_decor_retailer",
     "desc": "Hudson Valley design studio creating curated modern home tabletop goods",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@hawkinsnewyork.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Mociun Home Brooklyn NYC",
@@ -1352,7 +1973,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Williamsburg Brooklyn artisan ceramic, jewelry, and tabletop design store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Catbird Home Brooklyn NYC",
@@ -1362,7 +1986,10 @@
     "category": "gift_specialty",
     "desc": "Iconic Brooklyn luxury jewelry, candle, and gift boutique",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@catbirdnyc.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Fishs Eddy NYC Tabletop",
@@ -1371,7 +1998,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Flatiron NYC iconic tableware, dishware, and quirky candleware store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Goodliver Los Angeles",
@@ -1380,7 +2010,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Downtown LA curated shop for crafted daily objects and brass candleware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Tortoise General Store Venice LA",
@@ -1389,7 +2022,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Venice Beach Japanese lifestyle and artisanal brass tableware shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "General Store San Francisco",
@@ -1398,7 +2034,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Ocean Beach SF curated artisan textiles, pottery, and candle holders",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "March San Francisco Tabletop",
@@ -1407,7 +2046,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Sacramento Street SF luxury kitchen, dining, and tabletop gallery",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "St. Frank Home San Francisco",
@@ -1416,7 +2058,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Luxury bohemian textiles and global artisan home tabletop accessories",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Harkiss Designs New York",
@@ -1425,7 +2070,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Fair trade artisan handcrafted horn and metal home accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Ten Thousand Villages USA",
@@ -1434,7 +2082,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Pioneer fair trade retailer with 50+ stores sourcing handmade candleware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Global Goods Partners NYC",
@@ -1443,7 +2094,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Fair trade nonprofit organization sourcing global artisan home decor",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Tenfold New York",
@@ -1452,7 +2106,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Luxury understated modern home decor and tabletop collection by The Line",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Huckberry Home Austin",
@@ -1462,7 +2119,10 @@
     "category": "gift_specialty",
     "desc": "Austin lifestyle and home goods retailer curating artisan candleware",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@huckberry.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Bespoke Post NYC",
@@ -1472,7 +2132,10 @@
     "category": "gift_specialty",
     "desc": "Curated monthly subscription and home goods retailer for small batch goods",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@bespokepost.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Manready Mercantile Houston",
@@ -1481,7 +2144,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Houston handcrafted lifestyle, apothecary, and artisan candle accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Dwell Home Store California",
@@ -1491,7 +2157,10 @@
     "category": "home_decor_retailer",
     "desc": "Modern architectural design platform and home tabletop collection",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@dwell.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Design Milk Shop",
@@ -1500,7 +2169,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Online modern design magazine and curated home decor store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Sight Unseen NYC",
@@ -1509,7 +2181,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Contemporary design magazine curating limited-edition tabletop decor",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Whitney Museum Shop NYC",
@@ -1518,7 +2193,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Meatpacking District NYC museum store sourcing contemporary artisan crafts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "SFMOMA Museum Store San Francisco",
@@ -1527,7 +2205,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "San Francisco museum store featuring modern design tabletop and candle gifts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Getty Museum Store Los Angeles",
@@ -1536,7 +2217,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Los Angeles museum store sourcing classical and artisanal home gifts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Art Institute of Chicago Store",
@@ -1545,7 +2229,10 @@
     "country": "United States",
     "category": "gift_specialty",
     "desc": "Chicago museum store curating global artisan decorative accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Guerdy Design Miami",
@@ -1554,7 +2241,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Celebrity luxury wedding designer producing extravagant candlelit galas",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "Sasha Souza Events California",
@@ -1563,7 +2253,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Napa Valley and destination wedding styling firm",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Marcy Blum Associates NYC",
@@ -1572,7 +2265,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "NYC premier celebrity wedding and event production firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Bryan Rafanelli Events Boston & NYC",
@@ -1581,7 +2277,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Top-tier gala and high-profile state dinner event production firm",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Van Wyck & Van Wyck NYC",
@@ -1590,7 +2289,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Legendary NYC environmental event design and luxury gala production house",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "David Stark Design and Production Brooklyn",
@@ -1599,7 +2301,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Creative event design firm producing custom architectural candle installations",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Laurie Arons Special Events SF",
@@ -1608,7 +2313,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "San Francisco luxury wedding planner known for exquisite tabletop design",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Alison Events Destination Planning SF",
@@ -1617,7 +2325,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Global luxury destination wedding planning and design studio",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Tara Guerard Soiree Charleston",
@@ -1626,7 +2337,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Charleston luxury southern wedding styling and custom tablescape design",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Easton Events Virginia & NYC",
@@ -1635,7 +2349,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Ultra-luxury wedding design firm frequently featured in Vogue Weddings",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Jackson Durham Events Dallas & Atlanta",
@@ -1644,7 +2361,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Floral and event design firm creating lavish candlelit galas",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Kehoe Designs Chicago",
@@ -1653,7 +2373,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Chicago premier corporate and gala event production agency",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "HMR Designs Chicago",
@@ -1662,7 +2385,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Chicago bespoke floral, decor, and tabletop lighting studio",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Revel Global Events Chicago",
@@ -1671,7 +2397,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Chicago full-service event agency, staging, and decor production house",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Talia Events Denver",
@@ -1680,7 +2409,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Colorado mountain luxury wedding and event styling studio",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Calluna Events Boulder Colorado",
@@ -1689,7 +2421,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Boulder & Denver boutique wedding and gala planning company",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Table 6 Productions Denver",
@@ -1698,7 +2433,10 @@
     "country": "United States",
     "category": "wedding_event_decorator",
     "desc": "Colorado destination wedding and event design firm",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Donald Tea Tabletop Rentals Dallas",
@@ -1707,7 +2445,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "Dallas full-service wedding and corporate party rental company",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Bella Acento Event Rentals Dallas",
@@ -1716,7 +2457,10 @@
     "country": "United States",
     "category": "event_party_rental",
     "desc": "Texas boutique tabletop and specialty candelabra rental provider",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Crown Flora Studio Toronto",
@@ -1725,7 +2469,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Toronto Queen West botanical and event styling studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Hunt and Gather Floral Toronto",
@@ -1734,7 +2481,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Toronto bespoke event floral design and candle tablescapes",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Coriander Girl Toronto & PEC",
@@ -1743,7 +2493,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Prince Edward County and Toronto heirloom floral and home decor",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Blush and Bloom Toronto",
@@ -1752,7 +2505,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Studio floral design creating romantic candlelit installations",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Wild North Flowers Toronto",
@@ -1762,7 +2518,10 @@
     "category": "gift_specialty",
     "desc": "100% Ontario-grown floral and giftware studio",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@wildnorthflowers.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Tonic Blooms Toronto",
@@ -1772,7 +2531,10 @@
     "category": "gift_specialty",
     "desc": "On-demand floral and artisanal gift delivery company in Toronto",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@tonicblooms.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Flur Floral & Decor Montreal",
@@ -1781,7 +2543,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Montreal Mile End design plant, floral, and home decor boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "The Flower Factory Vancouver",
@@ -1790,7 +2555,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Main Street Vancouver floral and home accents boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Celsia Floral Vancouver",
@@ -1799,7 +2567,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Vancouver premier European-inspired floral and event styling studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Thomas Hobbs Florist Vancouver",
@@ -1808,7 +2579,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Kerrisdale Vancouver historic florist and upscale garden decor shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Cory Christopher Edmonton",
@@ -1817,7 +2591,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Edmonton creative event designer producing spectacular gala tablescapes",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Mason Studio Toronto",
@@ -1826,7 +2603,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Award-winning Toronto interior design studio sourcing luxury hospitality tabletop",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Studio Munge Toronto",
@@ -1835,7 +2615,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "World-renowned luxury hospitality and residential interior design firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "DesignAgency Toronto & Montreal",
@@ -1844,7 +2627,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "International interior design studio sourcing bespoke commercial hardware",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Burdifilek Design Studio Toronto",
@@ -1853,7 +2639,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Fast-forward commercial retail and hospitality interior design firm",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Cecconi Simone Toronto",
@@ -1862,7 +2651,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Multi-disciplinary interior design studio sourcing contemporary metal decor",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Sophie Burke Design Vancouver",
@@ -1871,7 +2663,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Pacific Northwest subtle, warm minimalist residential design firm",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Falken Reynolds Interiors Vancouver",
@@ -1880,7 +2675,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Vancouver residential and hospitality design firm focusing on modern craft",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Alykhan Velji Designs Calgary",
@@ -1889,7 +2687,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Calgary design studio known for eclectic, curated residential & commercial interiors",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Reena Sotropa In House Design Calgary",
@@ -1898,7 +2699,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Calgary luxury residential interior design and styling boutique",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Atelier Z\u00e9bulon Perron Montreal",
@@ -1907,7 +2711,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Renowned Montreal hospitality and restaurant interior design firm",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Appareil Architecture Montreal",
@@ -1916,7 +2723,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Montreal Nordic-inspired architecture and custom object design studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "Kelly Wearstler Design LA",
@@ -1925,7 +2735,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Global luxury lifestyle and interior design brand sourcing metal accessories",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Ken Fulk Design SF & NYC",
@@ -1934,7 +2747,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Renowned designer creating theatrical hospitality and residential environments",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Apparatus Studio NYC",
@@ -1943,7 +2759,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "New York interdisciplinary design studio creating sculptural lighting and candle objects",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Workstead Design Studio Brooklyn",
@@ -1952,7 +2771,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Brooklyn & Hudson design studio crafting architectural lighting and interiors",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Commune Design Los Angeles",
@@ -1961,7 +2783,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "LA design collective known for holistic artisan interior and object curation",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Romanek Design Studio LA",
@@ -1970,7 +2795,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "High-end Los Angeles residential and commercial design firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Studio Shamshiri Los Angeles",
@@ -1979,7 +2807,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Multi-disciplinary design studio specializing in historical and modern interiors",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Mark D. Sikes Interiors LA",
@@ -1988,7 +2819,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "All-American classic interior designer and author curating traditional brassware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Champalimaud Design NYC",
@@ -1997,7 +2831,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "World-leading luxury hotel and hospitality interior design firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "AvroKO Design NYC",
@@ -2006,7 +2843,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Global hospitality design and concept firm sourcing bespoke restaurant tableware",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Meyer Davis Studio NYC & LA",
@@ -2015,7 +2855,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Globally recognized design boutique specializing in hospitality and residential",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Yabu Pushelberg NYC & Toronto",
@@ -2024,7 +2867,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "World-famous luxury design studio shaping global hotels and flagship stores",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Nate Berkus Associates Chicago & NY",
@@ -2033,7 +2879,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Celebrity interior design and home product design firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Jeremiah Brent Design NYC & LA",
@@ -2042,7 +2891,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Interior design and home curated goods studio in New York and California",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Shea McGee Studio Salt Lake City",
@@ -2052,7 +2904,10 @@
     "category": "interior_design",
     "desc": "Premier US interior design studio and home lifestyle brand",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: studio@studiomcgee.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Emily Henderson Design LA",
@@ -2061,7 +2916,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Leading interior styling, editorial, and design studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Amber Interiors Los Angeles",
@@ -2070,7 +2928,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Southern California effortless laid-back luxury interior design firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Bria Hammel Interiors Minnesota",
@@ -2079,7 +2940,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Midwest fresh classic interior design firm and Brooke & Lou lifestyle shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Marie Flanigan Interiors Houston",
@@ -2088,7 +2952,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Award-winning Houston interior architecture and luxury design firm",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Paloma Contreras Design Houston",
@@ -2097,7 +2964,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Acclaimed Houston designer known for modern traditional style",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Meg Lonergan Interiors Houston",
@@ -2106,7 +2976,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Houston residential design firm specializing in collected and layered spaces",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Cortney Bishop Design Charleston",
@@ -2115,7 +2988,10 @@
     "country": "United States",
     "category": "interior_design",
     "desc": "Charleston contemporary southern interior design and home shop studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Lillian August Design Connecticut & NY",
@@ -2124,7 +3000,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "Northeast premier luxury home furnishings and design centers",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Mitchell Gold Furniture",
@@ -2134,7 +3013,10 @@
     "category": "furniture_lifestyle",
     "desc": "Iconic American modern furniture and home decor company",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@mgbwhome.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Hooker Furniture Living",
@@ -2144,7 +3026,10 @@
     "category": "furniture_lifestyle",
     "desc": "Leading US wholesale manufacturer of luxury home furnishings and accents",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@hookerfurniture.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Bernhardt Furniture North Carolina",
@@ -2153,7 +3038,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "One of America's largest family-owned luxury furniture companies",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Century Furniture North Carolina",
@@ -2162,7 +3050,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "Preeminent manufacturer of luxury custom home furnishings and decor",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Vanguard Furniture North Carolina",
@@ -2171,7 +3062,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "Fashion-driven custom home furnishings and tabletop accents maker",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Hickory Chair North Carolina",
@@ -2180,7 +3074,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "Distinguished custom artisan furniture and home decor company",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Baker Furniture Chicago",
@@ -2189,7 +3086,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "World leader in luxury home furnishings and fine artisanal accents",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Fogo Island Inn Newfoundland",
@@ -2198,7 +3098,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "World-renowned architectural luxury lodge in Newfoundland",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Manulife Centre Bloor Toronto",
@@ -2207,7 +3110,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Toronto Bloor-Yorkville shopping destination and specialty boutiques",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Pacific Centre Vancouver",
@@ -2216,7 +3122,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Premier downtown Vancouver shopping centre housing upscale decor stores",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Rideau Centre Ottawa",
@@ -2225,7 +3134,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Ottawa premier shopping destination and home accents retailer hub",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Sheraton Centre Toronto Hotel",
@@ -2234,7 +3146,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Major Toronto convention and gala banquet hotel",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Westin Bayshore Vancouver",
@@ -2243,7 +3158,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Iconic Vancouver coastal conference and wedding resort",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Fairmont Empress Victoria BC",
@@ -2253,7 +3171,10 @@
     "category": "hospitality_hotel",
     "desc": "Historic luxury Victoria harbour hotel and grand ballroom venue",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: commercial@fairmont.com (Canada)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Fairmont Chateau Whistler",
@@ -2262,7 +3183,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Premier mountain resort and wedding event venue in Whistler",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Fairmont Banff Springs Alberta",
@@ -2271,7 +3195,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Iconic castle in the Rockies hosting premier international galas",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Fairmont Jasper Park Lodge Alberta",
@@ -2280,7 +3207,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Luxury mountain lodge resort and wedding event destination",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Fairmont Le Chateau Frontenac Quebec",
@@ -2289,7 +3219,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "World-famous historic castle hotel in Quebec City",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Manoir Hovey Relais & Chateaux Quebec",
@@ -2298,7 +3231,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Five-star lakeside luxury estate in North Hatley Quebec",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Wickaninnish Inn Tofino BC",
@@ -2307,7 +3243,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Relais & Chateaux luxury oceanfront lodge on Vancouver Island",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Sonora Resort British Columbia",
@@ -2316,7 +3255,10 @@
     "country": "Canada",
     "category": "hospitality_hotel",
     "desc": "Relais & Chateaux wilderness luxury eco-resort in BC",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Biltmore Estate North Carolina",
@@ -2326,7 +3268,10 @@
     "category": "hospitality_hotel",
     "desc": "America's largest private estate and luxury hospitality venue",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: commercial@biltmore.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Greenbrier West Virginia",
@@ -2335,7 +3280,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Historic National Historic Landmark luxury resort in White Sulphur Springs",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Breakers Palm Beach Florida",
@@ -2345,7 +3293,10 @@
     "category": "hospitality_hotel",
     "desc": "Legendary Palm Beach oceanfront luxury resort and gala destination",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: commercial@thebreakers.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "The Plaza Hotel New York",
@@ -2354,7 +3305,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Iconic Fifth Avenue luxury hotel and Grand Ballroom gala venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Gramercy Park Hotel NYC",
@@ -2363,7 +3317,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Historic luxury Manhattan hotel with bohemian artisan interiors",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Carlyle Rosewood NYC",
@@ -2372,7 +3329,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Legendary Upper East Side luxury hotel and timeless entertaining venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Hotel Bel-Air Los Angeles",
@@ -2381,7 +3341,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Secluded Beverly Hills luxury boutique hotel and romantic event venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Post Ranch Inn Big Sur California",
@@ -2390,7 +3353,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "World-renowned Big Sur cliffside luxury resort sourcing natural decor",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Auberge du Soleil Napa Valley",
@@ -2399,7 +3365,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Napa Valley pioneer luxury wine country resort and dining destination",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Meadowood Napa Valley",
@@ -2408,7 +3377,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "St. Helena luxury private estate resort and gala event venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Twin Farms Relais & Chateaux Vermont",
@@ -2417,7 +3389,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "All-inclusive luxury country estate in Barnard Vermont",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Blackberry Farm Tennessee",
@@ -2426,7 +3401,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Acclaimed luxury culinary and artisan hotel in the Great Smoky Mountains",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Blackberry Mountain Tennessee",
@@ -2435,7 +3413,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Luxury wellness and lifestyle retreat sourcing handcrafted tabletop decor",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Ocean House Rhode Island",
@@ -2444,7 +3425,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Relais & Chateaux historic coastal luxury Victorian hotel in Watch Hill",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The American Club Kohler Wisconsin",
@@ -2453,7 +3437,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Forbes Five-Star historic resort and design showroom destination",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Chatham Bars Inn Cape Cod",
@@ -2462,7 +3449,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Cape Cod premier oceanfront resort and lavish wedding venue",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Montage Laguna Beach California",
@@ -2471,7 +3461,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Coastal luxury resort hosting high-profile oceanside galas and weddings",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Montage Deer Valley Utah",
@@ -2480,7 +3473,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Park City luxury alpine resort and grand mountain banquet halls",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Montage Palmetto Bluff South Carolina",
@@ -2489,7 +3485,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Lowcountry luxury resort and picturesque chapel wedding venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Sanctuary at Kiawah Island SC",
@@ -2498,7 +3497,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "South Carolina barrier island luxury mansion hotel and ballroom",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Nemacolin Woodlands Resort PA",
@@ -2507,7 +3509,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Pennsylvania Laurel Highlands luxury resort and art estate",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Enchantment Resort Sedona Arizona",
@@ -2516,7 +3521,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Sedona Boynton Canyon luxury desert resort sourcing artisan metalware",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Amangiri Utah Resort",
@@ -2525,7 +3533,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Ultra-luxury architectural desert sanctuary sourcing minimalist metal tabletop",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Amangani Jackson Hole Wyoming",
@@ -2534,7 +3545,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Jackson Hole luxury mountain lodge with panoramic Teton views",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Ritz-Carlton New York Central Park",
@@ -2544,7 +3558,10 @@
     "category": "hospitality_hotel",
     "desc": "Central Park South luxury hotel and landmark event venue",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: commercial@ritzcarlton.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Ritz-Carlton Bachelor Gulch Colorado",
@@ -2553,7 +3570,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Beaver Creek luxury ski resort and mountain ballroom venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "St. Regis New York",
@@ -2562,7 +3582,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Manhattan historic luxury flagship hotel and Astor Ballroom",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "St. Regis Bal Harbour Miami",
@@ -2571,7 +3594,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Miami ultra-luxury oceanfront resort and glamorous event ballrooms",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "St. Regis Deer Valley Utah",
@@ -2580,7 +3606,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Park City slope-side luxury resort and mountain wedding destination",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Waldorf Astoria Beverly Hills",
@@ -2589,7 +3618,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Beverly Hills urban luxury palace and rooftop venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Waldorf Astoria Chicago",
@@ -2598,7 +3630,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Gold Coast Chicago luxury hotel and private event salons",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "The Langham Chicago",
@@ -2607,7 +3642,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Mies van der Rohe riverfront luxury hotel and ballroom venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "1 Hotel Brooklyn Bridge NYC",
@@ -2616,7 +3654,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "DUMBO Brooklyn waterfront hotel with reclaimed artisan design",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "1 Hotel Central Park NYC",
@@ -2625,7 +3666,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Manhattan eco-luxury urban retreat sourcing organic handcrafted tabletop",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "1 Hotel West Hollywood LA",
@@ -2634,7 +3678,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Sunset Strip luxury sustainable hotel and modern design event spaces",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Proper Hotel Downtown LA",
@@ -2643,7 +3690,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Kelly Wearstler designed historic luxury boutique hotel in LA",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Proper Hotel Santa Monica",
@@ -2652,7 +3702,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Santa Monica coastal luxury design hotel with expansive ballrooms",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Proper Hotel San Francisco",
@@ -2661,7 +3714,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Mid-Market San Francisco high-design boutique hotel and rooftop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Proper Hotel Austin Texas",
@@ -2670,7 +3726,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Downtown Austin luxury hotel and contemporary banquet venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "high_end_boutique",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Shinola Hotel Detroit",
@@ -2679,7 +3738,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Downtown Detroit design-driven boutique hotel and event spaces",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Ace Hotel New York & Brooklyn",
@@ -2688,7 +3750,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Pioneering boutique hotel brand curating eclectic vintage and metal accents",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Graduate Hotels USA",
@@ -2697,7 +3762,10 @@
     "country": "United States",
     "category": "hospitality_hotel",
     "desc": "Handcrafted boutique hotel collection in university towns across the US",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Drake General Store Flagship",
@@ -2706,7 +3774,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Toronto iconic Canadian cultural and lifestyle gift store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Bergo Designs Distillery Toronto",
@@ -2715,7 +3786,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Distillery District Toronto modern housewares, barware, and candle gifts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Corktown Designs Toronto",
@@ -2724,7 +3798,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Distillery District Toronto artisan jewelry and metal tabletop craft",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Soma Chocolatemaker & Living Toronto",
@@ -2733,7 +3810,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Artisan lifestyle and luxury tabletop chocolate boutiques in Toronto",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Maison Simons Quebec City Flagship",
@@ -2742,7 +3822,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Quebec City historic flagship department store sourcing designer home accents",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Maison Birks Canada Luxury Tabletop",
@@ -2751,7 +3834,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Canada's premier luxury jeweler and fine silver tabletop retailer since 1879",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Bay Flagship Toronto Queen Street",
@@ -2760,7 +3846,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Iconic Canadian flagship department store curating home decor collections",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Structube Montreal Sourcing",
@@ -2769,7 +3858,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Leading modern affordable furniture and home decor chain across Canada",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "EQ3 Modern Living Winnipeg Head Office",
@@ -2778,7 +3870,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Canadian modern designer furniture and tabletop accessories brand",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Urban Barn Vancouver Head Office",
@@ -2787,7 +3882,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Contemporary Canadian home decor and rustic-modern furniture retail chain",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Rona Home and Garden Canada",
@@ -2796,7 +3894,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Leading Canadian home improvement and outdoor living chain",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Home Hardware Stores Canada",
@@ -2805,7 +3906,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Dealer-owned Canadian hardware, home decor, and housewares chain with 1,000+ stores",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Canadian Tire Living & Home",
@@ -2815,7 +3919,10 @@
     "category": "home_decor_retailer",
     "desc": "Iconic Canadian retail chain with extensive seasonal and home decor departments",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@canadiantire.ca (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "DavidsTea Toronto Flagship",
@@ -2824,7 +3931,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Specialty tea, home tabletop, and entertaining accessory retailer",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Roots Canada Toronto Flagship",
@@ -2834,7 +3944,10 @@
     "category": "gift_specialty",
     "desc": "Canadian heritage lifestyle and home living collection",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@roots.com (Canada)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Restoration Hardware RH Gallery NYC",
@@ -2843,7 +3956,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "RH Meatpacking Gallery luxury home furnishings and hospitality installations",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Ethan Allen Danbury Connecticut",
@@ -2853,7 +3969,10 @@
     "category": "furniture_lifestyle",
     "desc": "American manufacturer and retailer of fine classic home furnishings",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@ethanallen.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Arhaus Boston Prudential Center",
@@ -2862,7 +3981,10 @@
     "country": "United States",
     "category": "furniture_lifestyle",
     "desc": "Boston artisan handcrafted furniture and imported metal candleware showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Terrain at Styer's Glen Mills PA",
@@ -2871,7 +3993,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Historic nursery and luxury lifestyle home tabletop emporium by URBN",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Terrain Westport Connecticut",
@@ -2880,7 +4005,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Westport CT upscale garden, home decor, and artisanal candle boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Terrain Doylestown PA",
@@ -2889,7 +4017,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Bucks County PA luxury home decor, garden accents, and tabletop boutique",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Serena & Lily Westport Design Shop",
@@ -2898,7 +4029,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Connecticut coastal luxury home furnishings and candleware showroom",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Serena & Lily Summit New Jersey",
@@ -2907,7 +4041,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "New Jersey design shop curating upscale coastal home accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Edison",
+    "state": "New Jersey"
   },
   {
     "name": "Serena & Lily Chicago Lincoln Park",
@@ -2916,7 +4053,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Lincoln Park Chicago luxury coastal tabletop and home decor store",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Serena & Lily Dallas Design District",
@@ -2925,7 +4065,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Dallas design showroom featuring upscale tabletop and brass accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Houston",
+    "state": "Texas"
   },
   {
     "name": "Serena & Lily San Francisco Pacific Heights",
@@ -2934,7 +4077,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Pacific Heights SF flagship design shop for luxury home accessories",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Jonathan Adler SoHo NYC",
@@ -2943,7 +4089,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "SoHo New York iconic modern design store and brass candelabras gallery",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Jonathan Adler Upper East Side NYC",
@@ -2952,7 +4101,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Madison Avenue NYC luxury modern decorative accessories and candleware",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Jonathan Adler Chicago River North",
@@ -2961,7 +4113,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Chicago River North glamorous modern home decor and tabletop shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Jonathan Adler Miami Design District",
@@ -2970,7 +4125,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Miami Design District modern luxury home accents and brass tabletop boutique",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "Jonathan Adler West Hollywood LA",
@@ -2979,7 +4137,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Melrose Avenue LA modern chic home decor and candelabra store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "ABC Carpet & Home Brooklyn Industry City",
@@ -2988,7 +4149,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Brooklyn luxury outlet and sustainable home tabletop emporium",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Anthropologie Rockefeller Center NYC",
@@ -2997,7 +4161,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Midtown Manhattan flagship store featuring extensive home decor and candleware floor",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Free People Movement & Living Philadelphia",
@@ -3007,7 +4174,10 @@
     "category": "gift_specialty",
     "desc": "Bohemian lifestyle, wellness, and artisanal tabletop accents by URBN",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: buyers@freepeople.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "CB2 SoHo New York",
@@ -3016,7 +4186,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "SoHo Manhattan modern home accessories and sculptural candelabras showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "CB2 Lincoln Park Chicago",
@@ -3025,7 +4198,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Chicago flagship urban contemporary home decor and lighting store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "CB2 West Hollywood Los Angeles",
@@ -3034,7 +4210,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Sunset Boulevard LA modern home decor and entertaining tabletop showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "CB2 Miami South Beach",
@@ -3043,7 +4222,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "South Beach Miami modern home accents and architectural candle holders",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Miami",
+    "state": "Florida"
   },
   {
     "name": "Crate & Barrel North Michigan Avenue Chicago",
@@ -3052,7 +4234,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Magnificent Mile Chicago flagship home furnishings and tabletop emporium",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Chicago",
+    "state": "Illinois"
   },
   {
     "name": "Crate & Barrel SoHo New York",
@@ -3061,7 +4246,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Broadway SoHo NYC home entertaining and candle centerpiece destination",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Pottery Barn Fifth Avenue NYC",
@@ -3070,7 +4258,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Fifth Avenue Manhattan flagship home decor and lantern collections",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Williams Sonoma Columbus Circle NYC",
@@ -3079,7 +4270,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Central Park South premier gourmet kitchenware and fine tabletop store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "West Elm DUMBO Brooklyn Flagship",
@@ -3088,7 +4282,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Brooklyn waterfront flagship for modern artisan home furnishings and candleware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Briers Home & Gift Vancouver",
@@ -3097,7 +4294,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "West 4th Avenue Vancouver home entertaining and gift boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Giving Gifts & Company Vancouver",
@@ -3106,7 +4306,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Fair trade and eco-friendly home tabletop boutique in Vancouver",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Plant Shop Calgary",
@@ -3115,7 +4318,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Inglewood Calgary curated indoor living, ceramics, and candle accessories",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Fair's Fair Books & Decor Calgary",
@@ -3124,7 +4330,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Calgary independent book and vintage gift emporium",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "The Livery Shop Calgary",
@@ -3133,7 +4342,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Inglewood Calgary lifestyle boutique supporting independent makers",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Field Study Shop Calgary",
@@ -3142,7 +4354,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Calgary curated shop for intentional home goods, textiles, and candleware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Carbon Environmental Boutique Edmonton",
@@ -3151,7 +4366,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Edmonton eco-friendly home living, decor, and tabletop store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Vivid Print & Decor Edmonton",
@@ -3160,7 +4378,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Edmonton design prints, frames, and artisan home tabletop gifts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "When Pigs Fly Decor Edmonton",
@@ -3169,7 +4390,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Whyte Avenue Edmonton eclectic home accessories and gift boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Red Ribbon Boutique Edmonton",
@@ -3178,7 +4402,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "High Street Edmonton curated lifestyle and Canadian home decor boutique",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Beau Chapeau Tabletop & Gifts Niagara",
@@ -3187,7 +4414,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Niagara-on-the-Lake specialty gift and accessory retailer",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Loom & Table NYC",
@@ -3197,7 +4427,10 @@
     "category": "home_decor_retailer",
     "desc": "Custom luxury table linens and tabletop entertaining accessories",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@loomandtable.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Material Kitchen Tabletop NYC",
@@ -3206,7 +4439,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Modern kitchenware and sleek dining tabletop objects brand",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Great Jones Tabletop NYC",
@@ -3216,7 +4452,10 @@
     "category": "home_decor_retailer",
     "desc": "Contemporary colorful cookware and dining candle accessories",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@greatjonesgoods.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Caraway Home Tabletop NYC",
@@ -3225,7 +4464,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Design-forward non-toxic cookware and modern tabletop essentials",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Our Place Tabletop LA",
@@ -3234,7 +4476,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Mission-driven dinnerware and multi-cultural tabletop entertaining brand",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Year & Day Modern Dining LA",
@@ -3244,7 +4489,10 @@
     "category": "home_decor_retailer",
     "desc": "Californian curated ceramic and metal candle tabletop collections",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@yearandday.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Los Angeles",
+    "state": "California"
   },
   {
     "name": "Fortessa Tableware Solutions Virginia",
@@ -3253,7 +4501,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Leading global designer and distributor of luxury dinnerware and candleware",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Oneida Flatware & Tabletop NY",
@@ -3263,7 +4514,10 @@
     "category": "wholesale_distributor",
     "desc": "Historic American tabletop flatware and metal decorative accessories maker",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: wholesale@oneida.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Lenox Tabletop & Giftware North Carolina",
@@ -3272,7 +4526,10 @@
     "country": "United States",
     "category": "wholesale_distributor",
     "desc": "Preeminent American brand of fine china, crystal, and seasonal candle gifts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Reed & Barton Silverware",
@@ -3282,7 +4539,10 @@
     "category": "wholesale_distributor",
     "desc": "Historic luxury silversmiths crafting fine metal candelabras and giftware",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: wholesale@reedandbarton.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Gorham Tabletop & Metalware",
@@ -3292,7 +4552,10 @@
     "category": "wholesale_distributor",
     "desc": "Iconic American silverware and fine metal candleholder company",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: wholesale@gorham.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Waterford Crystal & Tabletop USA",
@@ -3302,7 +4565,10 @@
     "category": "home_decor_retailer",
     "desc": "World leader in luxury crystal candelabras and fine dining centerpieces",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@waterford.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Wedgwood Tabletop & Gifts USA",
@@ -3312,7 +4578,10 @@
     "category": "home_decor_retailer",
     "desc": "Prestigious English fine bone china and luxury candle tabletop collections",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@wedgwood.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Royal Doulton Living USA",
@@ -3322,7 +4591,10 @@
     "category": "home_decor_retailer",
     "desc": "Contemporary tabletop, ceramic, and metal candle accessories brand",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@royaldoulton.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Iittala Scandinavian Living USA",
@@ -3332,7 +4604,10 @@
     "category": "home_decor_retailer",
     "desc": "Iconic Finnish design brand famous for timeless glass and brass candleholders",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@iittala.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Marimekko Home Living NYC",
@@ -3342,7 +4617,10 @@
     "category": "home_decor_retailer",
     "desc": "Finnish design house celebrated for bold patterns and modern tabletop goods",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@marimekko.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Alessi Design Factory USA",
@@ -3352,7 +4630,10 @@
     "category": "home_decor_retailer",
     "desc": "Italian design factory producing sculptural metal tabletop and candle holders",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@alessi.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Georg Jensen Luxury Living USA",
@@ -3362,7 +4643,10 @@
     "category": "home_decor_retailer",
     "desc": "Danish luxury design brand renowned for sculptural silver and brass candleware",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@georgjensen.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Christofle Silver Tabletop NYC",
@@ -3372,7 +4656,10 @@
     "category": "home_decor_retailer",
     "desc": "Parisian master silversmiths crafting ultra-luxury metal candelabras and table art",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@christofle.com (United States)",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Baccarat Luxury Crystal NYC",
@@ -3381,7 +4668,10 @@
     "country": "United States",
     "category": "home_decor_retailer",
     "desc": "Legendary French luxury crystal house creating monumental candelabras",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "Lalique Crystal & Decor NYC",
@@ -3391,7 +4681,10 @@
     "category": "home_decor_retailer",
     "desc": "Iconic French crystal and decorative arts creator of candle accessories",
     "raw_content": " - Verified B2B Trade & Sourcing Directory. Commercial Buyer Contact: trade@lalique.com (United States)",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "New York",
+    "state": "New York"
   },
   {
     "name": "The Design Co Toronto",
@@ -3400,7 +4693,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Toronto luxury wedding styling and bespoke tabletop lighting",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Bliss Events Toronto",
@@ -3409,7 +4705,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Toronto high-end corporate galas and wedding design agency",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Mango Studios Toronto",
@@ -3418,7 +4717,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Premier Toronto wedding aesthetic and creative event styling studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Brightside Weddings Vancouver",
@@ -3427,7 +4729,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Vancouver creative event production and staging company",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Pacific Yacht Charters Vancouver",
@@ -3436,7 +4741,10 @@
     "country": "Canada",
     "category": "event_party_rental",
     "desc": "Vancouver luxury yacht dining and catered event galas venue",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Rocky Mountain Weddings Banff",
@@ -3445,7 +4753,10 @@
     "country": "Canada",
     "category": "wedding_event_decorator",
     "desc": "Banff, Canmore and Lake Louise luxury alpine wedding planner",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Flower Room Toronto",
@@ -3454,7 +4765,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Toronto Bloor West Village artisan florist and home decor shop",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "The Flower Cart Halifax",
@@ -3463,7 +4777,10 @@
     "country": "Canada",
     "category": "gift_specialty",
     "desc": "Annapolis Valley and Halifax social enterprise floral and gift decor studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Red Door Interiors Calgary",
@@ -3472,7 +4789,10 @@
     "country": "Canada",
     "category": "interior_design",
     "desc": "Calgary residential design firm and curated tabletop decor studio",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Louis Interiors Toronto",
@@ -3481,7 +4801,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Custom commercial hospitality and residential furniture manufacturer",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Klaus by Nienkamper Toronto",
@@ -3490,7 +4813,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "King Street East Toronto iconic modern furniture and lighting showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "EQ3 King West Toronto",
@@ -3499,7 +4825,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Toronto design district showroom for contemporary Canadian furnishings",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "EQ3 Granville Vancouver",
@@ -3508,7 +4837,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "South Granville Vancouver modern furniture and home decor showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "EQ3 Brossard Quebec",
@@ -3517,7 +4849,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Dix30 Brossard modern lifestyle furniture and home accessories store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "EQ3 Calgary Showroom",
@@ -3526,7 +4861,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Calgary modern designer furnishings and home accents showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "EQ3 Ottawa Showroom",
@@ -3535,7 +4873,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "ByWard Market Ottawa modern furniture and tabletop showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "West Elm King Street Toronto",
@@ -3544,7 +4885,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Liberty Village Toronto modern artisan furniture and candleware showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "West Elm South Granville Vancouver",
@@ -3553,7 +4897,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Vancouver flagship showroom for modern artisan home accessories and lanterns",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "West Elm Calgary Mount Royal",
@@ -3562,7 +4909,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Calgary 17th Avenue design district modern home accessories showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "West Elm Montreal Sainte-Catherine",
@@ -3571,7 +4921,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Montreal downtown flagship modern furniture and tabletop store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Montreal",
+    "state": "Quebec"
   },
   {
     "name": "CB2 Queen West Toronto",
@@ -3580,7 +4933,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Toronto Queen West flagship modern decor and candelabra destination",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "CB2 Robson Street Vancouver",
@@ -3589,7 +4945,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Vancouver downtown modern lifestyle and entertaining tabletop showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Crate and Barrel Yorkdale Toronto",
@@ -3598,7 +4957,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Toronto premier shopping center flagship home furnishings emporium",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Crate and Barrel Square One Mississauga",
@@ -3607,7 +4969,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Mississauga flagship home tabletop and candle centerpieces showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Mississauga",
+    "state": "Ontario"
   },
   {
     "name": "Crate and Barrel Oakridge Vancouver",
@@ -3616,7 +4981,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Vancouver premier luxury home furnishings and tabletop destination",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Crate and Barrel Southcentre Calgary",
@@ -3625,7 +4993,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Calgary flagship home entertaining, dinnerware, and candleware store",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Pottery Barn Yorkdale Toronto",
@@ -3634,7 +5005,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Toronto flagship home decor, seasonal lanterns, and candle centerpieces",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Pottery Barn Granville Vancouver",
@@ -3643,7 +5017,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "South Granville Vancouver casual luxury home furnishings and tabletop",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Pottery Barn Chinook Centre Calgary",
@@ -3652,7 +5029,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Calgary premier home decor and entertaining accessories showroom",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Calgary",
+    "state": "Alberta"
   },
   {
     "name": "Williams Sonoma Bloor Street Toronto",
@@ -3661,7 +5041,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Bloor-Yorkville Toronto fine culinary, tabletop, and brass candleware",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Williams Sonoma Granville Vancouver",
@@ -3670,7 +5053,10 @@
     "country": "Canada",
     "category": "home_decor_retailer",
     "desc": "Vancouver fine cookware, entertaining tabletop, and seasonal gifts",
-    "market_segment": "mid_range"
+    "market_segment": "mid_range",
+    "buyer_size": "independent_small",
+    "city": "Vancouver",
+    "state": "British Columbia"
   },
   {
     "name": "Restoration Hardware Yorkdale Toronto",
@@ -3679,7 +5065,10 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Toronto Yorkdale mega-gallery for luxury home decor and candelabras",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Toronto",
+    "state": "Ontario"
   },
   {
     "name": "Restoration Hardware South Granville Vancouver",
@@ -3688,6 +5077,9 @@
     "country": "Canada",
     "category": "furniture_lifestyle",
     "desc": "Vancouver multi-level luxury home gallery and architectural lighting",
-    "market_segment": "high_end"
+    "market_segment": "high_end",
+    "buyer_size": "mid_market",
+    "city": "Vancouver",
+    "state": "British Columbia"
   }
 ]

@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import { TrendingUp, ShieldCheck, Mail, CheckCircle2, Building2, Store, Sparkles } from 'lucide-react';
+import { TrendingUp, ShieldCheck, Mail, CheckCircle2, Building2, Store, Sparkles, Globe2, Layers } from 'lucide-react';
 
 export default function AnalyticsPage({ metrics = {}, leads = [] }) {
   const total = leads.length;
@@ -10,12 +10,17 @@ export default function AnalyticsPage({ metrics = {}, leads = [] }) {
   const totalAttempts = delivered;
   const replied = leads.filter(l => l.reply_status === 'replied').length;
 
-  const wholesale = leads.filter(l => l.category === 'wholesale_distributor').length;
-  const retailers = leads.filter(l => ['home_decor_retailer', 'gift_specialty', 'furniture_lifestyle'].includes(l.category)).length;
-  const hospitalityAndEvents = leads.filter(l => ['wedding_event_decorator', 'hospitality_hotel', 'interior_design', 'event_party_rental'].includes(l.category)).length;
+  const diaspora = leads.filter(l => l.category === 'diaspora_ethnic' || l.market_segment === 'diaspora').length;
+  const wholesale = leads.filter(l => l.category === 'wholesale_distributor' || l.buyer_size === 'enterprise_large').length;
+  const furniture = leads.filter(l => l.category === 'furniture_lifestyle').length;
+  const homeDecor = leads.filter(l => l.category === 'home_decor_retailer').length;
+  const otherSpecialty = leads.filter(l => ['gift_specialty', 'interior_design', 'hospitality_events', 'wedding_event_decorator'].includes(l.category)).length;
+
+  const largeScale = leads.filter(l => l.buyer_size === 'enterprise_large').length;
+  const midScale = leads.filter(l => l.buyer_size === 'mid_market').length;
+  const independentScale = leads.filter(l => !l.buyer_size || l.buyer_size === 'independent_small').length;
 
   const deliverabilityRate = total > 0 ? Math.round((deliverable / total) * 100) : 100;
-  const wholesaleRate = total > 0 ? Math.round((wholesale / total) * 100) : 0;
   const domainHealthScore = total > 0 ? Math.max(50, Math.round(100 - (invalid / total) * 30)) : 100;
 
   return (
@@ -48,6 +53,7 @@ export default function AnalyticsPage({ metrics = {}, leads = [] }) {
         </div>
       </div>
 
+      {/* Pipeline Funnel */}
       <div className="app-card" style={{ marginBottom: '24px' }}>
         <h2 className="card-heading" style={{ marginBottom: '16px' }}>Commercial Pipeline Funnel</h2>
 
@@ -60,7 +66,7 @@ export default function AnalyticsPage({ metrics = {}, leads = [] }) {
             border: '1px solid var(--border-color)'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 600, color: '#f8fafc', marginBottom: '8px' }}>
-              <span>1. Total North American Prospects Discovered</span>
+              <span>1. Total Commercial Prospects Discovered</span>
               <span>{total} buyers</span>
             </div>
             <div style={{ width: '100%', height: '6px', background: '#162035', borderRadius: '3px', overflow: 'hidden' }}>
@@ -92,11 +98,11 @@ export default function AnalyticsPage({ metrics = {}, leads = [] }) {
             border: '1px solid var(--border-color)'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 600, color: '#f8fafc', marginBottom: '8px' }}>
-              <span>3. Commercial Segment Breakdown</span>
-              <span>{retailers} Retailers &bull; {hospitalityAndEvents} Hospitality/Design &bull; {wholesale} Wholesalers</span>
+              <span>3. Target Market Breakdown</span>
+              <span>{diaspora} Diaspora &bull; {wholesale} Wholesale &bull; {furniture} Furniture &bull; {homeDecor} Home Décor</span>
             </div>
             <div style={{ width: '100%', height: '6px', background: '#162035', borderRadius: '3px', overflow: 'hidden' }}>
-              <div style={{ width: total > 0 ? `${Math.round((deliverable / total) * 100)}%` : '0%', height: '100%', background: '#a855f7', borderRadius: '3px' }} />
+              <div style={{ width: total > 0 ? `${Math.round((deliverable / total) * 100)}%` : '0%', height: '100%', background: '#f59e0b', borderRadius: '3px' }} />
             </div>
           </div>
 
@@ -108,11 +114,11 @@ export default function AnalyticsPage({ metrics = {}, leads = [] }) {
             border: '1px solid var(--border-color)'
           }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', fontWeight: 600, color: '#f8fafc', marginBottom: '8px' }}>
-              <span>4. Dispatched via Gmail SMTP Outreach</span>
-              <span>{totalAttempts} emails dispatched &bull; {delivered} actually delivered to buyers</span>
+              <span>4. Buyer Scale & Sizing Distribution</span>
+              <span>{largeScale} Large Wholesalers &bull; {midScale} Mid-Market Chains &bull; {independentScale} Independent/Diaspora</span>
             </div>
             <div style={{ width: '100%', height: '6px', background: '#162035', borderRadius: '3px', overflow: 'hidden' }}>
-              <div style={{ width: totalAttempts > 0 ? `${Math.round((delivered / totalAttempts) * 100)}%` : '0%', height: '100%', background: '#3b82f6', borderRadius: '3px' }} />
+              <div style={{ width: total > 0 ? `${Math.round((deliverable / total) * 100)}%` : '0%', height: '100%', background: '#818cf8', borderRadius: '3px' }} />
             </div>
           </div>
         </div>

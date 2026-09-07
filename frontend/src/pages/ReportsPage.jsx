@@ -100,7 +100,7 @@ export default function ReportsPage({
   setActiveTab
 }) {
   const [activeReportTab, setActiveReportTab] = useState('sent_log');
-  const [logTimeframe, setLogTimeframe] = useState('all');
+  const [logTimeframe, setLogTimeframe] = useState('today');
   const [searchTerm, setSearchTerm] = useState('');
   const [responseFilter, setResponseFilter] = useState('all');
   const [copiedSentLog, setCopiedSentLog] = useState(false);
@@ -540,16 +540,16 @@ export default function ReportsPage({
           </div>
 
           {/* Table */}
-          <div className="app-table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
-            <table className="app-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+          <div className="app-table-container" style={{ maxHeight: '600px', overflowY: 'auto', overflowX: 'hidden', width: '100%' }}>
+            <table className="app-table" style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ background: 'rgba(15, 23, 42, 0.95)', position: 'sticky', top: 0, zIndex: 10 }}>
-                  <th style={{ padding: '10px 12px', width: '85px', whiteSpace: 'nowrap' }}>DATE</th>
-                  <th style={{ padding: '10px 12px', minWidth: '180px' }}>NAME OF THE COMPANY</th>
-                  <th style={{ padding: '10px 12px', minWidth: '180px' }}>EMAIL ADDRESS</th>
-                  <th style={{ padding: '10px 12px', minWidth: '140px' }}>WEBSITE LINK</th>
-                  <th style={{ padding: '10px 12px', width: '170px', minWidth: '160px', maxWidth: '180px' }}>RESPONSES</th>
-                  <th style={{ padding: '10px 10px', width: '50px', textAlign: 'center' }}>Edit</th>
+                  <th style={{ padding: '10px 12px', width: '10%', whiteSpace: 'nowrap' }}>DATE</th>
+                  <th style={{ padding: '10px 12px', width: '27%' }}>NAME OF THE COMPANY</th>
+                  <th style={{ padding: '10px 12px', width: '25%' }}>EMAIL ADDRESS</th>
+                  <th style={{ padding: '10px 12px', width: '18%' }}>WEBSITE LINK</th>
+                  <th style={{ padding: '10px 12px', width: '15%' }}>RESPONSES</th>
+                  <th style={{ padding: '10px 8px', width: '5%', textAlign: 'center' }}>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -568,45 +568,49 @@ export default function ReportsPage({
 
                     return (
                       <tr key={idx} style={{ transition: 'background 0.15s ease' }}>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={item['DATE']}>
                           {item['DATE']}
                         </td>
-                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)' }}>
+                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item['NAME OF THE COMPANY']}>
                           {item['NAME OF THE COMPANY']}
                         </td>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px' }}>
+                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           <a
                             href={`mailto:${item['EMAIL ADDRESS']}`}
-                            style={{ color: '#93c5fd', textDecoration: 'none' }}
+                            title={item['EMAIL ADDRESS']}
+                            style={{ color: '#93c5fd', textDecoration: 'none', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
                           >
                             {item['EMAIL ADDRESS']}
                           </a>
                         </td>
-                        <td style={{ padding: '10px 12px', fontSize: '11px' }}>
+                        <td style={{ padding: '10px 12px', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           {item['WEBSITE LINK'] ? (
                             <a
                               href={item['WEBSITE LINK'].startsWith('http') ? item['WEBSITE LINK'] : `https://${item['WEBSITE LINK']}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
+                              title={item['WEBSITE LINK']}
+                              style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none', maxWidth: '100%', overflow: 'hidden' }}
                             >
-                              <span>{item['WEBSITE LINK'].replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}</span>
-                              <ExternalLink size={10} />
+                              <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                                {item['WEBSITE LINK'].replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}
+                              </span>
+                              <ExternalLink size={10} style={{ flexShrink: 0 }} />
                             </a>
                           ) : (
                             <span style={{ color: 'var(--text-muted)' }}>—</span>
                           )}
                         </td>
-                        <td style={{ padding: '10px 12px', width: '170px', maxWidth: '180px', overflow: 'hidden' }}>
+                        <td style={{ padding: '10px 12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                           <div
                             title={resp}
                             style={{
-                              display: 'inline-block',
+                              display: 'block',
                               maxWidth: '100%',
                               whiteSpace: 'nowrap',
                               overflow: 'hidden',
                               textOverflow: 'ellipsis',
-                              verticalAlign: 'middle',
+                              textAlign: 'center',
                               padding: '3px 8px',
                               borderRadius: '4px',
                               fontSize: '11px',
@@ -710,16 +714,16 @@ export default function ReportsPage({
             </div>
           </div>
 
-          <div className="app-table-container" style={{ maxHeight: '600px', overflowY: 'auto' }}>
-            <table className="app-table" style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+          <div className="app-table-container" style={{ maxHeight: '600px', overflowY: 'auto', overflowX: 'hidden', width: '100%' }}>
+            <table className="app-table" style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ background: 'rgba(15, 23, 42, 0.95)', position: 'sticky', top: 0, zIndex: 10 }}>
-                  <th style={{ padding: '10px 12px', width: '85px', whiteSpace: 'nowrap' }}>DATE</th>
-                  <th style={{ padding: '10px 12px', minWidth: '180px' }}>NAME OF THE COMPANY</th>
-                  <th style={{ padding: '10px 12px', minWidth: '180px' }}>EMAIL ADDRESS</th>
-                  <th style={{ padding: '10px 12px', minWidth: '140px' }}>WEBSITE LINK</th>
-                  <th style={{ padding: '10px 12px', width: '170px', minWidth: '160px', maxWidth: '180px' }}>RESPONSES</th>
-                  <th style={{ padding: '10px 10px', width: '50px', textAlign: 'center' }}>Edit</th>
+                  <th style={{ padding: '10px 12px', width: '10%', whiteSpace: 'nowrap' }}>DATE</th>
+                  <th style={{ padding: '10px 12px', width: '27%' }}>NAME OF THE COMPANY</th>
+                  <th style={{ padding: '10px 12px', width: '25%' }}>EMAIL ADDRESS</th>
+                  <th style={{ padding: '10px 12px', width: '18%' }}>WEBSITE LINK</th>
+                  <th style={{ padding: '10px 12px', width: '15%' }}>RESPONSES</th>
+                  <th style={{ padding: '10px 8px', width: '5%', textAlign: 'center' }}>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -731,74 +735,79 @@ export default function ReportsPage({
 
                   return (
                     <tr key={item.id || idx}>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }}>
-                          {item.date}
-                        </td>
-                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)' }}>
-                          {item.company}
-                        </td>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px' }}>
-                          <a href={`mailto:${item.email}`} style={{ color: '#93c5fd', textDecoration: 'none' }}>
-                            {item.email}
-                          </a>
-                        </td>
-                        <td style={{ padding: '10px 12px', fontSize: '11px' }}>
-                          {item.website ? (
-                            <a
-                              href={item.website.startsWith('http') ? item.website : `https://${item.website}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
-                            >
-                              <span>{item.website.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}</span>
-                              <ExternalLink size={10} />
-                            </a>
-                          ) : '—'}
-                        </td>
-                        <td style={{ padding: '10px 12px', width: '170px', maxWidth: '180px', overflow: 'hidden' }}>
-                          <div
-                            title={resp}
-                            style={{
-                              display: 'inline-block',
-                              maxWidth: '100%',
-                              whiteSpace: 'nowrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              verticalAlign: 'middle',
-                              padding: '3px 8px',
-                              borderRadius: '4px',
-                              fontSize: '11px',
-                              fontWeight: 500,
-                              background: isReplied
-                                ? 'rgba(74, 222, 128, 0.12)'
-                                : isAutoReply
-                                  ? 'rgba(251, 191, 36, 0.15)'
-                                  : isDispatched
-                                    ? 'rgba(59, 130, 246, 0.12)'
-                                    : 'rgba(148, 163, 184, 0.08)',
-                              color: isReplied
-                                ? '#4ade80'
-                                : isAutoReply
-                                  ? '#fbbf24'
-                                  : isDispatched
-                                    ? '#60a5fa'
-                                    : 'var(--text-muted)',
-                              border: `1px solid ${isReplied ? 'rgba(74, 222, 128, 0.3)' : isAutoReply ? 'rgba(251, 191, 36, 0.4)' : isDispatched ? 'rgba(59, 130, 246, 0.3)' : 'rgba(148, 163, 184, 0.2)'
-                                }`
-                            }}
+                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={item.date}>
+                        {item.date}
+                      </td>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item.company}>
+                        {item.company}
+                      </td>
+                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <a href={`mailto:${item.email}`} title={item.email} style={{ color: '#93c5fd', textDecoration: 'none', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {item.email}
+                        </a>
+                      </td>
+                      <td style={{ padding: '10px 12px', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {item.website ? (
+                          <a
+                            href={item.website.startsWith('http') ? item.website : `https://${item.website}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            title={item.website}
+                            style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none', maxWidth: '100%', overflow: 'hidden' }}
                           >
-                            {resp}
-                          </div>
-                        </td>
-                    <td style={{ padding: '10px 8px', textAlign: 'center' }}>
-                      <button
-                        onClick={() => openEditModal(item)}
-                        style={{ background: 'transparent', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '4px', color: 'var(--text-muted)', cursor: 'pointer' }}
-                      >
-                        <Edit3 size={12} />
-                      </button>
-                    </td>
-                  </tr>
+                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              {item.website.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}
+                            </span>
+                            <ExternalLink size={10} style={{ flexShrink: 0 }} />
+                          </a>
+                        ) : (
+                          <span style={{ color: 'var(--text-muted)' }}>—</span>
+                        )}
+                      </td>
+                      <td style={{ padding: '10px 12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <div
+                          title={resp}
+                          style={{
+                            display: 'block',
+                            maxWidth: '100%',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            textAlign: 'center',
+                            padding: '3px 8px',
+                            borderRadius: '4px',
+                            fontSize: '11px',
+                            fontWeight: 500,
+                            background: isReplied
+                              ? 'rgba(74, 222, 128, 0.12)'
+                              : isAutoReply
+                                ? 'rgba(251, 191, 36, 0.15)'
+                                : isDispatched
+                                  ? 'rgba(59, 130, 246, 0.12)'
+                                  : 'rgba(148, 163, 184, 0.08)',
+                            color: isReplied
+                              ? '#4ade80'
+                              : isAutoReply
+                                ? '#fbbf24'
+                                : isDispatched
+                                  ? '#60a5fa'
+                                  : 'var(--text-muted)',
+                            border: `1px solid ${isReplied ? 'rgba(74, 222, 128, 0.3)' : isAutoReply ? 'rgba(251, 191, 36, 0.4)' : isDispatched ? 'rgba(59, 130, 246, 0.3)' : 'rgba(148, 163, 184, 0.2)'
+                              }`
+                          }}
+                        >
+                          {resp}
+                        </div>
+                      </td>
+                      <td style={{ padding: '10px 8px', textAlign: 'center' }}>
+                        <button
+                          onClick={() => openEditModal(item)}
+                          style={{ background: 'transparent', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '4px', color: 'var(--text-muted)', cursor: 'pointer' }}
+                        >
+                          <Edit3 size={12} />
+                        </button>
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>

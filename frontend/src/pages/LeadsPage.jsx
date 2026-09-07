@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import { 
   Search, 
@@ -10,33 +10,78 @@ import {
   Mail, 
   MessageSquare, 
   Trash2,
-  RotateCcw
+  RotateCcw,
+  Globe,
+  Layers,
+  BarChart3,
+  ExternalLink,
+  ChevronDown,
+  ChevronUp,
+  Sparkles,
+  Building2,
+  Store,
+  Sliders,
+  Check,
+  Info,
+  MapPin
 } from 'lucide-react';
+import { COUNTRIES, STATES_BY_COUNTRY, buildLocationQuery } from '../data/locations';
 
 const BUYER_TYPE_META = {
+  'diaspora_ethnic': { label: 'Diaspora & Ethnic', color: '#f59e0b', bg: 'rgba(245, 158, 11, 0.12)', border: 'rgba(245, 158, 11, 0.3)' },
+  'wholesale_distributor': { label: 'Wholesale', color: '#818cf8', bg: 'rgba(129, 140, 248, 0.12)', border: 'rgba(129, 140, 248, 0.3)' },
+  'furniture_lifestyle': { label: 'Furniture Stores', color: '#06b6d4', bg: 'rgba(6, 182, 212, 0.12)', border: 'rgba(6, 182, 212, 0.3)' },
   'home_decor_retailer': { label: 'Home Décor', color: '#38bdf8', bg: 'rgba(56, 189, 248, 0.12)', border: 'rgba(56, 189, 248, 0.3)' },
-  'wedding_event_decorator': { label: 'Wedding & Event', color: '#ec4899', bg: 'rgba(236, 72, 153, 0.12)', border: 'rgba(236, 72, 153, 0.3)' },
-  'hospitality_hotel': { label: 'Hotels & Hospitality', color: '#eab308', bg: 'rgba(234, 179, 8, 0.12)', border: 'rgba(234, 179, 8, 0.3)' },
   'gift_specialty': { label: 'Gift Shops', color: '#22c55e', bg: 'rgba(34, 197, 94, 0.12)', border: 'rgba(34, 197, 94, 0.3)' },
   'interior_design': { label: 'Interior Design', color: '#a855f7', bg: 'rgba(168, 85, 247, 0.12)', border: 'rgba(168, 85, 247, 0.3)' },
-  'event_party_rental': { label: 'Event Rental', color: '#f97316', bg: 'rgba(249, 115, 22, 0.12)', border: 'rgba(249, 115, 22, 0.3)' },
-  'furniture_lifestyle': { label: 'Furniture Stores', color: '#06b6d4', bg: 'rgba(6, 182, 212, 0.12)', border: 'rgba(6, 182, 212, 0.3)' },
-  'wholesale_distributor': { label: 'Wholesale', color: '#818cf8', bg: 'rgba(129, 140, 248, 0.12)', border: 'rgba(129, 140, 248, 0.3)' }
+  'wedding_event_decorator': { label: 'Wedding & Event', color: '#ec4899', bg: 'rgba(236, 72, 153, 0.12)', border: 'rgba(236, 72, 153, 0.3)' },
+  'hospitality_hotel': { label: 'Hotels & Hospitality', color: '#eab308', bg: 'rgba(234, 179, 8, 0.12)', border: 'rgba(234, 179, 8, 0.3)' },
+  'event_party_rental': { label: 'Event Rental', color: '#f97316', bg: 'rgba(249, 115, 22, 0.12)', border: 'rgba(249, 115, 22, 0.3)' }
 };
+
+const SOURCE_CHANNELS = [
+  { id: 'wholesale', name: 'Wholesale Platforms', icon: '📦', defaultEnabled: true },
+  { id: 'linkedin', name: 'LinkedIn Business', icon: '💼', defaultEnabled: true },
+  { id: 'instagram', name: 'Instagram Boutiques', icon: '📸', defaultEnabled: true },
+  { id: 'search_engine', name: 'Search Engines (Web)', icon: '🔍', defaultEnabled: true },
+  { id: 'directory', name: 'Business Directories', icon: '🏢', defaultEnabled: true },
+  { id: 'facebook', name: 'Facebook Showrooms', icon: '📘', defaultEnabled: true },
+  { id: 'pinterest', name: 'Pinterest Visual Brands', icon: '📌', defaultEnabled: true },
+  { id: 'youtube', name: 'YouTube Showrooms', icon: '🎬', defaultEnabled: true },
+  { id: 'marketplace', name: 'Public Marketplaces', icon: '🛍️', defaultEnabled: true },
+  { id: 'industry', name: 'Trade Associations', icon: '🏛️', defaultEnabled: true },
+  { id: 'direct_website', name: 'Official Websites', icon: '🌐', defaultEnabled: true }
+];
 
 const getCategoryMeta = (category) => {
   if (BUYER_TYPE_META[category]) {
     return BUYER_TYPE_META[category];
   }
   const cat = (category || '').toLowerCase();
+  if (cat.includes('diaspora') || cat.includes('ethnic') || cat.includes('india') || cat.includes('handicraft')) return BUYER_TYPE_META['diaspora_ethnic'];
+  if (cat.includes('wholesale') || cat.includes('distributor') || cat.includes('import')) return BUYER_TYPE_META['wholesale_distributor'];
+  if (cat.includes('furniture')) return BUYER_TYPE_META['furniture_lifestyle'];
   if (cat.includes('wedding') || cat.includes('event')) return BUYER_TYPE_META['wedding_event_decorator'];
   if (cat.includes('hotel') || cat.includes('hospitality') || cat.includes('restaurant')) return BUYER_TYPE_META['hospitality_hotel'];
   if (cat.includes('gift') || cat.includes('specialty')) return BUYER_TYPE_META['gift_specialty'];
   if (cat.includes('interior') || cat.includes('design') || cat.includes('staging')) return BUYER_TYPE_META['interior_design'];
   if (cat.includes('rental')) return BUYER_TYPE_META['event_party_rental'];
-  if (cat.includes('furniture')) return BUYER_TYPE_META['furniture_lifestyle'];
-  if (cat.includes('wholesale') || cat.includes('distributor') || cat.includes('import')) return BUYER_TYPE_META['wholesale_distributor'];
   return BUYER_TYPE_META['home_decor_retailer'];
+};
+
+const getSourceIcon = (sourceName = '') => {
+  const s = sourceName.toLowerCase();
+  if (s.includes('instagram')) return '📸';
+  if (s.includes('linkedin')) return '💼';
+  if (s.includes('facebook')) return '📘';
+  if (s.includes('pinterest')) return '📌';
+  if (s.includes('youtube')) return '🎬';
+  if (s.includes('directory') || s.includes('yellow') || s.includes('manta')) return '🏢';
+  if (s.includes('wholesale') || s.includes('faire')) return '📦';
+  if (s.includes('market') || s.includes('etsy')) return '🛍️';
+  if (s.includes('industry')) return '🏛️';
+  if (s.includes('verified')) return '🌟';
+  return '🌐';
 };
 
 const parseDateToTime = (dateStr, fallback = 0) => {
@@ -78,6 +123,7 @@ const parseDateToTime = (dateStr, fallback = 0) => {
 export default function LeadsPage({
   leads = [],
   onSearch,
+  onImportSelected,
   onValidate,
   onUpdateLead,
   onDeleteLead,
@@ -93,55 +139,142 @@ export default function LeadsPage({
   settings = {},
   setActiveTab
 }) {
-  const [keyword, setKeyword] = useState(currentKeyword || 'Metal Candle Holders');
-  const [targetBuyerType, setTargetBuyerType] = useState('all');
-  const [country, setCountry] = useState('America & Canada');
+  const [keyword, setKeyword] = useState(currentKeyword || 'yoga studio');
+  const [selectedCountry, setSelectedCountry] = useState('BOTH');
+  const [selectedState, setSelectedState] = useState('All States/Provinces');
+  const [selectedCity, setSelectedCity] = useState('All Cities');
+  const [customCity, setCustomCity] = useState('');
   const [maxResults, setMaxResults] = useState(10);
+  
+  const [enabledSources, setEnabledSources] = useState(
+    SOURCE_CHANNELS.reduce((acc, s) => ({ ...acc, [s.id]: true }), {})
+  );
+  const [sourceAnalyticsData, setSourceAnalyticsData] = useState([]);
+  const [isLoadingAnalytics, setIsLoadingAnalytics] = useState(false);
+
   const [editingLead, setEditingLead] = useState(null);
   const [viewingReply, setViewingReply] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [replyFilter, setReplyFilter] = useState('all');
   const [lastSearchResult, setLastSearchResult] = useState(null);
 
+  const currentStates = STATES_BY_COUNTRY[selectedCountry] || [];
+  const currentStateObj = currentStates.find(s => s.name === selectedState) || currentStates[0];
+  const currentCities = currentStateObj ? currentStateObj.cities : [];
+
+  const handleCountryChange = (countryId) => {
+    setSelectedCountry(countryId);
+    const stateList = STATES_BY_COUNTRY[countryId] || [];
+    if (stateList.length > 0) {
+      const firstState = stateList[0].name;
+      setSelectedState(firstState);
+      setSelectedCity(stateList[0].cities[0] || 'All Cities');
+    } else {
+      setSelectedState('');
+      setSelectedCity('');
+    }
+    setCustomCity('');
+  };
+
+  const handleStateChange = (stateName) => {
+    setSelectedState(stateName);
+    const stateList = STATES_BY_COUNTRY[selectedCountry] || [];
+    const stateObj = stateList.find(s => s.name === stateName);
+    if (stateObj && stateObj.cities.length > 0) {
+      setSelectedCity(stateObj.cities[0]);
+    } else {
+      setSelectedCity('All Cities');
+    }
+    setCustomCity('');
+  };
+
   const contactedCount = leads.filter(l => Boolean(l.last_contacted_at)).length;
   const repliedCount = leads.filter(l => l.reply_status === 'replied' || (l.responses && l.responses.toLowerCase().includes('replied') && !l.responses.toLowerCase().includes('awaiting'))).length;
   const autoReplyCount = leads.filter(l => l.reply_status === 'auto_reply' || (l.responses && (l.responses.toLowerCase().includes('automated') || l.responses.toLowerCase().includes('auto-reply')))).length;
 
+  // Fetch live Source Performance Analytics
+  const fetchAnalytics = async () => {
+    setIsLoadingAnalytics(true);
+    try {
+      const res = await fetch('/api/discovery/analytics');
+      if (res.ok) {
+        const data = await res.json();
+        setSourceAnalyticsData(data.analytics || []);
+      }
+    } catch (e) {
+      console.warn('Analytics fetch note:', e);
+    } finally {
+      setIsLoadingAnalytics(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchAnalytics();
+  }, [leads.length]);
+
+  const toggleSource = (sourceId) => {
+    setEnabledSources(prev => ({
+      ...prev,
+      [sourceId]: !prev[sourceId]
+    }));
+  };
+
+  const selectAllSources = (val) => {
+    const updated = {};
+    SOURCE_CHANNELS.forEach(s => {
+      updated[s.id] = val;
+    });
+    setEnabledSources(updated);
+  };
+
+  // Discover candidate buyers across all sources and add directly to directory
   const handleSearchSubmit = async (e) => {
-    e.preventDefault();
+    if (e && e.preventDefault) e.preventDefault();
     if (!keyword.trim()) return;
 
+    const locQuery = buildLocationQuery(selectedCountry, selectedState, selectedCity, customCity);
+    const activeList = Object.keys(enabledSources).filter(k => enabledSources[k]);
+
     const result = await onSearch({
-      keyword,
-      country,
-      buyer_type: targetBuyerType,
-      source: 'all',
-      limit: maxResults
+      keyword: keyword.trim(),
+      location: locQuery,
+      country: selectedCountry === 'BOTH' ? 'United States, Canada' : (selectedCountry === 'USA' ? 'United States' : 'Canada'),
+      state: selectedState.startsWith('All') ? '' : selectedState.replace(' (USA)', '').replace(' (Canada)', ''),
+      city: customCity.trim() || (selectedCity.startsWith('All') ? '' : selectedCity),
+      buyer_type: 'all',
+      sources: activeList.length > 0 ? activeList : null,
+      limit: maxResults,
+      preview: false
     });
 
     if (result) {
-      setLastSearchResult({ ...result, searchedCountry: country });
+      setLastSearchResult({ ...result, searchedLocation: locQuery, searchedKeyword: keyword });
+      fetchAnalytics();
     }
   };
 
-  const handleSaveEdit = (e) => {
-    e.preventDefault();
-    if (!editingLead) return;
-
-    if (onUpdateLead) {
-      onUpdateLead(editingLead);
-    }
-    setEditingLead(null);
+  const handleEdit = (lead) => {
+    setEditingLead({ ...lead });
   };
 
-  const filteredLeads = [...leads]
-    .filter((lead) => {
+  const handleSaveEdit = () => {
+    if (editingLead) {
+      onUpdateLead(editingLead.id, editingLead);
+      setEditingLead(null);
+    }
+  };
+
+  const filteredLeads = leads
+    .filter(lead => {
       const matchSearch =
-        !searchTerm ||
-        (lead.buyer_name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        searchTerm === '' ||
         (lead.company_name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (lead.email || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (lead.city || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (lead.state || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (lead.country || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (lead.keyword || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (lead.primary_source || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
         (lead.responses || '').toLowerCase().includes(searchTerm.toLowerCase());
 
       const isContacted = Boolean(lead.last_contacted_at);
@@ -155,81 +288,128 @@ export default function LeadsPage({
         (replyFilter === 'uncontacted' && !isContacted) ||
         (replyFilter === 'unreplied' && isContacted && !isReplied && !isAutoReply);
 
-
       return matchSearch && matchReply;
     })
     .sort((a, b) => {
+      const aSent = Boolean(a.last_contacted_at);
+      const bSent = Boolean(b.last_contacted_at);
+      if (!aSent && bSent) return -1;
+      if (aSent && !bSent) return 1;
+
       const timeA = parseDateToTime(a.discovered_at || a.last_contacted_at || a.date, 0);
       const timeB = parseDateToTime(b.discovered_at || b.last_contacted_at || b.date, 0);
       return timeB - timeA;
     });
 
+  const activeSourceCount = Object.values(enabledSources).filter(Boolean).length;
+
   return (
     <div className="page-container">
       <Header
-        breadcrumb="WORKSPACE / BUYERS"
-        title="Buyers Directory"
-        subtitle="Discover and manage verified B2B buyers across America & Canada."
+        breadcrumb="SaaS Workspace / Discovery"
+        title="Public Buyer Discovery"
+        subtitle="Find publicly available contact emails and websites of wholesale stores, yoga studios, and meditation centers globally."
       />
 
-      {/* 1. Clean Search Card */}
-      <div className="app-card" style={{ marginBottom: '20px', padding: '18px 20px' }}>
+      {/* 1. Public Buyer Discovery Search Card */}
+      <div className="app-card" style={{ marginBottom: '24px', padding: '24px 28px' }}>
         <form onSubmit={handleSearchSubmit}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '12px', alignItems: 'flex-end' }}>
-            
-            {/* Product Keyword */}
-            <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Product Keyword</label>
+          
+          {/* Single Line: Keywords, Countries, States, Cities, No. of Buyers, Discover */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(5, minmax(0, 1fr)) auto',
+            gap: '12px',
+            alignItems: 'flex-end'
+          }}>
+            {/* 1. Keywords */}
+            <div className="form-group" style={{ margin: 0, minWidth: 0 }}>
+              <label className="form-label" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '8px', display: 'block', whiteSpace: 'nowrap' }}>
+                Keywords
+              </label>
               <input
                 type="text"
                 className="input-field"
-                placeholder="e.g. Metal Candle Holders"
+                placeholder="e.g. candles, wholesale"
                 value={keyword}
                 onChange={(e) => setKeyword(e.target.value)}
+                style={{ height: '42px', fontSize: '13px', width: '100%' }}
               />
             </div>
 
-            {/* Target Buyer Type */}
-            <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Buyer Type</label>
+            {/* 2. Countries */}
+            <div className="form-group" style={{ margin: 0, minWidth: 0 }}>
+              <label className="form-label" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '8px', display: 'block', whiteSpace: 'nowrap' }}>
+                Countries
+              </label>
               <select
                 className="input-field"
-                value={targetBuyerType}
-                onChange={(e) => setTargetBuyerType(e.target.value)}
+                value={selectedCountry}
+                onChange={(e) => handleCountryChange(e.target.value)}
+                style={{ height: '42px', fontSize: '13px', width: '100%', background: 'var(--card-bg, #0f172a)', cursor: 'pointer' }}
               >
-                <option value="all">All Buyer Types</option>
-                <option value="home_decor_retailer">Home Décor Retailers</option>
-                <option value="wedding_event_decorator">Wedding & Event Decorators</option>
-                <option value="hospitality_hotel">Hotels & Hospitality</option>
-                <option value="gift_specialty">Gift & Specialty Stores</option>
-                <option value="interior_design">Interior Design Firms</option>
-                <option value="event_party_rental">Event & Party Rentals</option>
-                <option value="furniture_lifestyle">Furniture Stores</option>
-                <option value="wholesale_distributor">Wholesalers & Distributors</option>
+                {COUNTRIES.map(c => (
+                  <option key={c.id} value={c.id}>
+                    {c.flag} {c.name}
+                  </option>
+                ))}
               </select>
             </div>
 
-            {/* Target Market / Country Selection */}
-            <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Search Country</label>
+            {/* 3. States */}
+            <div className="form-group" style={{ margin: 0, minWidth: 0 }}>
+              <label className="form-label" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '8px', display: 'block', whiteSpace: 'nowrap' }}>
+                States
+              </label>
               <select
                 className="input-field"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
+                value={selectedState}
+                onChange={(e) => handleStateChange(e.target.value)}
+                style={{ height: '42px', fontSize: '13px', width: '100%', background: 'var(--card-bg, #0f172a)', cursor: 'pointer' }}
               >
-                <option value="America & Canada">🌎 Both USA & Canada</option>
-                <option value="United States">🇺🇸 United States (USA)</option>
-                <option value="Canada">🇨🇦 Canada</option>
+                {currentStates.map(st => (
+                  <option key={st.code || st.name} value={st.name}>
+                    {st.name} {st.code && !st.code.startsWith('ALL') ? `(${st.code})` : ''}
+                  </option>
+                ))}
               </select>
             </div>
 
-            {/* Results Limit */}
-            <div className="form-group" style={{ margin: 0 }}>
-              <label className="form-label">Results Limit</label>
+            {/* 4. Cities */}
+            <div className="form-group" style={{ margin: 0, minWidth: 0 }}>
+              <label className="form-label" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '8px', display: 'block', whiteSpace: 'nowrap' }}>
+                Cities
+              </label>
+              <select
+                className="input-field"
+                value={selectedCity}
+                onChange={(e) => {
+                  setSelectedCity(e.target.value);
+                  if (e.target.value !== '__custom__') {
+                    setCustomCity('');
+                  }
+                }}
+                style={{ height: '42px', fontSize: '13px', width: '100%', background: 'var(--card-bg, #0f172a)', cursor: 'pointer' }}
+              >
+                {currentCities.map(city => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+                <option value="__custom__">✏️ Other / Type Custom City...</option>
+              </select>
+            </div>
+
+            {/* 5. No. of Buyers */}
+            <div className="form-group" style={{ margin: 0, minWidth: 0 }}>
+              <label className="form-label" style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '8px', display: 'block', whiteSpace: 'nowrap' }}>
+                No. of Buyers
+              </label>
               <select
                 className="input-field"
                 value={maxResults}
                 onChange={(e) => setMaxResults(Number(e.target.value))}
+                style={{ height: '42px', fontSize: '13px', width: '100%', background: 'var(--card-bg, #0f172a)', cursor: 'pointer' }}
               >
                 <option value={5}>5 Buyers</option>
                 <option value={10}>10 Buyers</option>
@@ -238,64 +418,53 @@ export default function LeadsPage({
               </select>
             </div>
 
-            {/* Submit Button */}
-            <div>
+            {/* Discover Button */}
+            <div style={{ margin: 0 }}>
               <button
                 type="submit"
                 className="btn btn-primary"
                 disabled={isSearching}
-                style={{ width: '100%', justifyContent: 'center', height: '38px' }}
+                style={{
+                  height: '42px',
+                  fontSize: '13.5px',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '8px',
+                  borderRadius: '8px',
+                  background: '#2563eb',
+                  borderColor: '#2563eb',
+                  padding: '0 22px',
+                  whiteSpace: 'nowrap'
+                }}
               >
-                {isSearching ? <Loader2 size={14} className="animate-spin" /> : <Search size={14} />}
-                <span>{isSearching ? 'Searching...' : 'Search Buyers'}</span>
+                {isSearching ? <Loader2 size={15} className="animate-spin" /> : <Search size={15} />}
+                <span>{isSearching ? 'Discovering...' : 'Discover'}</span>
               </button>
             </div>
           </div>
+
+          {/* Optional Custom City text input when user picks "Other / Type Custom City..." */}
+          {selectedCity === '__custom__' && (
+            <div style={{ marginTop: '14px', maxWidth: '360px' }}>
+              <label className="form-label" style={{ fontSize: '12px', fontWeight: 600, color: 'var(--text-muted)', marginBottom: '6px', display: 'block' }}>
+                Custom City Name in {selectedState}:
+              </label>
+              <input
+                type="text"
+                className="input-field"
+                placeholder={`e.g. city or town in ${selectedState}`}
+                value={customCity}
+                onChange={(e) => setCustomCity(e.target.value)}
+                style={{ height: '40px', fontSize: '13px' }}
+                autoFocus
+              />
+            </div>
+          )}
+
         </form>
       </div>
-
-      {/* Search Result Summary Banner */}
-      {lastSearchResult && (() => {
-        const addedCount = lastSearchResult.newly_added || lastSearchResult.newlyAdded || 0;
-        const searched = lastSearchResult.searchedCountry || country;
-        const countryLabel = searched === 'Canada' 
-          ? 'Canada' 
-          : searched === 'United States' 
-          ? 'the United States' 
-          : 'Both USA & Canada';
-
-        return (
-          <div style={{
-            padding: '10px 14px',
-            background: addedCount > 0 ? 'rgba(34, 197, 94, 0.1)' : 'rgba(59, 130, 246, 0.1)',
-            border: addedCount > 0 ? '1px solid rgba(34, 197, 94, 0.4)' : '1px solid rgba(59, 130, 246, 0.3)',
-            borderRadius: '6px',
-            marginBottom: '16px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '10px'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <CheckCircle2 size={16} color={addedCount > 0 ? 'var(--success)' : '#60a5fa'} />
-              <span style={{ fontSize: '12px', color: 'var(--text-main)' }}>
-                {addedCount > 0 
-                  ? <>Added <strong>{addedCount} new buyers</strong> across {countryLabel}.</>
-                  : <>Directory is up to date with matching buyers across {countryLabel}.</>
-                }
-              </span>
-            </div>
-
-            <button
-              type="button"
-              onClick={() => setLastSearchResult(null)}
-              style={{ background: 'transparent', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', fontSize: '12px' }}
-            >
-              ✕
-            </button>
-          </div>
-        );
-      })()}
 
       {/* 2. Buyers Directory Table */}
       <div className="app-card">
@@ -304,40 +473,61 @@ export default function LeadsPage({
             <h2 className="card-heading" style={{ margin: 0 }}>Buyers Directory ({leads.length})</h2>
           </div>
 
-          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
-            {onValidate && leads.length > 0 && (
-              <button className="btn btn-secondary btn-sm" onClick={onValidate} disabled={isValidating} title="Verify DNS MX mail servers">
-                {isValidating ? <Loader2 size={13} className="animate-spin" /> : <ShieldCheck size={13} />}
-                <span>{isValidating ? 'Verifying...' : 'Verify MX'}</span>
-              </button>
-            )}
-
-            {(onRecheckAndClean || onPurgeFailed) && leads.length > 0 && (
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center', flexWrap: 'wrap' }}>
+            {/* 1. Verify MX */}
+            {onValidate && (
               <button
                 type="button"
                 className="btn btn-secondary btn-sm"
-                onClick={onRecheckAndClean || onPurgeFailed}
-                disabled={isPurging || isRechecking}
-                title="Scan mailbox for bounce notifications (Address not found) and purge invalid buyers from database and reports"
+                onClick={onValidate}
+                disabled={isValidating || leads.length === 0}
+                title="Verify deliverability via DNS MX lookup"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
               >
-                {(isPurging || isRechecking) ? <Loader2 size={13} className="animate-spin" /> : <RotateCcw size={13} />}
-                <span>{(isPurging || isRechecking) ? 'Rechecking & Purging...' : 'Purge Bounced'}</span>
+                {isValidating ? <Loader2 size={13} className="animate-spin" /> : <ShieldCheck size={13} />}
+                <span>{isValidating ? 'Verifying MX...' : 'Verify MX'}</span>
               </button>
             )}
 
-            {onDownloadCSV && leads.length > 0 && (
-              <button className="btn btn-secondary btn-sm" onClick={onDownloadCSV}>
+            {/* 2. Purge Bounced */}
+            <button
+              type="button"
+              className="btn btn-secondary btn-sm"
+              onClick={onRecheckAndClean || onPurgeFailed}
+              disabled={isPurging || isRechecking || leads.length === 0}
+              title="Scan mailbox for bounce notifications and purge invalid buyers"
+              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              {(isPurging || isRechecking) ? <Loader2 size={13} className="animate-spin" /> : <RotateCcw size={13} />}
+              <span>{(isPurging || isRechecking) ? 'Rechecking...' : 'Purge Bounced'}</span>
+            </button>
+
+            {/* 3. Export CSV */}
+            {onDownloadCSV && (
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={onDownloadCSV}
+                disabled={leads.length === 0}
+                title="Export buyers directory to CSV spreadsheet"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+              >
                 <Download size={13} />
                 <span>Export CSV</span>
               </button>
             )}
 
-            {setActiveTab && leads.length > 0 && (
+            {/* 4. Compose Campaign */}
+            {setActiveTab && (
               <button
                 type="button"
                 className="btn btn-primary btn-sm"
                 onClick={() => setActiveTab('campaigns')}
+                disabled={leads.length === 0}
+                title="Compose outreach campaign for active buyers"
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
               >
+                <Mail size={13} />
                 <span>Compose Campaign &rarr;</span>
               </button>
             )}
@@ -351,7 +541,7 @@ export default function LeadsPage({
             <input
               type="text"
               className="input-field"
-              placeholder="Search by name, company, email..."
+              placeholder="Search by buyer name, company, email, or location..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               style={{ paddingLeft: '32px' }}
@@ -362,11 +552,11 @@ export default function LeadsPage({
             className="input-field"
             value={replyFilter}
             onChange={(e) => setReplyFilter(e.target.value)}
-            style={{ width: '210px' }}
+            style={{ width: '190px' }}
           >
             <option value="all">All Status ({leads.length})</option>
             <option value="replied">Replied ({repliedCount})</option>
-            <option value="auto_reply">Automated Reply ({autoReplyCount})</option>
+            <option value="auto_reply">Auto-Reply ({autoReplyCount})</option>
             <option value="unreplied">Sent — Awaiting Reply ({Math.max(0, contactedCount - repliedCount - autoReplyCount)})</option>
             <option value="uncontacted">Uncontacted ({Math.max(0, leads.length - contactedCount)})</option>
           </select>
@@ -377,25 +567,23 @@ export default function LeadsPage({
           <table className="app-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr>
-                <th style={{ width: '22%', padding: '10px 12px' }}>Buyer & Company</th>
-                <th style={{ width: '22%', padding: '10px 12px' }}>Email Address</th>
-                <th style={{ width: '8%', padding: '10px 8px' }}>Region</th>
-                <th style={{ width: '14%', padding: '10px 8px' }}>Buyer Category</th>
-                <th style={{ width: '10%', padding: '10px 8px' }}>Deliverability</th>
-                <th style={{ width: '12%', padding: '10px 12px', textAlign: 'right' }}>Actions</th>
+                <th style={{ width: '32%', padding: '10px 12px' }}>Buyer & Company</th>
+                <th style={{ width: '28%', padding: '10px 8px' }}>Email Address</th>
+                <th style={{ width: '22%', padding: '10px 8px' }}>Category & Location</th>
+                <th style={{ width: '18%', padding: '10px 12px', textAlign: 'right' }}>Actions</th>
               </tr>
             </thead>
             <tbody>
               {filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={6} style={{ textAlign: 'center', padding: '36px 20px', color: 'var(--text-muted)' }}>
+                  <td colSpan={4} style={{ textAlign: 'center', padding: '36px 20px', color: 'var(--text-muted)' }}>
                     {leads.length === 0 ? (
                       <div>
                         <div style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)', marginBottom: '4px' }}>
-                          Database is empty
+                          Directory is empty
                         </div>
                         <div style={{ fontSize: '11px', color: 'var(--text-muted)' }}>
-                          Click <strong>Search Buyers</strong> above to discover B2B buyers across America & Canada.
+                          Click <strong>Discover</strong> above to start discovering B2B buyers across America & Canada.
                         </div>
                       </div>
                     ) : (
@@ -419,72 +607,76 @@ export default function LeadsPage({
 
                   return (
                     <tr key={lead.id || lead.email}>
-                      <td style={{ padding: '8px 12px', maxWidth: '170px' }}>
-                        <div style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={lead.company_name || lead.buyer_name}>
-                          {lead.company_name || lead.buyer_name || 'Commercial Buyer'}
+                      {/* Buyer & Company */}
+                      <td style={{ padding: '8px 12px', maxWidth: '220px' }}>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                          <span style={{ fontWeight: 600, color: 'var(--text-main)', fontSize: '12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={lead.company_name || lead.buyer_name}>
+                            {lead.company_name || lead.buyer_name || 'Commercial Buyer'}
+                          </span>
+                          {lead.website && (
+                            <a
+                              href={lead.website}
+                              target="_blank"
+                              rel="noreferrer"
+                              style={{ color: '#64748b', display: 'inline-flex', alignItems: 'center' }}
+                              title={lead.website}
+                            >
+                              <ExternalLink size={11} />
+                            </a>
+                          )}
                         </div>
-                        <div style={{ fontSize: '11px', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={lead.buyer_name && lead.buyer_name !== 'Purchasing Team' && lead.buyer_name !== 'Procurement Buyer' && lead.buyer_name !== 'Buyer' ? lead.buyer_name : ''}>
-                          {lead.buyer_name && lead.buyer_name !== 'Purchasing Team' && lead.buyer_name !== 'Procurement Buyer' && lead.buyer_name !== 'Buyer' && lead.buyer_name !== lead.company_name ? lead.buyer_name : (lead.country || 'United States')}
+                        <div style={{ fontSize: '11px', color: 'var(--text-muted)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                          {lead.buyer_name && lead.buyer_name !== 'Purchasing Team' && lead.buyer_name !== 'Buyer' && lead.buyer_name !== lead.company_name
+                            ? lead.buyer_name
+                            : (lead.city && lead.state ? `${lead.city}, ${lead.state}` : (lead.country || 'USA'))}
                         </div>
                       </td>
 
-                      <td style={{ padding: '8px 12px', maxWidth: '180px' }}>
+                      {/* Email Address & MX */}
+                      <td style={{ padding: '8px 8px', maxWidth: '200px' }}>
                         <span style={{ fontFamily: 'monospace', fontSize: '11px', color: '#93c5fd', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', display: 'block' }} title={lead.email}>
                           {lead.email}
                         </span>
+                        <div>
+                          {lead.reply_status === 'bounced' ? (
+                            <span style={{ fontSize: '9.5px', color: '#f87171', fontWeight: 600 }}>Bounced ⚠️</span>
+                          ) : (
+                            <span style={{ fontSize: '9.5px', color: '#4ade80' }}>
+                              {lead.validation_status === 'valid' ? 'MX Verified ✓' : lead.validation_status || 'Valid'}
+                            </span>
+                          )}
+                        </div>
                       </td>
 
-                      <td style={{ padding: '8px 8px', fontSize: '11px', color: 'var(--text-main)' }}>
-                        {lead.country || 'USA'}
-                      </td>
-
+                      {/* Category & Location */}
                       <td style={{ padding: '8px 8px' }}>
                         <span style={{
-                          fontSize: '10.5px',
+                          fontSize: '10px',
                           fontWeight: 500,
                           color: catMeta.color,
                           background: catMeta.bg,
                           border: `1px solid ${catMeta.border}`,
-                          padding: '2px 7px',
+                          padding: '2px 6px',
                           borderRadius: '4px',
-                          display: 'inline-block'
+                          display: 'inline-block',
+                          marginBottom: '2px'
                         }}>
                           {catMeta.label}
                         </span>
+                        <div style={{ fontSize: '10.5px', color: 'var(--text-dim)' }}>
+                          📍 {lead.city ? `${lead.city}, ${lead.state || lead.country || ''}` : (lead.state || lead.country || 'USA')}
+                        </div>
                       </td>
 
-                      <td style={{ padding: '8px 8px' }}>
-                        {lead.reply_status === 'bounced' ? (
-                          <span style={{
-                            fontSize: '10.5px',
-                            fontWeight: 600,
-                            color: '#f87171',
-                            background: 'rgba(239, 68, 68, 0.15)',
-                            border: '1px solid rgba(239, 68, 68, 0.3)',
-                            padding: '2px 6px',
-                            borderRadius: '4px'
-                          }}>
-                            Bounced ⚠️
-                          </span>
-                        ) : (
-                          <span className={`badge ${
-                            lead.validation_status === 'valid' ? 'badge-valid' :
-                            lead.validation_status === 'risky' ? 'badge-risky' :
-                            lead.validation_status === 'invalid' ? 'badge-invalid' : ''
-                          }`} style={{ fontSize: '10.5px', padding: '2px 6px' }}>
-                            {lead.validation_status === 'valid' ? 'Valid ✓' : lead.validation_status || 'Pending'}
-                          </span>
-                        )}
-                      </td>
-
+                      {/* Actions */}
                       <td style={{ padding: '8px 12px', textAlign: 'right' }}>
-                        <div style={{ display: 'inline-flex', gap: '6px', alignItems: 'center', justifyContent: 'flex-end' }}>
+                        <div style={{ display: 'inline-flex', gap: '5px', alignItems: 'center', justifyContent: 'flex-end' }}>
                           {isReplied ? (
                             <button
                               type="button"
                               className="btn btn-secondary btn-sm"
                               onClick={() => setViewingReply(lead)}
-                              style={{ padding: '3px 7px', fontSize: '10.5px', color: '#4ade80', borderColor: 'rgba(74, 222, 128, 0.4)', background: 'rgba(74, 222, 128, 0.1)' }}
+                              style={{ padding: '3px 7px', fontSize: '10px', color: '#4ade80', borderColor: 'rgba(74, 222, 128, 0.4)', background: 'rgba(74, 222, 128, 0.1)' }}
                             >
                               <span>Replied ✓</span>
                             </button>
@@ -493,17 +685,13 @@ export default function LeadsPage({
                               type="button"
                               className="btn btn-secondary btn-sm"
                               onClick={() => setViewingReply(lead)}
-                              style={{ padding: '3px 7px', fontSize: '10.5px', color: '#fbbf24', borderColor: 'rgba(251, 191, 36, 0.4)', background: 'rgba(251, 191, 36, 0.15)' }}
+                              style={{ padding: '3px 7px', fontSize: '10px', color: '#fbbf24', borderColor: 'rgba(251, 191, 36, 0.4)', background: 'rgba(251, 191, 36, 0.15)' }}
                               title="View Automated Reply"
                             >
                               <span>Auto-Reply 🤖</span>
                             </button>
-                          ) : (lead.reply_status === 'bounced' || lead.validation_status === 'invalid') ? (
-                            <span style={{ fontSize: '10.5px', color: '#f87171', padding: '2px 6px', fontWeight: 600 }}>
-                              Failed ⚠️
-                            </span>
                           ) : isContacted ? (
-                            <span style={{ fontSize: '10.5px', color: '#60a5fa', background: 'rgba(59, 130, 246, 0.12)', padding: '2px 6px', borderRadius: '4px' }}>
+                            <span style={{ fontSize: '10px', color: '#60a5fa', background: 'rgba(59, 130, 246, 0.12)', padding: '2px 5px', borderRadius: '4px' }}>
                               Sent ✓
                             </span>
                           ) : (
@@ -511,23 +699,25 @@ export default function LeadsPage({
                               type="button"
                               className="btn btn-primary btn-sm"
                               onClick={() => setActiveTab && setActiveTab('campaigns')}
-                              style={{ padding: '3px 8px', fontSize: '10.5px' }}
+                              style={{ padding: '3px 7px', fontSize: '10px' }}
                             >
                               <Mail size={11} />
                               <span>Reach Out</span>
                             </button>
                           )}
 
+                          {/* Edit Buyer */}
                           <button
                             type="button"
                             className="btn btn-secondary btn-sm"
                             onClick={() => setEditingLead({ ...lead })}
                             style={{ padding: '3px 5px' }}
-                            title="Edit Buyer"
+                            title="Edit Buyer Details"
                           >
                             <Pencil size={11} />
                           </button>
 
+                          {/* Delete */}
                           <button
                             type="button"
                             className="btn btn-secondary btn-sm"
@@ -641,7 +831,7 @@ export default function LeadsPage({
                   className="input-field"
                   value={editingLead.follow_ups || ''}
                   onChange={(e) => setEditingLead({ ...editingLead, follow_ups: e.target.value })}
-                  placeholder="e.g. Send MOQ matrix & follow up on Aug 27"
+                  placeholder="e.g. Send MOQ matrix & follow up"
                 />
               </div>
 
@@ -675,7 +865,7 @@ export default function LeadsPage({
         </div>
       )}
 
-      {/* Reply Snippet Inspection Modal */}
+      {/* 6. Reply Snippet Inspection Modal */}
       {viewingReply && (
         <div style={{
           position: 'fixed',
