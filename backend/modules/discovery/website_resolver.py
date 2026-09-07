@@ -109,18 +109,12 @@ class OfficialWebsiteResolver:
 
         priority_paths = [
             website_url,
-            f"{root_url}/contact",
-            f"{root_url}/contact-us",
-            f"{root_url}/about",
-            f"{root_url}/about-us",
-            f"{root_url}/wholesale",
-            f"{root_url}/trade",
-            root_url
+            f"{root_url}/contact" if not website_url.endswith("/contact") else f"{root_url}/about"
         ]
 
         for page_url in priority_paths:
             try:
-                resp = self.session.get(page_url, timeout=2.5, allow_redirects=True)
+                resp = self.session.get(page_url, timeout=1.2, allow_redirects=True)
                 if resp.status_code != 200:
                     continue
 

@@ -122,7 +122,7 @@ class BaseHttpSource(DiscoverySource):
             url = f"https://html.duckduckgo.com/html/?q={urllib.parse.quote_plus(query)}"
             if offset > 0:
                 url += f"&s={offset}"
-            resp = self.session.get(url, timeout=2.5)
+            resp = self.session.get(url, timeout=1.2)
             if resp.status_code == 200:
                 soup = BeautifulSoup(resp.text, "html.parser")
                 for result_div in soup.find_all("div", class_="result"):
@@ -165,7 +165,7 @@ class BaseHttpSource(DiscoverySource):
         if len(results) < max_items:
             try:
                 bing_url = f"https://www.bing.com/search?q={urllib.parse.quote_plus(query)}&first={offset + 1}"
-                resp = self.session.get(bing_url, timeout=2.5)
+                resp = self.session.get(bing_url, timeout=1.2)
                 if resp.status_code == 200:
                     soup = BeautifulSoup(resp.text, "html.parser")
                     for li in soup.find_all("li", class_="b_algo"):
