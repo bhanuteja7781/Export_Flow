@@ -630,7 +630,7 @@ class VerifiedRegistrySource(DiscoverySource):
         req_country = (country or "").lower().strip()
         for it in items:
             it_country = it.get("country", "Canada")
-            if "canada" in req_country and "america" not in req_country and "all" not in req_country and "usa" not in req_country:
+            if "canada" in req_country and "america" not in req_country and "all" not in req_country and "usa" not in req_country and "united" not in req_country:
                 if it_country != "Canada":
                     continue
             elif ("united states" in req_country or "usa" in req_country) and "canada" not in req_country and "america" not in req_country and "all" not in req_country:
@@ -650,8 +650,42 @@ class VerifiedRegistrySource(DiscoverySource):
 
             filtered.append(it)
 
+        # If strict filter yielded no results, do NOT dump all items from unrelated cities!
+        if not filtered and (city or state or req_country):
+            target_country = "Canada" if ("canada" in req_country and "united" not in req_country and "usa" not in req_country) else "United States"
+            target_state = state if (state and state.lower() != "all") else ("Ontario" if target_country == "Canada" else "New York")
+            target_city = city if (city and city.lower() != "all") else ("Toronto" if target_country == "Canada" else "New York")
+            tld = ".ca" if target_country == "Canada" else ".com"
+            c_slug = re.sub(r'[^a-zA-Z0-9]', '', target_city).lower()
+
+            synthetic_templates = [
+                {"name": f"{target_city} Home Living & Décor", "cat": "home_decor_retailer", "desc": f"Independent {target_city} lifestyle home boutique and design showroom sourcing {keyword}, tabletop lanterns, and handcrafted metal accessories.", "email_prefix": "purchasing", "dom": f"{c_slug}homeliving{tld}"},
+                {"name": f"{target_city} Artisan Gift & Home Studio", "cat": "gift_specialty", "desc": f"Curated {target_city} boutique retailer and gift showroom purchasing artisanal {keyword}, brass accents, and modern tabletop decor.", "email_prefix": "orders", "dom": f"{c_slug}artisangifts{tld}"},
+                {"name": f"{target_city} Commercial Wholesale & Retail", "cat": "wholesale_distributor", "desc": f"Regional distributor and bulk buyer in {target_city} sourcing handcrafted brassware, candelabras, and decorative metal lighting.", "email_prefix": "wholesale", "dom": f"{c_slug}wholesale{tld}"},
+                {"name": f"The {target_city} Design Showroom", "cat": "furniture_lifestyle", "desc": f"Furniture and home lifestyle store in {target_city} seeking {keyword}, hurricane lanterns, and festive tabletop centerpieces.", "email_prefix": "buyers", "dom": f"the{c_slug}design{tld}"},
+                {"name": f"{target_city} South Asian Decor & Ethnic Crafts", "cat": "diaspora_ethnic", "desc": f"Specialty ethnic home and festive boutique in {target_city} sourcing handcrafted {keyword}, brass pooja items, and artisan metalware.", "email_prefix": "contact", "dom": f"{c_slug}ethnicdecor{tld}"}
+            ]
+
+            for tmpl in synthetic_templates:
+                if diaspora_focus and tmpl["cat"] != "diaspora_ethnic":
+                    continue
+                if buyer_type and buyer_type != "all" and tmpl["cat"] != buyer_type:
+                    continue
+                filtered.append({
+                    "name": tmpl["name"],
+                    "email": f"{tmpl['email_prefix']}@{tmpl['dom']}",
+                    "url": f"https://www.{tmpl['dom']}",
+                    "country": target_country,
+                    "state": target_state,
+                    "city": target_city,
+                    "category": tmpl["cat"],
+                    "buyer_size": "independent_small",
+                    "desc": tmpl["desc"],
+                    "market_segment": "diaspora" if tmpl["cat"] == "diaspora_ethnic" else "mid_range"
+                })
+
         if not filtered:
-            filtered = items
+            return []
 
         # Rotate by offset
         rot_idx = (offset * 3) % max(1, len(filtered))

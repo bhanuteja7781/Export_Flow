@@ -24,7 +24,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Melissa Andre Events Toronto & LA",
@@ -51,7 +52,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Mobilia Canada",
@@ -78,7 +80,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Maison Corbeil Quebec",
@@ -105,7 +108,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Allwest Wedding Rentals Vancouver",
@@ -132,7 +136,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Special Event Rentals Western Canada",
@@ -159,7 +164,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Linen Chest Canada",
@@ -186,7 +192,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "The Post Ranch Inn Big Sur",
@@ -213,7 +220,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Montage International",
@@ -240,7 +248,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Auberge Resorts Collection",
@@ -272,7 +281,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "HMR Designs Chicago",
@@ -299,7 +309,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Kehoe Designs Chicago",
@@ -326,7 +337,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Yabu Pushelberg Toronto & NYC",
@@ -353,7 +365,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Walrus Boutique Vancouver",
@@ -380,7 +393,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Tonic Living Toronto",
@@ -407,7 +421,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "The Cross Decor & Design Vancouver",
@@ -434,7 +449,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Kitchen Stuff Plus Toronto",
@@ -461,7 +477,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Danica Imports & Now Designs Vancouver",
@@ -488,7 +505,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Torre & Tagus Canada",
@@ -515,7 +533,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Buk & Nola Montreal",
@@ -542,7 +561,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Wickaninnish Inn Tofino Canada",
@@ -569,7 +589,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Toast Events Ottawa",
@@ -596,7 +617,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "CountDown Events Vancouver",
@@ -623,7 +645,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Pottery Barn Living",
@@ -650,7 +673,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Crate & Barrel Home",
@@ -682,7 +706,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Anthropologie Home",
@@ -709,7 +734,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Zodax Tabletop & Candleware",
@@ -736,7 +762,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Lulu and Georgia Home",
@@ -763,7 +790,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "CB2 Modern Decor",
@@ -790,7 +818,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Kirkland's Home Decor",
@@ -817,7 +846,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "World Market Tabletop",
@@ -844,7 +874,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Terrain Living & Garden",
@@ -871,7 +902,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Serena and Lily Home",
@@ -903,7 +935,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Arhaus Artisan Living",
@@ -930,7 +963,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Ballard Designs",
@@ -957,7 +991,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Williams-Sonoma Home",
@@ -986,7 +1021,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "company_name": "Creative Co-Op Home",
@@ -1013,7 +1049,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Kalalou Eco & Artisan Living",
@@ -1042,7 +1079,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "company_name": "Bliss Events Toronto",
@@ -1069,7 +1107,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Four Seasons Hotels & Resorts",
@@ -1096,7 +1135,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Zone Maison Quebec",
@@ -1125,7 +1165,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "company_name": "Bouclair Maison Canada",
@@ -1152,7 +1193,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Chairman Mills Canada",
@@ -1184,7 +1226,8 @@
     "reply_sentiment_label": "Auto-Reply (Out of Office)",
     "replied_at": "2026-09-02T13:11:34.496580+00:00",
     "reply_subject": "Automatic reply: Handcrafted Metal Candle Holders catalog for Chair",
-    "reply_snippet": "Thank You for reaching out to Chairman Mills. Your email has been received and a member of our team will get back to you as soon as they are able. If you require anything urgent please call us at (416) 391-0400. Please note this email and phone line is monitored from Monday to Friday 9:00AM - 5:00PM"
+    "reply_snippet": "Thank You for reaching out to Chairman Mills. Your email has been received and a member of our team will get back to you as soon as they are able. If you require anything urgent please call us at (416) 391-0400. Please note this email and phone line is monitored from Monday to Friday 9:00AM - 5:00PM",
+    "is_mx_verified": true
   },
   {
     "company_name": "Mj\u00f6lk Design & Craft Toronto",
@@ -1211,7 +1254,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "company_name": "Structube Home Canada",
@@ -1238,7 +1282,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-e4c2df5b",
@@ -1270,7 +1315,8 @@
     "category_label": "Hotels & Hospitality",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-a8ba73a3",
@@ -1302,7 +1348,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-8f191352",
@@ -1334,7 +1381,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-91588bd7",
@@ -1366,7 +1414,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-a413c220",
@@ -1380,14 +1429,14 @@
     "category": "furniture_lifestyle",
     "classification_reason": "",
     "personalized_pitch": "",
-    "validation_status": "risky",
+    "validation_status": "valid",
     "validation_details": {
       "syntax_valid": true,
       "mx_found": true,
       "is_disposable": false,
-      "score": 70,
-      "status": "risky",
-      "reason": "DNS resolution timed out (Temporary network delay)"
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
     },
     "discovered_at": "2026-08-26T08:33:07.188966+00:00",
     "last_contacted_at": "2026-08-26T09:05:38.054966+00:00",
@@ -1398,7 +1447,8 @@
     "category_label": "Furniture & Lifestyle Retailer",
     "tier": 2,
     "tier_label": "Tier 2: Strong Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-5e395f22",
@@ -1430,7 +1480,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b340e7fe",
@@ -1467,7 +1518,8 @@
     "reply_subject": "Ticket Received - Handcrafted Metal Candle Holders catalog for One\r\n Kings Lane Luxury",
     "reply_snippet": "\u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c \u200c Thank you for reaching out to One Kings Lane! Hi Product Zone International, A member of our dedicated Customer Care team is already reviewing the details and will follow up shortly with next steps. We\u2019ll be back in touch with an update as soon as possible. You can al",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-4140c967",
@@ -1499,7 +1551,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-479f2687",
@@ -1531,7 +1584,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-43010eff",
@@ -1563,7 +1617,8 @@
     "category_label": "Interior Design Firm",
     "tier": 2,
     "tier_label": "Tier 2: Strong Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-bdf0d055",
@@ -1595,7 +1650,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-dbd632e8",
@@ -1627,7 +1683,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-d0960d3d",
@@ -1659,7 +1716,8 @@
     "category_label": "Home D\u00e9cor Retailer",
     "tier": 1,
     "tier_label": "Tier 1: High Potential",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-5e41075c",
@@ -1693,7 +1751,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-f9086989",
@@ -1727,7 +1786,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-4e4b22f3",
@@ -1761,7 +1821,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-31add992",
@@ -1795,7 +1856,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b2e40f96",
@@ -1829,7 +1891,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-f10bc35a",
@@ -1863,7 +1926,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-88783823",
@@ -1897,7 +1961,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-65f032a0",
@@ -1931,7 +1996,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-4e8bd72b",
@@ -1965,7 +2031,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "high_end",
     "market_segment_label": "High-End & Luxury",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-4a530187",
@@ -1999,7 +2066,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-27bf9e30",
@@ -2033,7 +2101,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-e4bb8e5d",
@@ -2067,7 +2136,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-8e08e29c",
@@ -2101,7 +2171,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-584c4377",
@@ -2115,14 +2186,14 @@
     "category": "home_decor_retailer",
     "classification_reason": "",
     "personalized_pitch": "",
-    "validation_status": "valid",
+    "validation_status": "risky",
     "validation_details": {
       "syntax_valid": true,
       "mx_found": true,
       "is_disposable": false,
-      "score": 95,
-      "status": "valid",
-      "reason": "Valid domain with active MX mail exchange servers"
+      "score": 70,
+      "status": "risky",
+      "reason": "DNS resolution timed out (Temporary network delay)"
     },
     "discovered_at": "2026-08-27T14:52:37.717458+00:00",
     "last_contacted_at": "2026-08-27T14:59:21.263526+00:00",
@@ -2135,7 +2206,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": false
   },
   {
     "id": "lead-df09ba39",
@@ -2169,7 +2241,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-4ff4464e",
@@ -2203,7 +2276,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-a36acf45",
@@ -2237,7 +2311,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-7c9bff21",
@@ -2271,7 +2346,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "high_end",
     "market_segment_label": "High-End & Luxury",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-5865b545",
@@ -2305,7 +2381,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-78274f43",
@@ -2339,7 +2416,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b0926d68",
@@ -2373,7 +2451,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-0e320091",
@@ -2407,7 +2486,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "high_end",
     "market_segment_label": "High-End & Luxury",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-6ddc5b6c",
@@ -2441,7 +2521,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-24583554",
@@ -2475,7 +2556,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-99c5ea11",
@@ -2509,7 +2591,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-8c57bfc9",
@@ -2543,7 +2626,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-f85ee5ba",
@@ -2577,7 +2661,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-11ca875c",
@@ -2611,7 +2696,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "high_end",
     "market_segment_label": "High-End & Luxury",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-d0f7eddb",
@@ -2645,7 +2731,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-397888c7",
@@ -2679,7 +2766,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b2a40eb8",
@@ -2713,7 +2801,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-2270eb2d",
@@ -2727,14 +2816,14 @@
     "category": "home_decor_retailer",
     "classification_reason": "",
     "personalized_pitch": "",
-    "validation_status": "risky",
+    "validation_status": "valid",
     "validation_details": {
       "syntax_valid": true,
       "mx_found": true,
       "is_disposable": false,
-      "score": 70,
-      "status": "risky",
-      "reason": "DNS resolution timed out (Temporary network delay)"
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
     },
     "discovered_at": "2026-08-28T07:26:16.464050+00:00",
     "last_contacted_at": "2026-08-28T07:29:30.868098+00:00",
@@ -2747,7 +2836,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-d33cd30c",
@@ -2781,7 +2871,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-7de43afb",
@@ -2815,7 +2906,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-0188e259",
@@ -2849,7 +2941,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-1be64070",
@@ -2883,7 +2976,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-10bac45c",
@@ -2917,7 +3011,8 @@
     "tier_label": "Tier 3: Distribution",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-8a219de6",
@@ -2956,7 +3051,8 @@
     "reply_subject": "Case # CASE800046 Created: Handcrafted Metal Candle Holders catalog\r\n for Accent Decor Home & Events USA",
     "reply_snippet": "<html><head><title>Case Creation Notification</title> <style> <!-- body, p, td { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; } --> </style> </head> <body> <p><img src='https://5907594.app.netsuite.com/core/media/media.nl?id=11&amp;c=5907594&amp;h=XtljcUHcIO-xzewctf9BnaB9Ztvb",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-0e25c709",
@@ -2990,7 +3086,8 @@
     "tier_label": "Tier 3: Distribution",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-2a40e5ed",
@@ -3024,7 +3121,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-42d492c1",
@@ -3058,7 +3156,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-39e6e9ae",
@@ -3092,7 +3191,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ea99fcdb",
@@ -3126,7 +3226,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b733fc09",
@@ -3160,7 +3261,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ff6af24b",
@@ -3194,7 +3296,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-e51e3fee",
@@ -3228,7 +3331,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-aebfa4c4",
@@ -3262,7 +3366,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-fd1cedbb",
@@ -3296,7 +3401,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-e1e592d3",
@@ -3330,7 +3436,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b65a825b",
@@ -3364,7 +3471,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ff7e1d65",
@@ -3398,7 +3506,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-90543bf2",
@@ -3432,7 +3541,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-a82163af",
@@ -3466,7 +3576,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-74e0c99b",
@@ -3500,7 +3611,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ecaac0fb",
@@ -3539,7 +3651,8 @@
     "reply_subject": "Re: Handcrafted Metal Candle Holders catalog for Les Mauvaises Herbes\r\n Montreal",
     "reply_snippet": "All\u00f4! Ceci est un petit message automatique \ud83d\udc47 On va \u00eatre transparentes avec toi : on a de la broue dans le toupet (dans le bon sens du terme). L'\u00e9quipe est \u00e0 pleine capacit\u00e9 et on ne peut pas r\u00e9pondre aux demandes externes pour l'instant. \u00c7a inclut les offres publicitaires, collaborations, partenari",
     "reply_sentiment": "interested",
-    "reply_sentiment_label": "Inbound Buyer Reply"
+    "reply_sentiment_label": "Inbound Buyer Reply",
+    "is_mx_verified": true
   },
   {
     "id": "lead-104d63be",
@@ -3573,7 +3686,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b733d5d6",
@@ -3607,7 +3721,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-298bc862",
@@ -3641,7 +3756,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-f1531560",
@@ -3675,7 +3791,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-3d8660eb",
@@ -3709,7 +3826,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-fc04c028",
@@ -3743,7 +3861,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-64c8d610",
@@ -3777,7 +3896,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ead0f0fd",
@@ -3811,7 +3931,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-44823931",
@@ -3850,7 +3971,8 @@
     "reply_subject": "Re: Handcrafted Metal Candle Holders catalog for Crate & Barrel Home",
     "reply_snippet": "Dear Product Zone International, Thank you so much for reaching out. We appreciate your interest in Crate and Barrel/CB2! Our Corporate Public Relations Department will be happy to review your request. You may write to them or call them directly at the phone number listed below. I am sorry that we d",
     "reply_sentiment": "interested",
-    "reply_sentiment_label": "Inbound Buyer Reply"
+    "reply_sentiment_label": "Inbound Buyer Reply",
+    "is_mx_verified": true
   },
   {
     "id": "lead-706a8f20",
@@ -3884,7 +4006,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-33a9cb56",
@@ -3918,7 +4041,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-dbda2a40",
@@ -3952,7 +4076,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-d8de0f9b",
@@ -3986,7 +4111,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-6e27e216",
@@ -4020,7 +4146,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-2aea7a22",
@@ -4054,7 +4181,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-12ad67ae",
@@ -4088,7 +4216,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-0d90975e",
@@ -4122,7 +4251,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-8116e507",
@@ -4156,7 +4286,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b6144411",
@@ -4190,7 +4321,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-43d17457",
@@ -4224,7 +4356,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-7d169f20",
@@ -4258,7 +4391,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-f3f0b5a7",
@@ -4292,7 +4426,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-42dbf903",
@@ -4326,7 +4461,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-be1e6371",
@@ -4365,7 +4501,8 @@
     "reply_subject": "We\u2019ve received your email!",
     "reply_snippet": "Hello, Thanks for reaching out. We\u2019ll be in touch soon. To help ensure you receive our reply, please add \u200b\u200b\u200b customercare@serenaandlily.com to your contacts. If you wrote in over the weekend, please note we're closed Saturday and Sunday. Replies may take a bit longer early in the week, but we\u2019re usu",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-e00c6ba9",
@@ -4399,7 +4536,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ef494081",
@@ -4433,7 +4571,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-297d98b1",
@@ -4467,7 +4606,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-d27f84cf",
@@ -4501,7 +4641,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-4cb67d8e",
@@ -4535,7 +4676,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b04a3ae5",
@@ -4574,7 +4716,8 @@
     "reply_subject": "Automatic reply: Handcrafted Metal Candle Holders catalog for Divine\r\n Furniture Rental Toronto",
     "reply_snippet": "Thank you for contacting Divine Furniture Rental. We will do our best to reply to your request as soon as possible, however please expect a 24-48 hour reply window. If your request is urgent, please call our office line @ (416) 750-9272 Thank you",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-fd02823b",
@@ -4608,7 +4751,8 @@
     "tier_label": "Tier 2: Strong Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-060d76e0",
@@ -4642,7 +4786,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-402a7bdd",
@@ -4676,7 +4821,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b084336c",
@@ -4710,7 +4856,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-0212776b",
@@ -4744,7 +4891,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "uncontacted"
+    "reply_status": "uncontacted",
+    "is_mx_verified": true
   },
   {
     "id": "lead-33129e0d",
@@ -4778,7 +4926,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-1286681b",
@@ -4812,7 +4961,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-12933f53",
@@ -4846,7 +4996,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-52c01d24",
@@ -4880,7 +5031,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-1982ef2a",
@@ -4914,7 +5066,8 @@
     "tier_label": "Tier 1: High Potential",
     "market_segment": "mid_range",
     "market_segment_label": "Mid-Range & Volume Commercial",
-    "reply_status": "unreplied"
+    "reply_status": "unreplied",
+    "is_mx_verified": true
   },
   {
     "id": "lead-5f8afaa2",
@@ -4955,7 +5108,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-5ef6a22a",
@@ -4996,7 +5150,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-e323cf6b",
@@ -5037,7 +5192,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-ad576e85",
@@ -5071,7 +5227,7 @@
     "follow_ups": "Send wholesale catalog, MOQ matrix & custom pricing deck",
     "last_contacted_at": "2026-09-03T18:23:09.609969+00:00",
     "responses": "Replied: Hi, Thanks for reaching out and for sharing your 2026 catalog. Caraway isn\u2019t accepting vendor pitches or product proposa",
-    "replied_at": "2026-09-07T11:19:44.803711+00:00",
+    "replied_at": "2026-09-07T14:16:21.384539+00:00",
     "reply_subject": "Re: Handcrafted Metal Candle Holders catalog for Caraway Home\r\n Tabletop NYC",
     "reply_snippet": "Hi, Thanks for reaching out and for sharing your 2026 catalog. Caraway isn\u2019t accepting vendor pitches or product proposals through this channel at this time. We appreciate you thinking of us and wish you the best with your collection.",
     "reply_sentiment": "interested",
@@ -5083,7 +5239,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-20934623",
@@ -5124,7 +5281,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-5733ff56",
@@ -5165,7 +5323,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-7b38605b",
@@ -5206,7 +5365,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-201e7f10",
@@ -5247,7 +5407,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-14438546",
@@ -5281,7 +5442,7 @@
     "follow_ups": "Set reminder to follow up 3 business days post-return",
     "last_contacted_at": "2026-09-03T18:23:09.609969+00:00",
     "responses": "Automated Reply",
-    "replied_at": "2026-09-07T11:19:44.832678+00:00",
+    "replied_at": "2026-09-07T14:16:21.397877+00:00",
     "reply_subject": "Re: Handcrafted Metal Candle Holders catalog for Restoration Hardware\r\n South Granville Vancouver",
     "reply_snippet": "Hello, Thank you for reaching out. While we're flattered that you'd like to work with RH, product partnerships are not within our purview at the Gallery level, they are decided by our Home Office Team. Wishing you all the best! Warmest regards, Brandi BRANDI GRONDIN ASSOCIATE GALLERY LEADER, VANCOUV",
     "reply_sentiment": "auto_reply",
@@ -5293,7 +5454,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-ee245dbc",
@@ -5334,7 +5496,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-84066765",
@@ -5375,7 +5538,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-362d10ef",
@@ -5409,7 +5573,7 @@
     "follow_ups": "Set reminder to follow up 3 business days post-return",
     "last_contacted_at": "2026-09-03T18:23:09.609969+00:00",
     "responses": "Automated Reply",
-    "replied_at": "2026-09-07T11:19:44.945380+00:00",
+    "replied_at": "2026-09-07T14:16:21.452764+00:00",
     "reply_subject": "Re: Handcrafted Metal Candle Holders catalog for Heath Ceramics San Francisco",
     "reply_snippet": "Hi Bhanu, Thank you for reaching out and sharing details about Product Zone International. While we appreciate you sharing your catalog, we aren\u2019t currently exploring new suppliers or expanding our candle holder collection at this time. We appreciate your interest in Heath Ceramics and wish you the ",
     "reply_sentiment": "auto_reply",
@@ -5421,7 +5585,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-0a0d547f",
@@ -5462,7 +5627,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-fad6a529",
@@ -5503,7 +5669,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-7b2d6ed9",
@@ -5544,7 +5711,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-6433694f",
@@ -5585,7 +5753,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-d904ea3d",
@@ -5626,7 +5795,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-e61dbc82",
@@ -5667,7 +5837,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-4f092584",
@@ -5708,7 +5879,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-2e7f244e",
@@ -5749,7 +5921,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-032b49de",
@@ -5790,7 +5963,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-5e4a7c33",
@@ -5846,7 +6020,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-2b98fec2",
@@ -5902,7 +6077,8 @@
       "score": 95,
       "status": "valid",
       "reason": "Valid domain with active MX mail exchange servers"
-    }
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-1a3458ae",
@@ -5958,7 +6134,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:37:59.243354+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-5613b9ad",
@@ -6014,7 +6191,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:37:59.243354+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-ee2bc605",
@@ -6070,7 +6248,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-9c11cc25",
@@ -6126,7 +6305,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-a84c5308",
@@ -6183,11 +6363,12 @@
     },
     "last_contacted_at": "2026-09-04T16:37:59.243354+00:00",
     "responses": "Automated Reply",
-    "replied_at": "2026-09-07T11:19:45.071794+00:00",
+    "replied_at": "2026-09-07T14:16:21.524823+00:00",
     "reply_subject": "Automatic reply: Handcrafted Metal Candle Holders catalog for Taylor\r\n Creative Inc",
     "reply_snippet": "Thank you for contacting Taylor Creative Inc. Please be advised that our office is closed on Friday, September 4th, and will remain closed on Monday, September 7th in observance of Labor Day. Regular operations will resume on Tuesday, September 8th. For any emergencies during this time (existing ord",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-928c3d2c",
@@ -6243,7 +6424,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-e96ea75d",
@@ -6299,7 +6481,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-1b564422",
@@ -6355,7 +6538,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-451d9432",
@@ -6411,7 +6595,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:37:59.243354+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-b10f447c",
@@ -6467,7 +6652,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-9d664cb7",
@@ -6523,7 +6709,8 @@
       "reason": "Valid domain with active MX mail exchange servers"
     },
     "last_contacted_at": "2026-09-04T16:37:59.243354+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-83c95a7e",
@@ -6580,11 +6767,12 @@
     },
     "last_contacted_at": "2026-09-04T16:34:38.427776+00:00",
     "responses": "Automated Reply",
-    "replied_at": "2026-09-07T11:19:45.076327+00:00",
+    "replied_at": "2026-09-07T14:16:21.526382+00:00",
     "reply_subject": "Automatic reply: New Metal Candle Holders collection for Serena &\r\n Lily San Francisco Pacific Heights",
     "reply_snippet": "Hello! After 10 wonderful years on Sacramento Street, we have outgrown our small space in San Francisco and the store is now closed. Your email has been sent to our team in Palo Alto, but you can also reach them here.<mailto:palo.alto@serenanandlily.com> Thank you.",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "is_mx_verified": true
   },
   {
     "id": "lead-dcc65d3c",
@@ -6632,7 +6820,16 @@
     "intern_feedback": "Mitchell Gold Furniture in New York, New York: Furniture & home accent showroom. Ideal candidate for tabletop metal candle holders, centerpiece lighting, and modern hurricane lanterns.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-9b7165f6",
@@ -6680,7 +6877,16 @@
     "intern_feedback": "Hooker Furniture Living in New York, New York: Furniture & home accent showroom. Ideal candidate for tabletop metal candle holders, centerpiece lighting, and modern hurricane lanterns.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-2f23fbb0",
@@ -6728,7 +6934,16 @@
     "intern_feedback": "Bernhardt Furniture North Carolina in New York, New York: Furniture & home accent showroom. Ideal candidate for tabletop metal candle holders, centerpiece lighting, and modern hurricane lanterns.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-15b1c9b2",
@@ -6776,7 +6991,16 @@
     "intern_feedback": "Century Furniture North Carolina in New York, New York: Furniture & home accent showroom. Ideal candidate for tabletop metal candle holders, centerpiece lighting, and modern hurricane lanterns.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-7924d526",
@@ -6824,7 +7048,16 @@
     "intern_feedback": "Lillian August Design Connecticut & NY in New York, New York: Prime South Asian diaspora stockist for handcrafted brass candle holders, diya lanterns, mandir & festive Diwali home decor collections.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-0446ec88",
@@ -6872,7 +7105,16 @@
     "intern_feedback": "Manoir Hovey Relais & Chateaux Quebec in Toronto, Ontario: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-29a2cdbd",
@@ -6921,11 +7163,20 @@
     "follow_ups": "Set reminder to follow up 3 business days post-return",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
     "responses": "Automated Reply",
-    "replied_at": "2026-09-07T11:19:45.093785+00:00",
+    "replied_at": "2026-09-07T14:16:21.534587+00:00",
     "reply_subject": "Automatic reply: Our new 2026 Metal Candle Holders collection for\r\n Fairmont Jasper Park Lodge Alberta",
     "reply_snippet": "Thank you for contacting The Fairmont Jasper Park Lodge. Your communication is very important to us. Please be advised we have received your email in our general inbox and will respond to your request within 24-48hrs. If the matter requires direct attention, please see below contacts for various dep",
     "reply_sentiment": "auto_reply",
-    "reply_sentiment_label": "Auto-Reply (Out of Office)"
+    "reply_sentiment_label": "Auto-Reply (Out of Office)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-b284c0f3",
@@ -6973,7 +7224,16 @@
     "intern_feedback": "Fairmont Le Chateau Frontenac Quebec in Toronto, Ontario: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
     "follow_ups": "Ready for initial catalog outreach dispatch",
     "last_contacted_at": "2026-09-04T16:48:51.251974+00:00",
-    "responses": "(Awaiting Reply)"
+    "responses": "(Awaiting Reply)",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-c6ae633a",
@@ -7020,7 +7280,16 @@
     "buyer_size_label": "High-End Studio / Showroom",
     "market_segment_label": "High-End & Luxury",
     "intern_feedback": "The Breakers Palm Beach Florida in Miami, Florida: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
-    "follow_ups": "Ready for initial catalog outreach dispatch"
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-23d36d2a",
@@ -7067,7 +7336,16 @@
     "buyer_size_label": "Independent / Diaspora Boutique",
     "market_segment_label": "Mid-Range & Commercial",
     "intern_feedback": "Meg Lonergan Interiors Houston in Houston, Texas: Design studio sourcing curated metal accents for commercial and residential styling projects.",
-    "follow_ups": "Ready for initial catalog outreach dispatch"
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   },
   {
     "id": "lead-e784e727",
@@ -7114,6 +7392,1079 @@
     "buyer_size_label": "Independent / Diaspora Boutique",
     "market_segment_label": "Mid-Range & Commercial",
     "intern_feedback": "Cortney Bishop Design Charleston in New York, New York: Prime South Asian diaspora stockist for handcrafted brass candle holders, diya lanterns, mandir & festive Diwali home decor collections.",
-    "follow_ups": "Ready for initial catalog outreach dispatch"
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-fcc9dead",
+    "date": "2026-09-07",
+    "buyer_name": "St. Frank Home San Francisco",
+    "target_name": null,
+    "company_name": "St. Frank Home San Francisco",
+    "email": "concierge@stfrank.com",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.84,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://stfrank.com",
+    "website": "https://stfrank.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "high_end",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:13.884226+00:00",
+    "context_snippet": "Luxury bohemian textiles and global artisan home tabletop accessories Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, concierge@st",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://stfrank.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "High-End & Luxury",
+    "intern_feedback": "St. Frank Home San Francisco in Los Angeles, California: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-ab10f702",
+    "date": "2026-09-07",
+    "buyer_name": "SFMOMA Museum Store",
+    "target_name": null,
+    "company_name": "SFMOMA Museum Store",
+    "email": "museumstore@sfmoma.org",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.84,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://museumstore.sfmoma.org",
+    "website": "https://museumstore.sfmoma.org",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:13.884631+00:00",
+    "context_snippet": "San Francisco museum store featuring modern design tabletop and candle gifts Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, museu",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://museumstore.sfmoma.org"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "SFMOMA Museum Store in Los Angeles, California: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-1e466ed9",
+    "date": "2026-09-07",
+    "buyer_name": "Getty Museum Store",
+    "target_name": null,
+    "company_name": "Getty Museum Store",
+    "email": "bookstore@getty.edu",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.84,
+    "job_title_or_context": "Sourcing",
+    "source_url": "https://shop.getty.edu",
+    "website": "https://shop.getty.edu",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:13.885062+00:00",
+    "context_snippet": "Los Angeles museum store sourcing classical and artisanal home gifts Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, bookstore@get",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://shop.getty.edu"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Getty Museum Store in Los Angeles, California: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-b64f8e84",
+    "date": "2026-09-07",
+    "buyer_name": "General Store",
+    "target_name": null,
+    "company_name": "General Store",
+    "email": "info@shop-generalstore.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://shop-generalstore.com",
+    "website": "https://shop-generalstore.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:13.883176+00:00",
+    "context_snippet": "Ocean Beach SF curated artisan textiles, pottery, and candle holders Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@shop-gen",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://shop-generalstore.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "General Store in Los Angeles, California: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-97ab65a9",
+    "date": "2026-09-07",
+    "buyer_name": "March San Francisco Tabletop",
+    "target_name": null,
+    "company_name": "March San Francisco Tabletop",
+    "email": "info@marchsf.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://marchsf.com",
+    "website": "https://marchsf.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "high_end",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:13.883735+00:00",
+    "context_snippet": "Sacramento Street SF luxury kitchen, dining, and tabletop gallery Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@marchsf.com",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://marchsf.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "High-End & Luxury",
+    "intern_feedback": "March San Francisco Tabletop in Los Angeles, California: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-a2ed2951",
+    "date": "2026-09-07",
+    "buyer_name": "Losangeles Ca",
+    "target_name": "Losangeles Ca",
+    "company_name": "CB2 West Hollywood Los Angeles",
+    "email": "losangeles_ca@cb2.com",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.93,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://cb2.com",
+    "website": "https://cb2.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "furniture_lifestyle",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:30.340006+00:00",
+    "context_snippet": "Sunset Boulevard LA modern home decor and entertaining tabletop showroom Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, losangele",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://cb2.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Furniture & Home Furnishings",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Furniture)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "CB2 West Hollywood Los Angeles in Los Angeles, California: Furniture & home accent showroom. Ideal candidate for tabletop metal candle holders, centerpiece lighting, and modern hurricane lanterns.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-a10e544c",
+    "date": "2026-09-07",
+    "buyer_name": "Romanek Design Studio LA",
+    "target_name": null,
+    "company_name": "Romanek Design Studio LA",
+    "email": "info@romanekdesignstudio.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://romanekdesignstudio.com",
+    "website": "https://romanekdesignstudio.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "diaspora_ethnic",
+    "buyer_size": "high_end_boutique",
+    "market_segment": "high_end",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:30.338809+00:00",
+    "context_snippet": "High-end Los Angeles residential and commercial design firm Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@romanekdesignstud",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://romanekdesignstudio.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Diaspora & Indian Handicrafts",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Diaspora)",
+    "buyer_size_label": "High-End Studio / Showroom",
+    "market_segment_label": "High-End & Luxury",
+    "intern_feedback": "Romanek Design Studio LA in Los Angeles, California: Prime South Asian diaspora stockist for handcrafted brass candle holders, diya lanterns, mandir & festive Diwali home decor collections.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-26947ffe",
+    "date": "2026-09-07",
+    "buyer_name": "Studio Shamshiri Los Angeles",
+    "target_name": null,
+    "company_name": "Studio Shamshiri Los Angeles",
+    "email": "info@studioshamshiri.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://studioshamshiri.com",
+    "website": "https://studioshamshiri.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:30.339257+00:00",
+    "context_snippet": "Multi-disciplinary design studio specializing in historical and modern interiors Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, i",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://studioshamshiri.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Studio Shamshiri Los Angeles in Los Angeles, California: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-41180a96",
+    "date": "2026-09-07",
+    "buyer_name": "Amber Interiors Los Angeles",
+    "target_name": null,
+    "company_name": "Amber Interiors Los Angeles",
+    "email": "info@amberinteriordesign.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://amberinteriordesign.com",
+    "website": "https://amberinteriordesign.com",
+    "city": "Los Angeles",
+    "state": "California",
+    "country": "United States",
+    "category": "diaspora_ethnic",
+    "buyer_size": "high_end_boutique",
+    "market_segment": "high_end",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:11:30.339636+00:00",
+    "context_snippet": "Southern California effortless laid-back luxury interior design firm Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@amberint",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://amberinteriordesign.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Diaspora & Indian Handicrafts",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Diaspora)",
+    "buyer_size_label": "High-End Studio / Showroom",
+    "market_segment_label": "High-End & Luxury",
+    "intern_feedback": "Amber Interiors Los Angeles in Los Angeles, California: Prime South Asian diaspora stockist for handcrafted brass candle holders, diya lanterns, mandir & festive Diwali home decor collections.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-d3552208",
+    "date": "2026-09-07",
+    "buyer_name": "Shea McGee Studio Salt Lake City",
+    "target_name": null,
+    "company_name": "Shea McGee Studio Salt Lake City",
+    "email": "studio@studiomcgee.com",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.84,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://studiomcgee.com",
+    "website": "https://studiomcgee.com",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:17.924778+00:00",
+    "context_snippet": "Premier US interior design studio and home lifestyle brand Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, studio@studiomcgee.com,",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://studiomcgee.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Shea McGee Studio Salt Lake City in New York, New York: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-69633e50",
+    "date": "2026-09-07",
+    "buyer_name": "Workstead Design Studio Brooklyn",
+    "target_name": null,
+    "company_name": "Workstead Design Studio Brooklyn",
+    "email": "info@workstead.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://workstead.com",
+    "website": "https://workstead.com",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:17.923871+00:00",
+    "context_snippet": "Brooklyn & Hudson design studio crafting architectural lighting and interiors Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://workstead.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Diaspora & Indian Handicrafts",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Diaspora)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Workstead Design Studio Brooklyn in New York, New York: Prime South Asian diaspora stockist for handcrafted brass candle holders, diya lanterns, mandir & festive Diwali home decor collections.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-9b2e9aa9",
+    "date": "2026-09-07",
+    "buyer_name": "Mark D. Sikes Interiors LA",
+    "target_name": null,
+    "company_name": "Mark D. Sikes Interiors LA",
+    "email": "info@markdsikes.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://markdsikes.com",
+    "website": "https://markdsikes.com",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States",
+    "category": "interior_design",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:17.924445+00:00",
+    "context_snippet": "All-American classic interior designer and author curating traditional brassware Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, i",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://markdsikes.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Interior Design Studio",
+    "tier": 2,
+    "tier_label": "Tier 2: Strong Potential",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Mark D. Sikes Interiors LA in New York, New York: Design studio sourcing curated metal accents for commercial and residential styling projects.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-74073bbd",
+    "date": "2026-09-07",
+    "buyer_name": "Emily Henderson Design LA",
+    "target_name": null,
+    "company_name": "Emily Henderson Design LA",
+    "email": "info@stylebyemilyhenderson.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://stylebyemilyhenderson.com",
+    "website": "https://stylebyemilyhenderson.com",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States",
+    "category": "diaspora_ethnic",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:17.925079+00:00",
+    "context_snippet": "Leading interior styling, editorial, and design studio Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@stylebyemilyhenderson.",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://stylebyemilyhenderson.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Diaspora & Indian Handicrafts",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Diaspora)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Emily Henderson Design LA in New York, New York: Prime South Asian diaspora stockist for handcrafted brass candle holders, diya lanterns, mandir & festive Diwali home decor collections.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-d1e3824a",
+    "date": "2026-09-07",
+    "buyer_name": "Bria Hammel Interiors Minnesota",
+    "target_name": null,
+    "company_name": "Bria Hammel Interiors Minnesota",
+    "email": "info@briahammelinteriors.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://briahammelinteriors.com",
+    "website": "https://briahammelinteriors.com",
+    "city": "New York",
+    "state": "New York",
+    "country": "United States",
+    "category": "interior_design",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:17.925385+00:00",
+    "context_snippet": "Midwest fresh classic interior design firm and Brooke & Lou lifestyle shop Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@br",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://briahammelinteriors.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Interior Design Studio",
+    "tier": 2,
+    "tier_label": "Tier 2: Strong Potential",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Bria Hammel Interiors Minnesota in New York, New York: Design studio sourcing curated metal accents for commercial and residential styling projects.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-4769716d",
+    "date": "2026-09-07",
+    "buyer_name": "Canadian Tire Living & Home",
+    "target_name": null,
+    "company_name": "Canadian Tire Living & Home",
+    "email": "trade@canadiantire.ca",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.98,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://canadiantire.ca",
+    "website": "https://canadiantire.ca",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:48.186392+00:00",
+    "context_snippet": "Iconic Canadian retail chain with extensive seasonal and home decor departments Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, tr",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://canadiantire.ca"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Canadian Tire Living & Home in Toronto, Ontario: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-cbd6f191",
+    "date": "2026-09-07",
+    "buyer_name": "The Bay Flagship Toronto Queen Street",
+    "target_name": null,
+    "company_name": "The Bay Flagship Toronto Queen Street",
+    "email": "contactus@thebay.com",
+    "lead_tier": "Tier 1 - Procurement/Individual",
+    "confidence_score": 0.84,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://thebay.com",
+    "website": "https://thebay.com",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:48.185358+00:00",
+    "context_snippet": "Iconic Canadian flagship department store curating home decor collections Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, contactu",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://thebay.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "The Bay Flagship Toronto Queen Street in Toronto, Ontario: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-34aa9dfc",
+    "date": "2026-09-07",
+    "buyer_name": "EQ3 Modern Living Winnipeg Head Office",
+    "target_name": null,
+    "company_name": "EQ3 Modern Living Winnipeg Head Office",
+    "email": "inquiries@eq3.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.42,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://eq3.com",
+    "website": "https://eq3.com",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "category": "furniture_lifestyle",
+    "buyer_size": "mid_market",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:48.185736+00:00",
+    "context_snippet": "Canadian modern designer furniture and tabletop accessories brand Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, inquiries@eq3.co",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://eq3.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Furniture & Home Furnishings",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Furniture)",
+    "buyer_size_label": "Mid-Market Regional Store",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "EQ3 Modern Living Winnipeg Head Office in Toronto, Ontario: Furniture & home accent showroom. Ideal candidate for tabletop metal candle holders, centerpiece lighting, and modern hurricane lanterns.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-accb32e5",
+    "date": "2026-09-07",
+    "buyer_name": "Home Hardware Stores Canada",
+    "target_name": null,
+    "company_name": "Home Hardware Stores Canada",
+    "email": "contact@homehardware.ca",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.42,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://homehardware.ca",
+    "website": "https://homehardware.ca",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:48.186077+00:00",
+    "context_snippet": "Dealer-owned Canadian hardware, home decor, and housewares chain with 1,000+ stores Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://homehardware.ca"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "Home Hardware Stores Canada in Toronto, Ontario: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
+  },
+  {
+    "id": "lead-2b0204f0",
+    "date": "2026-09-07",
+    "buyer_name": "DavidsTea Toronto Flagship",
+    "target_name": null,
+    "company_name": "DavidsTea Toronto Flagship",
+    "email": "info@davidstea.com",
+    "lead_tier": "Tier 3 - Low Priority Generic",
+    "confidence_score": 0.35,
+    "job_title_or_context": "Purchasing",
+    "source_url": "https://davidstea.com",
+    "website": "https://davidstea.com",
+    "city": "Toronto",
+    "state": "Ontario",
+    "country": "Canada",
+    "category": "home_decor_retailer",
+    "buyer_size": "independent_small",
+    "market_segment": "mid_range",
+    "source_platform": "Verified Buyer Registry",
+    "validation_status": "valid",
+    "reply_status": "uncontacted",
+    "discovered_at": "2026-09-07T14:12:48.186722+00:00",
+    "context_snippet": "Specialty tea, home tabletop, and entertaining accessory retailer Actively purchasing Metal Candle Holders, tabletop decor, and lanterns. Contact: Purchasing Team, info@davidstea.c",
+    "primary_source": "Verified Buyer Registry",
+    "discovery_sources": [
+      "Verified Buyer Registry"
+    ],
+    "source_count": 1,
+    "social_profiles": {},
+    "directory_profiles": [],
+    "source_urls": [
+      "https://davidstea.com"
+    ],
+    "cross_source_confidence": "Medium",
+    "buyer_score": 78,
+    "product_compatibility": "High",
+    "business_authenticity": "High",
+    "score_breakdown": {},
+    "keyword": "Metal Candle Holders",
+    "category_label": "Home D\u00e9cor Retailer",
+    "tier": 1,
+    "tier_label": "Tier 1: High Potential (Retail)",
+    "buyer_size_label": "Independent / Diaspora Boutique",
+    "market_segment_label": "Mid-Range & Commercial",
+    "intern_feedback": "DavidsTea Toronto Flagship in Toronto, Ontario: Active commercial home d\u00e9cor store. Strong candidate for seasonal handcrafted metalware and accent candleware lines.",
+    "follow_ups": "Ready for initial catalog outreach dispatch",
+    "validation_details": {
+      "syntax_valid": true,
+      "mx_found": true,
+      "is_disposable": false,
+      "score": 95,
+      "status": "valid",
+      "reason": "Valid domain with active MX mail exchange servers"
+    },
+    "is_mx_verified": true
   }
 ]

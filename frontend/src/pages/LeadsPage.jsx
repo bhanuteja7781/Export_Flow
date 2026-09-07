@@ -640,10 +640,14 @@ export default function LeadsPage({
                         <div>
                           {lead.reply_status === 'bounced' ? (
                             <span style={{ fontSize: '9.5px', color: '#f87171', fontWeight: 600 }}>Bounced ⚠️</span>
+                          ) : (lead.validation_status === 'valid' || lead.is_mx_verified === true) ? (
+                            <span style={{ fontSize: '9.5px', color: '#4ade80', fontWeight: 500 }}>MX Verified ✓</span>
+                          ) : lead.validation_status === 'invalid' ? (
+                            <span style={{ fontSize: '9.5px', color: '#f87171', fontWeight: 600 }}>Undeliverable ✗</span>
+                          ) : lead.validation_status === 'risky' ? (
+                            <span style={{ fontSize: '9.5px', color: '#fbbf24', fontWeight: 500 }}>MX Risky ⚠️</span>
                           ) : (
-                            <span style={{ fontSize: '9.5px', color: '#4ade80' }}>
-                              {lead.validation_status === 'valid' ? 'MX Verified ✓' : lead.validation_status || 'Valid'}
-                            </span>
+                            <span style={{ fontSize: '9.5px', color: '#94a3b8', fontWeight: 500 }}>⚪ Unverified</span>
                           )}
                         </div>
                       </td>

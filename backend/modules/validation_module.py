@@ -149,16 +149,23 @@ class EmailValidationModule:
 
     def validate_leads_batch(self, leads: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         """
-        Validates an entire list of lead dictionaries, updating validation_status and validation_details.
+        Validates an entire list of lead dictionaries concurrently, updating validation_status and is_mx_verified.
         """
-        validated_leads = []
-        for lead in leads:
+        from concurrent.futures import ThreadPoolExecutor
+
+        def _validate_one(lead: Dict[str, Any]) -> Dict[str, Any]:
             email = lead.get("email", "")
             result = self.validate_single_email(email)
-            
             lead_copy = dict(lead)
             lead_copy["validation_status"] = result["status"]
+            lead_copy["is_mx_verified"] = (result["status"] == "valid")
             lead_copy["validation_details"] = result
-            validated_leads.append(lead_copy)
+            return lead_copy
+
+        if not leads:
+            return []
+
+        with ThreadPoolExecutor(max_workers=min(12, max(1, len(leads)))) as executor:
+            validated_leads = list(executor.map(_validate_one, leads))
 
         return validated_leads
