@@ -21,6 +21,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from .discovery import MultiSourceDiscoveryEngine
+from .discovery.location_registry import resolve_geographic_location
 
 
 class BuyerSearchModule:
@@ -308,7 +309,7 @@ class BuyerSearchModule:
             "retail_discovery": "retail_discovery",
             "multi_source": "multi_source"
         }
-        engine_mode = mode_map.get(str(discovery_mode).lower(), "multi_source")
+        engine_mode = mode_map.get((discovery_mode or "all").lower(), "multi_source")
 
         # 1. Multi-Source Discovery Engine execution
         discovered_leads = self.discovery_engine.discover_buyers(
@@ -378,74 +379,38 @@ class BuyerSearchModule:
                     if len(discovered_leads) >= max_results:
                         break
 
-        # 3. If STILL fewer than max_results (e.g. user selected 10/15/20 buyers or rare custom city),
-        # dynamically synthesize localized verified commercial buyer records to guarantee fulfilling requested limit
+        # 3. If STILL fewer than max_results (e.g. user selected 10/15/20 buyers or rare filters),
+        # supplement with authentic catalog buyers from the broader region without generating synthetic templates
         if len(discovered_leads) < max_results:
-            req_country = (country or "").lower().strip()
-            target_country = "Canada" if ("canada" in req_country and "united" not in req_country and "usa" not in req_country) else "United States"
-            target_state = state if (state and str(state).lower() != "all") else ("Ontario" if target_country == "Canada" else "California")
-            target_city = city if (city and str(city).lower() != "all") else ("Toronto" if target_country == "Canada" else "San Francisco")
-            tld = ".ca" if target_country == "Canada" else ".com"
-            c_slug = re.sub(r'[^a-zA-Z0-9]', '', target_city).lower()
-
-            diverse_templates = [
-                {"name": f"{target_city} Home & Living Décor", "cat": "home_decor_retailer", "desc": f"Independent {target_city} lifestyle home boutique and design showroom sourcing {keyword}, tabletop lanterns, and handcrafted accessories.", "email_prefix": "purchasing", "sub": "homeliving"},
-                {"name": f"{target_city} Artisan Gift & Home Studio", "cat": "gift_specialty", "desc": f"Curated {target_city} boutique retailer and gift showroom purchasing artisanal {keyword}, brass accents, and modern tabletop decor.", "email_prefix": "orders", "sub": "artisangifts"},
-                {"name": f"{target_city} Commercial Wholesale Supply", "cat": "wholesale_distributor", "desc": f"Regional distributor and bulk buyer in {target_city} sourcing handcrafted brassware, candelabras, and decorative metal lighting.", "email_prefix": "wholesale", "sub": "wholesale"},
-                {"name": f"The {target_city} Design Showroom", "cat": "furniture_lifestyle", "desc": f"Furniture and home lifestyle store in {target_city} seeking {keyword}, hurricane lanterns, and festive tabletop centerpieces.", "email_prefix": "buyers", "sub": "design"},
-                {"name": f"{target_city} South Asian & Ethnic Crafts", "cat": "diaspora_ethnic", "desc": f"Specialty ethnic home and festive boutique in {target_city} sourcing handcrafted {keyword}, brass pooja items, and artisan metalware.", "email_prefix": "contact", "sub": "ethnicdecor"},
-                {"name": f"{target_city} Tabletop & Lifestyle Accents", "cat": "home_decor_retailer", "desc": f"Home accents boutique in {target_city} curating luxury {keyword}, pillar candle stands, and decorative tableware.", "email_prefix": "sourcing", "sub": "tabletopaccents"},
-                {"name": f"{target_city} Interior Decor Collective", "cat": "interior_design", "desc": f"Interior styling firm and home accents boutique in {target_city} stocking luxury {keyword} and artisan brass home accents.", "email_prefix": "trade", "sub": "interiorcollective"},
-                {"name": f"{target_city} Modern Home & Lighting", "cat": "furniture_lifestyle", "desc": f"Modern lifestyle showroom in {target_city} purchasing bulk {keyword}, candelabras, and festive centerpieces.", "email_prefix": "orders", "sub": "modernlighting"},
-                {"name": f"{target_city} Gift & Specialty Emporium", "cat": "gift_specialty", "desc": f"Specialty retail store in {target_city} sourcing handcrafted {keyword}, lanterns, and ethical artisan wares.", "email_prefix": "buyers", "sub": "giftemporium"},
-                {"name": f"{target_city} Global Handicrafts & Import Co.", "cat": "wholesale_distributor", "desc": f"Import house and B2B distributor in {target_city} sourcing direct container shipments of {keyword} and brassware.", "email_prefix": "import", "sub": "globalimports"},
-                {"name": f"{target_city} Boutique Decor Gallery", "cat": "home_decor_retailer", "desc": f"Artisanal home boutique in {target_city} purchasing handcrafted {keyword}, candle trays, and modern brass home accents.", "email_prefix": "gallery", "sub": "boutiquegallery"},
-                {"name": f"{target_city} Event & Wedding Decor Supply", "cat": "wedding_event_decorator", "desc": f"Event design and wedding rental styling company in {target_city} purchasing bulk candelabras and candle holders.", "email_prefix": "events", "sub": "eventdecor"},
-                {"name": f"{target_city} Hospitality & Hotel Decor", "cat": "hospitality_hotel", "desc": f"Hospitality supplier and styling firm in {target_city} sourcing metal tabletop lanterns and candelabras for luxury venues.", "email_prefix": "hospitality", "sub": "hospitalitydecor"},
-                {"name": f"{target_city} Craft & Home Exchange", "cat": "gift_specialty", "desc": f"Specialty gift and home accessory boutique in {target_city} curating artisan {keyword} and metal centerpieces.", "email_prefix": "exchange", "sub": "craftexchange"},
-                {"name": f"{target_city} Heritage Living & Accents", "cat": "home_decor_retailer", "desc": f"Historic lifestyle boutique in {target_city} purchasing handcrafted {keyword}, lanterns, and brass decor.", "email_prefix": "heritage", "sub": "heritageliving"}
-            ]
-
             seen_emails = {l.get("email", "").lower() for l in discovered_leads if l.get("email")} | exclude_emails
-            for idx, tmpl in enumerate(diverse_templates):
-                if diaspora_focus and tmpl["cat"] != "diaspora_ethnic":
+            fallback_buyers = self._get_verified_real_buyers(
+                keyword=keyword,
+                country=country,
+                state=None,
+                city=None,
+                buyer_type=buyer_type,
+                buyer_size=buyer_size,
+                price_segment=price_segment,
+                diaspora_focus=diaspora_focus or (buyer_type == "diaspora_ethnic")
+            )
+            for item in fallback_buyers:
+                if not self._matches_country(item, country):
                     continue
-                if buyer_type and buyer_type != "all" and tmpl["cat"] != buyer_type:
+                if self._is_lead_excluded(item, exclude_emails, exclude_domains):
                     continue
-
-                dom = f"{c_slug}{tmpl['sub']}{idx if idx > 0 else ''}{tld}"
-                em = f"{tmpl['email_prefix']}@{dom}"
-                if em in seen_emails or self._is_lead_excluded({"email": em}, exclude_emails, exclude_domains):
+                emails_in_item = self.EMAIL_REGEX.findall(item.get("raw_content", "") or item.get("title", ""))
+                item_em = emails_in_item[0].lower() if emails_in_item else (item.get("email") or "").lower()
+                if item_em and item_em in seen_emails:
                     continue
-
-                seen_emails.add(em)
-                discovered_leads.append({
-                    "category": tmpl["cat"],
-                    "buyer_size": "independent_small",
-                    "market_segment": "diaspora" if tmpl["cat"] == "diaspora_ethnic" else "mid_range",
-                    "state": target_state,
-                    "city": target_city,
-                    "country": target_country,
-                    "company_name": tmpl["name"],
-                    "buyer_name": f"{target_city} Sourcing Team",
-                    "email": em,
-                    "website": f"https://www.{dom}",
-                    "title": f"{tmpl['name']} - {keyword}",
-                    "raw_content": f"{tmpl['desc']} Location: {target_city}, {target_state}, {target_country}.",
-                    "url": f"https://www.{dom}",
-                    "primary_source": "Verified Buyer Registry",
-                    "discovery_sources": ["Verified Buyer Registry", "Direct Website Crawler"],
-                    "source_count": 2,
-                    "cross_source_confidence": "Strong",
-                    "buyer_score": 82 + (idx % 12),
-                    "product_compatibility": "High",
-                    "business_authenticity": "High",
-                    "validation_status": "unverified",
-                    "is_mx_verified": False,
-                    "reply_status": "uncontacted",
-                    "source_platform": f"Verified Directory ({target_city}, {target_state})"
-                })
-
+                if item_em:
+                    seen_emails.add(item_em)
+                item["primary_source"] = "Verified Buyer Registry"
+                item["discovery_sources"] = ["Verified Buyer Registry"]
+                item["source_count"] = 1
+                item["cross_source_confidence"] = "Medium"
+                item["buyer_score"] = item.get("buyer_score") or 78
+                item["product_compatibility"] = "High"
+                discovered_leads.append(item)
                 if len(discovered_leads) >= max_results:
                     break
 
@@ -459,28 +424,30 @@ class BuyerSearchModule:
         filtered_regions = self.GEOGRAPHIC_REGIONS
 
         if "canada" in req_country and ("america" not in req_country and "all" not in req_country and "usa" not in req_country):
-            filtered_regions = [r for r in filtered_regions if r["country"] == "Canada"]
+            filtered_regions = [r for r in filtered_regions if str(r.get("country", "")) == "Canada"]
         elif "united states" in req_country or "usa" in req_country or req_country == "us":
             if "canada" not in req_country and "america" not in req_country and "all" not in req_country:
-                filtered_regions = [r for r in filtered_regions if r["country"] == "United States"]
+                filtered_regions = [r for r in filtered_regions if str(r.get("country", "")) == "United States"]
 
         if state and state != "all":
-            filtered_regions = [r for r in filtered_regions if state.lower() in r["state"].lower()] or filtered_regions
+            state_lower = state.lower()
+            filtered_regions = [r for r in filtered_regions if state_lower in str(r.get("state", "")).lower()] or filtered_regions
 
         if city and city != "all":
-            filtered_regions = [r for r in filtered_regions if city.lower() in r["city"].lower()] or filtered_regions
+            city_lower = city.lower()
+            filtered_regions = [r for r in filtered_regions if city_lower in str(r.get("city", "")).lower()] or filtered_regions
 
         if diaspora_only:
-            diaspora_matches = [r for r in filtered_regions if r.get("is_diaspora_hub")]
+            diaspora_matches = [r for r in filtered_regions if bool(r.get("is_diaspora_hub"))]
             if diaspora_matches:
                 filtered_regions = diaspora_matches
 
         reg_idx = self.state.get("region_idx", 0) % max(1, len(filtered_regions))
         selected_region = filtered_regions[reg_idx]
 
-        target_city = selected_region["city"]
-        target_state = selected_region["state"]
-        target_country = selected_region["country"]
+        target_city: str = str(selected_region.get("city", ""))
+        target_state: str = str(selected_region.get("state", ""))
+        target_country: str = str(selected_region.get("country", "United States"))
 
         loc_clause = f'("{target_city}" OR "{target_state}")'
         return loc_clause, target_city, target_state, target_country
@@ -1173,52 +1140,6 @@ class BuyerSearchModule:
             city_matches = [b for b in filtered if city.lower() in (b.get("city") or "").lower()]
             if city_matches:
                 filtered = city_matches
-            else:
-                # If no exact city match in static catalog, synthesize localized records for the exact city requested
-                target_country = "Canada" if ("canada" in req and "united" not in req and "usa" not in req) else "United States"
-                target_state = state if (state and state.lower() != "all") else ("Ontario" if target_country == "Canada" else "New York")
-                target_city = city
-                tld = ".ca" if target_country == "Canada" else ".com"
-                c_slug = re.sub(r'[^a-zA-Z0-9]', '', target_city).lower()
-
-                filtered = [
-                    {
-                        "category": "home_decor_retailer",
-                        "buyer_size": "independent_small",
-                        "market_segment": "mid_range",
-                        "state": target_state,
-                        "city": target_city,
-                        "country": target_country,
-                        "title": f"{target_city} Home & Living Studio - {keyword}",
-                        "raw_content": f"Independent {target_city} home boutique sourcing handcrafted {keyword}, lanterns, and tabletop candelabras. Contact: Purchasing Team, purchasing@{c_slug}homeliving{tld}, https://www.{c_slug}homeliving{tld}, Location: {target_city}, {target_state}, {target_country}.",
-                        "url": f"https://www.{c_slug}homeliving{tld}",
-                        "source_platform": f"Verified Directory ({target_city}, {target_state})"
-                    },
-                    {
-                        "category": "gift_specialty",
-                        "buyer_size": "independent_small",
-                        "market_segment": "mid_range",
-                        "state": target_state,
-                        "city": target_city,
-                        "country": target_country,
-                        "title": f"{target_city} Artisan Decor & Gift Showroom - {keyword}",
-                        "raw_content": f"Curated gift boutique in {target_city} purchasing artisanal {keyword} and brass accents. Contact: Sourcing Team, orders@{c_slug}artisangifts{tld}, https://www.{c_slug}artisangifts{tld}, Location: {target_city}, {target_state}, {target_country}.",
-                        "url": f"https://www.{c_slug}artisangifts{tld}",
-                        "source_platform": f"Verified Directory ({target_city}, {target_state})"
-                    },
-                    {
-                        "category": "furniture_lifestyle",
-                        "buyer_size": "mid_market",
-                        "market_segment": "mid_range",
-                        "state": target_state,
-                        "city": target_city,
-                        "country": target_country,
-                        "title": f"The {target_city} Design Collective - {keyword}",
-                        "raw_content": f"Furniture and home lifestyle showroom in {target_city} sourcing {keyword}, lanterns, and decorative metalware. Contact: Commercial Buyers, buyers@the{c_slug}design{tld}, https://www.the{c_slug}design{tld}, Location: {target_city}, {target_state}, {target_country}.",
-                        "url": f"https://www.the{c_slug}design{tld}",
-                        "source_platform": f"Verified Directory ({target_city}, {target_state})"
-                    }
-                ]
 
         # 4. Filter by buyer_type / diaspora
         if diaspora_focus or buyer_type == "diaspora_ethnic":
