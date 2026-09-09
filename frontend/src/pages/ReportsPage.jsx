@@ -173,6 +173,7 @@ export default function ReportsPage({
   const formatLeadRow = (l) => {
     const dateVal = formatDisplayDate(l.date || l.last_contacted_at || l.discovered_at);
 
+    const product = l.product_niche || l.product || 'Candle Holders';
     const company = l.company_name || l.buyer_name || 'Discovered Business';
     const email = l.email || '';
     let website = l.website || '';
@@ -187,32 +188,19 @@ export default function ReportsPage({
       responses = l.reply_snippet ? `Replied: ${l.reply_snippet}` : (responses && !responses.startsWith('Catalog Dispatched') ? responses : 'Replied: Requested wholesale pricing & MOQ');
     } else if (l.reply_status === 'bounced' || l.validation_status === 'invalid') {
       responses = 'Invalid Email (Bounced)';
-    } else if (l.last_contacted_at || (responses && responses.includes('Awaiting Reply'))) {
-      responses = '(Awaiting Reply)';
+    } else if (l.last_contacted_at || (responses && (responses.includes('Awaiting Reply') || responses.includes('(Sent)')))) {
+      responses = responses || '(Sent)';
     } else {
       responses = 'Pending Initial Outreach';
     }
 
-    let feedback = l.intern_feedback;
-    if (!feedback) {
-      feedback = l.classification_reason || `${company}: Verified commercial B2B buyer for handcrafted metal candle holders & lanterns.`;
-    }
-
-    let followUp = l.follow_ups || l.followup;
-    if (!followUp) {
-      if (l.reply_status === 'replied') {
-        followUp = 'Send wholesale price list, MOQ breakdown & custom catalog';
-      } else if (l.reply_status === 'auto_reply') {
-        followUp = 'Set reminder to follow up 3 business days post-return';
-      } else if (l.last_contacted_at) {
-        followUp = 'Follow-up #1 scheduled in 3 days with highlight deck';
-      } else {
-        followUp = 'Ready for initial catalog outreach dispatch';
-      }
-    }
+    let feedback = l.intern_feedback || l.feedback || `${company}: Verified commercial B2B buyer for handcrafted metal candle holders & lanterns.`;
+    let followUp = l.follow_ups || l.followup || (l.reply_status === 'replied' ? 'Send wholesale price list, MOQ breakdown & custom catalog' : l.reply_status === 'auto_reply' ? 'Set reminder to follow up 3 business days post-return' : l.last_contacted_at ? 'Follow-up #1 scheduled in 3 days with highlight deck' : 'Ready for initial catalog outreach dispatch');
+    let phone = l.phone || l.telephone_no || l.telephone || '—';
 
     return {
       id: l.id || l.email,
+      product,
       date: dateVal,
       company,
       email,
@@ -220,6 +208,7 @@ export default function ReportsPage({
       responses,
       feedback,
       followUp,
+      phone,
       raw_date: l.last_contacted_at || l.date || l.discovered_at || dateVal,
       raw: l
     };
@@ -270,19 +259,23 @@ export default function ReportsPage({
 
       if (searchTerm.trim()) {
         const q = searchTerm.toLowerCase();
+        const prod = (item['PRODUCT'] || '').toLowerCase();
         const comp = (item['NAME OF THE COMPANY'] || '').toLowerCase();
         const em = (item['EMAIL ADDRESS'] || '').toLowerCase();
         const web = (item['WEBSITE LINK'] || '').toLowerCase();
-        const fb = (item["INTERN'S FEEDBACK"] || '').toLowerCase();
+        const fb = (item['FEEDBACK'] || item["INTERN'S FEEDBACK"] || '').toLowerCase();
         const fol = (item['Follow-ups'] || '').toLowerCase();
+        const tel = (item['Telephone No.'] || item['phone'] || '').toLowerCase();
         const dt = (item['DATE'] || '').toLowerCase();
         return (
+          prod.includes(q) ||
           comp.includes(q) ||
           em.includes(q) ||
           web.includes(q) ||
           resp.toLowerCase().includes(q) ||
           fb.includes(q) ||
           fol.includes(q) ||
+          tel.includes(q) ||
           dt.includes(q)
         );
       }
@@ -298,15 +291,30 @@ export default function ReportsPage({
   }, [sentLogRows, responseFilter, searchTerm]);
 
   const handleCopySentLogTSV = () => {
+    const headers = [
+      "PRODUCT",
+      "DATE",
+      "NAME OF THE COMPANY",
+      "EMAIL ADDRESS",
+      "WEBSITE LINK",
+      "RESPONSES",
+      "FEEDBACK",
+      "Follow-ups",
+      "Telephone No."
+    ];
     const rows = filteredSentLogs.map(item => [
+      item["PRODUCT"] || "Candle Holders",
       item["DATE"],
       item["NAME OF THE COMPANY"],
       item["EMAIL ADDRESS"],
       item["WEBSITE LINK"],
-      item["RESPONSES"]
+      item["RESPONSES"],
+      item["FEEDBACK"] || item["INTERN'S FEEDBACK"] || "",
+      item["Follow-ups"] || "",
+      item["Telephone No."] || item["phone"] || "—"
     ].map(val => String(val || '').replace(/\t/g, ' ').replace(/\n/g, ' ')).join('\t'));
 
-    const tsvContent = rows.join('\n');
+    const tsvContent = [headers.join('\t'), ...rows].join('\n');
     navigator.clipboard.writeText(tsvContent).then(() => {
       setCopiedSentLog(true);
       setTimeout(() => setCopiedSentLog(false), 2500);
@@ -330,15 +338,30 @@ export default function ReportsPage({
   };
 
   const handleCopyBuyersTSV = () => {
+    const headers = [
+      "PRODUCT",
+      "DATE",
+      "NAME OF THE COMPANY",
+      "EMAIL ADDRESS",
+      "WEBSITE LINK",
+      "RESPONSES",
+      "FEEDBACK",
+      "Follow-ups",
+      "Telephone No."
+    ];
     const rows = allBuyersRows.map(item => [
+      item.product || "Candle Holders",
       item.date,
       item.company,
       item.email,
       item.website,
-      item.responses
+      item.responses,
+      item.feedback,
+      item.followUp,
+      item.phone || "—"
     ].map(val => String(val || '').replace(/\t/g, ' ').replace(/\n/g, ' ')).join('\t'));
 
-    const tsvContent = rows.join('\n');
+    const tsvContent = [headers.join('\t'), ...rows].join('\n');
     navigator.clipboard.writeText(tsvContent).then(() => {
       setCopiedBuyers(true);
       setTimeout(() => setCopiedBuyers(false), 2500);
@@ -351,9 +374,13 @@ export default function ReportsPage({
     const company = isSentLogRow ? item["NAME OF THE COMPANY"] : item.company;
     const email = isSentLogRow ? item["EMAIL ADDRESS"] : item.email;
     const responses = isSentLogRow ? item["RESPONSES"] : item.responses;
+    const feedback = isSentLogRow ? (item["FEEDBACK"] || item["INTERN'S FEEDBACK"]) : item.feedback;
+    const followUp = isSentLogRow ? item["Follow-ups"] : item.followUp;
 
     setEditingLead({ id, company, email });
     setEditResponses(responses || '');
+    setEditFeedback(feedback || '');
+    setEditFollowUp(followUp || '');
   };
 
   const handleSaveEdit = async () => {
@@ -363,7 +390,9 @@ export default function ReportsPage({
       const payload = {
         id: editingLead.id,
         email: editingLead.email,
-        responses: editResponses
+        responses: editResponses,
+        intern_feedback: editFeedback,
+        follow_ups: editFollowUp
       };
       if (onUpdateLead) {
         await onUpdateLead(payload);
@@ -507,8 +536,9 @@ export default function ReportsPage({
                 <span>Timeframe:</span>
               </div>
               {[
-                { id: 'today', label: 'Today' },
-                { id: 'yesterday', label: 'Yesterday' },
+                { id: 'today', label: 'Today (10/9)' },
+                { id: 'yesterday', label: 'Yesterday (9/9)' },
+                { id: '8/9/2026', label: '8/9/2026' },
                 { id: 'week', label: 'This Week' },
                 { id: 'month', label: 'This Month' },
                 { id: 'all', label: 'All Dispatches' }
@@ -561,22 +591,26 @@ export default function ReportsPage({
           </div>
 
           {/* Table */}
-          <div className="app-table-container" style={{ maxHeight: '600px', overflowY: 'auto', overflowX: 'hidden', width: '100%' }}>
-            <table className="app-table" style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse', fontSize: '12px' }}>
+          <div className="app-table-container" style={{ maxHeight: '620px', overflowY: 'auto', overflowX: 'auto', width: '100%' }}>
+            <table className="app-table" style={{ width: '100%', minWidth: '1380px', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ background: 'rgba(15, 23, 42, 0.95)', position: 'sticky', top: 0, zIndex: 10 }}>
-                  <th style={{ padding: '10px 12px', width: '10%', whiteSpace: 'nowrap' }}>DATE</th>
-                  <th style={{ padding: '10px 12px', width: '27%' }}>NAME OF THE COMPANY</th>
-                  <th style={{ padding: '10px 12px', width: '25%' }}>EMAIL ADDRESS</th>
-                  <th style={{ padding: '10px 12px', width: '18%' }}>WEBSITE LINK</th>
-                  <th style={{ padding: '10px 12px', width: '15%' }}>RESPONSES</th>
-                  <th style={{ padding: '10px 8px', width: '5%', textAlign: 'center' }}>Edit</th>
+                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>PRODUCT</th>
+                  <th style={{ padding: '10px 12px', minWidth: '95px', whiteSpace: 'nowrap' }}>DATE</th>
+                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>NAME OF THE COMPANY</th>
+                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>EMAIL ADDRESS</th>
+                  <th style={{ padding: '10px 12px', minWidth: '170px' }}>WEBSITE LINK</th>
+                  <th style={{ padding: '10px 12px', minWidth: '130px', textAlign: 'center' }}>RESPONSES</th>
+                  <th style={{ padding: '10px 12px', minWidth: '240px' }}>FEEDBACK</th>
+                  <th style={{ padding: '10px 12px', minWidth: '200px' }}>Follow-ups</th>
+                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>Telephone No.</th>
+                  <th style={{ padding: '10px 8px', width: '50px', textAlign: 'center' }}>Edit</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredSentLogs.length === 0 ? (
                   <tr>
-                    <td colSpan={6} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
+                    <td colSpan={10} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                         <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)' }}>
                           {logTimeframe === 'today'
@@ -587,7 +621,7 @@ export default function ReportsPage({
                         </span>
                         <span style={{ fontSize: '11.5px', color: 'var(--text-muted)', maxWidth: '420px', lineHeight: '1.5' }}>
                           {logTimeframe === 'today'
-                            ? 'You have not dispatched any campaign emails today. Click "Yesterday" or "All Dispatches" to view previous outreach.'
+                            ? 'You have not dispatched any campaign emails today. Click "Yesterday (9/9)" or "8/9/2026" to view previous outreach.'
                             : 'Select a different timeframe or click below to view all dispatches.'}
                         </span>
                         <button
@@ -596,46 +630,60 @@ export default function ReportsPage({
                           onClick={() => setLogTimeframe('all')}
                           style={{ padding: '6px 14px', fontSize: '11.5px', marginTop: '6px' }}
                         >
-                          View All Past Dispatches ({contactedCount || 218})
+                          View All Past Dispatches ({contactedCount || 261})
                         </button>
                       </div>
                     </td>
                   </tr>
                 ) : (
                   filteredSentLogs.map((item, idx) => {
+                    const prod = item['PRODUCT'] || 'Candle Holders';
+                    const dt = item['DATE'];
+                    const comp = item['NAME OF THE COMPANY'];
+                    const email = item['EMAIL ADDRESS'];
+                    const web = item['WEBSITE LINK'];
                     const resp = item['RESPONSES'] || '';
+                    const fb = item['FEEDBACK'] || item["INTERN'S FEEDBACK"] || '—';
+                    const fol = item['Follow-ups'] || '—';
+                    const tel = item['Telephone No.'] || item['phone'] || '—';
+
                     const isReplied = resp.toLowerCase().includes('replied');
                     const isAutoReply = resp.toLowerCase().includes('automated') || resp.toLowerCase().includes('auto-reply');
-                    const isDispatched = resp.toLowerCase().includes('awaiting') || resp.toLowerCase().includes('dispatched');
+                    const isDispatched = resp.toLowerCase().includes('awaiting') || resp.toLowerCase().includes('dispatched') || resp.toLowerCase().includes('(sent)');
 
                     return (
                       <tr key={idx} style={{ transition: 'background 0.15s ease' }}>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={item['DATE']}>
-                          {item['DATE']}
+                        <td style={{ padding: '10px 12px', fontSize: '11.5px', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }} title={prod}>
+                          <span style={{ padding: '2px 8px', borderRadius: '4px', background: 'rgba(192, 132, 252, 0.12)', color: '#c084fc', border: '1px solid rgba(192, 132, 252, 0.25)', fontSize: '11px', fontWeight: 500 }}>
+                            {prod}
+                          </span>
                         </td>
-                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item['NAME OF THE COMPANY']}>
-                          {item['NAME OF THE COMPANY']}
+                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={dt}>
+                          {dt}
                         </td>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)' }} title={comp}>
+                          {comp}
+                        </td>
+                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px' }}>
                           <a
-                            href={`mailto:${item['EMAIL ADDRESS']}`}
-                            title={item['EMAIL ADDRESS']}
-                            style={{ color: '#93c5fd', textDecoration: 'none', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}
+                            href={`mailto:${email}`}
+                            title={email}
+                            style={{ color: '#93c5fd', textDecoration: 'none' }}
                           >
-                            {item['EMAIL ADDRESS']}
+                            {email}
                           </a>
                         </td>
-                        <td style={{ padding: '10px 12px', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {item['WEBSITE LINK'] ? (
+                        <td style={{ padding: '10px 12px', fontSize: '11px' }}>
+                          {web ? (
                             <a
-                              href={item['WEBSITE LINK'].startsWith('http') ? item['WEBSITE LINK'] : `https://${item['WEBSITE LINK']}`}
+                              href={web.startsWith('http') ? web : `https://${web}`}
                               target="_blank"
                               rel="noopener noreferrer"
-                              title={item['WEBSITE LINK']}
-                              style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none', maxWidth: '100%', overflow: 'hidden' }}
+                              title={web}
+                              style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
                             >
-                              <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                                {item['WEBSITE LINK'].replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}
+                              <span>
+                                {web.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}
                               </span>
                               <ExternalLink size={10} style={{ flexShrink: 0 }} />
                             </a>
@@ -643,16 +691,12 @@ export default function ReportsPage({
                             <span style={{ color: 'var(--text-muted)' }}>—</span>
                           )}
                         </td>
-                        <td style={{ padding: '10px 12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        <td style={{ padding: '10px 12px', textAlign: 'center' }}>
                           <div
                             title={resp}
                             style={{
-                              display: 'block',
-                              maxWidth: '100%',
+                              display: 'inline-block',
                               whiteSpace: 'nowrap',
-                              overflow: 'hidden',
-                              textOverflow: 'ellipsis',
-                              textAlign: 'center',
                               padding: '3px 8px',
                               borderRadius: '4px',
                               fontSize: '11px',
@@ -677,6 +721,15 @@ export default function ReportsPage({
                           >
                             {resp}
                           </div>
+                        </td>
+                        <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.4' }} title={fb}>
+                          {fb}
+                        </td>
+                        <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-muted)', lineHeight: '1.4' }} title={fol}>
+                          {fol}
+                        </td>
+                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={tel}>
+                          {tel}
                         </td>
                         <td style={{ padding: '10px 8px', textAlign: 'center' }}>
                           <button
@@ -756,16 +809,20 @@ export default function ReportsPage({
             </div>
           </div>
 
-          <div className="app-table-container" style={{ maxHeight: '600px', overflowY: 'auto', overflowX: 'hidden', width: '100%' }}>
-            <table className="app-table" style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse', fontSize: '12px' }}>
+          <div className="app-table-container" style={{ maxHeight: '620px', overflowY: 'auto', overflowX: 'auto', width: '100%' }}>
+            <table className="app-table" style={{ width: '100%', minWidth: '1380px', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ background: 'rgba(15, 23, 42, 0.95)', position: 'sticky', top: 0, zIndex: 10 }}>
-                  <th style={{ padding: '10px 12px', width: '10%', whiteSpace: 'nowrap' }}>DATE</th>
-                  <th style={{ padding: '10px 12px', width: '27%' }}>NAME OF THE COMPANY</th>
-                  <th style={{ padding: '10px 12px', width: '25%' }}>EMAIL ADDRESS</th>
-                  <th style={{ padding: '10px 12px', width: '18%' }}>WEBSITE LINK</th>
-                  <th style={{ padding: '10px 12px', width: '15%' }}>RESPONSES</th>
-                  <th style={{ padding: '10px 8px', width: '5%', textAlign: 'center' }}>Edit</th>
+                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>PRODUCT</th>
+                  <th style={{ padding: '10px 12px', minWidth: '95px', whiteSpace: 'nowrap' }}>DATE</th>
+                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>NAME OF THE COMPANY</th>
+                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>EMAIL ADDRESS</th>
+                  <th style={{ padding: '10px 12px', minWidth: '170px' }}>WEBSITE LINK</th>
+                  <th style={{ padding: '10px 12px', minWidth: '130px', textAlign: 'center' }}>RESPONSES</th>
+                  <th style={{ padding: '10px 12px', minWidth: '240px' }}>FEEDBACK</th>
+                  <th style={{ padding: '10px 12px', minWidth: '200px' }}>Follow-ups</th>
+                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>Telephone No.</th>
+                  <th style={{ padding: '10px 8px', width: '50px', textAlign: 'center' }}>Edit</th>
                 </tr>
               </thead>
               <tbody>
@@ -773,31 +830,36 @@ export default function ReportsPage({
                   const resp = item.responses || '';
                   const isReplied = resp.toLowerCase().includes('replied');
                   const isAutoReply = resp.toLowerCase().includes('automated') || resp.toLowerCase().includes('auto-reply');
-                  const isDispatched = resp.toLowerCase().includes('awaiting') || resp.toLowerCase().includes('dispatched');
+                  const isDispatched = resp.toLowerCase().includes('awaiting') || resp.toLowerCase().includes('dispatched') || resp.toLowerCase().includes('(sent)');
 
                   return (
                     <tr key={item.id || idx}>
-                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }} title={item.date}>
+                      <td style={{ padding: '10px 12px', fontSize: '11.5px', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }} title={item.product}>
+                        <span style={{ padding: '2px 8px', borderRadius: '4px', background: 'rgba(192, 132, 252, 0.12)', color: '#c084fc', border: '1px solid rgba(192, 132, 252, 0.25)', fontSize: '11px', fontWeight: 500 }}>
+                          {item.product || 'Candle Holders'}
+                        </span>
+                      </td>
+                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={item.date}>
                         {item.date}
                       </td>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }} title={item.company}>
+                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)' }} title={item.company}>
                         {item.company}
                       </td>
-                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                        <a href={`mailto:${item.email}`} title={item.email} style={{ color: '#93c5fd', textDecoration: 'none', display: 'block', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px' }}>
+                        <a href={`mailto:${item.email}`} title={item.email} style={{ color: '#93c5fd', textDecoration: 'none' }}>
                           {item.email}
                         </a>
                       </td>
-                      <td style={{ padding: '10px 12px', fontSize: '11px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '10px 12px', fontSize: '11px' }}>
                         {item.website ? (
                           <a
                             href={item.website.startsWith('http') ? item.website : `https://${item.website}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             title={item.website}
-                            style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none', maxWidth: '100%', overflow: 'hidden' }}
+                            style={{ color: 'var(--text-muted)', display: 'inline-flex', alignItems: 'center', gap: '4px', textDecoration: 'none' }}
                           >
-                            <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            <span>
                               {item.website.replace('https://', '').replace('http://', '').replace('www.', '').split('/')[0]}
                             </span>
                             <ExternalLink size={10} style={{ flexShrink: 0 }} />
@@ -806,16 +868,12 @@ export default function ReportsPage({
                           <span style={{ color: 'var(--text-muted)' }}>—</span>
                         )}
                       </td>
-                      <td style={{ padding: '10px 12px', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <td style={{ padding: '10px 12px', textAlign: 'center' }}>
                         <div
                           title={resp}
                           style={{
-                            display: 'block',
-                            maxWidth: '100%',
+                            display: 'inline-block',
                             whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            textAlign: 'center',
                             padding: '3px 8px',
                             borderRadius: '4px',
                             fontSize: '11px',
@@ -840,6 +898,15 @@ export default function ReportsPage({
                         >
                           {resp}
                         </div>
+                      </td>
+                      <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.4' }} title={item.feedback}>
+                        {item.feedback}
+                      </td>
+                      <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-muted)', lineHeight: '1.4' }} title={item.followUp}>
+                        {item.followUp}
+                      </td>
+                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={item.phone}>
+                        {item.phone || '—'}
                       </td>
                       <td style={{ padding: '10px 8px', textAlign: 'center' }}>
                         <button
@@ -889,7 +956,7 @@ export default function ReportsPage({
           zIndex: 1000,
           padding: '20px'
         }}>
-          <div className="app-card" style={{ width: '100%', maxWidth: '460px', padding: '24px', position: 'relative' }}>
+          <div className="app-card" style={{ width: '100%', maxWidth: '520px', padding: '24px', position: 'relative' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
               <div>
                 <h3 style={{ margin: 0, fontSize: '16px', color: 'var(--text-main)' }}>
@@ -926,6 +993,49 @@ export default function ReportsPage({
                     fontSize: '12px'
                   }}
                   placeholder="e.g. (Awaiting Reply) / Automated Reply / Replied..."
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
+                  FEEDBACK / INTERN'S NOTES:
+                </label>
+                <textarea
+                  rows={3}
+                  value={editFeedback}
+                  onChange={(e) => setEditFeedback(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    border: '1px solid var(--border-color)',
+                    background: '#070c17',
+                    color: 'var(--text-main)',
+                    fontSize: '12px',
+                    resize: 'vertical'
+                  }}
+                  placeholder="Intern review notes, wholesale target profile..."
+                />
+              </div>
+
+              <div>
+                <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
+                  FOLLOW-UPS STATUS / ACTION:
+                </label>
+                <input
+                  type="text"
+                  value={editFollowUp}
+                  onChange={(e) => setEditFollowUp(e.target.value)}
+                  style={{
+                    width: '100%',
+                    padding: '8px 12px',
+                    borderRadius: '6px',
+                    border: '1px solid var(--border-color)',
+                    background: '#070c17',
+                    color: 'var(--text-main)',
+                    fontSize: '12px'
+                  }}
+                  placeholder="e.g. Send wholesale price list, Follow-up #1 scheduled..."
                 />
               </div>
             </div>

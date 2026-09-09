@@ -20,11 +20,15 @@ class LoggingModule:
     """
 
     REPORT_HEADERS = [
+        "PRODUCT",
         "DATE",
         "NAME OF THE COMPANY",
         "EMAIL ADDRESS",
         "WEBSITE LINK",
-        "RESPONSES"
+        "RESPONSES",
+        "FEEDBACK",
+        "Follow-ups",
+        "Telephone No."
     ]
 
     def __init__(self, data_dir: Optional[str] = None):
@@ -432,13 +436,15 @@ class LoggingModule:
 
         return {
             "id": lead.get("id") or email,
+            "PRODUCT": lead.get("product_niche") or lead.get("product") or "Candle Holders",
             "DATE": date_val,
             "NAME OF THE COMPANY": company_name,
             "EMAIL ADDRESS": email,
             "WEBSITE LINK": website,
             "RESPONSES": responses,
-            "INTERN'S FEEDBACK": feedback,
+            "FEEDBACK": feedback,
             "Follow-ups": follow_ups,
+            "Telephone No.": lead.get("telephone_no") or lead.get("phone") or "—",
             "raw_date": lead.get("last_contacted_at") or lead.get("date") or lead.get("discovered_at")
         }
 
@@ -514,13 +520,15 @@ class LoggingModule:
                 follow_ups = "Ready for initial catalog outreach dispatch"
 
         return {
+            "PRODUCT": lead.get("product_niche") or log.get("product") or "Candle Holders",
             "DATE": date_str,
             "NAME OF THE COMPANY": company_name,
             "EMAIL ADDRESS": email,
             "WEBSITE LINK": website,
             "RESPONSES": responses,
-            "INTERN'S FEEDBACK": feedback,
+            "FEEDBACK": feedback,
             "Follow-ups": follow_ups,
+            "Telephone No.": lead.get("telephone_no") or lead.get("phone") or log.get("phone") or "—",
             "raw_sent_at": sent_raw
         }
 
@@ -681,16 +689,6 @@ class LoggingModule:
                     filtered = dates_with_leads[latest_date]
         elif timeframe == "yesterday":
             filtered = [l for l in contacted_leads if get_lead_ist_date(l) == yesterday_ist_date]
-            # If no dispatches on exact calendar yesterday, show the most recent previous outreach session
-            if not filtered and contacted_leads:
-                dates_with_leads = {}
-                for l in contacted_leads:
-                    d = get_lead_ist_date(l)
-                    if d and d < today_ist_date:
-                        dates_with_leads.setdefault(d, []).append(l)
-                if dates_with_leads:
-                    latest_prev_date = max(dates_with_leads.keys())
-                    filtered = dates_with_leads[latest_prev_date]
         elif timeframe == "week":
             filtered = [l for l in contacted_leads if is_within_week(l)]
         elif timeframe == "month":
