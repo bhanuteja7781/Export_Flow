@@ -119,7 +119,7 @@ class BaseHttpSource(DiscoverySource):
         })
 
     def _extract_stores_from_guide(self, guide_url: str, max_extract: int = 4) -> List[Dict[str, str]]:
-        stores = []
+        stores: List[Dict[str, str]] = []
         try:
             resp = self.session.get(guide_url, timeout=2.0, verify=False)
             if resp.status_code != 200:
@@ -128,7 +128,10 @@ class BaseHttpSource(DiscoverySource):
             guide_domain = urllib.parse.urlparse(guide_url).netloc.replace("www.", "")
             banned = [guide_domain, "google", "facebook", "instagram", "twitter", "pinterest", "youtube", "tiktok", "amazon", "ebay", "yelp", "aboutads"]
             for a in soup.find_all("a", href=True):
-                href = a.get("href", "")
+                href_attr = a.get("href", "")
+                if not href_attr or not isinstance(href_attr, str):
+                    continue
+                href = str(href_attr)
                 if href.startswith("http") and not any(b in href for b in banned) and not is_banned_domain(href):
                     netloc = urllib.parse.urlparse(href).netloc.replace("www.", "")
                     if "." in netloc and len(netloc) > 4:
@@ -147,7 +150,7 @@ class BaseHttpSource(DiscoverySource):
 
     def _query_search_engine(self, query: str, offset: int = 0, max_items: int = 4) -> List[Dict[str, str]]:
         results: List[Dict[str, str]] = []
-        seen_urls = set()
+        seen_urls: Set[str] = set()
         guides_parsed = 0
 
         # 1. Primary Strategy: Fast Direct DDG HTML Endpoint (~0.6s)
@@ -168,10 +171,13 @@ class BaseHttpSource(DiscoverySource):
                     snippet_tag = r.find("a", class_="result__snippet")
                     if not a or not a.get("href"):
                         continue
-                    raw_href = a.get("href")
+                    raw_href_attr = a.get("href")
+                    if not raw_href_attr or not isinstance(raw_href_attr, str):
+                        continue
+                    raw_href = str(raw_href_attr)
                     if "duckduckgo.com/l/?" in raw_href or "uddg=" in raw_href:
                         qs = urllib.parse.parse_qs(urllib.parse.urlparse(raw_href).query)
-                        real_url = qs.get("uddg", [raw_href])[0]
+                        real_url = str(qs.get("uddg", [raw_href])[0])
                     else:
                         real_url = raw_href
 

@@ -135,11 +135,10 @@ export default function LeadsPage({
   onClearLeads,
   isSearching,
   isValidating,
-  currentKeyword,
   settings = {},
   setActiveTab
 }) {
-  const [keyword, setKeyword] = useState(currentKeyword || 'yoga studio');
+  const [keyword, setKeyword] = useState(currentKeyword || settings?.searchKeyword || 'Metal Candle Holders');
   const [selectedCountry, setSelectedCountry] = useState('BOTH');
   const [selectedState, setSelectedState] = useState('All States/Provinces');
   const [selectedCity, setSelectedCity] = useState('All Cities');
@@ -308,7 +307,7 @@ export default function LeadsPage({
       <Header
         breadcrumb="SaaS Workspace / Discovery"
         title="Public Buyer Discovery"
-        subtitle="Find publicly available contact emails and websites of wholesale stores, yoga studios, and meditation centers globally."
+        subtitle="Discover and verify commercial buyers, wholesale importers, and lifestyle boutiques across America & Canada."
       />
 
       {/* 1. Public Buyer Discovery Search Card */}

@@ -1,7 +1,7 @@
 """
 product_affinity.py - Dynamic Product Compatibility & Affinity Model
 Evaluates how closely a business's offerings match ANY commercial product niche
-(e.g., yoga studios, singing bowls, candles, leather goods, home decor, furniture, etc.).
+(e.g., metal candle holders, tabletop decor, brass crafts, home decor, furniture, etc.).
 """
 
 import re
