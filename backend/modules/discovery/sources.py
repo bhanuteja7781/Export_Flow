@@ -11,7 +11,7 @@ import json
 import random
 import base64
 import urllib.parse
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Set, Tuple
 import urllib3
 import requests
 from bs4 import BeautifulSoup
@@ -131,16 +131,21 @@ class BaseHttpSource(DiscoverySource):
                 href_attr = a.get("href", "")
                 if not href_attr or not isinstance(href_attr, str):
                     continue
-                href = str(href_attr)
+                href = href_attr
                 if href.startswith("http") and not any(b in href for b in banned) and not is_banned_domain(href):
                     netloc = urllib.parse.urlparse(href).netloc.replace("www.", "")
                     if "." in netloc and len(netloc) > 4:
                         clean_t = clean_business_title(a.get_text(strip=True), href)
                         if clean_t:
+                            snippet_text = a.get_text(strip=True)
+                            if a.parent:
+                                p_text = a.parent.get_text(strip=True)
+                                if len(p_text) > len(snippet_text):
+                                    snippet_text = p_text[:250]
                             stores.append({
                                 "title": clean_t,
                                 "url": f"https://{netloc}",
-                                "snippet": f"Curated boutique stockist from {guide_url}"
+                                "snippet": snippet_text or f"Curated retail stockist: {clean_t}"
                             })
                             if len(stores) >= max_extract:
                                 break
@@ -174,10 +179,10 @@ class BaseHttpSource(DiscoverySource):
                     raw_href_attr = a.get("href")
                     if not raw_href_attr or not isinstance(raw_href_attr, str):
                         continue
-                    raw_href = str(raw_href_attr)
+                    raw_href = raw_href_attr
                     if "duckduckgo.com/l/?" in raw_href or "uddg=" in raw_href:
                         qs = urllib.parse.parse_qs(urllib.parse.urlparse(raw_href).query)
-                        real_url = str(qs.get("uddg", [raw_href])[0])
+                        real_url = qs.get("uddg", [raw_href])[0]
                     else:
                         real_url = raw_href
 

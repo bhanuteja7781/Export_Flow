@@ -248,28 +248,17 @@ class OfficialWebsiteResolver:
                 except Exception:
                     continue
 
-        # Live DNS MX Verification on all extracted emails
-        verified_emails = []
-        domain_mx_cache: Dict[str, bool] = {}
-
+        # Retain only genuine emails extracted from site pages
+        extracted_emails = []
         for em in found_emails:
             em_domain = em.split("@")[1].lower()
-            if em_domain not in domain_mx_cache:
-                domain_mx_cache[em_domain] = self.check_mx_validity(em_domain)
-            if domain_mx_cache[em_domain]:
-                verified_emails.append(em)
-
-        # If domain has verified MX but only contact form was present, generate validated mailbox
-        if not verified_emails and netloc_clean and "." in netloc_clean and not is_banned_domain(netloc_clean):
-            if netloc_clean not in domain_mx_cache:
-                domain_mx_cache[netloc_clean] = self.check_mx_validity(netloc_clean)
-            if domain_mx_cache[netloc_clean]:
-                verified_emails.append(f"info@{netloc_clean}")
+            if not is_banned_domain(em_domain):
+                extracted_emails.append(em)
 
         return {
             "root_url": root_url,
             "domain": netloc_clean,
-            "emails": verified_emails[:5],
+            "emails": extracted_emails[:5],
             "phones": list(found_phones)[:2],
             "social_profiles": discovered_socials,
             "text_corpus": " ".join(text_corpus)[:1000],
