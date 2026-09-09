@@ -508,6 +508,7 @@ export default function ReportsPage({
               </div>
               {[
                 { id: 'today', label: 'Today' },
+                { id: 'yesterday', label: 'Yesterday' },
                 { id: 'week', label: 'This Week' },
                 { id: 'month', label: 'This Month' },
                 { id: 'all', label: 'All Dispatches' }
@@ -530,33 +531,6 @@ export default function ReportsPage({
                   {tf.label}
                 </button>
               ))}
-
-              {availableDates.length > 0 && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginLeft: '6px' }}>
-                  <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Date:</span>
-                  <select
-                    value={availableDates.includes(logTimeframe) ? logTimeframe : ''}
-                    onChange={(e) => {
-                      if (e.target.value) setLogTimeframe(e.target.value);
-                    }}
-                    style={{
-                      background: 'rgba(30, 41, 59, 0.9)',
-                      border: '1px solid var(--border-color)',
-                      borderRadius: '4px',
-                      color: '#93c5fd',
-                      fontSize: '11px',
-                      padding: '3px 8px',
-                      outline: 'none',
-                      cursor: 'pointer'
-                    }}
-                  >
-                    <option value="" disabled>Specific Date ({availableDates.length})...</option>
-                    {availableDates.map(d => (
-                      <option key={d} value={d}>{d}</option>
-                    ))}
-                  </select>
-                </div>
-              )}
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '1', minWidth: '220px', maxWidth: '380px' }}>
@@ -605,12 +579,16 @@ export default function ReportsPage({
                     <td colSpan={6} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                         <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)' }}>
-                          {logTimeframe === 'today' ? 'No emails dispatched today' : `No sent logs found for "${logTimeframe}"`}
+                          {logTimeframe === 'today'
+                            ? 'No emails dispatched today'
+                            : logTimeframe === 'yesterday'
+                            ? 'No emails dispatched yesterday'
+                            : `No sent logs found for "${logTimeframe}"`}
                         </span>
                         <span style={{ fontSize: '11.5px', color: 'var(--text-muted)', maxWidth: '420px', lineHeight: '1.5' }}>
                           {logTimeframe === 'today'
-                            ? 'You have not dispatched any campaign emails today. When you send emails, they will be logged here.'
-                            : 'Try selecting a different date from the dropdown or click below to view all dispatches.'}
+                            ? 'You have not dispatched any campaign emails today. Click "Yesterday" or "All Dispatches" to view previous outreach.'
+                            : 'Select a different timeframe or click below to view all dispatches.'}
                         </span>
                         <button
                           type="button"

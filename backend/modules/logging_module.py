@@ -339,15 +339,20 @@ class LoggingModule:
         logs = self.get_all_logs()
         clean_logs = []
         for entry in logs:
+            rec_email = (entry.get("recipient_email") or "").strip().lower()
+            if rec_email and rec_email in all_bad_emails:
+                continue
             recipients = entry.get("recipients", [])
-            clean_recipients = [
-                r for r in recipients
-                if (isinstance(r, str) and r.lower() not in all_bad_emails) or
-                   (isinstance(r, dict) and r.get("email", "").lower() not in all_bad_emails)
-            ]
-            if clean_recipients:
+            if recipients:
+                clean_recipients = [
+                    r for r in recipients
+                    if (isinstance(r, str) and r.lower() not in all_bad_emails) or
+                       (isinstance(r, dict) and r.get("email", "").lower() not in all_bad_emails)
+                ]
+                if not clean_recipients:
+                    continue
                 entry["recipients"] = clean_recipients
-                clean_logs.append(entry)
+            clean_logs.append(entry)
 
         with open(self.logs_json_path, "w", encoding="utf-8") as f:
             json.dump(clean_logs, f, indent=2)
@@ -676,6 +681,16 @@ class LoggingModule:
                     filtered = dates_with_leads[latest_date]
         elif timeframe == "yesterday":
             filtered = [l for l in contacted_leads if get_lead_ist_date(l) == yesterday_ist_date]
+            # If no dispatches on exact calendar yesterday, show the most recent previous outreach session
+            if not filtered and contacted_leads:
+                dates_with_leads = {}
+                for l in contacted_leads:
+                    d = get_lead_ist_date(l)
+                    if d and d < today_ist_date:
+                        dates_with_leads.setdefault(d, []).append(l)
+                if dates_with_leads:
+                    latest_prev_date = max(dates_with_leads.keys())
+                    filtered = dates_with_leads[latest_prev_date]
         elif timeframe == "week":
             filtered = [l for l in contacted_leads if is_within_week(l)]
         elif timeframe == "month":
