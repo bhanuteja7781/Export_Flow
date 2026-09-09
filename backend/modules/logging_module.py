@@ -25,10 +25,7 @@ class LoggingModule:
         "NAME OF THE COMPANY",
         "EMAIL ADDRESS",
         "WEBSITE LINK",
-        "RESPONSES",
-        "FEEDBACK",
-        "Follow-ups",
-        "Telephone No."
+        "RESPONSES"
     ]
 
     def __init__(self, data_dir: Optional[str] = None):
@@ -370,15 +367,15 @@ class LoggingModule:
         }
 
     # -----------------------------
-    # 7-Column Report Formatter for Leads & Buyers
+    # 6-Column Report Formatter for Leads & Buyers
     # -----------------------------
     def format_report_row(self, lead: Dict[str, Any]) -> Dict[str, Any]:
         """
-        Formats a single lead into the required 7-column report structure:
-        DATE, NAME OF THE COMPANY, EMAIL ADDRESS, WEBSITE LINK, RESPONSES, INTERN'S FEEDBACK, Follow-ups
+        Formats a single lead into the required 6-column report structure:
+        PRODUCT, DATE, NAME OF THE COMPANY, EMAIL ADDRESS, WEBSITE LINK, RESPONSES
         """
         # 1. DATE (Prioritize actual outreach timestamp in IST)
-        date_val = self.format_display_date(lead.get("last_contacted_at") or lead.get("date") or lead.get("discovered_at"))
+        date_val = lead.get("date") or self.format_display_date(lead.get("last_contacted_at") or lead.get("discovered_at"))
 
         # 2. NAME OF THE COMPANY
         company_name = lead.get("company_name") or lead.get("buyer_name") or "N/A"
@@ -403,36 +400,12 @@ class LoggingModule:
             responses = f"Replied: {reply_snippet}" if reply_snippet else (raw_responses if raw_responses and not raw_responses.startswith("Catalog Dispatched") else "Replied: Requested wholesale pricing & MOQ")
         elif reply_status == "bounced" or lead.get("validation_status") == "invalid":
             responses = "Invalid Email (Bounced)"
-        elif lead.get("last_contacted_at") or raw_responses in ["Catalog Dispatched (Awaiting Reply)", "(Awaiting Reply)"]:
-            responses = "(Awaiting Reply)"
+        elif raw_responses in ["(Sent)", "(Awaiting Reply)", "Catalog Dispatched (Awaiting Reply)"]:
+            responses = raw_responses
+        elif lead.get("last_contacted_at"):
+            responses = "(Sent)"
         else:
             responses = "Pending Initial Outreach"
-
-        # 6. INTERN'S FEEDBACK
-        feedback = lead.get("intern_feedback")
-        if not feedback:
-            cat_label = lead.get("category_label") or lead.get("category", "")
-            reason = lead.get("classification_reason", "")
-            if reason and len(reason) > 5:
-                feedback = reason
-            elif cat_label:
-                feedback = f"{company_name}: Verified commercial buyer profile ({cat_label}). High potential B2B target."
-            else:
-                feedback = f"{company_name}: Target B2B candidate for handcrafted metal candle holders, lanterns & tabletop décor collection."
-
-        # 7. Follow-ups
-        follow_ups = lead.get("follow_ups") or lead.get("followup")
-        if not follow_ups or (reply_status == "auto_reply" and "outreach" in follow_ups.lower()):
-            if reply_status == "replied":
-                follow_ups = "Send MOQ matrix, wholesale price list & custom sample deck"
-            elif reply_status == "auto_reply":
-                follow_ups = "Set follow-up reminder for 3 business days post-return date"
-            elif lead.get("last_contacted_at"):
-                follow_ups = "Follow-up #1 scheduled in 3 days post-outreach"
-            elif lead.get("validation_status") == "invalid":
-                follow_ups = "Re-scrape verified company domain for updated buyer email"
-            else:
-                follow_ups = "Ready for initial catalog outreach dispatch"
 
         return {
             "id": lead.get("id") or email,
@@ -442,19 +415,16 @@ class LoggingModule:
             "EMAIL ADDRESS": email,
             "WEBSITE LINK": website,
             "RESPONSES": responses,
-            "FEEDBACK": feedback,
-            "Follow-ups": follow_ups,
-            "Telephone No.": lead.get("telephone_no") or lead.get("phone") or "—",
             "raw_date": lead.get("last_contacted_at") or lead.get("date") or lead.get("discovered_at")
         }
 
     # -----------------------------
-    # 7-Column Formatter for Sent Outreach Logs (sent_log)
+    # 6-Column Formatter for Sent Outreach Logs (sent_log)
     # -----------------------------
     def format_sent_log_row(self, log: Dict[str, Any], leads_lookup: Optional[Dict[str, Any]] = None) -> Dict[str, Any]:
         """
-        Formats a single sent outreach dispatch entry into the required 7-column structure:
-        DATE, NAME OF THE COMPANY, EMAIL ADDRESS, WEBSITE LINK, RESPONSES, INTERN'S FEEDBACK, Follow-ups
+        Formats a single sent outreach dispatch entry into the required 6-column structure:
+        PRODUCT, DATE, NAME OF THE COMPANY, EMAIL ADDRESS, WEBSITE LINK, RESPONSES
         """
         if leads_lookup is None:
             leads_lookup = {l.get("email", "").lower(): l for l in self.get_all_leads()}
@@ -462,26 +432,27 @@ class LoggingModule:
         rec_email = log.get("recipient_email", "").strip().lower()
         lead = leads_lookup.get(rec_email, {})
 
-        # 1. DATE (e.g. 25/7/2026 or 24/8/2026)
-        sent_raw = log.get("sent_at") or lead.get("last_contacted_at") or lead.get("discovered_at")
-        date_str = self.format_display_date(sent_raw)
+        # 1. DATE (e.g. 25/7/2026 or 24/8/2026 or 10/9/2026)
+        sent_raw = log.get("sent_at") or log.get("timestamp") or lead.get("last_contacted_at") or log.get("date")
+        date_str = log.get("date") or self.format_display_date(sent_raw)
 
         # 2. NAME OF THE COMPANY
-        company_name = lead.get("company_name") or log.get("recipient_company") or log.get("recipient_name") or lead.get("buyer_name") or "Discovered Business"
+        company_name = log.get("recipient_company") or log.get("recipient_name") or lead.get("company_name") or lead.get("buyer_name") or "Discovered Business"
 
         # 3. EMAIL ADDRESS
         email = log.get("recipient_email") or lead.get("email") or ""
 
         # 4. WEBSITE LINK
-        website = lead.get("website") or ""
+        website = log.get("website") or lead.get("website") or ""
         if not website and "@" in email:
             domain = email.split("@")[1]
             website = f"https://www.{domain}"
 
         # 5. RESPONSES
+        log_responses = log.get("responses")
         reply_status = lead.get("reply_status", "")
         reply_snippet = lead.get("reply_snippet", "")
-        raw_responses = (lead.get("responses") or "").strip()
+        raw_responses = (log_responses or lead.get("responses") or "").strip()
 
         if reply_status == "auto_reply" or "automated" in raw_responses.lower() or "auto-reply" in raw_responses.lower():
             responses = "Automated Reply"
@@ -489,46 +460,20 @@ class LoggingModule:
             responses = f"Replied: {reply_snippet}" if reply_snippet else (raw_responses if raw_responses and not raw_responses.startswith("Catalog Dispatched") else "Replied: Requesting wholesale catalog & MOQ breakdown")
         elif log.get("status") == "FAILED" or reply_status == "bounced" or lead.get("validation_status") == "invalid":
             responses = "Invalid Email (Bounced)"
-        elif log.get("status") == "SENT" or lead.get("last_contacted_at"):
-            responses = "(Awaiting Reply)"
+        elif raw_responses in ["(Sent)", "(Awaiting Reply)", "Catalog Dispatched (Awaiting Reply)"]:
+            responses = raw_responses
+        elif log.get("status") in ["SENT", "SUCCESS"] or lead.get("last_contacted_at"):
+            responses = "(Sent)"
         else:
             responses = "Pending Initial Outreach"
 
-        # 6. INTERN'S FEEDBACK
-        feedback = lead.get("intern_feedback")
-        if not feedback:
-            cat_label = lead.get("category_label") or lead.get("category", "")
-            reason = lead.get("classification_reason", "")
-            if reason and len(reason) > 5:
-                feedback = reason
-            elif cat_label:
-                feedback = f"{company_name}: Verified commercial buyer profile ({cat_label}). High potential for metal candle holders & lanterns."
-            else:
-                feedback = f"{company_name}: Active commercial B2B buyer for handcrafted metal candle holders, lanterns & tabletop décor."
-
-        # 7. Follow-ups
-        follow_ups = lead.get("follow_ups") or lead.get("followup")
-        if not follow_ups:
-            reply_status = lead.get("reply_status", "")
-            if reply_status == "replied":
-                follow_ups = "Send MOQ matrix, wholesale price list & custom sample deck"
-            elif reply_status == "auto_reply":
-                follow_ups = "Set follow-up reminder for 3 business days post-return date"
-            elif log.get("status") == "SENT":
-                follow_ups = "Follow-up #1 scheduled in 3 days post-outreach"
-            else:
-                follow_ups = "Ready for initial catalog outreach dispatch"
-
         return {
-            "PRODUCT": lead.get("product_niche") or log.get("product") or "Candle Holders",
+            "PRODUCT": log.get("product") or lead.get("product_niche") or "Candle Holders",
             "DATE": date_str,
             "NAME OF THE COMPANY": company_name,
             "EMAIL ADDRESS": email,
             "WEBSITE LINK": website,
             "RESPONSES": responses,
-            "FEEDBACK": feedback,
-            "Follow-ups": follow_ups,
-            "Telephone No.": lead.get("telephone_no") or lead.get("phone") or log.get("phone") or "—",
             "raw_sent_at": sent_raw
         }
 
@@ -601,21 +546,13 @@ class LoggingModule:
         """
         Returns list of distinct dates with sent outreach dispatches, ordered reverse-chronologically (newest first).
         """
-        leads = self.get_all_leads()
-        contacted_leads = [
-            l for l in leads 
-            if l.get("last_contacted_at") and 
-            l.get("validation_status") != "invalid" and 
-            l.get("reply_status") != "bounced" and
-            l.get("responses") != "Pending Initial Outreach"
-        ]
+        logs = self.get_all_logs()
         dates = []
         seen = set()
-        for l in contacted_leads:
-            d = l.get("date")
-            if not d:
-                raw = l.get("last_contacted_at") or l.get("discovered_at")
-                d = self.format_display_date(raw)
+        for l in logs:
+            if l.get("status") not in ["SENT", "SUCCESS"]:
+                continue
+            d = l.get("date") or self.format_display_date(l.get("sent_at") or l.get("timestamp"))
             if d and d not in seen:
                 seen.add(d)
                 dates.append(d)
@@ -624,17 +561,14 @@ class LoggingModule:
 
     def get_sent_logs_report_data(self, timeframe: Optional[str] = "all") -> List[Dict[str, Any]]:
         """
-        Returns list of 5-column sent outreach rows filtered by timeframe in local IST time.
-        Strictly contains only genuinely delivered/sent emails.
+        Returns list of 6-column sent outreach rows filtered by timeframe in local IST time.
+        Strictly contains only genuinely delivered/sent emails from logs.json.
         """
-        leads = self.get_all_leads()
-        contacted_leads = [
-            l for l in leads 
-            if l.get("last_contacted_at") and 
-            l.get("validation_status") != "invalid" and 
-            l.get("reply_status") != "bounced" and
-            l.get("responses") != "Pending Initial Outreach"
-        ]
+        logs = self.get_all_logs()
+        leads_lookup = {l.get("email", "").lower(): l for l in self.get_all_leads()}
+
+        # Include all successfully dispatched logs
+        sent_logs = [l for l in logs if l.get("status") in ["SENT", "SUCCESS"]]
 
         now_utc = datetime.datetime.now(datetime.timezone.utc)
         ist_offset = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
@@ -642,13 +576,19 @@ class LoggingModule:
         today_ist_date = now_ist.date()
         yesterday_ist_date = today_ist_date - datetime.timedelta(days=1)
 
-        def get_lead_ist_date(lead):
-            ts = lead.get("last_contacted_at") or lead.get("date") or lead.get("discovered_at")
+        def get_log_ist_date(log_entry):
+            d_val = log_entry.get("date")
+            if d_val and "/" in str(d_val):
+                p = str(d_val).split("/")
+                if len(p) == 3:
+                    try:
+                        return datetime.date(int(p[2]), int(p[1]), int(p[0]))
+                    except Exception:
+                        pass
+            ts = log_entry.get("sent_at") or log_entry.get("timestamp")
             if not ts:
                 return None
             try:
-                if isinstance(ts, (datetime.datetime, datetime.date)):
-                    return ts if isinstance(ts, datetime.date) else ts.date()
                 s = str(ts).strip()
                 if "T" in s or "Z" in s:
                     dt = datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
@@ -666,33 +606,32 @@ class LoggingModule:
                 return None
 
         def is_within_week(l: Dict[str, Any]) -> bool:
-            d = get_lead_ist_date(l)
+            d = get_log_ist_date(l)
             return d is not None and 0 <= (today_ist_date - d).days <= 7
 
         def is_same_month(l: Dict[str, Any]) -> bool:
-            d = get_lead_ist_date(l)
+            d = get_log_ist_date(l)
             return d is not None and d.year == today_ist_date.year and d.month == today_ist_date.month
 
         if timeframe == "today":
-            # Strictly return ONLY emails dispatched today (never fall back to past dates)
-            filtered = [l for l in contacted_leads if get_lead_ist_date(l) == today_ist_date]
-        elif timeframe == "latest":
-            filtered = [l for l in contacted_leads if get_lead_ist_date(l) == today_ist_date]
-            if not filtered and contacted_leads:
-                dates_with_leads = {}
-                for l in contacted_leads:
-                    d = get_lead_ist_date(l)
-                    if d:
-                        dates_with_leads.setdefault(d, []).append(l)
-                if dates_with_leads:
-                    latest_date = max(dates_with_leads.keys())
-                    filtered = dates_with_leads[latest_date]
+            filtered = [l for l in sent_logs if get_log_ist_date(l) == today_ist_date]
         elif timeframe == "yesterday":
-            filtered = [l for l in contacted_leads if get_lead_ist_date(l) == yesterday_ist_date]
+            filtered = [l for l in sent_logs if get_log_ist_date(l) == yesterday_ist_date]
+        elif timeframe == "latest":
+            filtered = [l for l in sent_logs if get_log_ist_date(l) == today_ist_date]
+            if not filtered and sent_logs:
+                dates_with_logs = {}
+                for l in sent_logs:
+                    d = get_log_ist_date(l)
+                    if d:
+                        dates_with_logs.setdefault(d, []).append(l)
+                if dates_with_logs:
+                    latest_date = max(dates_with_logs.keys())
+                    filtered = dates_with_logs[latest_date]
         elif timeframe == "week":
-            filtered = [l for l in contacted_leads if is_within_week(l)]
+            filtered = [l for l in sent_logs if is_within_week(l)]
         elif timeframe == "month":
-            filtered = [l for l in contacted_leads if is_same_month(l)]
+            filtered = [l for l in sent_logs if is_same_month(l)]
         elif timeframe and ("/" in timeframe or "-" in timeframe):
             req_date = None
             try:
@@ -707,16 +646,16 @@ class LoggingModule:
             except Exception:
                 pass
             if req_date:
-                filtered = [l for l in contacted_leads if get_lead_ist_date(l) == req_date]
+                filtered = [l for l in sent_logs if get_log_ist_date(l) == req_date]
             else:
-                filtered = [l for l in contacted_leads if timeframe in (l.get("date") or "")]
+                filtered = [l for l in sent_logs if timeframe in (l.get("date") or "")]
         else:
-            filtered = contacted_leads
+            filtered = sent_logs
 
-        # STRICT CHRONOLOGICAL ORDER (Oldest First: 24/8 -> 25/8 -> 26/8 ...)
-        filtered.sort(key=lambda l: self.parse_date_timestamp(l.get("last_contacted_at") or l.get("date") or l.get("discovered_at")))
+        # STRICT CHRONOLOGICAL ORDER (Oldest First: 24/8 -> 25/8 -> 26/8 ... -> 8/9 -> 9/9 -> 10/9)
+        filtered.sort(key=lambda l: self.parse_date_timestamp(l.get("sent_at") or l.get("timestamp") or l.get("date")))
 
-        return [self.format_report_row(lead) for lead in filtered]
+        return [self.format_sent_log_row(log_entry, leads_lookup) for log_entry in filtered]
 
     def generate_sent_log_csv_string(self, timeframe: Optional[str] = "all") -> str:
         """
@@ -892,19 +831,8 @@ class LoggingModule:
         if logs is None:
             logs = self.get_all_logs()
 
-        # Filter ONLY successfully delivered non-bounced dispatches
-        valid_sent = []
-        for log in (logs or []):
-            if log.get("status") not in ["SENT", "SUCCESS"]:
-                continue
-            rec_email = log.get("recipient_email", "").strip().lower()
-            lead = leads_lookup.get(rec_email, {})
-            if lead.get("reply_status") == "bounced" or lead.get("validation_status") == "invalid":
-                continue
-            resp_str = (lead.get("responses") or "").lower()
-            if "invalid" in resp_str or "bounced" in resp_str:
-                continue
-            valid_sent.append(log)
+        # Filter all successfully delivered dispatches
+        valid_sent = [log for log in (logs or []) if log.get("status") in ["SENT", "SUCCESS"]]
 
         # Fallback to contacted leads from database if valid_sent is empty
         if not valid_sent:

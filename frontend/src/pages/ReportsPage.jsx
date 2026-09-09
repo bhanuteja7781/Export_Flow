@@ -9,7 +9,6 @@ import {
   FileText,
   MailCheck,
   Users,
-  Edit3,
   ExternalLink,
   Calendar,
   Clock,
@@ -108,12 +107,6 @@ export default function ReportsPage({
   const [sentLogRows, setSentLogRows] = useState([]);
   const [availableDates, setAvailableDates] = useState([]);
   const [isLoadingSentLogs, setIsLoadingSentLogs] = useState(false);
-
-  const [editingLead, setEditingLead] = useState(null);
-  const [editFeedback, setEditFeedback] = useState('');
-  const [editFollowUp, setEditFollowUp] = useState('');
-  const [editResponses, setEditResponses] = useState('');
-  const [isSaving, setIsSaving] = useState(false);
 
   const handleRecheckMail = async () => {
     if (onRecheckAndClean) {
@@ -297,10 +290,7 @@ export default function ReportsPage({
       "NAME OF THE COMPANY",
       "EMAIL ADDRESS",
       "WEBSITE LINK",
-      "RESPONSES",
-      "FEEDBACK",
-      "Follow-ups",
-      "Telephone No."
+      "RESPONSES"
     ];
     const rows = filteredSentLogs.map(item => [
       item["PRODUCT"] || "Candle Holders",
@@ -308,10 +298,7 @@ export default function ReportsPage({
       item["NAME OF THE COMPANY"],
       item["EMAIL ADDRESS"],
       item["WEBSITE LINK"],
-      item["RESPONSES"],
-      item["FEEDBACK"] || item["INTERN'S FEEDBACK"] || "",
-      item["Follow-ups"] || "",
-      item["Telephone No."] || item["phone"] || "—"
+      item["RESPONSES"]
     ].map(val => String(val || '').replace(/\t/g, ' ').replace(/\n/g, ' ')).join('\t'));
 
     const tsvContent = [headers.join('\t'), ...rows].join('\n');
@@ -344,10 +331,7 @@ export default function ReportsPage({
       "NAME OF THE COMPANY",
       "EMAIL ADDRESS",
       "WEBSITE LINK",
-      "RESPONSES",
-      "FEEDBACK",
-      "Follow-ups",
-      "Telephone No."
+      "RESPONSES"
     ];
     const rows = allBuyersRows.map(item => [
       item.product || "Candle Holders",
@@ -355,10 +339,7 @@ export default function ReportsPage({
       item.company,
       item.email,
       item.website,
-      item.responses,
-      item.feedback,
-      item.followUp,
-      item.phone || "—"
+      item.responses
     ].map(val => String(val || '').replace(/\t/g, ' ').replace(/\n/g, ' ')).join('\t'));
 
     const tsvContent = [headers.join('\t'), ...rows].join('\n');
@@ -366,50 +347,6 @@ export default function ReportsPage({
       setCopiedBuyers(true);
       setTimeout(() => setCopiedBuyers(false), 2500);
     });
-  };
-
-  const openEditModal = (item) => {
-    const isSentLogRow = Boolean(item["EMAIL ADDRESS"]);
-    const id = isSentLogRow ? item["EMAIL ADDRESS"] : item.id;
-    const company = isSentLogRow ? item["NAME OF THE COMPANY"] : item.company;
-    const email = isSentLogRow ? item["EMAIL ADDRESS"] : item.email;
-    const responses = isSentLogRow ? item["RESPONSES"] : item.responses;
-    const feedback = isSentLogRow ? (item["FEEDBACK"] || item["INTERN'S FEEDBACK"]) : item.feedback;
-    const followUp = isSentLogRow ? item["Follow-ups"] : item.followUp;
-
-    setEditingLead({ id, company, email });
-    setEditResponses(responses || '');
-    setEditFeedback(feedback || '');
-    setEditFollowUp(followUp || '');
-  };
-
-  const handleSaveEdit = async () => {
-    if (!editingLead) return;
-    setIsSaving(true);
-    try {
-      const payload = {
-        id: editingLead.id,
-        email: editingLead.email,
-        responses: editResponses,
-        intern_feedback: editFeedback,
-        follow_ups: editFollowUp
-      };
-      if (onUpdateLead) {
-        await onUpdateLead(payload);
-      } else {
-        await fetch('/api/leads/update', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-      }
-      await fetchSentLogs(logTimeframe);
-      setEditingLead(null);
-    } catch (err) {
-      alert("Failed to update: " + err.message);
-    } finally {
-      setIsSaving(false);
-    }
   };
 
   const contactedCount = leads.filter(l => Boolean(l.last_contacted_at) && l.validation_status !== 'invalid').length;
@@ -592,25 +529,21 @@ export default function ReportsPage({
 
           {/* Table */}
           <div className="app-table-container" style={{ maxHeight: '620px', overflowY: 'auto', overflowX: 'auto', width: '100%' }}>
-            <table className="app-table" style={{ width: '100%', minWidth: '1380px', borderCollapse: 'collapse', fontSize: '12px' }}>
+            <table className="app-table" style={{ width: '100%', minWidth: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ background: 'rgba(15, 23, 42, 0.95)', position: 'sticky', top: 0, zIndex: 10 }}>
-                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>PRODUCT</th>
-                  <th style={{ padding: '10px 12px', minWidth: '95px', whiteSpace: 'nowrap' }}>DATE</th>
-                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>NAME OF THE COMPANY</th>
-                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>EMAIL ADDRESS</th>
-                  <th style={{ padding: '10px 12px', minWidth: '170px' }}>WEBSITE LINK</th>
-                  <th style={{ padding: '10px 12px', minWidth: '130px', textAlign: 'center' }}>RESPONSES</th>
-                  <th style={{ padding: '10px 12px', minWidth: '240px' }}>FEEDBACK</th>
-                  <th style={{ padding: '10px 12px', minWidth: '200px' }}>Follow-ups</th>
-                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>Telephone No.</th>
-                  <th style={{ padding: '10px 8px', width: '50px', textAlign: 'center' }}>Edit</th>
+                  <th style={{ padding: '10px 14px', minWidth: '130px', whiteSpace: 'nowrap' }}>PRODUCT</th>
+                  <th style={{ padding: '10px 14px', minWidth: '100px', whiteSpace: 'nowrap' }}>DATE</th>
+                  <th style={{ padding: '10px 14px', minWidth: '240px' }}>NAME OF THE COMPANY</th>
+                  <th style={{ padding: '10px 14px', minWidth: '240px' }}>EMAIL ADDRESS</th>
+                  <th style={{ padding: '10px 14px', minWidth: '180px' }}>WEBSITE LINK</th>
+                  <th style={{ padding: '10px 14px', minWidth: '140px', textAlign: 'center' }}>RESPONSES</th>
                 </tr>
               </thead>
               <tbody>
                 {filteredSentLogs.length === 0 ? (
                   <tr>
-                    <td colSpan={10} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
+                    <td colSpan={6} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
                       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
                         <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)' }}>
                           {logTimeframe === 'today'
@@ -643,9 +576,6 @@ export default function ReportsPage({
                     const email = item['EMAIL ADDRESS'];
                     const web = item['WEBSITE LINK'];
                     const resp = item['RESPONSES'] || '';
-                    const fb = item['FEEDBACK'] || item["INTERN'S FEEDBACK"] || '—';
-                    const fol = item['Follow-ups'] || '—';
-                    const tel = item['Telephone No.'] || item['phone'] || '—';
 
                     const isReplied = resp.toLowerCase().includes('replied');
                     const isAutoReply = resp.toLowerCase().includes('automated') || resp.toLowerCase().includes('auto-reply');
@@ -653,18 +583,18 @@ export default function ReportsPage({
 
                     return (
                       <tr key={idx} style={{ transition: 'background 0.15s ease' }}>
-                        <td style={{ padding: '10px 12px', fontSize: '11.5px', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }} title={prod}>
+                        <td style={{ padding: '10px 14px', fontSize: '11.5px', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }} title={prod}>
                           <span style={{ padding: '2px 8px', borderRadius: '4px', background: 'rgba(192, 132, 252, 0.12)', color: '#c084fc', border: '1px solid rgba(192, 132, 252, 0.25)', fontSize: '11px', fontWeight: 500 }}>
                             {prod}
                           </span>
                         </td>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={dt}>
+                        <td style={{ padding: '10px 14px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={dt}>
                           {dt}
                         </td>
-                        <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)' }} title={comp}>
+                        <td style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-main)' }} title={comp}>
                           {comp}
                         </td>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px' }}>
+                        <td style={{ padding: '10px 14px', fontFamily: 'monospace', fontSize: '11px' }}>
                           <a
                             href={`mailto:${email}`}
                             title={email}
@@ -673,7 +603,7 @@ export default function ReportsPage({
                             {email}
                           </a>
                         </td>
-                        <td style={{ padding: '10px 12px', fontSize: '11px' }}>
+                        <td style={{ padding: '10px 14px', fontSize: '11px' }}>
                           {web ? (
                             <a
                               href={web.startsWith('http') ? web : `https://${web}`}
@@ -691,7 +621,7 @@ export default function ReportsPage({
                             <span style={{ color: 'var(--text-muted)' }}>—</span>
                           )}
                         </td>
-                        <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                        <td style={{ padding: '10px 14px', textAlign: 'center' }}>
                           <div
                             title={resp}
                             style={{
@@ -721,31 +651,6 @@ export default function ReportsPage({
                           >
                             {resp}
                           </div>
-                        </td>
-                        <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.4' }} title={fb}>
-                          {fb}
-                        </td>
-                        <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-muted)', lineHeight: '1.4' }} title={fol}>
-                          {fol}
-                        </td>
-                        <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={tel}>
-                          {tel}
-                        </td>
-                        <td style={{ padding: '10px 8px', textAlign: 'center' }}>
-                          <button
-                            onClick={() => openEditModal(item)}
-                            style={{
-                              background: 'transparent',
-                              border: '1px solid var(--border-color)',
-                              borderRadius: '4px',
-                              padding: '4px',
-                              color: 'var(--text-muted)',
-                              cursor: 'pointer'
-                            }}
-                            title="Edit entry"
-                          >
-                            <Edit3 size={12} />
-                          </button>
                         </td>
                       </tr>
                     );
@@ -810,19 +715,15 @@ export default function ReportsPage({
           </div>
 
           <div className="app-table-container" style={{ maxHeight: '620px', overflowY: 'auto', overflowX: 'auto', width: '100%' }}>
-            <table className="app-table" style={{ width: '100%', minWidth: '1380px', borderCollapse: 'collapse', fontSize: '12px' }}>
+            <table className="app-table" style={{ width: '100%', minWidth: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ background: 'rgba(15, 23, 42, 0.95)', position: 'sticky', top: 0, zIndex: 10 }}>
-                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>PRODUCT</th>
-                  <th style={{ padding: '10px 12px', minWidth: '95px', whiteSpace: 'nowrap' }}>DATE</th>
-                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>NAME OF THE COMPANY</th>
-                  <th style={{ padding: '10px 12px', minWidth: '220px' }}>EMAIL ADDRESS</th>
-                  <th style={{ padding: '10px 12px', minWidth: '170px' }}>WEBSITE LINK</th>
-                  <th style={{ padding: '10px 12px', minWidth: '130px', textAlign: 'center' }}>RESPONSES</th>
-                  <th style={{ padding: '10px 12px', minWidth: '240px' }}>FEEDBACK</th>
-                  <th style={{ padding: '10px 12px', minWidth: '200px' }}>Follow-ups</th>
-                  <th style={{ padding: '10px 12px', minWidth: '120px', whiteSpace: 'nowrap' }}>Telephone No.</th>
-                  <th style={{ padding: '10px 8px', width: '50px', textAlign: 'center' }}>Edit</th>
+                  <th style={{ padding: '10px 14px', minWidth: '130px', whiteSpace: 'nowrap' }}>PRODUCT</th>
+                  <th style={{ padding: '10px 14px', minWidth: '100px', whiteSpace: 'nowrap' }}>DATE</th>
+                  <th style={{ padding: '10px 14px', minWidth: '240px' }}>NAME OF THE COMPANY</th>
+                  <th style={{ padding: '10px 14px', minWidth: '240px' }}>EMAIL ADDRESS</th>
+                  <th style={{ padding: '10px 14px', minWidth: '180px' }}>WEBSITE LINK</th>
+                  <th style={{ padding: '10px 14px', minWidth: '140px', textAlign: 'center' }}>RESPONSES</th>
                 </tr>
               </thead>
               <tbody>
@@ -834,23 +735,23 @@ export default function ReportsPage({
 
                   return (
                     <tr key={item.id || idx}>
-                      <td style={{ padding: '10px 12px', fontSize: '11.5px', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }} title={item.product}>
+                      <td style={{ padding: '10px 14px', fontSize: '11.5px', color: 'var(--text-secondary)', whiteSpace: 'nowrap' }} title={item.product}>
                         <span style={{ padding: '2px 8px', borderRadius: '4px', background: 'rgba(192, 132, 252, 0.12)', color: '#c084fc', border: '1px solid rgba(192, 132, 252, 0.25)', fontSize: '11px', fontWeight: 500 }}>
                           {item.product || 'Candle Holders'}
                         </span>
                       </td>
-                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={item.date}>
+                      <td style={{ padding: '10px 14px', fontFamily: 'monospace', fontSize: '11.5px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={item.date}>
                         {item.date}
                       </td>
-                      <td style={{ padding: '10px 12px', fontWeight: 600, color: 'var(--text-main)' }} title={item.company}>
+                      <td style={{ padding: '10px 14px', fontWeight: 600, color: 'var(--text-main)' }} title={item.company}>
                         {item.company}
                       </td>
-                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px' }}>
+                      <td style={{ padding: '10px 14px', fontFamily: 'monospace', fontSize: '11px' }}>
                         <a href={`mailto:${item.email}`} title={item.email} style={{ color: '#93c5fd', textDecoration: 'none' }}>
                           {item.email}
                         </a>
                       </td>
-                      <td style={{ padding: '10px 12px', fontSize: '11px' }}>
+                      <td style={{ padding: '10px 14px', fontSize: '11px' }}>
                         {item.website ? (
                           <a
                             href={item.website.startsWith('http') ? item.website : `https://${item.website}`}
@@ -868,7 +769,7 @@ export default function ReportsPage({
                           <span style={{ color: 'var(--text-muted)' }}>—</span>
                         )}
                       </td>
-                      <td style={{ padding: '10px 12px', textAlign: 'center' }}>
+                      <td style={{ padding: '10px 14px', textAlign: 'center' }}>
                         <div
                           title={resp}
                           style={{
@@ -899,23 +800,6 @@ export default function ReportsPage({
                           {resp}
                         </div>
                       </td>
-                      <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-secondary)', lineHeight: '1.4' }} title={item.feedback}>
-                        {item.feedback}
-                      </td>
-                      <td style={{ padding: '10px 12px', fontSize: '11px', color: 'var(--text-muted)', lineHeight: '1.4' }} title={item.followUp}>
-                        {item.followUp}
-                      </td>
-                      <td style={{ padding: '10px 12px', fontFamily: 'monospace', fontSize: '11px', color: 'var(--text-muted)', whiteSpace: 'nowrap' }} title={item.phone}>
-                        {item.phone || '—'}
-                      </td>
-                      <td style={{ padding: '10px 8px', textAlign: 'center' }}>
-                        <button
-                          onClick={() => openEditModal(item)}
-                          style={{ background: 'transparent', border: '1px solid var(--border-color)', borderRadius: '4px', padding: '4px', color: 'var(--text-muted)', cursor: 'pointer' }}
-                        >
-                          <Edit3 size={12} />
-                        </button>
-                      </td>
                     </tr>
                   );
                 })}
@@ -939,126 +823,6 @@ export default function ReportsPage({
           <span>Download Catalog PDF</span>
         </button>
       </div>
-
-      {/* Edit Modal */}
-      {editingLead && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.75)',
-          backdropFilter: 'blur(4px)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-          padding: '20px'
-        }}>
-          <div className="app-card" style={{ width: '100%', maxWidth: '520px', padding: '24px', position: 'relative' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <div>
-                <h3 style={{ margin: 0, fontSize: '16px', color: 'var(--text-main)' }}>
-                  Edit Outreach Entry
-                </h3>
-                <div style={{ fontSize: '12px', color: 'var(--primary)', marginTop: '2px' }}>
-                  {editingLead.company} ({editingLead.email})
-                </div>
-              </div>
-              <button
-                onClick={() => setEditingLead(null)}
-                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
-              >
-                <X size={18} />
-              </button>
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                  RESPONSES STATUS / NOTE:
-                </label>
-                <input
-                  type="text"
-                  value={editResponses}
-                  onChange={(e) => setEditResponses(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '8px 12px',
-                    borderRadius: '6px',
-                    border: '1px solid var(--border-color)',
-                    background: '#070c17',
-                    color: 'var(--text-main)',
-                    fontSize: '12px'
-                  }}
-                  placeholder="e.g. (Awaiting Reply) / Automated Reply / Replied..."
-                />
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                  FEEDBACK / INTERN'S NOTES:
-                </label>
-                <textarea
-                  rows={3}
-                  value={editFeedback}
-                  onChange={(e) => setEditFeedback(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '8px 12px',
-                    borderRadius: '6px',
-                    border: '1px solid var(--border-color)',
-                    background: '#070c17',
-                    color: 'var(--text-main)',
-                    fontSize: '12px',
-                    resize: 'vertical'
-                  }}
-                  placeholder="Intern review notes, wholesale target profile..."
-                />
-              </div>
-
-              <div>
-                <label style={{ display: 'block', fontSize: '11px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '4px' }}>
-                  FOLLOW-UPS STATUS / ACTION:
-                </label>
-                <input
-                  type="text"
-                  value={editFollowUp}
-                  onChange={(e) => setEditFollowUp(e.target.value)}
-                  style={{
-                    width: '100%',
-                    padding: '8px 12px',
-                    borderRadius: '6px',
-                    border: '1px solid var(--border-color)',
-                    background: '#070c17',
-                    color: 'var(--text-main)',
-                    fontSize: '12px'
-                  }}
-                  placeholder="e.g. Send wholesale price list, Follow-up #1 scheduled..."
-                />
-              </div>
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '20px' }}>
-              <button
-                className="btn btn-secondary btn-sm"
-                onClick={() => setEditingLead(null)}
-                disabled={isSaving}
-              >
-                Cancel
-              </button>
-              <button
-                className="btn btn-primary btn-sm"
-                onClick={handleSaveEdit}
-                disabled={isSaving}
-              >
-                {isSaving ? 'Saving...' : 'Save & Sync'}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
