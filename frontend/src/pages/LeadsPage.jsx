@@ -135,10 +135,11 @@ export default function LeadsPage({
   onClearLeads,
   isSearching,
   isValidating,
+  currentKeyword,
   settings = {},
   setActiveTab
 }) {
-  const [keyword, setKeyword] = useState(currentKeyword || settings?.searchKeyword || 'Metal Candle Holders');
+  const [keyword, setKeyword] = useState(currentKeyword || settings?.search_keyword || 'Metal Candle Holders');
   const [selectedCountry, setSelectedCountry] = useState('BOTH');
   const [selectedState, setSelectedState] = useState('All States/Provinces');
   const [selectedCity, setSelectedCity] = useState('All Cities');
