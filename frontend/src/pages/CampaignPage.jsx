@@ -1063,7 +1063,7 @@ export default function CampaignPage({
             }}>
               {dispatchStepLogs.map((log, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '8px', color: log.error ? '#f87171' : '#93c5fd' }}>
-                  <span style={{ color: log.error ? '#ef4444' : '#22c55e', fontWeight: 700 }}>✓</span>
+                  <span style={{ color: log.error ? '#ef4444' : '#22c55e', fontWeight: 700 }}>{log.error ? '✕' : '✓'}</span>
                   <span>{log.text}</span>
                 </div>
               ))}
@@ -1078,8 +1078,8 @@ export default function CampaignPage({
             {/* Summary Box when complete */}
             {dispatchComplete && dispatchSummary && (
               <div style={{
-                background: 'rgba(34, 197, 94, 0.1)',
-                border: '1px solid rgba(34, 197, 94, 0.3)',
+                background: dispatchSummary.totalSent > 0 ? 'rgba(34, 197, 94, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+                border: `1px solid ${dispatchSummary.totalSent > 0 ? 'rgba(34, 197, 94, 0.3)' : 'rgba(239, 68, 68, 0.3)'}`,
                 borderRadius: '8px',
                 padding: '12px 16px',
                 marginBottom: '18px',
@@ -1088,14 +1088,20 @@ export default function CampaignPage({
                 justifyContent: 'space-between'
               }}>
                 <div>
-                  <div style={{ color: '#4ade80', fontWeight: 700, fontSize: '13px' }}>
-                    {dispatchSummary.totalSent} of {dispatchSummary.initiatedCount} Target Outreach Emails Dispatched
+                  <div style={{ color: dispatchSummary.totalSent > 0 ? '#4ade80' : '#f87171', fontWeight: 700, fontSize: '13px' }}>
+                    {dispatchSummary.totalSent > 0 
+                      ? `${dispatchSummary.totalSent} of ${dispatchSummary.initiatedCount} Target Outreach Emails Dispatched`
+                      : `Dispatch Failed (0 of ${dispatchSummary.initiatedCount} delivered)`}
                   </div>
                   <div style={{ color: '#94a3b8', fontSize: '11px', marginTop: '2px' }}>
-                    {dispatchSummary.mode}
+                    {dispatchSummary.mode} {dispatchSummary.failedCount > 0 ? `• ${dispatchSummary.failedCount} failed` : ''}
                   </div>
                 </div>
-                <CheckCircle2 size={24} color="#22c55e" />
+                {dispatchSummary.totalSent > 0 ? (
+                  <CheckCircle2 size={24} color="#22c55e" />
+                ) : (
+                  <AlertCircle size={24} color="#ef4444" />
+                )}
               </div>
             )}
 

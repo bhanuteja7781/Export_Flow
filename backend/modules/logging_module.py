@@ -73,13 +73,18 @@ class LoggingModule:
             return f"{now_ist.day}/{now_ist.month}/{now_ist.year}"
         try:
             if isinstance(raw_date, str):
-                if "T" in raw_date:
-                    dt = datetime.datetime.fromisoformat(raw_date.replace("Z", "+00:00"))
+                s = raw_date.strip()
+                if "/" in s:
+                    parts = s.split("/")
+                    if len(parts) == 3:
+                        return f"{int(parts[0])}/{int(parts[1])}/{parts[2]}"
+                if "T" in s or "Z" in s:
+                    dt = datetime.datetime.fromisoformat(s.replace("Z", "+00:00"))
                     ist_offset = datetime.timezone(datetime.timedelta(hours=5, minutes=30))
                     dt_ist = dt.astimezone(ist_offset)
                     return f"{dt_ist.day}/{dt_ist.month}/{dt_ist.year}"
-                elif "-" in raw_date:
-                    parts = raw_date.split("-")
+                elif "-" in s:
+                    parts = s.split("-")
                     if len(parts) == 3 and len(parts[0]) == 4:
                         return f"{int(parts[2])}/{int(parts[1])}/{parts[0]}"
             return str(raw_date)
@@ -579,9 +584,34 @@ class LoggingModule:
 
         return filtered
 
+    def get_available_sent_dates(self) -> List[str]:
+        """
+        Returns list of distinct dates with sent outreach dispatches, ordered reverse-chronologically (newest first).
+        """
+        leads = self.get_all_leads()
+        contacted_leads = [
+            l for l in leads 
+            if l.get("last_contacted_at") and 
+            l.get("validation_status") != "invalid" and 
+            l.get("reply_status") != "bounced" and
+            l.get("responses") != "Pending Initial Outreach"
+        ]
+        dates = []
+        seen = set()
+        for l in contacted_leads:
+            d = l.get("date")
+            if not d:
+                raw = l.get("last_contacted_at") or l.get("discovered_at")
+                d = self.format_display_date(raw)
+            if d and d not in seen:
+                seen.add(d)
+                dates.append(d)
+        dates.sort(key=lambda d: self.parse_date_timestamp(d), reverse=True)
+        return dates
+
     def get_sent_logs_report_data(self, timeframe: Optional[str] = "all") -> List[Dict[str, Any]]:
         """
-        Returns list of 7-column sent outreach rows filtered by timeframe in local IST time.
+        Returns list of 5-column sent outreach rows filtered by timeframe in local IST time.
         Strictly contains only genuinely delivered/sent emails.
         """
         leads = self.get_all_leads()
@@ -589,7 +619,8 @@ class LoggingModule:
             l for l in leads 
             if l.get("last_contacted_at") and 
             l.get("validation_status") != "invalid" and 
-            l.get("reply_status") != "bounced"
+            l.get("reply_status") != "bounced" and
+            l.get("responses") != "Pending Initial Outreach"
         ]
 
         now_utc = datetime.datetime.now(datetime.timezone.utc)
@@ -629,14 +660,41 @@ class LoggingModule:
             d = get_lead_ist_date(l)
             return d is not None and d.year == today_ist_date.year and d.month == today_ist_date.month
 
-        if timeframe == "today":
+        if timeframe in ["today", "latest"]:
             filtered = [l for l in contacted_leads if get_lead_ist_date(l) == today_ist_date]
+            # Fallback to the latest available outreach date if today has no new dispatches yet
+            if not filtered and contacted_leads:
+                dates_with_leads = {}
+                for l in contacted_leads:
+                    d = get_lead_ist_date(l)
+                    if d:
+                        dates_with_leads.setdefault(d, []).append(l)
+                if dates_with_leads:
+                    latest_date = max(dates_with_leads.keys())
+                    filtered = dates_with_leads[latest_date]
         elif timeframe == "yesterday":
             filtered = [l for l in contacted_leads if get_lead_ist_date(l) == yesterday_ist_date]
         elif timeframe == "week":
             filtered = [l for l in contacted_leads if is_within_week(l)]
         elif timeframe == "month":
             filtered = [l for l in contacted_leads if is_same_month(l)]
+        elif timeframe and ("/" in timeframe or "-" in timeframe):
+            req_date = None
+            try:
+                if "/" in timeframe:
+                    p = timeframe.strip().split("/")
+                    if len(p) == 3:
+                        req_date = datetime.date(int(p[2]), int(p[1]), int(p[0]))
+                elif "-" in timeframe:
+                    p = timeframe.strip().split("-")
+                    if len(p) == 3 and len(p[0]) == 4:
+                        req_date = datetime.date(int(p[0]), int(p[1]), int(p[2]))
+            except Exception:
+                pass
+            if req_date:
+                filtered = [l for l in contacted_leads if get_lead_ist_date(l) == req_date]
+            else:
+                filtered = [l for l in contacted_leads if timeframe in (l.get("date") or "")]
         else:
             filtered = contacted_leads
 
@@ -810,15 +868,18 @@ class LoggingModule:
         self._sync_sent_csv(logs)
         self._sync_csv_exports(list(all_leads.values()))
 
-    def _sync_sent_csv(self, logs: List[Dict[str, Any]]):
+    def _sync_sent_csv(self, logs: Optional[List[Dict[str, Any]]] = None):
         """
-        Synchronizes sent_log.csv using ONLY genuine, successfully delivered emails in the 7-column format.
+        Synchronizes sent_log.csv using ONLY genuine, successfully delivered emails in the 5-column format.
         Strictly sorted in CHRONOLOGICAL order (Oldest to Newest).
         """
         leads_lookup = {l.get("email", "").lower(): l for l in self.get_all_leads()}
+        if logs is None:
+            logs = self.get_all_logs()
+
         # Filter ONLY successfully delivered non-bounced dispatches
         valid_sent = []
-        for log in logs:
+        for log in (logs or []):
             if log.get("status") not in ["SENT", "SUCCESS"]:
                 continue
             rec_email = log.get("recipient_email", "").strip().lower()
@@ -830,10 +891,28 @@ class LoggingModule:
                 continue
             valid_sent.append(log)
 
+        # Fallback to contacted leads from database if valid_sent is empty
+        if not valid_sent:
+            contacted = [
+                l for l in leads_lookup.values()
+                if l.get("last_contacted_at") and 
+                l.get("validation_status") != "invalid" and 
+                l.get("reply_status") != "bounced" and
+                l.get("responses") != "Pending Initial Outreach"
+            ]
+            for c in contacted:
+                valid_sent.append({
+                    "recipient_email": c.get("email"),
+                    "recipient_company": c.get("company_name"),
+                    "recipient_name": c.get("buyer_name") or c.get("company_name"),
+                    "sent_at": c.get("last_contacted_at") or c.get("date"),
+                    "status": "SENT"
+                })
+
         # STRICT CHRONOLOGICAL ORDER (Oldest First -> 24/8 -> 25/8 -> 26/8 ...)
         valid_sent.sort(
             key=lambda log: self.parse_date_timestamp(
-                log.get("sent_at") or leads_lookup.get(log.get("recipient_email", "").strip().lower(), {}).get("last_contacted_at")
+                log.get("sent_at") or leads_lookup.get(log.get("recipient_email", "").strip().lower(), {}).get("last_contacted_at") or leads_lookup.get(log.get("recipient_email", "").strip().lower(), {}).get("date")
             )
         )
 

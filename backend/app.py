@@ -940,17 +940,19 @@ def get_report_data():
 @app.route("/api/sent_log/data", methods=["GET"])
 def get_sent_log_data():
     """
-    Returns structured 7-column sent outreach log dataset for dashboard inspection and copy-paste.
-    Columns: DATE, NAME OF THE COMPANY, EMAIL ADDRESS, WEBSITE LINK, RESPONSES, INTERN'S FEEDBACK, Follow-ups
+    Returns structured 5-column sent outreach log dataset for dashboard inspection and copy-paste.
+    Columns: DATE, NAME OF THE COMPANY, EMAIL ADDRESS, WEBSITE LINK, RESPONSES
     """
     timeframe = request.args.get("timeframe") or request.args.get("range", "today")
     rows = logger.get_sent_logs_report_data(timeframe)
+    available_dates = logger.get_available_sent_dates()
     return jsonify({
         "status": "success",
         "timeframe": timeframe,
         "headers": logger.REPORT_HEADERS,
         "rows": rows,
-        "count": len(rows)
+        "count": len(rows),
+        "available_dates": available_dates
     })
 
 

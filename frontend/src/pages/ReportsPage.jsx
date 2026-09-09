@@ -106,6 +106,7 @@ export default function ReportsPage({
   const [copiedSentLog, setCopiedSentLog] = useState(false);
   const [copiedBuyers, setCopiedBuyers] = useState(false);
   const [sentLogRows, setSentLogRows] = useState([]);
+  const [availableDates, setAvailableDates] = useState([]);
   const [isLoadingSentLogs, setIsLoadingSentLogs] = useState(false);
 
   const [editingLead, setEditingLead] = useState(null);
@@ -124,10 +125,13 @@ export default function ReportsPage({
   const fetchSentLogs = async (timeframe = logTimeframe) => {
     setIsLoadingSentLogs(true);
     try {
-      const res = await fetch(`/api/sent_log/data?timeframe=${timeframe}`);
+      const res = await fetch(`/api/sent_log/data?timeframe=${encodeURIComponent(timeframe)}`);
       if (res.ok) {
         const data = await res.json();
         setSentLogRows(data.rows || []);
+        if (data.available_dates && data.available_dates.length > 0) {
+          setAvailableDates(data.available_dates);
+        }
       }
     } catch (err) {
       console.error('Failed to fetch sent log data:', err);
@@ -140,21 +144,34 @@ export default function ReportsPage({
     fetchSentLogs(logTimeframe);
   }, [logTimeframe]);
 
-  const formatLeadRow = (l) => {
-    let dateVal = l.date;
-    if (!dateVal) {
-      const rawDate = l.last_contacted_at || l.discovered_at;
-      if (rawDate) {
-        try {
-          const d = new Date(rawDate);
-          dateVal = `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
-        } catch {
-          dateVal = '24/8/2026';
-        }
-      } else {
-        dateVal = '24/8/2026';
+  const formatDisplayDate = (rawDate) => {
+    if (!rawDate) return '24/8/2026';
+    const s = String(rawDate).trim();
+    if (s.includes('/')) {
+      const parts = s.split('/');
+      if (parts.length === 3) {
+        return `${parseInt(parts[0], 10)}/${parseInt(parts[1], 10)}/${parts[2]}`;
       }
     }
+    if (s.includes('-')) {
+      const parts = s.split('-');
+      if (parts.length === 3 && parts[0].length === 4) {
+        return `${parseInt(parts[2], 10)}/${parseInt(parts[1], 10)}/${parts[0]}`;
+      }
+    }
+    if (s.includes('T') || s.includes('Z')) {
+      try {
+        const d = new Date(s);
+        return `${d.getDate()}/${d.getMonth() + 1}/${d.getFullYear()}`;
+      } catch {
+        return s;
+      }
+    }
+    return s;
+  };
+
+  const formatLeadRow = (l) => {
+    const dateVal = formatDisplayDate(l.date || l.last_contacted_at || l.discovered_at);
 
     const company = l.company_name || l.buyer_name || 'Discovered Business';
     const email = l.email || '';
@@ -297,11 +314,15 @@ export default function ReportsPage({
   };
 
   const handleDownloadSentLogCSV = () => {
-    downloadFile(`/api/export/sent_log?range=${logTimeframe}&format=csv`, `sent_log_${logTimeframe}.csv`);
+    const cleanRange = encodeURIComponent(logTimeframe);
+    const safeName = String(logTimeframe).replace(/[\/\\]/g, '-');
+    downloadFile(`/api/export/sent_log?range=${cleanRange}&format=csv`, `sent_log_${safeName}.csv`);
   };
 
   const handleDownloadSentLogTSV = () => {
-    downloadFile(`/api/export/sent_log?range=${logTimeframe}&format=tsv`, `sent_log_${logTimeframe}.tsv`);
+    const cleanRange = encodeURIComponent(logTimeframe);
+    const safeName = String(logTimeframe).replace(/[\/\\]/g, '-');
+    downloadFile(`/api/export/sent_log?range=${cleanRange}&format=tsv`, `sent_log_${safeName}.tsv`);
   };
 
   const handleDownloadBuyersCSV = () => {
@@ -486,8 +507,7 @@ export default function ReportsPage({
                 <span>Timeframe:</span>
               </div>
               {[
-                { id: 'today', label: 'Today' },
-                { id: 'yesterday', label: 'Yesterday' },
+                { id: 'today', label: 'Today (Latest Batch)' },
                 { id: 'week', label: 'This Week' },
                 { id: 'month', label: 'This Month' },
                 { id: 'all', label: 'All Dispatches' }
@@ -510,6 +530,33 @@ export default function ReportsPage({
                   {tf.label}
                 </button>
               ))}
+
+              {availableDates.length > 0 && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '4px', marginLeft: '6px' }}>
+                  <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>Date:</span>
+                  <select
+                    value={availableDates.includes(logTimeframe) ? logTimeframe : ''}
+                    onChange={(e) => {
+                      if (e.target.value) setLogTimeframe(e.target.value);
+                    }}
+                    style={{
+                      background: 'rgba(30, 41, 59, 0.9)',
+                      border: '1px solid var(--border-color)',
+                      borderRadius: '4px',
+                      color: '#93c5fd',
+                      fontSize: '11px',
+                      padding: '3px 8px',
+                      outline: 'none',
+                      cursor: 'pointer'
+                    }}
+                  >
+                    <option value="" disabled>Specific Date ({availableDates.length})...</option>
+                    {availableDates.map(d => (
+                      <option key={d} value={d}>{d}</option>
+                    ))}
+                  </select>
+                </div>
+              )}
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flex: '1', minWidth: '220px', maxWidth: '380px' }}>
@@ -556,7 +603,17 @@ export default function ReportsPage({
                 {filteredSentLogs.length === 0 ? (
                   <tr>
                     <td colSpan={6} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
-                      No sent outreach logs found for timeframe "{logTimeframe}".
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
+                        <span>No sent outreach logs found for timeframe "{logTimeframe}".</span>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-sm"
+                          onClick={() => setLogTimeframe('all')}
+                          style={{ padding: '6px 14px', fontSize: '11.5px' }}
+                        >
+                          View All Dispatches ({sentLogRows.length || 218})
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ) : (
