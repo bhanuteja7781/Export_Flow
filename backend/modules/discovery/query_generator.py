@@ -21,23 +21,16 @@ class SourceQueryGenerator:
         raw_location: Optional[str] = None
     ) -> str:
         """
-        Builds a clean location clause from location parameters.
-        Supports freeform inputs like "Tuskegee, Alabama", "Austin, Texas", "London, UK", etc.
+        Builds a clean, search-engine-friendly location clause.
         """
-        if raw_location and str(raw_location).strip() and str(raw_location).lower() not in ["all", "america & canada", "global", "worldwide"]:
-            loc_clean = str(raw_location).strip().rstrip(",")
-            return loc_clean
-
-        loc_parts = []
-        if city and str(city).lower() != "all":
-            loc_parts.append(str(city).strip())
-        if state and str(state).lower() != "all":
-            loc_parts.append(str(state).strip())
-        if country and str(country).lower() not in ["all", "america & canada", "global", "worldwide"]:
-            loc_parts.append(str(country).strip())
-
-        if loc_parts:
-            return ", ".join(loc_parts)
+        if city and str(city).strip().lower() not in ["all", "all cities", ""]:
+            return str(city).strip()
+        if state and str(state).strip().lower() not in ["all", "all states/provinces", ""]:
+            return str(state).strip()
+        if raw_location and str(raw_location).strip() and str(raw_location).lower() not in ["all", "america & canada", "both countries", "global", "worldwide"]:
+            return str(raw_location).strip().split(",")[0].strip()
+        if country and str(country).strip().lower() not in ["all", "america & canada", "both countries", "global", "worldwide"]:
+            return str(country).strip()
         return ""
 
     @classmethod
@@ -58,129 +51,129 @@ class SourceQueryGenerator:
         kw = (keyword or "Handcrafted Products").strip()
         loc_str = cls.clean_location_string(city, state, country, raw_location)
         loc_part = f"{loc_str}" if loc_str else ""
-        quoted_loc = f'"{loc_str}"' if loc_str else ""
 
         queries: List[str] = []
 
         if source_id == "search_engine":
             if loc_part:
                 queries.extend([
-                    f"{kw} {loc_part}",
-                    f"{kw} store {loc_part}",
-                    f"{kw} studio {loc_part}",
-                    f"{kw} shop {loc_part}",
-                    f"{kw} boutique {loc_part}",
-                    f"{kw} contact {loc_part}"
+                    f'"{kw}" boutique store {loc_part}',
+                    f'home decor boutique {loc_part}',
+                    f'home decor stores {loc_part}',
+                    f'gift shop boutique {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f"{kw} wholesale",
-                    f"{kw} retailer store",
-                    f"{kw} boutique shop",
-                    f"{kw} distributor"
+                    f'"{kw}" wholesale store',
+                    f'home decor boutique retailer',
+                    f'gift and lifestyle store'
+                ])
+
+        elif source_id == "wholesale":
+            if loc_part:
+                queries.extend([
+                    f'"{kw}" wholesale showroom {loc_part}',
+                    f'home decor wholesale distributor {loc_part}',
+                    f'home decor trade showroom {loc_part}'
+                ])
+            else:
+                queries.extend([
+                    f'"{kw}" wholesale distributor showroom',
+                    f'home decor wholesale supplier'
+                ])
+
+        elif source_id == "directory":
+            if loc_part:
+                queries.extend([
+                    f'home decor gift boutique {loc_part}',
+                    f'curated home boutique {loc_part}',
+                    f'specialty home gift store {loc_part}'
+                ])
+            else:
+                queries.extend([
+                    f'"{kw}" boutique shop',
+                    f'home decor gift store'
                 ])
 
         elif source_id == "linkedin":
             if loc_part:
                 queries.extend([
-                    f'site:linkedin.com/company "{kw}" {loc_part}',
-                    f'site:linkedin.com/in ("buyer" OR "owner" OR "founder") "{kw}" {loc_part}',
-                    f'site:linkedin.com "{kw}" {loc_part}'
+                    f'site:linkedin.com/company "{kw}" {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:linkedin.com/company "{kw}" store',
-                    f'site:linkedin.com/in buyer "{kw}"',
-                    f'site:linkedin.com/company "{kw}" wholesale'
+                    f'site:linkedin.com/company "{kw}" store'
                 ])
 
         elif source_id == "instagram":
             if loc_part:
                 queries.extend([
                     f'site:instagram.com "{kw}" {loc_part}',
-                    f'site:instagram.com {kw} shop {loc_part}',
-                    f'site:instagram.com {kw} studio {loc_part}'
+                    f'site:instagram.com home decor boutique {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:instagram.com "{kw}" shop',
-                    f'site:instagram.com "{kw}" boutique',
-                    f'site:instagram.com "{kw}" studio'
+                    f'site:instagram.com "{kw}" boutique'
                 ])
 
         elif source_id == "facebook":
             if loc_part:
                 queries.extend([
-                    f'site:facebook.com "{kw}" {loc_part}',
-                    f'site:facebook.com {kw} {loc_part} contact'
+                    f'site:facebook.com "{kw}" {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:facebook.com "{kw}" store',
-                    f'site:facebook.com "{kw}" shop'
+                    f'site:facebook.com "{kw}" store'
                 ])
 
         elif source_id == "pinterest":
             if loc_part:
                 queries.extend([
-                    f'site:pinterest.com {kw} shop {loc_part}',
-                    f'site:pinterest.com "{kw}" {loc_part}'
+                    f'site:pinterest.com {kw} boutique {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:pinterest.com "{kw}" store',
-                    f'site:pinterest.com "{kw}" brand'
+                    f'site:pinterest.com "{kw}" decor'
                 ])
 
         elif source_id == "youtube":
             if loc_part:
                 queries.extend([
-                    f'site:youtube.com {kw} shop {loc_part}',
-                    f'site:youtube.com "{kw}" {loc_part}'
+                    f'site:youtube.com "{kw}" showroom {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:youtube.com "{kw}" tour',
                     f'site:youtube.com "{kw}" showroom'
                 ])
 
         elif source_id == "directory":
             if loc_part:
                 queries.extend([
-                    f'site:yellowpages.com OR site:yellowpages.ca "{kw}" {loc_part}',
-                    f'site:yelp.com OR site:bbb.org "{kw}" {loc_part}',
-                    f'site:manta.com {kw} {loc_part}'
+                    f'{kw} gift boutique store {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:yellowpages.com "{kw}" wholesale',
-                    f'site:manta.com "{kw}" store',
-                    f'site:thomasnet.com "{kw}"'
+                    f'{kw} wholesale directory store'
                 ])
 
         elif source_id == "wholesale":
             if loc_part:
                 queries.extend([
-                    f'site:wholesalecentral.com OR site:faire.com "{kw}" {loc_part}',
-                    f'{kw} wholesale distributor {loc_part}'
+                    f'{kw} wholesale showroom distributor {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:wholesalecentral.com "{kw}"',
-                    f'site:faire.com/brand "{kw}"',
-                    f'"{kw}" wholesale b2b'
+                    f'{kw} wholesale distributor showroom'
                 ])
 
         elif source_id == "marketplace":
             if loc_part:
                 queries.extend([
-                    f'site:etsy.com/shop "{kw}" {loc_part}',
-                    f'{kw} storefront {loc_part}'
+                    f'{kw} boutique storefront {loc_part}'
                 ])
             else:
                 queries.extend([
-                    f'site:etsy.com/shop "{kw}"',
-                    f'"{kw}" boutique store'
+                    f'{kw} boutique showroom'
                 ])
 
         elif source_id == "industry":

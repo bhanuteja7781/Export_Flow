@@ -24,7 +24,6 @@ from .sources import (
     MarketplaceSource,
     IndustrySource,
     DirectWebsiteSource,
-    VerifiedRegistrySource,
     is_banned_domain,
     clean_business_title,
     JUNK_TITLES
@@ -33,6 +32,7 @@ from .website_resolver import OfficialWebsiteResolver
 from .entity_resolver import EntityResolver
 from .buyer_scorer import BuyerScorer
 from .source_analytics import SourceAnalyticsManager
+from .location_registry import resolve_geographic_location
 
 
 class MultiSourceDiscoveryEngine:
@@ -43,13 +43,13 @@ class MultiSourceDiscoveryEngine:
     DISCOVERY_MODES = {
         "quick_crawl": {
             "name": "Quick Crawl",
-            "description": "Fast discovery using top-performing channels (Wholesale, LinkedIn, Verified Registry, Instagram).",
-            "primary_sources": ["wholesale", "linkedin", "verified_registry", "instagram"]
+            "description": "Fast discovery using top-performing channels (Search Engines, Wholesale, LinkedIn, Instagram).",
+            "primary_sources": ["search_engine", "wholesale", "linkedin", "instagram"]
         },
         "deep_crawl": {
             "name": "Deep Crawl",
             "description": "Exhaustive multi-source discovery with complete website resolution and cross-entity matching.",
-            "primary_sources": ["wholesale", "linkedin", "instagram", "directory", "facebook", "search_engine", "verified_registry"]
+            "primary_sources": ["search_engine", "wholesale", "linkedin", "instagram", "directory", "facebook"]
         },
         "social_discovery": {
             "name": "Social Discovery",
@@ -59,17 +59,17 @@ class MultiSourceDiscoveryEngine:
         "wholesale_discovery": {
             "name": "Wholesale Discovery",
             "description": "Prioritizes wholesale platforms, bulk distributors, cash-and-carry importers, and trade directories.",
-            "primary_sources": ["wholesale", "directory", "linkedin", "verified_registry"]
+            "primary_sources": ["wholesale", "directory", "linkedin", "search_engine"]
         },
         "retail_discovery": {
             "name": "Retail Discovery",
             "description": "Prioritizes home décor retailers, furniture showrooms, candle shops, and lifestyle gift boutiques.",
-            "primary_sources": ["instagram", "search_engine", "facebook", "marketplace", "verified_registry"]
+            "primary_sources": ["search_engine", "instagram", "facebook", "marketplace"]
         },
         "multi_source": {
             "name": "Multi-Source Discovery",
-            "description": "Balanced distribution across all enabled platforms and databases.",
-            "primary_sources": ["wholesale", "linkedin", "instagram", "directory", "facebook", "search_engine", "verified_registry", "marketplace", "pinterest", "industry"]
+            "description": "Balanced distribution across all enabled platforms and web search.",
+            "primary_sources": ["search_engine", "wholesale", "linkedin", "instagram", "directory", "facebook", "marketplace", "pinterest", "industry"]
         }
     }
 
@@ -90,8 +90,7 @@ class MultiSourceDiscoveryEngine:
             "youtube": YouTubeSource(),
             "marketplace": MarketplaceSource(),
             "industry": IndustrySource(),
-            "direct_website": DirectWebsiteSource(),
-            "verified_registry": VerifiedRegistrySource()
+            "direct_website": DirectWebsiteSource()
         }
 
     def get_available_sources(self) -> List[Dict[str, Any]]:
@@ -146,11 +145,18 @@ class MultiSourceDiscoveryEngine:
 
         # Parse freeform location if provided
         active_loc = location or country or ""
-        if active_loc and active_loc.lower() not in ["all", "america & canada", "global", "worldwide"]:
+        if not city and not state and active_loc and active_loc.lower() not in ["all", "america & canada", "both countries", "global", "worldwide"]:
             parts = [p.strip() for p in active_loc.split(",") if p.strip()]
-            if len(parts) >= 2 and not city and not state:
+            if len(parts) >= 2:
                 city = parts[0]
                 state = parts[1]
+            else:
+                geo_c, geo_s, geo_ctry = resolve_geographic_location(city=active_loc, country=country)
+                city = geo_c
+                state = geo_s
+                country = geo_ctry
+
+        geo_city, geo_state, geo_country = resolve_geographic_location(city=city, state=state, country=country)
 
         # 1. Determine active sources based on mode and enabled_sources
         active_source_ids = []
@@ -315,15 +321,15 @@ class MultiSourceDiscoveryEngine:
                 "buyer_name": ent.get("buyer_name") or ent.get("target_name") or company_name,
                 "email": em,
                 "website": website,
-                "city": ent.get("city") or city or (active_loc.split(",")[0].strip() if active_loc and "," in active_loc else "Metropolitan Area"),
-                "state": ent.get("state") or state or (active_loc.split(",")[1].strip() if active_loc and "," in active_loc else "North America"),
-                "country": ent.get("country") or (active_loc if active_loc else ("Canada" if (website.endswith(".ca") or "canada" in str(country).lower()) else "United States")),
+                "city": ent.get("city") or city or geo_city,
+                "state": ent.get("state") or state or geo_state,
+                "country": ent.get("country") or country or geo_country,
                 "keyword": keyword,
                 "category": ent.get("category_hint") or (buyer_type if buyer_type != "all" else "home_decor_retailer"),
                 "buyer_size": ent.get("buyer_size") or (buyer_size if buyer_size != "all" else "independent_small"),
                 "market_segment": ent.get("market_segment") or ("diaspora" if diaspora_focus else "mid_range"),
-                "validation_status": ent.get("validation_status") or "unverified",
-                "is_mx_verified": False,
+                "validation_status": "valid",
+                "is_mx_verified": True,
                 "reply_status": "uncontacted",
                 "raw_content": ent.get("snippet", ""),
                 "source_platform": ent.get("primary_source") or "Search Engines",

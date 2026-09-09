@@ -186,32 +186,35 @@ Email: {sender_email}
 
             # Live Pre-Flight Domain MX check before touching SMTP
             if "@" in email:
-                domain = email.split("@")[1]
+                domain = email.split("@")[1].strip().lower()
+                mx_valid = False
                 try:
                     import dns.resolver
                     res = dns.resolver.Resolver()
                     res.timeout = 2.0
                     res.lifetime = 2.0
                     mx = res.resolve(domain, 'MX')
-                    if not mx or len(mx) == 0:
-                        report_data["failed_count"] += 1
-                        report_data["failed"].append({
-                            "email": email,
-                            "error": f"Pre-flight check failed: Domain {domain} has no mail exchange (MX) server.",
-                            "status": "FAILED",
-                            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-                        })
-                        continue
-                except Exception as dns_err:
-                    if "NXDOMAIN" in str(dns_err) or "NoAnswer" in str(dns_err) or "not exist" in str(dns_err).lower():
-                        report_data["failed_count"] += 1
-                        report_data["failed"].append({
-                            "email": email,
-                            "error": f"Pre-flight check failed: Domain {domain} does not exist or has no active mail server.",
-                            "status": "FAILED",
-                            "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
-                        })
-                        continue
+                    mx_valid = len(mx) > 0
+                except Exception:
+                    try:
+                        fallback_res = dns.resolver.Resolver(configure=False)
+                        fallback_res.nameservers = ['8.8.8.8', '1.1.1.1']
+                        fallback_res.timeout = 2.0
+                        fallback_res.lifetime = 2.0
+                        mx = fallback_res.resolve(domain, 'MX')
+                        mx_valid = len(mx) > 0
+                    except Exception:
+                        mx_valid = False
+
+                if not mx_valid:
+                    report_data["failed_count"] += 1
+                    report_data["failed"].append({
+                        "email": email,
+                        "error": f"Pre-flight check failed: Domain '{domain}' has no active mail exchange (MX) server.",
+                        "status": "FAILED",
+                        "timestamp": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
+                    })
+                    continue
 
             try:
                 msg, formatted_subject = self.compose_email(

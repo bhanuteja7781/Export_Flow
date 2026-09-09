@@ -2,33 +2,33 @@
   "sources": {
     "search_engine": {
       "name": "Search Engines (Web)",
-      "discovered": 44,
-      "leads": 30,
-      "qualified": 16
+      "discovered": 60,
+      "leads": 46,
+      "qualified": 30
     },
     "linkedin": {
       "name": "LinkedIn Business",
-      "discovered": 38,
-      "leads": 32,
-      "qualified": 24
+      "discovered": 47,
+      "leads": 41,
+      "qualified": 33
     },
     "instagram": {
       "name": "Instagram Boutiques",
-      "discovered": 45,
-      "leads": 36,
-      "qualified": 22
+      "discovered": 55,
+      "leads": 46,
+      "qualified": 32
     },
     "facebook": {
       "name": "Facebook Showrooms",
-      "discovered": 29,
-      "leads": 21,
-      "qualified": 12
+      "discovered": 35,
+      "leads": 27,
+      "qualified": 18
     },
     "pinterest": {
       "name": "Pinterest Visual Brands",
-      "discovered": 22,
-      "leads": 18,
-      "qualified": 9
+      "discovered": 23,
+      "leads": 19,
+      "qualified": 10
     },
     "youtube": {
       "name": "YouTube Showrooms",
@@ -44,15 +44,15 @@
     },
     "wholesale": {
       "name": "Wholesale Platforms",
-      "discovered": 40,
-      "leads": 36,
-      "qualified": 28
+      "discovered": 42,
+      "leads": 38,
+      "qualified": 30
     },
     "marketplace": {
       "name": "Public Marketplaces",
-      "discovered": 24,
-      "leads": 18,
-      "qualified": 10
+      "discovered": 28,
+      "leads": 22,
+      "qualified": 13
     },
     "industry": {
       "name": "Industry Associations",
@@ -73,5 +73,5 @@
       "qualified": 60
     }
   },
-  "last_updated": "2026-09-07T10:54:40.751996+00:00"
+  "last_updated": "2026-09-09T18:52:17.047405+00:00"
 }

@@ -311,7 +311,7 @@ class BuyerSearchModule:
         }
         engine_mode = mode_map.get((discovery_mode or "all").lower(), "multi_source")
 
-        # 1. Multi-Source Discovery Engine execution
+        # 1. Primary Multi-Source Live Web Discovery Engine execution
         discovered_leads = self.discovery_engine.discover_buyers(
             keyword=keyword,
             discovery_mode=engine_mode,
@@ -330,89 +330,37 @@ class BuyerSearchModule:
             exclude_domains=exclude_domains
         )
 
-        # 2. If fewer than max_results discovered, supplement with rotated items from verified catalog
+        # 2. If fewer than max_results discovered, execute a fast secondary live web discovery pass
         if len(discovered_leads) < max_results:
             seen_emails = {l.get("email", "").lower() for l in discovered_leads if l.get("email")} | exclude_emails
-            verified_buyers = self._get_verified_real_buyers(
-                keyword=keyword,
-                country=country,
-                state=state,
-                city=city,
+            seen_domains = {self._extract_domain(l.get("website", "") or l.get("url", "")) for l in discovered_leads} | exclude_domains
+            
+            comp_kw = f"{keyword} boutique store gifts"
+            extra_cands = self.discovery_engine.discover_buyers(
+                keyword=comp_kw,
+                discovery_mode=engine_mode,
+                enabled_sources=["search_engine", "wholesale", "directory"],
+                country=country if country != "All" else "America & Canada",
+                state=state if state != "all" else None,
+                city=city if city != "all" else None,
                 buyer_type=buyer_type,
                 buyer_size=buyer_size,
                 price_segment=price_segment,
-                diaspora_focus=diaspora_focus or (buyer_type == "diaspora_ethnic")
+                diaspora_focus=diaspora_focus or (buyer_type == "diaspora_ethnic"),
+                max_results=max_results - len(discovered_leads),
+                offset=self.state.get("offset", 0) + 15,
+                exclude_emails=seen_emails,
+                exclude_domains=seen_domains
             )
-
-            unseen_catalog = []
-            for item in verified_buyers:
-                if not self._matches_country(item, country):
-                    continue
-                if self._is_lead_excluded(item, exclude_emails, exclude_domains):
-                    continue
-                emails_in_item = self.EMAIL_REGEX.findall(item.get("raw_content", "") or item.get("title", ""))
-                item_em = emails_in_item[0].lower() if emails_in_item else (item.get("email") or "").lower()
-                if item_em and item_em in seen_emails:
-                    continue
-                unseen_catalog.append(item)
-
-            if unseen_catalog:
-                rot_idx = (self.state["iteration"] * 5) % len(unseen_catalog)
-                rotated_unseen = unseen_catalog[rot_idx:] + unseen_catalog[:rot_idx]
-                for item in rotated_unseen:
-                    if self._is_lead_excluded(item, exclude_emails, exclude_domains):
-                        continue
-                    emails_in_item = self.EMAIL_REGEX.findall(item.get("raw_content", "") or item.get("title", ""))
-                    item_em = emails_in_item[0].lower() if emails_in_item else (item.get("email") or "").lower()
-                    if item_em and item_em in seen_emails:
-                        continue
-                    if item_em:
-                        seen_emails.add(item_em)
-                    # Enrich with source transparency fields
-                    item["primary_source"] = "Verified Buyer Registry"
-                    item["discovery_sources"] = ["Verified Buyer Registry"]
-                    item["source_count"] = 1
-                    item["cross_source_confidence"] = "Medium"
-                    item["buyer_score"] = item.get("buyer_score") or 78
-                    item["product_compatibility"] = "High"
-                    discovered_leads.append(item)
+            for cand in extra_cands:
+                em = (cand.get("email") or "").lower().strip()
+                dom = self._extract_domain(cand.get("website", "") or cand.get("url", ""))
+                if em and em not in seen_emails and dom not in seen_domains:
+                    seen_emails.add(em)
+                    seen_domains.add(dom)
+                    discovered_leads.append(cand)
                     if len(discovered_leads) >= max_results:
                         break
-
-        # 3. If STILL fewer than max_results (e.g. user selected 10/15/20 buyers or rare filters),
-        # supplement with authentic catalog buyers from the broader region without generating synthetic templates
-        if len(discovered_leads) < max_results:
-            seen_emails = {l.get("email", "").lower() for l in discovered_leads if l.get("email")} | exclude_emails
-            fallback_buyers = self._get_verified_real_buyers(
-                keyword=keyword,
-                country=country,
-                state=None,
-                city=None,
-                buyer_type=buyer_type,
-                buyer_size=buyer_size,
-                price_segment=price_segment,
-                diaspora_focus=diaspora_focus or (buyer_type == "diaspora_ethnic")
-            )
-            for item in fallback_buyers:
-                if not self._matches_country(item, country):
-                    continue
-                if self._is_lead_excluded(item, exclude_emails, exclude_domains):
-                    continue
-                emails_in_item = self.EMAIL_REGEX.findall(item.get("raw_content", "") or item.get("title", ""))
-                item_em = emails_in_item[0].lower() if emails_in_item else (item.get("email") or "").lower()
-                if item_em and item_em in seen_emails:
-                    continue
-                if item_em:
-                    seen_emails.add(item_em)
-                item["primary_source"] = "Verified Buyer Registry"
-                item["discovery_sources"] = ["Verified Buyer Registry"]
-                item["source_count"] = 1
-                item["cross_source_confidence"] = "Medium"
-                item["buyer_score"] = item.get("buyer_score") or 78
-                item["product_compatibility"] = "High"
-                discovered_leads.append(item)
-                if len(discovered_leads) >= max_results:
-                    break
 
         return discovered_leads[:max_results]
 
@@ -1064,105 +1012,3 @@ class BuyerSearchModule:
         ]
         return not any(ign in url_lower for ign in ignored_domains)
 
-    def _get_verified_real_buyers(
-        self,
-        keyword: str = "Metal Candle Holders",
-        country: Optional[str] = None,
-        state: Optional[str] = None,
-        city: Optional[str] = None,
-        buyer_type: Optional[str] = "all",
-        buyer_size: Optional[str] = "all",
-        price_segment: Optional[str] = "all",
-        diaspora_focus: bool = False
-    ) -> List[Dict[str, Any]]:
-        """
-        Loads 100% verified, active North American buyers across Diaspora, Wholesalers, Retailers and Furniture Stores.
-        """
-        catalog_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "verified_buyers_catalog.json")
-        items = []
-        if os.path.exists(catalog_path):
-            try:
-                with open(catalog_path, "r", encoding="utf-8") as f:
-                    items = json.load(f)
-            except Exception:
-                items = []
-
-        buyers = []
-        for it in items:
-            b_country = it.get("country", "Canada")
-            b_state = it.get("state", "")
-            b_city = it.get("city", "")
-            b_cat = it.get("category", "home_decor_retailer")
-            b_size = it.get("buyer_size", "independent_small")
-            b_seg = it.get("market_segment", "mid_range")
-            name = it.get("name", "Buyer")
-            desc = it.get("desc", f"Sourcing {keyword} and home accessories.")
-            email = it.get("email", "")
-            url = it.get("url", "")
-
-            buyers.append({
-                "company_name": name,
-                "buyer_name": name,
-                "email": email,
-                "website": url,
-                "category": b_cat,
-                "buyer_size": b_size,
-                "market_segment": b_seg,
-                "state": b_state,
-                "city": b_city,
-                "country": b_country,
-                "title": f"{name} - {keyword}",
-                "raw_content": f"{desc} Actively purchasing {keyword}, tabletop decor, and lanterns. Contact: Purchasing Team, {email}, {url}, Location: {b_city}, {b_state}, {b_country}.",
-                "url": url,
-                "source_platform": f"Verified Directory ({b_city or b_state or b_country})"
-            })
-
-        # 1. Filter by country
-        req = (country or "").lower().strip()
-        if "canada" in req and ("america" not in req and "all" not in req and "usa" not in req and "united" not in req):
-            filtered = [b for b in buyers if b.get("country") == "Canada"]
-        elif "united states" in req or "usa" in req or req == "us":
-            if "canada" not in req and "america" not in req and "all" not in req:
-                filtered = [b for b in buyers if b.get("country") == "United States"]
-            else:
-                filtered = buyers
-        else:
-            filtered = buyers
-
-        # 2. Filter by state
-        if state and state != "all":
-            state_matches = [b for b in filtered if state.lower() in (b.get("state") or "").lower()]
-            if state_matches:
-                filtered = state_matches
-
-        # 3. Filter by city
-        if city and city != "all":
-            city_matches = [b for b in filtered if city.lower() in (b.get("city") or "").lower()]
-            if city_matches:
-                filtered = city_matches
-
-        # 4. Filter by buyer_type / diaspora
-        if diaspora_focus or buyer_type == "diaspora_ethnic":
-            diaspora_matches = [b for b in filtered if b.get("category") == "diaspora_ethnic" or b.get("market_segment") == "diaspora"]
-            if diaspora_matches:
-                filtered = diaspora_matches
-        elif buyer_type and buyer_type != "all":
-            type_matches = [b for b in filtered if b.get("category") == buyer_type]
-            if type_matches:
-                filtered = type_matches
-
-        # 5. Filter by buyer_size
-        if buyer_size and buyer_size != "all":
-            size_matches = [b for b in filtered if b.get("buyer_size") == buyer_size]
-            if size_matches:
-                filtered = size_matches
-
-        # 6. Filter by price_segment
-        if price_segment and price_segment == "mid_range":
-            mid_matches = [b for b in filtered if b.get("market_segment") in ["mid_range", "diaspora", "volume_wholesale"]]
-            return mid_matches if mid_matches else filtered
-        elif price_segment and price_segment == "high_end":
-            high_matches = [b for b in filtered if b.get("market_segment") == "high_end"]
-            return high_matches if high_matches else filtered
-
-        return filtered

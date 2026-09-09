@@ -174,25 +174,15 @@ Respond with a raw JSON array of objects:
                 model="gemini-2.5-flash",
                 contents=prompt,
             )
+            raw_text = response.text.strip()
+            if raw_text.startswith("```"):
+                raw_text = re.sub(r"^```(?:json)?\n", "", raw_text)
+                raw_text = re.sub(r"\n```$", "", raw_text)
+
+            parsed_results = json.loads(raw_text)
+            result_map = {item["index"]: item for item in parsed_results if "index" in item}
         except Exception:
-            try:
-                response = self.client.models.generate_content(
-                    model="gemini-1.5-flash",
-                    contents=prompt,
-                )
-            except Exception:
-                response = self.client.models.generate_content(
-                    model="gemini-2.0-flash",
-                    contents=prompt,
-                )
-
-        raw_text = response.text.strip()
-        if raw_text.startswith("```"):
-            raw_text = re.sub(r"^```(?:json)?\n", "", raw_text)
-            raw_text = re.sub(r"\n```$", "", raw_text)
-
-        parsed_results = json.loads(raw_text)
-        result_map = {item["index"]: item for item in parsed_results if "index" in item}
+            return self._classify_with_heuristics(leads, product_niche)
 
         classified_leads = []
         for idx, lead in enumerate(leads):

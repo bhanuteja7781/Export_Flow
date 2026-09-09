@@ -9,10 +9,14 @@ import os
 import re
 import json
 import random
+import base64
 import urllib.parse
 from typing import List, Dict, Any, Optional
+import urllib3
 import requests
 from bs4 import BeautifulSoup
+
+urllib3.disable_warnings()
 
 from .base_source import DiscoverySource
 from .query_generator import SourceQueryGenerator
@@ -27,6 +31,9 @@ BANNED_PLATFORM_DOMAINS = {
     "dhgate.com", "wish.com", "poshmark.com", "mercari.com", "costco.com", "homedepot.com",
     "lowes.com", "ikea.com", "crateandbarrel.com", "potterybarn.com", "westelm.com", "cb2.com",
     "bedbathandbeyond.com", "kohls.com", "macys.com", "nordstrom.com", "tjmaxx.com", "marshalls.com",
+    # Job boards & career platforms
+    "indeed.com", "glassdoor.com", "ziprecruiter.com", "monster.com", "careerbuilder.com",
+    "simplyhired.com", "salary.com", "payscale.com",
     # Social media & content networks
     "instagram.com", "facebook.com", "linkedin.com", "pinterest.com", "youtube.com",
     "tiktok.com", "twitter.com", "x.com", "reddit.com", "quora.com", "medium.com", "tumblr.com",
@@ -36,6 +43,13 @@ BANNED_PLATFORM_DOMAINS = {
     "yellowpages.ca", "bbb.org", "manta.com", "mapquest.com", "whitepages.com", "superpages.com",
     "wix.com", "wixpress.com", "shopify.com", "myshopify.com", "squarespace.com",
     "wordpress.com", "wordpress.org", "weebly.com", "godaddy.com", "sentry.io", "cloudflare.com",
+    # App stores & software download mirrors
+    "apkpure.com", "play.google.com", "apps.apple.com", "apkcombo.com", "aptoide.com", "softonic.com", "cnet.com",
+    # Dictionaries, media, real estate, generic big box
+    "cambridge.org", "merriam-webster.com", "dictionary.com", "thefreedictionary.com", "britannica.com",
+    "wordreference.com", "wiktionary.org", "helpfulprofessor.com", "lifestylestores.com", "msn.com",
+    "nytimes.com", "washingtonpost.com", "imdb.com", "realtor.com", "homes.com", "zillow.com", "redfin.com",
+    "bestbuy.com", "athome.com",
     # Nonprofits / Associations / Generic directories
     "candles.org", "nationalcandleassociation.org", "craftcouncil.org", "dallasmkt.com"
 }
@@ -60,35 +74,24 @@ def is_banned_domain(domain_or_url: str) -> bool:
         "amazon", "ebay", "walmart", "target.", "faire", "etsy", "wayfair", "alibaba",
         "aliexpress", "temu", "shein", "wikipedia", "reddit", "quora", "yelp", "yellowpages",
         "tripadvisor", "candles.org", "youtube", "facebook", "instagram", "pinterest", "linkedin",
-        "tiktok", "twitter", "sentry", "cloudflare", "wixpress", "myshopify"
+        "tiktok", "twitter", "sentry", "cloudflare", "wixpress", "myshopify", "indeed", "glassdoor",
+        "ziprecruiter"
     ]
     return any(kw in dom for kw in banned_keywords)
 
 def clean_business_title(raw_title: str, url: str) -> Optional[str]:
     if not raw_title:
-        return None
-    # Strip suffixes like "- Home", "| Official Site", etc.
-    clean = re.split(r'\s+[-–|—:]\s+', raw_title)[0].strip()
-    
-    # If the first segment is junk (e.g. "Homepage"), try the subsequent segments
-    if clean.lower() in JUNK_TITLES:
-        parts = re.split(r'\s+[-–|—:]\s+', raw_title)
-        clean = None
-        for p in parts[1:]:
-            p_clean = p.strip()
-            if p_clean and p_clean.lower() not in JUNK_TITLES and len(p_clean) >= 3:
-                clean = p_clean
-                break
-
-    # If still junk or generic product name, derive clean company name from domain
-    if not clean or clean.lower() in JUNK_TITLES or clean.lower().startswith(("bulk ", "cheap ", "wholesale metal", "metal candle holder", "candle holder", "candles")):
+        raw_title = ""
+    clean = re.sub(r'https?://[^\s]+', '', raw_title).strip()
+    clean = re.sub(r'^[a-zA-Z0-9.-]+\.(?:com|ca|org|net|io|co|us|biz|edu|gov)\s*', '', clean).strip()
+    clean = re.split(r'\s+[-–|—:]\s+', clean)[0].strip()
+    if not clean or len(clean) < 3 or clean.lower() in JUNK_TITLES:
         dom = url.lower().replace("https://", "").replace("http://", "").replace("www.", "").split("/")[0]
         base_name = dom.split(".")[0].replace("-", " ").replace("_", " ").title()
         if len(base_name) >= 3 and not is_banned_domain(dom):
             clean = base_name
         else:
             return None
-
     clean = re.sub(r'^[^\w]+|[^\w]+$', '', clean)
     if len(clean) < 3 or is_banned_domain(clean):
         return None
@@ -115,80 +118,161 @@ class BaseHttpSource(DiscoverySource):
             "Accept-Language": "en-US,en;q=0.9"
         })
 
+    def _extract_stores_from_guide(self, guide_url: str, max_extract: int = 4) -> List[Dict[str, str]]:
+        stores = []
+        try:
+            resp = self.session.get(guide_url, timeout=2.0, verify=False)
+            if resp.status_code != 200:
+                return []
+            soup = BeautifulSoup(resp.text, "html.parser")
+            guide_domain = urllib.parse.urlparse(guide_url).netloc.replace("www.", "")
+            banned = [guide_domain, "google", "facebook", "instagram", "twitter", "pinterest", "youtube", "tiktok", "amazon", "ebay", "yelp", "aboutads"]
+            for a in soup.find_all("a", href=True):
+                href = a.get("href", "")
+                if href.startswith("http") and not any(b in href for b in banned) and not is_banned_domain(href):
+                    netloc = urllib.parse.urlparse(href).netloc.replace("www.", "")
+                    if "." in netloc and len(netloc) > 4:
+                        clean_t = clean_business_title(a.get_text(strip=True), href)
+                        if clean_t:
+                            stores.append({
+                                "title": clean_t,
+                                "url": f"https://{netloc}",
+                                "snippet": f"Curated boutique stockist from {guide_url}"
+                            })
+                            if len(stores) >= max_extract:
+                                break
+        except Exception:
+            pass
+        return stores
+
     def _query_search_engine(self, query: str, offset: int = 0, max_items: int = 4) -> List[Dict[str, str]]:
         results: List[Dict[str, str]] = []
+        seen_urls = set()
+        guides_parsed = 0
 
-        # 1. DuckDuckGo HTML endpoint
+        # 1. Primary Strategy: Fast Direct DDG HTML Endpoint (~0.6s)
         try:
-            url = f"https://html.duckduckgo.com/html/?q={urllib.parse.quote_plus(query)}"
-            if offset > 0:
-                url += f"&s={offset}"
-            resp = self.session.get(url, timeout=1.2)
+            url = "https://html.duckduckgo.com/html/"
+            resp = self.session.post(
+                url,
+                data={"q": query},
+                headers={"User-Agent": random.choice(self.USER_AGENTS), "Content-Type": "application/x-www-form-urlencoded"},
+                timeout=3.0,
+                verify=False
+            )
             if resp.status_code == 200:
                 soup = BeautifulSoup(resp.text, "html.parser")
-                for result_div in soup.find_all("div", class_="result"):
-                    title_elem = result_div.find("a", class_="result__url") or result_div.find("a", class_="result__a") or result_div.find("a", class_="result__title")
-                    snippet_elem = result_div.find("a", class_="result__snippet")
-                    if not title_elem:
+                for r in soup.find_all("div", class_="result__body"):
+                    a = r.find("a", class_="result__url") or r.find("a", class_="result__snippet") or r.find("a")
+                    title_tag = r.find("h2") or r.find("a", class_="result__a")
+                    snippet_tag = r.find("a", class_="result__snippet")
+                    if not a or not a.get("href"):
+                        continue
+                    raw_href = a.get("href")
+                    if "duckduckgo.com/l/?" in raw_href or "uddg=" in raw_href:
+                        qs = urllib.parse.parse_qs(urllib.parse.urlparse(raw_href).query)
+                        real_url = qs.get("uddg", [raw_href])[0]
+                    else:
+                        real_url = raw_href
+
+                    if not real_url.startswith("http") or real_url in seen_urls:
                         continue
 
-                    raw_title = result_div.get_text(separator=" ", strip=True)
-                    snippet_text = snippet_elem.get_text(strip=True) if snippet_elem else raw_title
-                    href = title_elem.get("href")
+                    # If this is a curated guide or editorial article, extract direct stores (max 1 guide per query)
+                    if guides_parsed < 1 and any(term in real_url.lower() for term in ["/story/", "/article/", "/post/", "best-", "top-", "guide"]):
+                        guides_parsed += 1
+                        guide_stores = self._extract_stores_from_guide(real_url, max_extract=3)
+                        for gs in guide_stores:
+                            if gs["url"] not in seen_urls:
+                                seen_urls.add(gs["url"])
+                                results.append(gs)
+                                if len(results) >= max_items:
+                                    return results
 
-                    if not isinstance(href, str) or not href:
+                    if is_banned_domain(real_url):
                         continue
 
-                    actual_url = href
-                    if "uddg=" in href:
-                        parsed = urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
-                        cand = parsed.get("uddg", [])
-                        if cand:
-                            actual_url = cand[0]
+                    title_text = title_tag.get_text(strip=True) if title_tag else a.get_text(strip=True)
+                    clean_t = clean_business_title(title_text, real_url)
+                    if not clean_t:
+                        continue
 
-                    if isinstance(actual_url, str) and actual_url.startswith("http"):
-                        if is_banned_domain(actual_url):
-                            continue
-                        clean_title = clean_business_title(raw_title, actual_url)
-                        if not clean_title:
-                            continue
-                        results.append({
-                            "title": clean_title,
-                            "url": actual_url,
-                            "snippet": snippet_text[:280]
-                        })
-                        if len(results) >= max_items:
-                            return results
+                    snippet_text = snippet_tag.get_text(strip=True) if snippet_tag else ""
+                    seen_urls.add(real_url)
+                    results.append({
+                        "title": clean_t,
+                        "url": real_url,
+                        "snippet": snippet_text[:300]
+                    })
+                    if len(results) >= max_items:
+                        return results
         except Exception:
             pass
 
-        # 2. Bing fallback
+        # 2. Secondary Strategy: Bing Search with base64 url decode
         if len(results) < max_items:
             try:
-                bing_url = f"https://www.bing.com/search?q={urllib.parse.quote_plus(query)}&first={offset + 1}"
-                resp = self.session.get(bing_url, timeout=1.2)
+                bing_url = f"https://www.bing.com/search?q={urllib.parse.quote_plus(query)}&cc=US&setlang=en-US&first={offset + 1}"
+                resp = self.session.get(bing_url, timeout=3.0, verify=False)
                 if resp.status_code == 200:
                     soup = BeautifulSoup(resp.text, "html.parser")
                     for li in soup.find_all("li", class_="b_algo"):
                         a_tag = li.find("a")
-                        snippet_p = li.find("p")
-                        if a_tag and a_tag.get("href"):
-                            href = a_tag.get("href")
-                            if isinstance(href, str) and href.startswith("http"):
-                                if is_banned_domain(href):
-                                    continue
-                                title_text = a_tag.get_text(strip=True)
-                                snippet_text = snippet_p.get_text(strip=True) if snippet_p else title_text
-                                clean_title = clean_business_title(title_text, href)
-                                if not clean_title:
-                                    continue
-                                results.append({
-                                    "title": clean_title,
-                                    "url": href,
-                                    "snippet": snippet_text[:280]
-                                })
-                                if len(results) >= max_items:
-                                    break
+                        snippet_p = li.find("p") or li.find("div", class_="b_caption")
+                        if not a_tag or not a_tag.get("href"):
+                            continue
+                        href = a_tag.get("href")
+                        if not isinstance(href, str) or not href.startswith("http"):
+                            continue
+
+                        actual_url = href
+                        if "bing.com/ck/a" in href and "u=" in href:
+                            try:
+                                qs = urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
+                                u_val = qs.get("u", [""])[0]
+                                if u_val.startswith("a1"):
+                                    clean_b64 = u_val[2:]
+                                    rem = len(clean_b64) % 4
+                                    if rem == 2:
+                                        clean_b64 += "=="
+                                    elif rem == 3:
+                                        clean_b64 += "="
+                                    elif rem == 1:
+                                        clean_b64 = clean_b64[:-1]
+                                    dec = base64.urlsafe_b64decode(clean_b64).decode("utf-8", errors="ignore")
+                                    if dec.startswith("http"):
+                                        actual_url = dec
+                            except Exception:
+                                pass
+
+                        if is_banned_domain(actual_url) or actual_url in seen_urls:
+                            continue
+
+                        # If this is a curated guide or editorial article, extract direct stores
+                        if guides_parsed < 1 and any(term in actual_url.lower() for term in ["/story/", "/article/", "/post/", "best-", "top-", "guide"]):
+                            guides_parsed += 1
+                            guide_stores = self._extract_stores_from_guide(actual_url, max_extract=3)
+                            for gs in guide_stores:
+                                if gs["url"] not in seen_urls:
+                                    seen_urls.add(gs["url"])
+                                    results.append(gs)
+                                    if len(results) >= max_items:
+                                        return results
+
+                        title_text = a_tag.get_text(strip=True)
+                        snippet_text = snippet_p.get_text(strip=True) if snippet_p else title_text
+                        clean_title = clean_business_title(title_text, actual_url)
+                        if not clean_title:
+                            continue
+
+                        seen_urls.add(actual_url)
+                        results.append({
+                            "title": clean_title,
+                            "url": actual_url,
+                            "snippet": snippet_text[:300]
+                        })
+                        if len(results) >= max_items:
+                            break
             except Exception:
                 pass
 
@@ -594,109 +678,3 @@ class DirectWebsiteSource(DiscoverySource):
             })
         return candidates
 
-
-# 12. Verified North American Buyer Registry
-class VerifiedRegistrySource(DiscoverySource):
-    def __init__(self):
-        super().__init__(
-            source_id="verified_registry",
-            source_name="Verified Buyer Registry",
-            source_type="registry",
-            priority_weight=1.4,
-            enabled=True
-        )
-
-    def search(self, keyword, country="America & Canada", state=None, city=None, buyer_type="all", buyer_size="all", price_segment="all", diaspora_focus=False, offset=0, max_candidates=5, options=None):
-        catalog_path = None
-        for p in [
-            os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "verified_buyers_catalog.json"),
-            os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "modules", "verified_buyers_catalog.json"),
-            os.path.join(os.path.dirname(os.path.abspath(__file__)), "verified_buyers_catalog.json")
-        ]:
-            if os.path.exists(p):
-                catalog_path = p
-                break
-
-        if not catalog_path or not os.path.exists(catalog_path):
-            return []
-
-        try:
-            with open(catalog_path, "r", encoding="utf-8") as f:
-                items = json.load(f)
-        except Exception:
-            return []
-
-        # Filter catalog
-        filtered = []
-        req_country = (country or "").lower().strip()
-        for it in items:
-            it_country = it.get("country", "Canada")
-            if "canada" in req_country and "america" not in req_country and "all" not in req_country and "usa" not in req_country and "united" not in req_country:
-                if it_country != "Canada":
-                    continue
-            elif ("united states" in req_country or "usa" in req_country) and "canada" not in req_country and "america" not in req_country and "all" not in req_country:
-                if it_country != "United States":
-                    continue
-
-            if state and state.lower() != "all" and state.lower() not in (it.get("state") or "").lower():
-                continue
-            if city and city.lower() != "all" and city.lower() not in (it.get("city") or "").lower():
-                continue
-
-            if diaspora_focus or buyer_type == "diaspora_ethnic":
-                if it.get("category") != "diaspora_ethnic" and it.get("market_segment") != "diaspora":
-                    continue
-            elif buyer_type and buyer_type != "all" and it.get("category") != buyer_type:
-                continue
-
-            filtered.append(it)
-
-        # If strict city/state filter yielded no results, broaden to authentic catalog items in requested region
-        if not filtered and (city or state or req_country):
-            for it in items:
-                it_country = it.get("country", "United States")
-                if "canada" in req_country and "america" not in req_country and "all" not in req_country and "usa" not in req_country and "united" not in req_country:
-                    if it_country != "Canada":
-                        continue
-                elif ("united states" in req_country or "usa" in req_country) and "canada" not in req_country and "america" not in req_country and "all" not in req_country:
-                    if it_country != "United States":
-                        continue
-
-                if state and state.lower() != "all" and state.lower() not in (it.get("state") or "").lower():
-                    continue
-
-                if diaspora_focus or buyer_type == "diaspora_ethnic":
-                    if it.get("category") != "diaspora_ethnic" and it.get("market_segment") != "diaspora":
-                        continue
-                elif buyer_type and buyer_type != "all" and it.get("category") != buyer_type:
-                    continue
-
-                filtered.append(it)
-
-        if not filtered:
-            return []
-
-        # Rotate by offset
-        rot_idx = (offset * 3) % max(1, len(filtered))
-        rotated = filtered[rot_idx:] + filtered[:rot_idx]
-
-        candidates = []
-        for it in rotated[:max_candidates]:
-            candidates.append({
-                "business_name": it.get("name", "Verified Buyer"),
-                "source_id": self.source_id,
-                "source_name": self.source_name,
-                "source_type": self.source_type,
-                "source_url": it.get("url", ""),
-                "website_url": it.get("url", ""),
-                "email": it.get("email", ""),
-                "snippet": it.get("desc", f"Sourcing {keyword}"),
-                "city": it.get("city", ""),
-                "state": it.get("state", ""),
-                "country": it.get("country", "United States"),
-                "category_hint": it.get("category", "home_decor_retailer"),
-                "buyer_size": it.get("buyer_size", "independent_small"),
-                "market_segment": it.get("market_segment", "mid_range")
-            })
-
-        return candidates
