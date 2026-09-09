@@ -660,9 +660,11 @@ class LoggingModule:
             d = get_lead_ist_date(l)
             return d is not None and d.year == today_ist_date.year and d.month == today_ist_date.month
 
-        if timeframe in ["today", "latest"]:
+        if timeframe == "today":
+            # Strictly return ONLY emails dispatched today (never fall back to past dates)
             filtered = [l for l in contacted_leads if get_lead_ist_date(l) == today_ist_date]
-            # Fallback to the latest available outreach date if today has no new dispatches yet
+        elif timeframe == "latest":
+            filtered = [l for l in contacted_leads if get_lead_ist_date(l) == today_ist_date]
             if not filtered and contacted_leads:
                 dates_with_leads = {}
                 for l in contacted_leads:

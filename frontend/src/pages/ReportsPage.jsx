@@ -414,7 +414,7 @@ export default function ReportsPage({
           <MailCheck size={16} color={activeReportTab === 'sent_log' ? '#60a5fa' : 'var(--text-muted)'} />
           <span>Sent Outreach Log</span>
           <span style={{ fontSize: '11px', padding: '1px 6px', borderRadius: '10px', background: 'rgba(59, 130, 246, 0.3)', color: '#93c5fd' }}>
-            {sentLogRows.length}
+            {contactedCount || sentLogRows.length}
           </span>
         </button>
 
@@ -507,7 +507,7 @@ export default function ReportsPage({
                 <span>Timeframe:</span>
               </div>
               {[
-                { id: 'today', label: 'Today (Latest Batch)' },
+                { id: 'today', label: 'Today' },
                 { id: 'week', label: 'This Week' },
                 { id: 'month', label: 'This Month' },
                 { id: 'all', label: 'All Dispatches' }
@@ -603,15 +603,22 @@ export default function ReportsPage({
                 {filteredSentLogs.length === 0 ? (
                   <tr>
                     <td colSpan={6} style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--text-muted)' }}>
-                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px' }}>
-                        <span>No sent outreach logs found for timeframe "{logTimeframe}".</span>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-main)' }}>
+                          {logTimeframe === 'today' ? 'No emails dispatched today' : `No sent logs found for "${logTimeframe}"`}
+                        </span>
+                        <span style={{ fontSize: '11.5px', color: 'var(--text-muted)', maxWidth: '420px', lineHeight: '1.5' }}>
+                          {logTimeframe === 'today'
+                            ? 'You have not dispatched any campaign emails today. When you send emails, they will be logged here.'
+                            : 'Try selecting a different date from the dropdown or click below to view all dispatches.'}
+                        </span>
                         <button
                           type="button"
                           className="btn btn-secondary btn-sm"
                           onClick={() => setLogTimeframe('all')}
-                          style={{ padding: '6px 14px', fontSize: '11.5px' }}
+                          style={{ padding: '6px 14px', fontSize: '11.5px', marginTop: '6px' }}
                         >
-                          View All Dispatches ({sentLogRows.length || 218})
+                          View All Past Dispatches ({contactedCount || 218})
                         </button>
                       </div>
                     </td>
